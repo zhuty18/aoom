@@ -1,7 +1,9 @@
-# My Stories
+# My Archive
 
 为我个人写过的故事做一个线上存档。
-<commit log>
+
+<archive info>
+
 # Scripts
 
 ## 使用方法
@@ -61,7 +63,7 @@
 
 强制重构系统目录
 
-## 把现有文档改变为 MarkDown 文件
+## 把现有文档变为 MarkDown 文件
 
 `python scripts/doc_format.py`
 
@@ -112,3 +114,9 @@
 根据 MarkDown 的各级标题，把文件切分为若干部分，统计每一部分的字数，并在终端打印出结果
 
 若输入纯文本文件，则只打印全文件的字数
+
+## 随机姓氏
+
+`python scripts/family_name.py`
+
+生成一个随机中文姓氏
