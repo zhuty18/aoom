@@ -16,7 +16,9 @@ def format_time(timestamp: float = COMMIT_TIME) -> str:
 
 def format_log_time(time_str) -> str:
     """格式化从git log中读取的时间"""
-    return format_time(time.localtime(time.strptime(time_str, "%a %b %d %H:%M:%S %Y")))
+    tmp = time.strptime(time_str, "%a %b %d %H:%M:%S %Y")
+    tmp = time.localtime(time.mktime(tmp))
+    return format_time(time.mktime(tmp))
 
 
 def get_time(time_str: str = None) -> float:
@@ -205,7 +207,7 @@ def dirs(path: str = os.getcwd()):
             i = os.path.join(path, i)
         if os.path.isdir(i) and dir_name(i) is not None:
             name = dir_name(i)
-            if name is not None:
+            if name:
                 text += f"|[{dir_name(i)}](/{i})|\n"
                 has = True
     return text if has else None
