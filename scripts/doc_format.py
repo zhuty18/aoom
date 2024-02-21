@@ -5,6 +5,7 @@
 import os
 import platform
 import argparse
+import sys
 
 
 try:
@@ -17,7 +18,7 @@ try:
     import docx
 except ModuleNotFoundError:
     print("Requirements not found!")
-    exit()
+    sys.exit()
 
 
 def to_markdown(path, name, rm):
