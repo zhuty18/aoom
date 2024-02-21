@@ -13,10 +13,10 @@ COMMIT_TIME = None
 GIT_COMMIT = True
 
 # 是否添加所有变更
-GIT_ADD = False
+GIT_ADD = True
 
 # 是否推送到远程分支
-GIT_PUSH = False
+GIT_PUSH = True
 
 # 不使用-m参数时的提交默认信息
 DEFAULT_MESSAGE = "随便更新"
