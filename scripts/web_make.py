@@ -41,7 +41,7 @@ def auto_hide(finished, forced):
     s2 = f'"{s2}": true,\n'
     if forced:
         ori = ori.replace(s1, s2)
-    else:
+    elif finished:
         ori = ori.replace("// auto ends", s2 + "\n// auto ends")
     with open(".vscode/settings.json", "w", encoding="utf8") as f:
         f.write(ori)
