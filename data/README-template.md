@@ -83,7 +83,7 @@
 
 ## 校正换行符
 
-`python scripts/myformat.py`
+`python scripts/file_check.py`
 
 从根目录起，把.txt 和.md 文件中的行尾符纠正为对应操作系统的；段首尾空白字符去除
 
@@ -101,15 +101,16 @@
 
 ## 格式化单个文档并统计字数
 
-`python scripts/file.py [keyword] <option>`
+`python scripts/file_check.py [keyword] <option>`
 
 找到所有文件名含有关键词的文件，翻译名词（可选），统计字数，并生成html文件
 
 |选项参数|效果|
 |:-|:-|
-|（无）|根据预设中的翻译方向翻译名词|
+|（无）|根据预设中的翻译方法翻译名字|
+|-t|根据预设中的正向翻译方向翻译名词|
 |-b|反向翻译|
-|-|不进行名词翻译|
+|-n|不进行名词翻译|
 
 根据 MarkDown 的各级标题，把文件切分为若干部分，统计每一部分的字数，并在终端打印出结果
 
