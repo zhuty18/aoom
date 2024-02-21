@@ -17,7 +17,7 @@ from utils import (
     short_path,
 )
 import file_check
-import personal
+from personal import DEFAULT_ORDER
 import web_make
 
 try:
@@ -234,7 +234,7 @@ def update_index(counter, path, order, force=False):
 
 if __name__ == "__main__":
     wcr = WordCounter()
-    update_index(wcr, os.getcwd(), personal.order, True)
+    update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
     wcr.update_history()
     web_make.all_html(force=True)
     web_make.auto_hide(wcr.fin, True)
