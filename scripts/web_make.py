@@ -80,7 +80,8 @@ def index_html(path: str):
                 markdown_to_html("README.md", path, text, dir_name(path))
     except FileNotFoundError:
         text = dirs(path)
-        markdown_to_html("README.md", path, text, dir_name(path))
+        if text:
+            markdown_to_html("README.md", path, text, dir_name(path))
 
 
 def dir_html(path, changes, force):
@@ -101,9 +102,10 @@ def dir_html(path, changes, force):
         l = read_index(path)
         if l:
             for i in l:
-                for j in changes:
-                    if f"{i[0]}/{i[1]}" == j:
-                        to_html(i[1], i[0])
+                if changes:
+                    for j in changes:
+                        if f"{i[0]}/{i[1]}" == j:
+                            to_html(i[1], i[0])
         # 当前目录
         index_html(path)
 
