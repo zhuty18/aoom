@@ -36,13 +36,13 @@ def auto_hide(finished, forced):
     s1 = re.findall(re.compile(r"// auto begins\n(.*?)// auto ends", re.S), s0)[0]
 
     finished.sort()
-    s2 = ""
-    for i in finished:
-        s2 += f'"{i}": true,\n'
+    finished = [x.replace(".md", ".*") for x in finished]
+    s2 = '": true,\n"'.join(finished)
+    s2 = f'"{s2}": true,\n'
     if forced:
         ori = ori.replace(s1, s2)
     else:
-        ori.replace("// auto ends", s2 + "\n// auto ends")
+        ori = ori.replace("// auto ends", s2 + "\n// auto ends")
     with open(".vscode/settings.json", "w", encoding="utf8") as f:
         f.write(ori)
 
