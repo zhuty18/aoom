@@ -91,7 +91,9 @@
 
 ## 翻译名词
 
-`python scripts/name_tsl.py [filename]`
+`python scripts/name_translate.py [filename]`
+
+按预设的翻译方向翻译文本
 
 |选项参数|效果|
 |:-|:-|

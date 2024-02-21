@@ -1,4 +1,5 @@
 # coding = utf-8
+
 """生成一个中文随机姓"""
 
 import random
