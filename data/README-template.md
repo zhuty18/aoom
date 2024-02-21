@@ -77,7 +77,7 @@
 
 ## 搜索文件内容
 
-`python scripts/search.py [关键词]`
+`python scripts/search_for_key.py [关键词]`
 
 会在所有 MarkDown 中搜索给定的关键词，在终端打印出结果
 
