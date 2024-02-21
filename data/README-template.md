@@ -83,7 +83,7 @@
 
 ## 校正换行符
 
-`python scripts/file_check.py`
+`python scripts/work_format.py`
 
 从根目录起，把.txt 和.md 文件中的行尾符纠正为对应操作系统的；段首尾空白字符去除
 
