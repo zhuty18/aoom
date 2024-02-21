@@ -184,7 +184,7 @@ def dir_name(i: str):
         "X": "X战警",
         "XJ": "仙剑",
         "YYS": "阴阳师",
-        "曳尾记": "曳尾记",
+        "YWJ": "曳尾记",
         "O/ON": "原创小说",
         "translation/batfamily": "蝙家",
         "translation/BruceHal": "蝙绿蝙",
