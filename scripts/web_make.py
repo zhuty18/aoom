@@ -80,7 +80,8 @@ def index_html(path: str):
                 markdown_to_html("README.md", path, text, dir_name(path))
     except FileNotFoundError:
         text = dirs(path)
-        markdown_to_html("README.md", path, text, dir_name(path))
+        if text:
+            markdown_to_html("README.md", path, text, dir_name(path))
 
 
 def dir_html(path, changes, force):
