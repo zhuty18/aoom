@@ -101,9 +101,10 @@ def dir_html(path, changes, force):
         l = read_index(path)
         if l:
             for i in l:
-                for j in changes:
-                    if f"{i[0]}/{i[1]}" == j:
-                        to_html(i[1], i[0])
+                if changes:
+                    for j in changes:
+                        if f"{i[0]}/{i[1]}" == j:
+                            to_html(i[1], i[0])
         # 当前目录
         index_html(path)
 
