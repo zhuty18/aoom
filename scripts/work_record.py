@@ -145,7 +145,7 @@ class WordCounter:
                     log_str += "|:-|:-|:-|:-|\n"
                     log += "\n".join(log)
                     log_str += "\n"
-                log_str += "\n"
+                    log_str += "\n"
                 log_str += dirs().strip()
                 f.write(f1.read().replace("<archive info>", log_str))
 
