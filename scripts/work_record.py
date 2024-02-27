@@ -6,16 +6,7 @@ import os
 import sys
 import re
 import subprocess
-from utils import (
-    dirs,
-    format_time,
-    format_log_time,
-    get_time,
-    dir_name,
-    file_length,
-    file_fin,
-    short_path,
-)
+from utils import dirs, format_time, format_log_time, get_time, dir_name, file_length, file_fin, short_path, auto_hide
 import file_check
 from personal import DEFAULT_ORDER
 import web_make
@@ -25,8 +16,6 @@ try:
 except ModuleNotFoundError:
     print("请安装xpinyin模块！")
     sys.exit()
-
-stat_files = []
 
 
 class FileRecord:
@@ -51,10 +40,19 @@ class FileRecord:
         """信息条目"""
         return f"|[{self.name}]({self.name}.md)|{self.length}|{self.time}|"
 
+    def merge(self, other):
+        """数据融合"""
+        if self.length == other.length and self.fin == other.fin:
+            self.time = self.time if get_time(self.time) < get_time(other.time) else other.time
+        else:
+            self.length = other.length
+            self.time = other.time
+            self.fin = other.fin
+
     @staticmethod
-    def from_readme(readme: str):
-        """从readme中的信息条目读取"""
-        t = readme.strip().split("\t")
+    def from_record(record: str):
+        """从历史记录中的信息条目读取"""
+        t = record.strip().split("\t")
         return FileRecord(t[0], int(t[1]), t[2], t[3] == "True")
 
     @staticmethod
@@ -82,23 +80,27 @@ class WordCounter:
 
     def __init__(self):
         self.total_change = 0
+        self.history = {}
+        self.changes = []
+        self.fin = []
+
+    def run(self):
+        """工作函数"""
         self.read_history()
         self.get_files()
-        self.write_result()
-        self.fin = []
+        self.update_result()
+        self.update_history()
 
     def read_history(self):
         """从历史记录中读取已有条目"""
-        self.history = {}
         if os.path.exists("data/history.txt"):
             with open("data/history.txt", "r", encoding="utf-8") as f:
                 for i in f.readlines():
-                    t = FileRecord.from_readme(i)
+                    t = FileRecord.from_record(i)
                     self.history[t.name] = t
 
     def get_files(self):
         """读取变更的文件目录"""
-        self.changes = []
         os.environ["PYTHONIOENCODING"] = "utf8"
         with subprocess.Popen(["git", "status", "-s"], stdout=subprocess.PIPE) as pipe:
             output = pipe.communicate()[0]
@@ -113,8 +115,8 @@ class WordCounter:
                     self.changes.append(i)
                     file_check.count_file(i)
 
-    def write_result(self):
-        """写入统计结果"""
+    def update_result(self):
+        """统计结果写入暂存库"""
         log = []
         for i in self.changes:
             name = re.findall(re.compile(r".*/(.*).md$", re.S), i)[0]
@@ -234,7 +236,7 @@ def update_index(counter, path, order, force=False):
 
 if __name__ == "__main__":
     wcr = WordCounter()
+    wcr.run()
     update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
-    wcr.update_history()
     web_make.all_html(force=True)
-    web_make.auto_hide(wcr.fin, True)
+    auto_hide(wcr.fin, True)
