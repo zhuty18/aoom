@@ -52,6 +52,7 @@ if __name__ == "__main__":
         counter = work_record.WordCounter()
         counter.run()
         work_record.update_index(counter, os.getcwd(), args.sort_order)
+        counter.update_history()
 
     # 构建网页
     if args.pages:
