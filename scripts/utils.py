@@ -203,7 +203,9 @@ def dirs(path: str = os.getcwd()):
     text += "|所有文件夹|\n"
     text += "|:-|\n"
     has = False
-    for i in os.listdir(path):
+    dir_list = os.listdir(path)
+    dir_list.sort()
+    for i in dir_list:
         if path != os.getcwd():
             i = os.path.join(path, i)
         if os.path.isdir(i) and dir_name(i) is not None:
