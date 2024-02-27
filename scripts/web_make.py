@@ -28,25 +28,6 @@ def read_index(path):
     return l
 
 
-def auto_hide(finished, forced):
-    """自动隐藏已完成的内容"""
-    with open(".vscode/settings.json", "r", encoding="utf8") as f:
-        ori = f.read()
-    s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
-    s1 = re.findall(re.compile(r"// auto begins\n(.*?)// auto ends", re.S), s0)[0]
-
-    finished.sort()
-    finished = [x.replace(".md", ".*") for x in finished]
-    s2 = '": true,\n"'.join(finished)
-    s2 = f'"{s2}": true,\n'
-    if forced:
-        ori = ori.replace(s1, s2)
-    elif finished:
-        ori = ori.replace("// auto ends", s2 + "\n// auto ends")
-    with open(".vscode/settings.json", "w", encoding="utf8") as f:
-        f.write(ori)
-
-
 def markdown_to_html(filename, path, text, title):
     """生成markdown内容的html"""
     text = text.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
