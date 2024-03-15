@@ -5,7 +5,7 @@
 import os
 import time
 import re
-from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME
+from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL
 
 
 def format_time(timestamp: float = COMMIT_TIME) -> str:
@@ -265,7 +265,7 @@ def auto_hide(finished, forced):
     with open(".vscode/settings.json", "r", encoding="utf8") as f:
         ori = f.read()
     s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
-    s1 = re.findall(re.compile(r"// finished work head\n(.*?)// finished work tail", re.S), s0)[0]
+    s1 = re.findall(re.compile(rf"{FIN_HEAD}\n(.*?){FIN_TAIL}", re.S), s0)[0]
 
     finished.sort()
     finished = [x.replace(".md", ".*") for x in finished]

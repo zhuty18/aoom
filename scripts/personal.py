@@ -56,3 +56,7 @@ GENERATE_WEB = True
 
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
+
+# 默认字符串，勿动
+FIN_HEAD = "// finished work head"
+FIN_TAIL = "// finished work tail"
