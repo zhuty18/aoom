@@ -44,7 +44,7 @@ class FileRecord:
         """数据融合"""
         if self.length == other.length and self.fin == other.fin:
             self.time = self.time if get_time(self.time) < get_time(other.time) else other.time
-        else:
+        elif get_time(self.time) < get_time(other.time):
             self.length = other.length
             self.time = other.time
             self.fin = other.fin
@@ -89,7 +89,6 @@ class WordCounter:
         self.read_history()
         self.get_files()
         self.update_result()
-        self.update_history()
 
     def read_history(self):
         """从历史记录中读取已有条目"""
@@ -238,5 +237,6 @@ if __name__ == "__main__":
     wcr = WordCounter()
     wcr.run()
     update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
+    wcr.update_history()
     web_make.all_html(force=True)
     auto_hide(wcr.fin, True)
