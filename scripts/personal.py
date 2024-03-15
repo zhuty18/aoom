@@ -7,6 +7,9 @@ WEB_NAME = "兔子草"
 GIT_NAME = "tuzicao"
 GIT_EMAIL = "13718054285@163.com"
 
+# 是否在生成网页的分支上
+GIT_WEB = False
+
 COMMIT_TIME = None
 
 # 是否使用git提交
@@ -22,7 +25,7 @@ GIT_PUSH = True
 DEFAULT_MESSAGE = "随便更新"
 
 # 是否进行字数统计
-COUNT_WORD = True
+COUNT_WORD = False
 
 # 字数统计的顺序
 # time代表按文件上一次提交的时间排序
@@ -56,3 +59,11 @@ GENERATE_WEB = True
 
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
+
+# 默认字符串，勿动
+FIN_HEAD = "// finished work head"
+FIN_TAIL = "// finished work tail"
+FIN_TEM = '"template":true,'
+
+HISTORY_PATH = "data/history.txt"
+CHANGE_SAVE = "data/change.txt"

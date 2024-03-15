@@ -8,7 +8,7 @@ import re
 import subprocess
 from utils import dirs, format_time, format_log_time, get_time, dir_name, file_length, file_fin, short_path, auto_hide
 import file_check
-from personal import DEFAULT_ORDER
+from personal import DEFAULT_ORDER, HISTORY_PATH
 import web_make
 
 try:
@@ -82,7 +82,6 @@ class WordCounter:
         self.total_change = 0
         self.history = {}
         self.changes = []
-        self.fin = []
 
     def run(self):
         """工作函数"""
@@ -92,8 +91,8 @@ class WordCounter:
 
     def read_history(self):
         """从历史记录中读取已有条目"""
-        if os.path.exists("data/history.txt"):
-            with open("data/history.txt", "r", encoding="utf-8") as f:
+        if os.path.exists(HISTORY_PATH):
+            with open(HISTORY_PATH, "r", encoding="utf-8") as f:
                 for i in f.readlines():
                     t = FileRecord.from_record(i)
                     self.history[t.name] = t
@@ -115,7 +114,7 @@ class WordCounter:
                     file_check.count_file(i)
 
     def update_result(self):
-        """统计结果写入暂存库"""
+        """统计结果写入数据库"""
         log = []
         for i in self.changes:
             name = re.findall(re.compile(r".*/(.*).md$", re.S), i)[0]
@@ -150,9 +149,14 @@ class WordCounter:
 
     def update_history(self):
         """更新历史数据"""
-        with open("data/history.txt", "w", encoding="utf-8") as f:
-            for _, value in self.history.items():
-                f.write(f"{value}\n")
+        with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+            for key in sorted(self.history):
+                f.write(f"{self.history[key]}\n")
+
+    def save_change(self, path):
+        """存储改变文档至临时目录"""
+        with open(path, "w", encoding="utf8") as f:
+            f.write("\n".join(self.changes))
 
 
 class IndexBuilder:
@@ -170,7 +174,7 @@ class IndexBuilder:
             self.build_index(path, counter)
             self.sort_index(self.tbc, order)
             self.sort_index(self.fin, order)
-            self.write_index(path, counter)
+            self.write_index(path)
 
     def get_info(self, info):
         """获得记录"""
@@ -197,7 +201,7 @@ class IndexBuilder:
         if order == "time":
             l.sort(key=lambda x: get_time(x.time), reverse=True)
 
-    def write_index(self, path, counter):
+    def write_index(self, path):
         """写入索引"""
         if len(self.tbc) + len(self.fin) > 0:
             with open(path + "/README.md", "w", encoding="utf-8") as f:
@@ -214,7 +218,6 @@ class IndexBuilder:
                     f.write(title)
                     for i in self.fin:
                         f.write(i.info() + "\n")
-                        counter.fin.append(f"{short_path(path)}/{i.name}.md")
 
 
 def update_index(counter, path, order, force=False):
@@ -239,4 +242,4 @@ if __name__ == "__main__":
     update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
     wcr.update_history()
     web_make.all_html(force=True)
-    auto_hide(wcr.fin, True)
+    auto_hide()

@@ -6,6 +6,7 @@ import os
 import re
 import markdown
 from utils import dir_name, dirs, html_head, short_path
+from personal import CHANGE_SAVE
 
 
 def read_index(path):
@@ -91,8 +92,12 @@ def dir_html(path, changes, force):
         index_html(path)
 
 
-def all_html(changes: list = None, force: bool = False):
+def all_html(force: bool):
     """自动生成仓库的html"""
+
+    with open(CHANGE_SAVE, "r", encoding="utf8") as f:
+        changes = f.read().split("\n")
+
     to_html("README.md", os.getcwd())
     path = os.listdir(os.getcwd())
     for i in path:
