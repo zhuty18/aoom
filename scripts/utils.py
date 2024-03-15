@@ -5,7 +5,7 @@
 import os
 import time
 import re
-from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL
+from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH
 
 
 def format_time(timestamp: float = COMMIT_TIME) -> str:
@@ -260,20 +260,35 @@ def search_by_keyword(key):
     return SearchForFile(key).result()
 
 
-def auto_hide(finished, forced):
+def auto_hide():
     """自动隐藏已完成的内容"""
-    with open(".vscode/settings.json", "r", encoding="utf8") as f:
-        ori = f.read()
+    finished = []
+    with open(HISTORY_PATH, "r", encoding="utf8") as f:
+        for l in f.readlines():
+            l = l.strip().split("\t")
+            if bool(l[-1]):
+                finished.append(l[0])
+
+    try:
+        with open(".vscode/settings.json", "r", encoding="utf8") as f:
+            ori = f.read()
+    except FileNotFoundError:
+        ori = f"""{{
+    "files.exclude":{{
+        {FIN_HEAD}
+        {FIN_TEM}
+        {FIN_TAIL}
+    }}
+}}"""
+        with open(".vscode/settings.json", "w", encoding="utf8") as f:
+            f.write(ori)
     s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
     s1 = re.findall(re.compile(rf"{FIN_HEAD}\n(.*?){FIN_TAIL}", re.S), s0)[0]
 
-    finished.sort()
-    finished = [x.replace(".md", ".*") for x in finished]
     s2 = '": true,\n"'.join(finished)
     s2 = f'"{s2}": true,\n'
-    if forced:
+
+    if finished:
         ori = ori.replace(s1, s2)
-    elif finished:
-        ori = ori.replace("// auto ends", s2 + "\n// auto ends")
     with open(".vscode/settings.json", "w", encoding="utf8") as f:
         f.write(ori)
