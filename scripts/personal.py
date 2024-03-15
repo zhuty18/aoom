@@ -7,7 +7,7 @@ WEB_NAME = "兔子草"
 GIT_NAME = "tuzicao"
 GIT_EMAIL = "13718054285@163.com"
 
-# 是否在生成网页的分支上
+# 是否强制生成网页
 GIT_WEB = False
 
 COMMIT_TIME = None
