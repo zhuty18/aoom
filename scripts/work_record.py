@@ -6,7 +6,18 @@ import os
 import sys
 import re
 import subprocess
-from utils import dirs, format_time, format_log_time, get_time, dir_name, file_length, file_fin, short_path, auto_hide
+from utils import (
+    dirs,
+    format_time,
+    format_log_time,
+    get_time,
+    dir_name,
+    file_length,
+    file_fin,
+    short_path,
+    auto_hide,
+    path_fin,
+)
 import file_check
 from personal import DEFAULT_ORDER, HISTORY_PATH
 import web_make
@@ -189,7 +200,7 @@ class IndexBuilder:
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
-                if t.fin:
+                if t.fin or path_fin(path):
                     self.fin.append(t)
                 else:
                     self.tbc.append(t)

@@ -192,6 +192,7 @@ def dir_name(i: str):
         "translation/batfamily": "蝙家",
         "translation/BruceHal": "蝙绿蝙",
         "": "all categories",
+        "batlantern": "蝙绿官糖",
     }
     i = short_path(i)
     return dir_names.get(i, None)
@@ -293,3 +294,9 @@ def auto_hide():
         ori = ori.replace(s1, s2)
     with open(".vscode/settings.json", "w", encoding="utf8") as f:
         f.write(ori)
+
+
+def path_fin(path):
+    """路径是否默认为完结"""
+    fin_path = {"batlantern": True}
+    return fin_path.get(short_path(path), False)
