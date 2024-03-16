@@ -1866,3 +1866,7 @@ kbd {
   font-family: "Lucida Console";
   border-color: var(--menu-divider-color);
 }
+
+img {
+  max-width: 40%;
+}
