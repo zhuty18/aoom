@@ -221,7 +221,8 @@ def html_head(title: str) -> str:
     if title == "README":
         title = WEB_NAME
     style = "/theme/dracula.css"
-    return f"""<head>
+    return f"""<!DOCTYPE html>
+<head>
     <title>{title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style type="text/css">
