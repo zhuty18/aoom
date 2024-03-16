@@ -25,6 +25,8 @@ if __name__ == "__main__":
         GENERATE_WEB,
         GIT_NAME,
         GIT_EMAIL,
+        GIT_WEB,
+        CHANGE_SAVE,
     )
 
     COMMIT_TIME = time.time()
@@ -33,11 +35,12 @@ if __name__ == "__main__":
     parser.add_argument("-c", "--autocommit", type=bool, default=GIT_COMMIT, nargs="?", const=not GIT_COMMIT)
     parser.add_argument("-m", "--message", default=DEFAULT_MESSAGE)
     parser.add_argument("-s", "--statistic", type=bool, default=COUNT_WORD, nargs="?", const=not COUNT_WORD)
-    parser.add_argument("-w", "--word_cloud", type=str, default=WORD_CLOUD_TYPE)
+    parser.add_argument("-word", "--word_cloud", type=str, default=WORD_CLOUD_TYPE)
     parser.add_argument("-o", "--sort_order", type=str, default=DEFAULT_ORDER, nargs="?", const=ALT_ORDER)
     parser.add_argument("-p", "--push", type=bool, default=GIT_PUSH, nargs="?", const=not GIT_PUSH)
     parser.add_argument("-page", "--pages", type=bool, default=GENERATE_WEB, nargs="?", const=not GENERATE_WEB)
     parser.add_argument("-a", "--add", type=bool, default=GIT_ADD, nargs="?", const=not GIT_ADD)
+    parser.add_argument("-w", "--web", type=bool, default=GIT_WEB, nargs="?", const=not GIT_WEB)
     args = parser.parse_args()
 
     # 格式化所有文档
@@ -50,15 +53,19 @@ if __name__ == "__main__":
         import work_record
 
         counter = work_record.WordCounter()
+        counter.run()
         work_record.update_index(counter, os.getcwd(), args.sort_order)
         counter.update_history()
+        counter.save_change(CHANGE_SAVE)
+        from utils import auto_hide
+
+        auto_hide()
 
     # 构建网页
     if args.pages:
         import web_make
 
-        web_make.auto_hide(counter.fin, False)
-        web_make.all_html(counter.changes)
+        web_make.all_html(args.web)
 
     # 提交文件
     if args.autocommit:

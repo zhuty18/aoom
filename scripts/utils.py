@@ -4,7 +4,8 @@
 
 import os
 import time
-from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME
+import re
+from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH
 
 
 def format_time(timestamp: float = COMMIT_TIME) -> str:
@@ -202,7 +203,9 @@ def dirs(path: str = os.getcwd()):
     text += "|所有文件夹|\n"
     text += "|:-|\n"
     has = False
-    for i in os.listdir(path):
+    dir_list = os.listdir(path)
+    dir_list.sort()
+    for i in dir_list:
         if path != os.getcwd():
             i = os.path.join(path, i)
         if os.path.isdir(i) and dir_name(i) is not None:
@@ -218,7 +221,8 @@ def html_head(title: str) -> str:
     if title == "README":
         title = WEB_NAME
     style = "/theme/dracula.css"
-    return f"""<head>
+    return f"""<!DOCTYPE html>
+<head>
     <title>{title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style type="text/css">
@@ -255,3 +259,37 @@ class SearchForFile:
 def search_by_keyword(key):
     """搜索含有关键词的文件"""
     return SearchForFile(key).result()
+
+
+def auto_hide():
+    """自动隐藏已完成的内容"""
+    finished = []
+    with open(HISTORY_PATH, "r", encoding="utf8") as f:
+        for l in f.readlines():
+            l = l.strip().split("\t")
+            if bool(l[-1]):
+                finished.append(l[0])
+
+    try:
+        with open(".vscode/settings.json", "r", encoding="utf8") as f:
+            ori = f.read()
+    except FileNotFoundError:
+        ori = f"""{{
+    "files.exclude":{{
+        {FIN_HEAD}
+        {FIN_TEM}
+        {FIN_TAIL}
+    }}
+}}"""
+        with open(".vscode/settings.json", "w", encoding="utf8") as f:
+            f.write(ori)
+    s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
+    s1 = re.findall(re.compile(rf"{FIN_HEAD}\n(.*?){FIN_TAIL}", re.S), s0)[0]
+
+    s2 = '": true,\n"'.join(finished)
+    s2 = f'"{s2}": true,\n'
+
+    if finished:
+        ori = ori.replace(s1, s2)
+    with open(".vscode/settings.json", "w", encoding="utf8") as f:
+        f.write(ori)

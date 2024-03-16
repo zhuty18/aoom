@@ -6,6 +6,7 @@ import os
 import re
 import markdown
 from utils import dir_name, dirs, html_head, short_path
+from personal import CHANGE_SAVE
 
 
 def read_index(path):
@@ -26,25 +27,6 @@ def read_index(path):
     except FileNotFoundError:
         pass
     return l
-
-
-def auto_hide(finished, forced):
-    """自动隐藏已完成的内容"""
-    with open(".vscode/settings.json", "r", encoding="utf8") as f:
-        ori = f.read()
-    s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
-    s1 = re.findall(re.compile(r"// auto begins\n(.*?)// auto ends", re.S), s0)[0]
-
-    finished.sort()
-    finished = [x.replace(".md", ".*") for x in finished]
-    s2 = '": true,\n"'.join(finished)
-    s2 = f'"{s2}": true,\n'
-    if forced:
-        ori = ori.replace(s1, s2)
-    else:
-        ori = ori.replace("// auto ends", s2 + "\n// auto ends")
-    with open(".vscode/settings.json", "w", encoding="utf8") as f:
-        f.write(ori)
 
 
 def markdown_to_html(filename, path, text, title):
@@ -102,6 +84,8 @@ def dir_html(path, changes, force):
         l = read_index(path)
         if l:
             for i in l:
+                if force:
+                    to_html(i[1], i[0])
                 if changes:
                     for j in changes:
                         if f"{i[0]}/{i[1]}" == j:
@@ -110,8 +94,12 @@ def dir_html(path, changes, force):
         index_html(path)
 
 
-def all_html(changes: list = None, force: bool = False):
+def all_html(force: bool):
     """自动生成仓库的html"""
+
+    with open(CHANGE_SAVE, "r", encoding="utf8") as f:
+        changes = f.read().split("\n")
+
     to_html("README.md", os.getcwd())
     path = os.listdir(os.getcwd())
     for i in path:
