@@ -1,6 +1,5 @@
 __pycache__
 .*/
 .DS_Store
-**/README.md
-**/*.html
+*/**/README.md
 data/change.txt
