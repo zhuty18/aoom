@@ -269,7 +269,7 @@ def auto_hide():
         for l in f.readlines():
             l = l.strip().split("\t")
             if bool(l[-1]):
-                finished.append(f"*/{l[0]}*")
+                finished.append(f"**/{l[0]}*")
 
     try:
         with open(".vscode/settings.json", "r", encoding="utf8") as f:
