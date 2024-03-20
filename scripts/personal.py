@@ -25,7 +25,7 @@ GIT_PUSH = True
 DEFAULT_MESSAGE = "随便更新"
 
 # 是否进行字数统计
-COUNT_WORD = True
+COUNT_WORD = False
 
 # 字数统计的顺序
 # time代表按文件上一次提交的时间排序
@@ -55,7 +55,7 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 DEFAULT_TRANSLATE = None
 
 # 生成网页
-GENERATE_WEB = True
+GENERATE_WEB = False
 
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
