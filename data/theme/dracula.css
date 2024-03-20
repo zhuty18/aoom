@@ -151,7 +151,7 @@
 
 /* basic style */
 html {
-  font-size: 16px;
+  font-size: 22px;
 }
 
 body {
@@ -1865,4 +1865,8 @@ kbd {
   color: var(--text-color1);
   font-family: "Lucida Console";
   border-color: var(--menu-divider-color);
+}
+
+img {
+  max-width: 80%;
 }
