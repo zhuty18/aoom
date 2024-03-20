@@ -25,7 +25,7 @@ GIT_PUSH = True
 DEFAULT_MESSAGE = "随便更新"
 
 # 是否进行字数统计
-COUNT_WORD = True
+COUNT_WORD = False
 
 # 字数统计的顺序
 # time代表按文件上一次提交的时间排序
