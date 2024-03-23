@@ -219,13 +219,14 @@ class IndexBuilder:
                 f.write("# Word Stat Result\n\n")
                 title = "|名称|字数|修改时间|\n"
                 title += "|:-|:-|:-|\n"
-                if len(self.tbc) > 0:
-                    f.write("## To Be Continued\n\n")
-                    f.write(title)
-                    for i in self.tbc:
-                        f.write(i.info() + "\n")
+                # if len(self.tbc) > 0:
+                #     f.write("## To Be Continued\n\n")
+                #     f.write(title)
+                #     for i in self.tbc:
+                #         f.write(i.info() + "\n")
+                #     f.write("\n")
                 if len(self.fin) > 0:
-                    f.write("\n## Finished\n\n")
+                    f.write("## Finished\n\n")
                     f.write(title)
                     for i in self.fin:
                         f.write(i.info() + "\n")

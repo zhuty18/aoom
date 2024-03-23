@@ -1,6 +1,5 @@
 # Word Stat Result
 
-
 ## Finished
 
 |名称|字数|修改时间|
