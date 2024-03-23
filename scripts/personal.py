@@ -7,6 +7,9 @@ WEB_NAME = "兔子草"
 GIT_NAME = "tuzicao"
 GIT_EMAIL = "13718054285@163.com"
 
+# 生成网页
+GENERATE_WEB = False
+
 # 是否强制生成网页
 GIT_WEB = False
 
@@ -53,10 +56,6 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 # 默认翻译
 # TRANSLATE_MODE，BACKWARD_MODE，或None
 DEFAULT_TRANSLATE = None
-
-# 生成网页
-GENERATE_WEB = True
-
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
 

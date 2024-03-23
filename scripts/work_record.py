@@ -252,5 +252,5 @@ if __name__ == "__main__":
     wcr.run()
     update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
     wcr.update_history()
-    web_make.all_html(force=True)
+    # web_make.all_html(force=True)
     auto_hide()
