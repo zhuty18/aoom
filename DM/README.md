@@ -1,4 +1,4 @@
-# Word Stat Result
+# 数码宝贝
 
 ## Finished
 

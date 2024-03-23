@@ -174,18 +174,13 @@ class IndexBuilder:
     """索引目录建立器"""
 
     def __init__(self, path, counter: WordCounter, order):
-        has_md = False
-        for i in os.listdir(path):
-            if i.endswith(".md"):
-                has_md = True
-                break
-        if has_md:
-            self.tbc = []
-            self.fin = []
-            self.build_index(path, counter)
-            self.sort_index(self.tbc, order)
-            self.sort_index(self.fin, order)
-            self.write_index(path)
+        self.tbc = []
+        self.fin = []
+        self.dir = []
+        self.build_index(path, counter)
+        self.sort_index(self.tbc, order)
+        self.sort_index(self.fin, order)
+        self.write_index(path)
 
     def get_info(self, info):
         """获得记录"""
@@ -204,6 +199,11 @@ class IndexBuilder:
                     self.fin.append(t)
                 else:
                     self.tbc.append(t)
+        if self.fin + self.tbc == []:
+            for i in os.listdir(path):
+                if os.path.isdir(os.path.join(path, i)):
+                    self.dir.append(os.path.join(path, i))
+            print(path, self.dir)
 
     def sort_index(self, l: list, order):
         """索引排序"""
@@ -216,7 +216,7 @@ class IndexBuilder:
         """写入索引"""
         if len(self.tbc) + len(self.fin) > 0:
             with open(path + "/README.md", "w", encoding="utf-8") as f:
-                f.write("# Word Stat Result\n\n")
+                f.write(f"# {dir_name(path)}\n\n")
                 title = "|名称|字数|修改时间|\n"
                 title += "|:-|:-|:-|\n"
                 # if len(self.tbc) > 0:
@@ -230,6 +230,11 @@ class IndexBuilder:
                     f.write(title)
                     for i in self.fin:
                         f.write(i.info() + "\n")
+        else:
+            with open(path + "/README.md", "w", encoding="utf-8") as f:
+                f.write(f"# {dir_name(path)}\n\n")
+                for i in self.dir:
+                    f.write(f"[{dir_name(i)}]({short_path(i)})\n\n")
 
 
 def update_index(counter, path, order, force=False):

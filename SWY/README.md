@@ -1,4 +1,4 @@
-# Word Stat Result
+# 食物语
 
 ## Finished
 

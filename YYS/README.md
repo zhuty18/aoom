@@ -1,4 +1,4 @@
-# Word Stat Result
+# 阴阳师
 
 ## Finished
 

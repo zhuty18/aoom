@@ -1,4 +1,4 @@
-# Word Stat Result
+# 原创
 
 ## Finished
 

@@ -1,4 +1,4 @@
-# Word Stat Result
+# 银魂
 
 ## Finished
 
