@@ -226,11 +226,11 @@ def html_head(title: str) -> str:
 <head>
     <title>{title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style type="text/css">
-        @import"/data{style}";
-    </style>
 </head>
 """
+    # <style type="text/css">
+    #     @import"/data{style}";
+    # </style>
 
 
 class SearchForFile:
@@ -269,7 +269,7 @@ def auto_hide():
         for l in f.readlines():
             l = l.strip().split("\t")
             if bool(l[-1]):
-                finished.append(l[0])
+                finished.append(f"**/{l[0]}*")
 
     try:
         with open(".vscode/settings.json", "r", encoding="utf8") as f:
