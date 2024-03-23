@@ -55,7 +55,7 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 DEFAULT_TRANSLATE = None
 
 # 生成网页
-GENERATE_WEB = False
+GENERATE_WEB = True
 
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"

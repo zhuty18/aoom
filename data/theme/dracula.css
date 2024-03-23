@@ -151,7 +151,7 @@
 
 /* basic style */
 html {
-  font-size: 22px;
+  font-size: 24px;
 }
 
 body {
@@ -1868,5 +1868,5 @@ kbd {
 }
 
 img {
-  max-width: 40%;
+  max-width: 100%;
 }
