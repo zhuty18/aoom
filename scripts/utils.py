@@ -226,11 +226,11 @@ def html_head(title: str) -> str:
 <head>
     <title>{title}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style type="text/css">
-        @import"/data{style}";
-    </style>
 </head>
 """
+    # <style type="text/css">
+    #     @import"/data{style}";
+    # </style>
 
 
 class SearchForFile:
