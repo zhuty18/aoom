@@ -4,3 +4,4 @@ baseurl: /      # place folder name if the site is served in a subfolder
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme
+title: 兔子草
