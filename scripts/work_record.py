@@ -17,9 +17,10 @@ from utils import (
     short_path,
     auto_hide,
     path_fin,
+    doc_dir,
 )
 import file_check
-from personal import DEFAULT_ORDER, HISTORY_PATH
+from personal import DEFAULT_ORDER, HISTORY_PATH, ARCHIVE_TITLE
 import web_make
 
 try:
@@ -145,18 +146,17 @@ class WordCounter:
                 self.history.pop(name)
                 self.total_change -= self.history[name].length
 
-        with open(os.getcwd() + "/README.md", "w", encoding="utf-8") as f:
-            with open("data/README-template.md", "r", encoding="utf-8") as f1:
-                log_str = ""
-                if log:
-                    log_str += "# 最近一次更改的文件\n\n"
-                    log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
-                    log_str += "|:-|:-|:-|:-|\n"
-                    log += "\n".join(log)
-                    log_str += "\n"
-                    log_str += "\n"
-                log_str += dirs().strip()
-                f.write(f1.read().replace("<archive info>", log_str))
+        with open(doc_dir() + "/README.md", "w", encoding="utf-8") as f:
+            log_str = ARCHIVE_TITLE
+            if log:
+                log_str += "# 最近一次更改的文件\n\n"
+                log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
+                log_str += "|:-|:-|:-|:-|\n"
+                log += "\n".join(log)
+                log_str += "\n"
+                log_str += "\n"
+            log_str += dirs().strip()
+            f.write(log_str)
 
     def update_history(self):
         """更新历史数据"""
@@ -199,11 +199,10 @@ class IndexBuilder:
                     self.fin.append(t)
                 else:
                     self.tbc.append(t)
-        if self.fin + self.tbc == []:
+        if not self.fin + self.tbc:
             for i in os.listdir(path):
                 if os.path.isdir(os.path.join(path, i)):
                     self.dir.append(os.path.join(path, i))
-            print(path, self.dir)
 
     def sort_index(self, l: list, order):
         """索引排序"""
@@ -219,12 +218,14 @@ class IndexBuilder:
                 f.write(f"# {dir_name(path)}\n\n")
                 title = "|名称|字数|修改时间|\n"
                 title += "|:-|:-|:-|\n"
-                # if len(self.tbc) > 0:
-                #     f.write("## To Be Continued\n\n")
-                #     f.write(title)
-                #     for i in self.tbc:
-                #         f.write(i.info() + "\n")
-                #     f.write("\n")
+                if len(self.tbc) > 0:
+                    f.write("<!--")
+                    f.write("## To Be Continued\n\n")
+                    f.write(title)
+                    for i in self.tbc:
+                        f.write(i.info() + "\n")
+                    f.write("-->")
+                    f.write("\n")
                 if len(self.fin) > 0:
                     f.write("## Finished\n\n")
                     f.write(title)
@@ -249,14 +250,14 @@ def update_index(counter, path, order, force=False):
                     break
             if change or force:
                 update_index(counter, subdir, order, force)
-    if path != os.getcwd() and dir_name(path):
+    if path != doc_dir() and dir_name(path):
         IndexBuilder(path, counter, order)
 
 
 if __name__ == "__main__":
     wcr = WordCounter()
     wcr.run()
-    update_index(wcr, os.getcwd(), DEFAULT_ORDER, True)
+    update_index(wcr, doc_dir(), DEFAULT_ORDER, True)
     wcr.update_history()
     # web_make.all_html(force=True)
     auto_hide()

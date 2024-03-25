@@ -5,7 +5,7 @@
 import os
 import time
 import re
-from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH
+from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH, FILE_ROOT
 
 
 def format_time(timestamp: float = COMMIT_TIME) -> str:
@@ -164,9 +164,14 @@ def wrong_translates():
     yield ("覆Guy", "覆盖")
 
 
+def doc_dir():
+    """文档根目录"""
+    return os.path.join(os.getcwd(), FILE_ROOT)
+
+
 def short_path(path: str) -> str:
     """文件名缩短"""
-    return path.replace(os.getcwd(), "").replace("\\", "/").strip("/")
+    return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
 def dir_name(i: str):
@@ -198,7 +203,7 @@ def dir_name(i: str):
     return dir_names.get(i, None)
 
 
-def dirs(path: str = os.getcwd()):
+def dirs(path: str = doc_dir()):
     """全目录信息"""
     text = f"# {dir_name(path)}\n\n"
     text += "|所有文件夹|\n"
@@ -207,8 +212,7 @@ def dirs(path: str = os.getcwd()):
     dir_list = os.listdir(path)
     dir_list.sort()
     for i in dir_list:
-        if path != os.getcwd():
-            i = os.path.join(path, i)
+        i = os.path.join(path, i)
         if os.path.isdir(i) and dir_name(i) is not None:
             name = dir_name(i)
             if name:
@@ -239,7 +243,7 @@ class SearchForFile:
     def __init__(self, key: str):
         self.key = key
         self.res = []
-        self.check_dir(os.getcwd())
+        self.check_dir(doc_dir())
         if not self.res:
             print("没有找到" + self.key + "！请确认是否存在含有该字符串的文件名（不含路径）！")
 

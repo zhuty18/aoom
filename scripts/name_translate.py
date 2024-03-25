@@ -4,7 +4,7 @@
 
 import os
 from sys import argv
-from utils import nick_names, full_names, short_names, name_pieces, wrong_translates, search_by_keyword
+from utils import nick_names, full_names, short_names, name_pieces, wrong_translates, search_by_keyword, doc_dir
 
 
 def translation_dir(mode):
@@ -56,8 +56,8 @@ if __name__ == "__main__":
     from personal import TRANSLATE_MODE
 
     if FILE_NAME == "all":
-        tsl_all(os.getcwd(), TRANSLATE_MODE)
+        tsl_all(doc_dir(), TRANSLATE_MODE)
     elif os.path.isdir(FILE_NAME):
-        tsl_all(os.path.join(os.getcwd(), FILE_NAME), TRANSLATE_MODE)
+        tsl_all(os.path.join(doc_dir(), FILE_NAME), TRANSLATE_MODE)
     else:
         name_tsl(FILE_NAME, TRANSLATE_MODE)

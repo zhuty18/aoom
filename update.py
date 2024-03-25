@@ -27,9 +27,11 @@ if __name__ == "__main__":
         GIT_EMAIL,
         GIT_WEB,
         CHANGE_SAVE,
+        FILE_ROOT,
     )
 
     COMMIT_TIME = time.time()
+    FILE_DIR = os.path.join(os.getcwd(), FILE_ROOT)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-c", "--autocommit", type=bool, default=GIT_COMMIT, nargs="?", const=not GIT_COMMIT)
@@ -46,7 +48,7 @@ if __name__ == "__main__":
     # 格式化所有文档
     import work_format
 
-    work_format.format_all(os.getcwd())
+    work_format.format_all(FILE_DIR)
 
     # 字数统计
     if args.statistic:
@@ -54,7 +56,7 @@ if __name__ == "__main__":
 
         counter = work_record.WordCounter()
         counter.run()
-        work_record.update_index(counter, os.getcwd(), args.sort_order)
+        work_record.update_index(counter, FILE_DIR, args.sort_order)
         counter.update_history()
         counter.save_change(CHANGE_SAVE)
         from utils import auto_hide
@@ -90,4 +92,4 @@ if __name__ == "__main__":
     if args.word_cloud != "none":
         import word_cloud_make
 
-        word_cloud_make.WordPic(path=os.getcwd(), job=WORD_CLOUD_JOB, file=[args.word_cloud])
+        word_cloud_make.WordPic(path=FILE_DIR, job=WORD_CLOUD_JOB, file=[args.word_cloud])

@@ -5,7 +5,7 @@
 import os
 import re
 import markdown
-from utils import dir_name, dirs, html_head, short_path
+from utils import dir_name, dirs, html_head, short_path, doc_dir
 from personal import CHANGE_SAVE
 
 
@@ -100,8 +100,8 @@ def all_html(force: bool):
     with open(CHANGE_SAVE, "r", encoding="utf8") as f:
         changes = f.read().split("\n")
 
-    to_html("README.md", os.getcwd())
-    path = os.listdir(os.getcwd())
+    to_html("README.md", doc_dir())
+    path = os.listdir(doc_dir())
     for i in path:
         if os.path.isdir(i) and dir_name(i):
             dir_html(i, changes, force)

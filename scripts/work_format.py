@@ -3,6 +3,7 @@
 """格式化文件库"""
 
 import os
+from utils import doc_dir
 
 
 def format_file(filename):
@@ -36,4 +37,4 @@ def format_all(path):
 
 
 if __name__ == "__main__":
-    format_all(os.getcwd())
+    format_all(doc_dir())

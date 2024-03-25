@@ -7,6 +7,9 @@ WEB_NAME = "兔子草"
 GIT_NAME = "tuzicao"
 GIT_EMAIL = "13718054285@163.com"
 
+# 文档根
+FILE_ROOT = "docs/"
+
 # 生成网页
 GENERATE_WEB = False
 
@@ -58,6 +61,9 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 DEFAULT_TRANSLATE = None
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
+
+# 文档库开头
+ARCHIVE_TITLE = "# 狡兔百窟\n\n为我个人写过的故事做一个线上存档，此处仅展示完结作品。\n\n"
 
 # 默认字符串，勿动
 FIN_HEAD = "// finished work head"
