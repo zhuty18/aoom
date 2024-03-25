@@ -1,3 +1,8 @@
+---
+redirect_from:
+  - /DC/
+---
+
 # DC
 
 <!--## To Be Continued
