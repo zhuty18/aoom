@@ -320,4 +320,4 @@ def auto_hide():
 def path_fin(path):
     """路径是否默认为完结"""
     fin_path = {"batlantern": True}
-    return fin_path.get(short_path(path), False)
+    return fin_path.get(doc_path(path), False)
