@@ -3,19 +3,18 @@
 
 @import "{{ site.theme }}";
 
-.content {
-    height: 100%;
-    overflow: scroll;
+.top {
+    height: 95vh;
+    overflow-y: auto;
 }
 
-footer {
+.nav {
     height: 50px;
-    position: fixed;
-    bottom: 0%;
+    display: flex;
+    justify-content: center;
 }
 
 .nav a {
-    display: inline-block;
     width: 40px;
     height: 40px;
     text-align: center;
