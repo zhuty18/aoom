@@ -212,11 +212,13 @@ def dirs(path: str = doc_dir()):
     dir_list = os.listdir(path)
     dir_list.sort()
     for i in dir_list:
-        i = os.path.join(path, i)
-        if os.path.isdir(i) and dir_name(i) is not None:
+        sub = os.path.join(path, i)
+        if path != doc_dir():
+            i = sub
+        if os.path.isdir(sub) and dir_name(sub) is not None:
             name = dir_name(i)
             if name:
-                text += f"|[{dir_name(i)}](/{i})|\n"
+                text += f"|[{dir_name(i)}](/{short_path(i)})|\n"
                 has = True
     return text if has else None
 
