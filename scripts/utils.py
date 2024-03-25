@@ -191,7 +191,7 @@ def dir_name(i: str):
         "O/ON": "原创小说",
         "translation/batfamily": "蝙家",
         "translation/BruceHal": "蝙绿蝙",
-        "": "all categories",
+        "": "所有目录",
         "batlantern": "蝙绿官糖",
     }
     i = short_path(i)

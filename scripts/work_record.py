@@ -149,7 +149,7 @@ class WordCounter:
             with open("data/README-template.md", "r", encoding="utf-8") as f1:
                 log_str = ""
                 if log:
-                    log_str += "# files changed at last commit\n\n"
+                    log_str += "# 最近一次更改的文件\n\n"
                     log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
                     log_str += "|:-|:-|:-|:-|\n"
                     log += "\n".join(log)
