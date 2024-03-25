@@ -1,13 +1,13 @@
-@import "{{ site.theme }}";
-
-header {
-    display: none;
-}
-
 body main footer {
     display: none;
 }
 
 body main h1 {
+    display: none;
+}
+
+@import "{{ site.theme }}";
+
+header {
     display: none;
 }
