@@ -1,4 +1,13 @@
-.fixed-button {
+---
+---
+
+@import "{{ site.theme }}";
+
+header {
+    display: none;
+}
+
+.nav {
     position: fixed;
     right: 1%;
     bottom: 5%;
@@ -9,15 +18,9 @@
     z-index: 1040;
 }
 
-.fixed-button a {
+.nav a {
     display: inline-block;
     width: 40px;
     height: 40px;
     text-align: center;
-}
-
-@import "{{ site.theme }}";
-
-header {
-    display: none;
 }
