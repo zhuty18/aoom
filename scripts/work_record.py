@@ -15,6 +15,7 @@ from utils import (
     file_length,
     file_fin,
     short_path,
+    doc_path,
     sub_path,
     auto_hide,
     path_fin,
@@ -138,7 +139,8 @@ class WordCounter:
                     length_old = self.history[name].length
                 except KeyError:
                     length_old = 0
-                log.append(f"|[{name}](/{i})|{length_old}|{length_new}|{length_new-length_old}|")
+                link = doc_path(os.path.join(os.getcwd(), i))
+                log.append(f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|")
                 self.total_change += length_new - length_old
                 try:
                     self.history[name].update(length=length_new, fin=file_fin(i))

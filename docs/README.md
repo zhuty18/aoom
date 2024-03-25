@@ -6,7 +6,7 @@
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[与生俱来](/docs/DC/与生俱来.md)|136988|136988|0|
+|[Strings Attached](translation/BruceHal/Strings Attached.md)|36852|36905|53|
 
 # 所有目录
 
