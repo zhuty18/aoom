@@ -3,15 +3,15 @@
 
 @import "{{ site.theme }}";
 
-.nav {
+.content {
+    height: 100%;
+    overflow: scroll;
+}
+
+footer {
+    height: 50px;
     position: fixed;
-    right: 1%;
-    bottom: 5%;
-    width: 40px;
-    border: 1px solid #eee;
-    background-color: white;
-    font-size: 24px;
-    z-index: 1040;
+    bottom: 0%;
 }
 
 .nav a {
