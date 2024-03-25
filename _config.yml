@@ -8,7 +8,7 @@ title: 兔子草
 
 nav:
 - name: ⬆️
-  link: \#content
+  link: "#content"
 - name: ⤴️
   link: ../
 - name: 🏠
