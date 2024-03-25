@@ -34,11 +34,8 @@
     <main id="content" class="main-content" role="main">
         {{ content }}
         <div class="nav">
-            <a class="go-top" href="#content">⬆️</a>
-            {% if page.url!="/docs" %}
-            <a class="go-dir" href="../">⬅️</a>
-            {% endif %}
-            <a class="go-home" href="/docs">🏠</a>
+            {% for item in site.nav%}
+            <a href="{% item.link %}">{% item.name %}</a>
         </div>
 
         <footer class="site-footer">
