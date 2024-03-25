@@ -1,9 +1,3 @@
-@import "{{ site.theme }}";
-
-header {
-    display: none;
-}
-
 .fixed-button {
     position: fixed;
     right: 1%;
@@ -20,4 +14,10 @@ header {
     width: 40px;
     height: 40px;
     text-align: center;
+}
+
+@import "{{ site.theme }}";
+
+header {
+    display: none;
 }
