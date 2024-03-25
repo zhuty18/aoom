@@ -3,3 +3,21 @@
 header {
     display: none;
 }
+
+.fixed-button {
+    position: fixed;
+    right: 1%;
+    bottom: 5%;
+    width: 40px;
+    border: 1px solid #eee;
+    background-color: white;
+    font-size: 24px;
+    z-index: 1040;
+}
+
+.fixed-button a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
