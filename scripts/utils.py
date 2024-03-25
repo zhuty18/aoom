@@ -29,7 +29,7 @@ def get_time(time_str: str = None) -> float:
 
 def line_length(s: str) -> int:
     """行长度计算"""
-    a: str = s.strip("#")
+    a = s.strip("#")
     a = a.strip()
     a = a.replace("</br>", "")
     res = 0
@@ -53,7 +53,13 @@ def file_length(filename: str) -> int:
     """文件长度计算"""
     res = 0
     with open(filename, "r", encoding="utf8") as f:
+        note = False
         for i in f.readlines():
+            if i.strip() == "---":
+                note = not note
+                continue
+            if note:
+                continue
             res += line_length(i.strip())
     return res
 
@@ -169,8 +175,19 @@ def doc_dir():
     return os.path.join(os.getcwd(), FILE_ROOT)
 
 
+def sub_path(path):
+    """对下级文件链接"""
+    tmp = path.replace("\\", "/")
+    return tmp.split("/")[-1]
+
+
 def short_path(path: str) -> str:
-    """文件名缩短"""
+    """文件名缩短至根目录"""
+    return path.replace(os.getcwd(), "").replace("\\", "/").strip("/")
+
+
+def doc_path(path):
+    """文件名缩短至doc文件夹"""
     return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
@@ -199,7 +216,7 @@ def dir_name(i: str):
         "": "所有目录",
         "batlantern": "蝙绿官糖",
     }
-    i = short_path(i)
+    i = doc_path(i)
     return dir_names.get(i, None)
 
 
@@ -212,13 +229,11 @@ def dirs(path: str = doc_dir()):
     dir_list = os.listdir(path)
     dir_list.sort()
     for i in dir_list:
-        sub = os.path.join(path, i)
-        if path != doc_dir():
-            i = sub
-        if os.path.isdir(sub) and dir_name(sub) is not None:
-            name = dir_name(i)
+        full_path = os.path.join(path, i)
+        if os.path.isdir(full_path) and dir_name(full_path) is not None:
+            name = dir_name(full_path)
             if name:
-                text += f"|[{dir_name(i)}](/{short_path(i)})|\n"
+                text += f"|[{dir_name(i)}]({sub_path(i)})|\n"
                 has = True
     return text if has else None
 
@@ -274,7 +289,7 @@ def auto_hide():
     with open(HISTORY_PATH, "r", encoding="utf8") as f:
         for l in f.readlines():
             l = l.strip().split("\t")
-            if bool(l[-1]):
+            if l[-1] == "True":
                 finished.append(f"**/{l[0]}*")
 
     try:

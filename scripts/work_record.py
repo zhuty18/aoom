@@ -15,6 +15,7 @@ from utils import (
     file_length,
     file_fin,
     short_path,
+    sub_path,
     auto_hide,
     path_fin,
     doc_dir,
@@ -116,11 +117,12 @@ class WordCounter:
             output = pipe.communicate()[0]
         output = output.decode("utf8")
         for i in output.split("\n"):
-            try:
-                i = i.split(" ")[2]
-            except IndexError:
-                pass
-            if not "README" in i and i.endswith(".md") and "/" in i:
+            if i:
+                i = i.split(" ")
+                i.pop(0)
+                i.pop(0)
+                i = " ".join(i).strip('"')
+            if "README" not in i and i.endswith(".md") and "/" in i:
                 if os.path.exists(i):
                     self.changes.append(i)
                     file_check.count_file(i)
@@ -136,7 +138,7 @@ class WordCounter:
                     length_old = self.history[name].length
                 except KeyError:
                     length_old = 0
-                log.append(f"|[{name}]({i})|{length_old}|{length_new}|{length_new-length_old}|")
+                log.append(f"|[{name}](/{i})|{length_old}|{length_new}|{length_new-length_old}|")
                 self.total_change += length_new - length_old
                 try:
                     self.history[name].update(length=length_new, fin=file_fin(i))
@@ -152,7 +154,7 @@ class WordCounter:
                 log_str += "# 最近一次更改的文件\n\n"
                 log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
                 log_str += "|:-|:-|:-|:-|\n"
-                log += "\n".join(log)
+                log_str += "\n".join(log)
                 log_str += "\n"
                 log_str += "\n"
             log_str += dirs().strip()
@@ -235,7 +237,7 @@ class IndexBuilder:
             with open(path + "/README.md", "w", encoding="utf-8") as f:
                 f.write(f"# {dir_name(path)}\n\n")
                 for i in self.dir:
-                    f.write(f"[{dir_name(i)}]({short_path(i)})\n\n")
+                    f.write(f"[{dir_name(i)}]({sub_path(i)})\n\n")
 
 
 def update_index(counter, path, order, force=False):

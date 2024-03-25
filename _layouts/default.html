@@ -33,6 +33,13 @@
 
     <main id="content" class="main-content" role="main">
         {{ content }}
+        <div class="fixed-button">
+            <button class="go-top" href="#content">顶端</button>
+            {% if !site.github.is_project_page %}
+            <button class="go-dir" href="../">目录</button>
+            {% endif %}
+            <button class="go-home" href="/docs">主目录</button>
+        </div>
 
         <footer class="site-footer">
             {% if site.github.is_project_page %}

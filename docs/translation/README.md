@@ -1,6 +1,6 @@
 # 翻译
 
-[蝙绿蝙](translation/BruceHal)
+[蝙绿蝙](BruceHal)
 
-[蝙家](translation/batfamily)
+[蝙家](batfamily)
 
