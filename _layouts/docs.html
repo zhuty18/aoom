@@ -41,18 +41,19 @@
             </br>
             <ul class="post-list">
                 {% for post in site.posts %}
-                {% if page.update contains post.title %}
-                <li>
-                    {% assign date_format = site.date_format %}
-                    <span class="post-meta">{{ post.date | date: date_format }}</span>
-                    <h2>
-                        <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
-                            post.title
-                            | escape }}</a>
-                    </h2>
-                    {{ post.preview | markdownify | truncatewords: 30 }}
-                </li>
-                {% endif %}
+                    {% if page.update contains post.title %}
+                    {{ page.update }}
+                    <li>
+                        {% assign date_format = site.date_format %}
+                        <span class="post-meta">{{ post.date | date: date_format }}</span>
+                        <h2>
+                            <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
+                                post.title
+                                | escape }}</a>
+                        </h2>
+                        {{ post.preview | markdownify | truncatewords: 30 }}
+                    </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>

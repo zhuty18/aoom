@@ -5,7 +5,15 @@
 import sys
 import os
 from personal import POST_PATH, POST_TITLE, POST_DATE, FILE_ROOT, POST_MAX
-from utils import search_by_keyword, name_of, format_time, get_time, short_path, preview, doc_dir, dir_name
+from utils import (
+    search_by_keyword,
+    name_of,
+    format_time,
+    get_time,
+    short_path,
+    preview,
+    dir_name,
+)
 from work_record import WordCounter
 
 

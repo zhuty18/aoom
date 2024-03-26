@@ -4,7 +4,15 @@
 
 import os
 from sys import argv
-from utils import nick_names, full_names, short_names, name_pieces, wrong_translates, search_by_keyword, doc_dir
+from utils import (
+    nick_names,
+    full_names,
+    short_names,
+    name_pieces,
+    wrong_translates,
+    search_by_keyword,
+    doc_dir,
+)
 
 
 def translation_dir(mode):

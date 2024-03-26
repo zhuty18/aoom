@@ -22,7 +22,13 @@ from utils import (
     doc_dir,
 )
 import file_check
-from personal import DEFAULT_ORDER, HISTORY_PATH, ARCHIVE_TITLE, ARCHIVE_UPDATE, POST_PATH
+from personal import (
+    DEFAULT_ORDER,
+    HISTORY_PATH,
+    ARCHIVE_TITLE,
+    ARCHIVE_UPDATE,
+    POST_PATH,
+)
 import web_make
 
 try:
@@ -86,7 +92,12 @@ class FileRecord:
             time_formatted = format_log_time(t)
         else:
             time_formatted = format_time()
-        return FileRecord(name[0:-3], file_length(full_path), time_formatted, file_fin(full_path))
+        return FileRecord(
+            name[0:-3],
+            file_length(full_path),
+            time_formatted,
+            file_fin(full_path),
+        )
 
 
 class WordCounter:
