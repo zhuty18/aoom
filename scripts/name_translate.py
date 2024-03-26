@@ -26,13 +26,13 @@ def name_tsl(filename, mode):
         tsl = translation_dir(mode)
         with open(filename, "r", encoding="utf8") as f:
             content = f.read()
-        for i in nick_names:
-            content = content.replace(i[tsl[0]], i[tsl[1]])
         for i in full_names():
             content = content.replace(i[tsl[0]], i[tsl[1]])
         for i in short_names():
             content = content.replace(i[tsl[0]], i[tsl[1]])
         for i in name_pieces():
+            content = content.replace(i[tsl[0]], i[tsl[1]])
+        for i in nick_names:
             content = content.replace(i[tsl[0]], i[tsl[1]])
         for i in wrong_translates():
             content = content.replace(i[0], i[1])
@@ -68,4 +68,5 @@ if __name__ == "__main__":
     elif os.path.isdir(FILE_NAME):
         tsl_all(os.path.join(doc_dir(), FILE_NAME), TRANSLATE_MODE)
     else:
-        name_tsl(FILE_NAME, TRANSLATE_MODE)
+        name = search_by_keyword(FILE_NAME)
+        name_tsl(name[0], TRANSLATE_MODE)

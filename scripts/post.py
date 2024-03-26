@@ -17,15 +17,15 @@ from utils import (
 from work_record import WordCounter
 
 
-def post(filename, wcr):
+def post(filename, counter):
     """发布单个文件"""
-    if wcr is None:
-        wcr = WordCounter()
-        wcr.read_history()
-    his = wcr.history[name_of(filename)]
-    for i in os.listdir(POST_PATH):
-        if name_of(filename) in i:
-            os.remove(os.path.join(POST_PATH, i))
+    if counter is None:
+        counter = WordCounter()
+        counter.read_history()
+    his = counter.history[name_of(filename)]
+    for it in os.listdir(POST_PATH):
+        if name_of(filename) in it:
+            os.remove(os.path.join(POST_PATH, it))
     post_name = format_time(get_time(his.time), POST_TITLE).replace("{title}", his.name)
     target = short_path(filename).replace(".md", "")
     if target.endswith("."):
@@ -53,34 +53,34 @@ def clear_post(post_max=POST_MAX):
     l.reverse()
     if len(l) > post_max:
         l = l[post_max:]
-        for i in l:
-            os.remove(os.path.join(POST_PATH, i))
+        for item in l:
+            os.remove(os.path.join(POST_PATH, item))
 
 
-def post_change(wcr):
+def post_change(counter):
     """发布本次改动的文件"""
-    for i in wcr.changes:
-        post(os.path.join(os.getcwd(), i), wcr)
+    for it in counter.changes:
+        post(os.path.join(os.getcwd(), it), counter)
     clear_post()
 
 
-def post_all(path, wcr):
+def post_all(path, counter):
     """发布所有文件"""
-    if wcr is None:
-        wcr = WordCounter()
-        wcr.read_history()
+    if counter is None:
+        counter = WordCounter()
+        counter.read_history()
     for item in os.listdir(path):
         if dir_name(os.path.join(path, item)):
-            post_all(os.path.join(path, item), wcr)
-        elif name_of(item) in wcr.history and wcr.history[name_of(item)].fin:
-            post(os.path.join(path, item), wcr)
+            post_all(os.path.join(path, item), counter)
+        elif name_of(item) in counter.history and counter.history[name_of(item)].fin:
+            post(os.path.join(path, item), counter)
     clear_post()
 
 
 if __name__ == "__main__":
-    wcr = None
+    COUNTER = None
     if len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
-            post(i, wcr)
+            post(i, COUNTER)
     else:
-        post_all(FILE_ROOT, wcr)
+        post_all(FILE_ROOT, COUNTER)

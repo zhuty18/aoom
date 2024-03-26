@@ -1,4 +1,7 @@
 # coding=utf-8
+"""
+个人设定
+"""
 
 # 网站名称
 WEB_NAME = "兔子草"
@@ -94,3 +97,6 @@ POST_TITLE = POST_DATE + "-{title}.md"
 
 POST_MAX = 15
 PREVIEW_LENGTH = 150
+
+FIN_TITLE = "## 已完结"
+TBC_TITLE = "## 未完结"

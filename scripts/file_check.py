@@ -73,7 +73,7 @@ class FileChecker:
     def html_result(self):
         """生成文件的网页"""
         for i in self.result:
-            to_html(os.path.join(i[0], i[1]))
+            to_html(i)
 
 
 if __name__ == "__main__":

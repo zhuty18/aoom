@@ -16,7 +16,6 @@ from utils import (
     file_fin,
     short_path,
     doc_path,
-    sub_path,
     auto_hide,
     path_fin,
     doc_dir,
@@ -32,6 +31,8 @@ from personal import (
     README_NAME,
     POST_CHANGE,
     GENERATE_WEB,
+    FIN_TITLE,
+    TBC_TITLE,
 )
 import web_make
 
@@ -67,7 +68,11 @@ class FileRecord:
     def merge(self, other):
         """数据融合"""
         if self.length == other.length and self.fin == other.fin:
-            self.time = self.time if get_time(self.time) < get_time(other.time) else other.time
+            self.time = (
+                self.time
+                if get_time(self.time) < get_time(other.time)
+                else other.time
+            )
         elif get_time(self.time) < get_time(other.time):
             self.length = other.length
             self.time = other.time
@@ -83,7 +88,9 @@ class FileRecord:
     def from_path(name, path):
         """根据路径生成"""
         full_path = os.path.join(path, name)
-        pipe = subprocess.Popen(["git", "log", full_path], stdout=subprocess.PIPE)
+        pipe = subprocess.Popen(
+            ["git", "log", full_path], stdout=subprocess.PIPE
+        )
         output, _ = pipe.communicate()
         output = output.decode("utf8")
         commit = None
@@ -92,7 +99,9 @@ class FileRecord:
                 commit = i
                 break
         if commit is not None:
-            t = re.findall(re.compile(r"Date:\s*(.*?)\s*\+", re.S), commit)[0].strip()
+            t = re.findall(re.compile(r"Date:\s*(.*?)\s*\+", re.S), commit)[
+                0
+            ].strip()
             time_formatted = format_log_time(t)
         else:
             time_formatted = format_time()
@@ -129,7 +138,9 @@ class WordCounter:
     def get_files(self):
         """读取变更的文件目录"""
         os.environ["PYTHONIOENCODING"] = "utf8"
-        with subprocess.Popen(["git", "status", "-s"], stdout=subprocess.PIPE) as pipe:
+        with subprocess.Popen(
+            ["git", "status", "-s"], stdout=subprocess.PIPE
+        ) as pipe:
             output = pipe.communicate()[0]
         output = output.decode("utf8")
         for i in output.split("\n"):
@@ -163,12 +174,18 @@ class WordCounter:
                     length_old = 0
                 link = doc_path(os.path.join(os.getcwd(), i))
                 info.append(name)
-                log.append(f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|")
+                log.append(
+                    f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|"
+                )
                 self.total_change += length_new - length_old
                 try:
-                    self.history[name].update(length=length_new, fin=file_fin(i))
+                    self.history[name].update(
+                        length=length_new, fin=file_fin(i)
+                    )
                 except KeyError:
-                    self.history[name] = FileRecord(name, length_new, format_time(), file_fin(i))
+                    self.history[name] = FileRecord(
+                        name, length_new, format_time(), file_fin(i)
+                    )
             except FileNotFoundError:
                 self.history.pop(name)
                 self.total_change -= self.history[name].length
@@ -180,7 +197,9 @@ class WordCounter:
             update_str = f"\n  - {update_str}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
 
-        with open(os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8") as f:
+        with open(
+            os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8"
+        ) as f:
             if log:
                 log_str += "# 最近一次更改的文件\n\n"
                 log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
@@ -224,7 +243,11 @@ class IndexBuilder:
     def build_index(self, path, counter: WordCounter):
         """建立索引"""
         for i in os.listdir(path):
-            if i.endswith(".md") and not i.startswith(README_NAME) and not i.startswith(INDEX_NAME):
+            if (
+                i.endswith(".md")
+                and not i.startswith(README_NAME)
+                and not i.startswith(INDEX_NAME)
+            ):
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
@@ -244,31 +267,34 @@ class IndexBuilder:
         if order == "time":
             l.sort(key=lambda x: get_time(x.time), reverse=True)
 
+    def gen_content(self, l, t):
+        """生成列表内容"""
+        if l:
+            title = "|名称|字数|修改时间|\n"
+            title += "|:-|:-|:-|\n"
+            content = f"{t}\n\n"
+            content += title
+            for i in l:
+                content += i.info() + "\n"
+            return content
+        else:
+            return ""
+
     def write_index(self, path):
         """写入索引"""
         if len(self.tbc) + len(self.fin) > 0:
-            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as f:
-                f.write(f"# {dir_name(path)}\n\n")
-                title = "|名称|字数|修改时间|\n"
-                title += "|:-|:-|:-|\n"
-                if len(self.tbc) > 0:
-                    f.write("<!--")
-                    f.write("## To Be Continued\n\n")
-                    f.write(title)
-                    for i in self.tbc:
-                        f.write(i.info() + "\n")
-                    f.write("-->")
-                    f.write("\n")
-                if len(self.fin) > 0:
-                    f.write("## Finished\n\n")
-                    f.write(title)
-                    for i in self.fin:
-                        f.write(i.info() + "\n")
+            head = f"# {dir_name(path)}\n\n"
+            with open(f"{path}/{INDEX_NAME}", "w", encoding="utf-8") as fi:
+                with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as fr:
+                    fi.write(head)
+                    fr.write(head)
+                    if self.tbc:
+                        fr.write(self.gen_content(self.tbc, TBC_TITLE) + "\n")
+                    fi.write(self.gen_content(self.fin, FIN_TITLE))
+                    fr.write(self.gen_content(self.fin, FIN_TITLE))
         else:
-            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as f:
-                f.write(f"# {dir_name(path)}\n\n")
-                for i in self.dir:
-                    f.write(f"[{dir_name(i)}]({sub_path(i)})\n\n")
+            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as fi:
+                fi.write(dirs(path).strip() + "\n")
 
 
 def update_index(counter, path, order, force=False):
