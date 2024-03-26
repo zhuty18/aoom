@@ -22,7 +22,7 @@
     {% endif %}
     {% endfor %}
 
-    <meta http-equiv="refresh" content="0;url={{ target }}" />
+    {% comment %} <meta http-equiv="refresh" content="0;url={{ target }}" /> {% endcomment %}
     <link rel="canonical" href="{{ target }}" />
 
 
@@ -30,9 +30,9 @@
 
 <body>
     <h1>重定向</h1>
-    {{ site.re }}
-    {{ page.url }}
-    文件已移动，<a href="{{target}}">重定向中...</a>
+    {{ site.redirect }}
+    文件已移动，<a href="{{target}}">重定向
+    {{ page.url }}中...</a>
 </body>
 
 </html>
