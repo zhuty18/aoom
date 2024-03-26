@@ -38,7 +38,7 @@
             <div class="post">
                 <h2>最近更新</h2>
                 </br>
-                <!-- {{ page.update }} -->
+                {{ page.update }}
                 <ul class="post-list">
                     {% for post in site.posts %}
                     <li>
@@ -49,7 +49,7 @@
                                 post.title
                                 | escape }}</a>
                         </h2>
-                        {{ post.preview | markdownify | truncatewords: 30 }}
+                        {{ post.excerpt | markdownify | truncatewords: 30 }}
                     </li>
                     {% endfor %}
                 </ul>

@@ -42,7 +42,6 @@
                     {% for post in site.posts %}
                     <li>
                         {% assign date_format = site.date_format %}
-                        {% assign ongoing = ongoing + 1 %}
                         <span class="post-meta">{{ post.date | date: date_format }}</span>
                         <h2>
                             <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
