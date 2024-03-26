@@ -30,6 +30,8 @@ from personal import (
     POST_PATH,
     INDEX_NAME,
     README_NAME,
+    POST_CHANGE,
+    GENERATE_WEB,
 )
 import web_make
 
@@ -290,5 +292,10 @@ if __name__ == "__main__":
     wcr.run()
     update_index(wcr, doc_dir(), DEFAULT_ORDER, True)
     wcr.update_history()
-    # web_make.all_html(force=True)
+    if GENERATE_WEB:
+        web_make.all_html(force=True)
     auto_hide()
+    if POST_CHANGE:
+        from post import post_change
+
+        post_change(wcr)
