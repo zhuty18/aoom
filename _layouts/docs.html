@@ -35,14 +35,12 @@
             {{ content }}
             <!-- <footer class="site-footer">
             </footer> -->
-        </main>
-        <div class="post">
-            <h2>最近更新</h2>
-            </br>
-            <ul class="post-list">
-                {% for post in site.posts %}
-                    {% if page.update contains post.title %}
-                    {{ page.update }}
+            <div class="post">
+                <h2>最近更新</h2>
+                </br>
+                {{ page.update }}
+                <ul class="post-list">
+                    {% for post in site.posts %}
                     <li>
                         {% assign date_format = site.date_format %}
                         <span class="post-meta">{{ post.date | date: date_format }}</span>
@@ -53,10 +51,10 @@
                         </h2>
                         {{ post.preview | markdownify | truncatewords: 30 }}
                     </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </main>
     </div>
     <div class="nav">
         {% for item in site.nav %}
