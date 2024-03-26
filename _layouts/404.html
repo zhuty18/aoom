@@ -4,13 +4,15 @@ layout: default
 
 <h1>重定向</h1>
 文件已移动，重定向中...
-<button onclick="jump_to({{site.redirect_back}})">111</button>
+<button onclick="jump_to('{{site.redirect_back}}')">点此跳转</button>
 
 <script>
-    var redirect = [{
-        "src": "/test/1",
-        "tar": "/todo",
-    }]
+    var redirect = [
+        {
+            "src": "/batlantern/漫画互动总结",
+            "tar": "/docs/batlantern/漫画互动总结"
+        }
+    ]
     function jump_to (back) {
         var target = back
         at = window.location.pathname
