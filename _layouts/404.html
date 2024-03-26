@@ -7,20 +7,11 @@ layout: default
 <button onclick="jump_to('{{site.redirect_back}}')">点此跳转</button>
 
 <script>
-    var redirect = [
-        {
-            "src": "/batlantern/漫画互动总结",
-            "tar": "/docs/batlantern/漫画互动总结"
-        }
-    ]
     function jump_to (back) {
         var target = back
         at = window.location.pathname
-        for (var i in redirect) {
-            if (at == redirect[i].src) {
-                target = redirect[i].tar
-                break
-            }
+        if (!at.startswith(back)) {
+            target = back + at
         }
         window.location.href = target
     }
