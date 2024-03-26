@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
 
-    {% assign target = /%}
+    {% assign target = / %}
     {% for re in site.redirect %}
     {% if page.url == re.src %}
     {% assign target = re.tar %}
@@ -30,6 +30,8 @@
 
 <body>
     <h1>重定向</h1>
+    {{ site.re }}
+    {{ page.url }}
     文件已移动，<a href="{{target}}">重定向中...</a>
 </body>
 
