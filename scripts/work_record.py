@@ -28,6 +28,8 @@ from personal import (
     ARCHIVE_TITLE,
     ARCHIVE_UPDATE,
     POST_PATH,
+    INDEX_NAME,
+    README_NAME,
 )
 import web_make
 
@@ -134,7 +136,13 @@ class WordCounter:
                 i.pop(0)
                 i.pop(0)
                 i = " ".join(i).strip('"')
-            if "README" not in i and i.endswith(".md") and "/" in i and POST_PATH not in i:
+            if (
+                INDEX_NAME not in i
+                and README_NAME not in i
+                and i.endswith(".md")
+                and "/" in i
+                and POST_PATH not in i
+            ):
                 if os.path.exists(i):
                     self.changes.append(i)
                     file_check.count_file(i)
@@ -170,7 +178,7 @@ class WordCounter:
             update_str = f"\n  - {update_str}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
 
-        with open(doc_dir() + "/index.md", "w", encoding="utf-8") as f:
+        with open(os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8") as f:
             if log:
                 log_str += "# 最近一次更改的文件\n\n"
                 log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
@@ -214,7 +222,7 @@ class IndexBuilder:
     def build_index(self, path, counter: WordCounter):
         """建立索引"""
         for i in os.listdir(path):
-            if i.endswith(".md") and not i.startswith("README"):
+            if i.endswith(".md") and not i.startswith(README_NAME) and not i.startswith(INDEX_NAME):
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
@@ -237,7 +245,7 @@ class IndexBuilder:
     def write_index(self, path):
         """写入索引"""
         if len(self.tbc) + len(self.fin) > 0:
-            with open(path + "/README.md", "w", encoding="utf-8") as f:
+            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as f:
                 f.write(f"# {dir_name(path)}\n\n")
                 title = "|名称|字数|修改时间|\n"
                 title += "|:-|:-|:-|\n"
@@ -255,7 +263,7 @@ class IndexBuilder:
                     for i in self.fin:
                         f.write(i.info() + "\n")
         else:
-            with open(path + "/README.md", "w", encoding="utf-8") as f:
+            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as f:
                 f.write(f"# {dir_name(path)}\n\n")
                 for i in self.dir:
                     f.write(f"[{dir_name(i)}]({sub_path(i)})\n\n")

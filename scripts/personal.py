@@ -65,6 +65,10 @@ DEFAULT_TRANSLATE = None
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
 
+# index
+INDEX_NAME = "index.md"
+README_NAME = "README.md"
+
 # 文档库开头
 ARCHIVE_UPDATE = "{update_detail}"
 ARCHIVE_TITLE = f"""---
