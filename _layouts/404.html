@@ -10,7 +10,7 @@ layout: default
     function jump_to (back) {
         var target = back
         at = window.location.pathname
-        if (!at.startswith(back)) {
+        if (!at.startsWith(back)) {
             target = back + at
         }
         window.location.href = target
