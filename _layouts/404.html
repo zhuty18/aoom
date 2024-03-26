@@ -14,15 +14,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
 
-    {% assign target = / %}
-    {% for re in site.redirect %}
-    {% if page.url == re.src %}
-    {% assign target = re.tar %}
-    {% break %}
-    {% endif %}
-    {% endfor %}
-
-    {% comment %} <meta http-equiv="refresh" content="0;url={{ target }}" /> {% endcomment %}
+    <meta http-equiv="refresh" content="0;url=jump_to({{site.redirect_back}},{{site.redirect}})" />
     <link rel="canonical" href="{{ target }}" />
 
 
@@ -32,7 +24,21 @@
     <h1>重定向</h1>
     {{ site.redirect }}
     文件已移动，<a href="{{target}}">重定向
-    {{ page.url }}中...</a>
+        {{ page.url }}中...</a>
 </body>
+<script>
+    function jump_to (back, redirect) {
+        console.log(back, redirect)
+        var target = back
+        at = window.location.pathname
+        for (var i in redirect) {
+            if (at == i.src) {
+                target = i.tar
+                break
+            }
+        }
+        return target
+    }
+</script>
 
 </html>
