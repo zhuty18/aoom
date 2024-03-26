@@ -28,6 +28,7 @@ if __name__ == "__main__":
         GIT_WEB,
         CHANGE_SAVE,
         FILE_ROOT,
+        POST_CHANGE,
     )
 
     COMMIT_TIME = time.time()
@@ -39,10 +40,11 @@ if __name__ == "__main__":
     parser.add_argument("-s", "--statistic", type=bool, default=COUNT_WORD, nargs="?", const=not COUNT_WORD)
     parser.add_argument("-word", "--word_cloud", type=str, default=WORD_CLOUD_TYPE)
     parser.add_argument("-o", "--sort_order", type=str, default=DEFAULT_ORDER, nargs="?", const=ALT_ORDER)
-    parser.add_argument("-p", "--push", type=bool, default=GIT_PUSH, nargs="?", const=not GIT_PUSH)
+    parser.add_argument("-push", "--push", type=bool, default=GIT_PUSH, nargs="?", const=not GIT_PUSH)
     parser.add_argument("-page", "--pages", type=bool, default=GENERATE_WEB, nargs="?", const=not GENERATE_WEB)
     parser.add_argument("-a", "--add", type=bool, default=GIT_ADD, nargs="?", const=not GIT_ADD)
     parser.add_argument("-w", "--web", type=bool, default=GIT_WEB, nargs="?", const=not GIT_WEB)
+    parser.add_argument("-post", "--post", type=bool, default=POST_CHANGE, nargs="?", const=not POST_CHANGE)
     args = parser.parse_args()
 
     # 格式化所有文档
@@ -62,6 +64,10 @@ if __name__ == "__main__":
         from utils import auto_hide
 
         auto_hide()
+    if args.post:
+        import post
+
+        post.post_change(counter)
 
     # 构建网页
     if args.pages:

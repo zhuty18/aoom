@@ -5,7 +5,17 @@
 import os
 import time
 import re
-from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH, FILE_ROOT
+from personal import (
+    COMMIT_TIME,
+    TIME_FORMAT,
+    WEB_NAME,
+    FIN_HEAD,
+    FIN_TAIL,
+    FIN_TEM,
+    HISTORY_PATH,
+    FILE_ROOT,
+    PREVIEW_LENGTH,
+)
 
 
 def format_time(timestamp: float = COMMIT_TIME, time_format=TIME_FORMAT) -> str:
@@ -188,6 +198,7 @@ def short_path(path: str) -> str:
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
+    path = os.path.join(os.getcwd(), path)
     return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
@@ -221,7 +232,7 @@ def dir_name(i: str):
         "": "所有目录",
         "batlantern": "蝙绿官糖",
     }
-    i = doc_path(i)
+    i = doc_path(i).strip()
     return dir_names.get(i, None)
 
 
@@ -238,7 +249,7 @@ def dirs(path: str = doc_dir()):
         if os.path.isdir(full_path) and dir_name(full_path) is not None:
             name = dir_name(full_path)
             if name:
-                text += f"|[{dir_name(i)}]({sub_path(i)})|\n"
+                text += f"|[{dir_name(full_path)}]({sub_path(full_path)})|\n"
                 has = True
     return text if has else None
 
@@ -337,7 +348,7 @@ def preview(filename):
             if i.startswith("#"):
                 continue
             pre += i
-            if len(pre) > 200:
+            if len(pre) > PREVIEW_LENGTH:
                 return pre
             if "\n\n\n" in pre:
                 pre = pre.split("\n\n\n")[-1]

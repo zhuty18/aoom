@@ -22,7 +22,7 @@ from utils import (
     doc_dir,
 )
 import file_check
-from personal import DEFAULT_ORDER, HISTORY_PATH, ARCHIVE_TITLE
+from personal import DEFAULT_ORDER, HISTORY_PATH, ARCHIVE_TITLE, ARCHIVE_UPDATE, POST_PATH
 import web_make
 
 try:
@@ -123,7 +123,7 @@ class WordCounter:
                 i.pop(0)
                 i.pop(0)
                 i = " ".join(i).strip('"')
-            if "README" not in i and i.endswith(".md") and "/" in i:
+            if "README" not in i and i.endswith(".md") and "/" in i and POST_PATH not in i:
                 if os.path.exists(i):
                     self.changes.append(i)
                     file_check.count_file(i)
@@ -131,6 +131,7 @@ class WordCounter:
     def update_result(self):
         """统计结果写入数据库"""
         log = []
+        info = []
         for i in self.changes:
             name = re.findall(re.compile(r".*/(.*).md$", re.S), i)[0]
             try:
@@ -140,6 +141,7 @@ class WordCounter:
                 except KeyError:
                     length_old = 0
                 link = doc_path(os.path.join(os.getcwd(), i))
+                info.append(name)
                 log.append(f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|")
                 self.total_change += length_new - length_old
                 try:
@@ -150,8 +152,14 @@ class WordCounter:
                 self.history.pop(name)
                 self.total_change -= self.history[name].length
 
+        log_str = ARCHIVE_TITLE
+        update_str = ""
+        if info:
+            update_str = "\n  - ".join(info)
+            update_str = f"\n  - {update_str}"
+        log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
+
         with open(doc_dir() + "/README.md", "w", encoding="utf-8") as f:
-            log_str = ARCHIVE_TITLE
             if log:
                 log_str += "# 最近一次更改的文件\n\n"
                 log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"

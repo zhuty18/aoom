@@ -10,6 +10,9 @@ nav:
 - name: ⬆️
   link: "#content"
 - name: ⤴️
-  link: ../
+  link: ./
 - name: 🏠
   link: /docs
+
+date_format: "%Y. %-m. %-d"
+post_max: 10
