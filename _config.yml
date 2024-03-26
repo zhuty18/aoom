@@ -16,3 +16,7 @@ nav:
 
 date_format: "%Y. %-m. %-d"
 post_max: 10
+
+redirect:
+  - src: /test/1
+  - tar: /todo
