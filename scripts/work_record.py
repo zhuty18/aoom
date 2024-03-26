@@ -170,7 +170,7 @@ class WordCounter:
             update_str = f"\n  - {update_str}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
 
-        with open(doc_dir() + "/README.md", "w", encoding="utf-8") as f:
+        with open(doc_dir() + "/index.md", "w", encoding="utf-8") as f:
             if log:
                 log_str += "# 最近一次更改的文件\n\n"
                 log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
