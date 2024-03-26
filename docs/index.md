@@ -22,6 +22,7 @@ update:
 |[食物语](SWY)|
 |[X战警](X)|
 |[仙剑](XJ)|
+|[曳尾记](YWJ)|
 |[阴阳师](YYS)|
 |[蝙绿官糖](batlantern)|
 |[翻译](translation)|
