@@ -1,49 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: basic
+---
 
-<head>
-    <meta charset="UTF-8">
+{% assign time = 0 %}
+{% assign targetname = page.target %}
 
-    {% seo %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
-        type="text/css" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
+{% if page.time %}
+{% assign time = page.time %}
+{% endif %}
 
-    {% assign time = 0 %}
-    {% assign targetname = page.target %}
+{% if page.targetname %}
+{% assign targetname = page.targetname %}
+{% endif %}
 
-    {% if page.time %}
-    {% assign time = page.time %}
-    {% endif %}
+{% capture title %}Redirecting to {{ targetname }}{% endcapture %}
+{% if page.targettitle %}
+{% assign title = page.targettitle %}
+{% endif %}
 
-    {% if page.targetname %}
-    {% assign targetname = page.targetname %}
-    {% endif %}
+<h1>{{ title }}</h1>
 
-    {% capture title %}Redirecting to {{ targetname }}{% endcapture %}
-    {% if page.targettitle %}
-    {% assign title = page.targettitle %}
-    {% endif %}
-    <meta http-equiv="refresh" content="{{ time }};url={{ page.target }}" />
-    <link rel="canonical" href="{{ page.target }}" />
-</head>
+{{ content }}
+<p>This document has moved!</p>
+{% endif %}
 
-<body>
-    <h1>{{ title }}</h1>
+<p>Redirecting to <a href="{{ page.target }}">{{ targetname }}</a> in {{ time }} seconds.</p>
 
-    {% if page.message %}
-    <p>{{ page.message }}</p>
-    {% else %}
-    <p>This document has moved!</p>
-    {% endif %}
-
-    <p>Redirecting to <a href="{{ page.target }}">{{ targetname }}</a> in {{ time }} seconds.</p>
+<script>
+    setTimeout(window.location.href = {{ target }}, 0)
+</script>
 
 </body>
-
-</html>

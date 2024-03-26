@@ -1,37 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: " en-US"}}">
+---
+layout: default
+---
 
-<head>
-    <meta charset="UTF-8">
+<h1>重定向</h1>
+文件已移动，重定向中...
+<button onclick="jump_to({{site.redirect_back}})">111</button>
 
-    {% seo %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
-        type="text/css" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
-
-    <!-- <meta http-equiv="refresh" content="0;url=jump_to({{site.redirect_back}},{{site.redirect}})" /> -->
-    <link rel="canonical" href="{{ target }}" />
-
-
-</head>
-
-<body>
-    <h1>重定向</h1>
-    文件已移动，重定向中...
-    <button onclick="jump_to({{site.redirect_back}})">111</button>
-</body>
 <script>
     var redirect = [{
         "src": "/test/1",
         "tar": "/todo",
     }]
     function jump_to (back) {
-        console.log(back, redirect)
         var target = back
         at = window.location.pathname
         for (var i in redirect) {
@@ -40,8 +20,7 @@
                 break
             }
         }
-        return target
+        window.location.href = target
     }
+    setTimeout(jump_to(), 0)
 </script>
-
-</html>
