@@ -327,3 +327,18 @@ def path_fin(path):
     """路径是否默认为完结"""
     fin_path = {"batlantern": True}
     return fin_path.get(doc_path(path), False)
+
+
+def preview(filename):
+    """获取文件预览"""
+    pre = ""
+    with open(filename, "r", encoding="utf8") as f:
+        for i in f.readlines():
+            if i.startswith("#"):
+                continue
+            pre += i
+            if len(pre) > 200:
+                return pre
+            if "\n\n\n" in pre:
+                pre = pre.split("\n\n\n")[-1]
+    return pre
