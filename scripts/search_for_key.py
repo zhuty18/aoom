@@ -22,7 +22,7 @@ class KeySearcher:
             subdir = os.path.join(path, i)
             if os.path.isdir(subdir):
                 self.search_dir(subdir)
-            elif subdir.endswith(".md"):
+            elif subdir.endswith(".md") and "README" not in subdir:
                 self.search_file(subdir)
 
     def search_file(self, file):

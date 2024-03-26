@@ -1,4 +1,5 @@
 __pycache__
-.*/
+.obsidian/
+.vscode/
 .DS_Store
 data/change.txt

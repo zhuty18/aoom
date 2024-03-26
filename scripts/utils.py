@@ -267,6 +267,7 @@ class SearchForFile:
     def check_dir(self, path: str):
         """检查目录下的文件"""
         for i in os.listdir(path):
+            i = os.path.join(path, i)
             if os.path.isdir(i):
                 self.check_dir(i)
             else:

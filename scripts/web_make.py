@@ -103,5 +103,6 @@ def all_html(force: bool):
     to_html("README.md", doc_dir())
     path = os.listdir(doc_dir())
     for i in path:
+        i = os.path.join(doc_dir(), i)
         if os.path.isdir(i) and dir_name(i):
             dir_html(i, changes, force)

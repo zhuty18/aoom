@@ -1,6 +1,6 @@
 xpinyin
-jieba
-wordcloud
-matplotlib
-python_docx
+# jieba
+# wordcloud
+# matplotlib
+# python_docx
 markdown
