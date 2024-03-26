@@ -34,7 +34,6 @@
         <main id="content" class="main-content" role="main">
             <div class="post">
                 <h2>最近更新</h2>
-                </br>
                 <ul class="post-list">
                     {% for post in site.posts %}
                     {% if page.update contains post.title%}
@@ -46,7 +45,9 @@
                                 post.title
                                 | escape }}</a>
                         </h2>
-                        {{ post.excerpt | markdownify | truncatewords: 30 }}
+                        <div class="post-preview">
+                            {{ post.excerpt | markdownify | truncatewords: 30 }}
+                        </div>
                     </li>
                     {% endif %}
                     {% endfor %}
