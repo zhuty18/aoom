@@ -72,3 +72,7 @@ FIN_TEM = '"template":true,'
 
 HISTORY_PATH = "data/history.txt"
 CHANGE_SAVE = "data/change.txt"
+
+POST_PATH = "_posts/"
+POST_DATE = "%Y-%m-%d"
+POST_TITLE = POST_DATE + "-{title}.md"

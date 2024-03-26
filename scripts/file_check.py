@@ -63,12 +63,12 @@ class FileChecker:
         """翻译找到的文件"""
         for i in self.result:
             if mode is not None:
-                name_tsl(os.path.join(i[1], i[0]), mode)
+                name_tsl(i, mode)
 
     def count_result(self):
         """对找到的文件进行字数统计"""
         for i in self.result:
-            count_file(os.path.join(i[1], i[0]))
+            count_file(i)
 
     def html_result(self):
         """生成文件的网页"""

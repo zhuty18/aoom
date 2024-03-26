@@ -5,7 +5,7 @@
 import os
 import re
 import markdown
-from utils import dir_name, dirs, html_head, short_path, doc_dir
+from utils import dir_name, dirs, html_head, short_path, doc_dir, name_of
 from personal import CHANGE_SAVE
 
 
@@ -29,26 +29,26 @@ def read_index(path):
     return l
 
 
-def markdown_to_html(filename, path, text, title):
+def markdown_to_html(filepath, text, title):
     """生成markdown内容的html"""
     text = text.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
     text = text.replace("\n\n\n", "\n\n<br>\n")
     html = markdown.markdown(text, extensions=["tables"], output_format="html")
-    output_filename = filename.replace(".md", ".html")
-    output_filename = output_filename.replace("README", "index")
-    with open(os.path.join(path, output_filename), "w", encoding="utf8") as f:
-        if "README" in filename:
+    output_filepath = filepath.replace(".md", ".html")
+    output_filepath = output_filepath.replace("README", "index")
+    with open(output_filepath, "w", encoding="utf8") as f:
+        if "README" in filepath:
             html = html.replace(".md", ".html")
         f.write(html_head(title))
         f.write(html)
 
 
-def to_html(filename: str, path: str):
+def to_html(filepath: str):
     """生成markdown文件的html"""
-    with open(os.path.join(path, filename), "r", encoding="utf8") as f:
+    with open(filepath, "r", encoding="utf8") as f:
         text = f.read()
-    title = filename.replace(".md", "")
-    markdown_to_html(filename, path, text, title)
+    title = name_of(filepath)
+    markdown_to_html(filepath, text, title)
 
 
 def index_html(path: str):
@@ -59,11 +59,11 @@ def index_html(path: str):
             k1 = re.findall(re.compile(r"## Finished(.*?)$", re.S), k)
             if len(k1):
                 text = f"# {dir_name(path)}{k1[0]}"
-                markdown_to_html("README.md", path, text, dir_name(path))
+                markdown_to_html(os.path.join(path, "README.md"), text, dir_name(path))
     except FileNotFoundError:
         text = dirs(path)
         if text:
-            markdown_to_html("README.md", path, text, dir_name(path))
+            markdown_to_html(os.path.join(path, "README.md"), text, dir_name(path))
 
 
 def dir_html(path, changes, force):
@@ -85,11 +85,11 @@ def dir_html(path, changes, force):
         if l:
             for i in l:
                 if force:
-                    to_html(i[1], i[0])
+                    to_html(os.path.join(i[1], i[0]))
                 if changes:
                     for j in changes:
                         if f"{i[0]}/{i[1]}" == j:
-                            to_html(i[1], i[0])
+                            to_html(os.path.join(i[1], i[0]))
         # 当前目录
         index_html(path)
 
@@ -100,7 +100,7 @@ def all_html(force: bool):
     with open(CHANGE_SAVE, "r", encoding="utf8") as f:
         changes = f.read().split("\n")
 
-    to_html("README.md", doc_dir())
+    to_html(os.path.join("README.md", doc_dir()))
     path = os.listdir(doc_dir())
     for i in path:
         i = os.path.join(doc_dir(), i)

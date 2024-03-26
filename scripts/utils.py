@@ -8,10 +8,10 @@ import re
 from personal import COMMIT_TIME, TIME_FORMAT, WEB_NAME, FIN_HEAD, FIN_TAIL, FIN_TEM, HISTORY_PATH, FILE_ROOT
 
 
-def format_time(timestamp: float = COMMIT_TIME) -> str:
+def format_time(timestamp: float = COMMIT_TIME, time_format=TIME_FORMAT) -> str:
     """格式化某个时间戳，默认为当下"""
     t = time.localtime(timestamp)
-    res = time.strftime(TIME_FORMAT, t)
+    res = time.strftime(time_format, t)
     return res
 
 
@@ -191,6 +191,11 @@ def doc_path(path):
     return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
+def name_of(path):
+    """文件名"""
+    return path.replace("\\", "/").replace(".md", "").split("/")[-1]
+
+
 def dir_name(i: str):
     """路径名"""
     dir_names = {
@@ -272,7 +277,7 @@ class SearchForFile:
                 self.check_dir(i)
             else:
                 if match_keys([self.key], i) and i.endswith(".md"):
-                    self.res.append((i, path))
+                    self.res.append(i)
 
     def result(self):
         """搜索结果"""
