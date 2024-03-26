@@ -9,7 +9,6 @@
 """
 
 import sys
-import os
 from utils import line_length, search_by_keyword
 from name_translate import name_tsl
 from web_make import to_html

@@ -228,7 +228,6 @@ class IndexBuilder:
     def __init__(self, path, counter: WordCounter, order):
         self.tbc = []
         self.fin = []
-        self.dir = []
         self.build_index(path, counter)
         self.sort_index(self.tbc, order)
         self.sort_index(self.fin, order)
@@ -255,10 +254,6 @@ class IndexBuilder:
                     self.fin.append(t)
                 else:
                     self.tbc.append(t)
-        if not self.fin + self.tbc:
-            for i in os.listdir(path):
-                if os.path.isdir(os.path.join(path, i)):
-                    self.dir.append(os.path.join(path, i))
 
     def sort_index(self, l: list, order):
         """索引排序"""
