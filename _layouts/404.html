@@ -23,16 +23,20 @@
 <body>
     <h1>重定向</h1>
     文件已移动，重定向中...
-    <button onclick="jump_to({{site.redirect_back}},{{site.redirect}})">111</button>
+    <button onclick="jump_to({{site.redirect_back}})">111</button>
 </body>
 <script>
-    function jump_to (back, redirect) {
+    var redirect = [{
+        "src": "/test/1",
+        "tar": "/todo",
+    }]
+    function jump_to (back) {
         console.log(back, redirect)
         var target = back
         at = window.location.pathname
         for (var i in redirect) {
-            if (at == i.src) {
-                target = i.tar
+            if (at == redirect[i].src) {
+                target = redirect[i].tar
                 break
             }
         }

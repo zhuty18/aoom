@@ -19,7 +19,3 @@ post_max: 10
 
 redirect_back: /docs/
 
-redirect: [{
-  "src":"/test/1",
-  "tar":"/todo",
-}]
