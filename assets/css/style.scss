@@ -35,6 +35,14 @@ a.nav-foot-link {
     margin-bottom: 0.5rem;
 }
 
+.post-meta {
+    display: flex;
+}
+
+.post-meta :first-child {
+    margin-top: auto;
+}
+
 .post-preview {
     margin-top: 0;
 }
@@ -52,7 +60,9 @@ a.nav-foot-link {
     border-radius: 8px;
     padding-right: 0.2rem;
     border-color: #606c71;
-    font-size: 1rem;
+    font-size: 0.6rem;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .FIN {
