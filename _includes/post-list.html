@@ -3,11 +3,11 @@
     <ul class="post-list">
         {% for post in site.posts %}
             {% if docs %}
-                {% unless update contains post.title %}
-                    {% include 'post.html' with post as post %}
-                {% endunless %}
+                {% if update contains post.title %}
+                    {% include post.html with post as post %}
+                {% endif %}
             {% else %}
-                {% include 'post.html' with post as post %}
+                {% include post.html with post as post %}
             {% endif %}
             {% if forloop.index == site.post_max %}
                 {% break %}
