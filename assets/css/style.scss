@@ -38,3 +38,29 @@ a.nav-foot-link {
 .post-preview {
     margin-top: 0;
 }
+
+.post-list {
+    list-style-type: square;
+}
+
+.tag {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 0.2rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    padding-right: 0.2rem;
+    border-color: #606c71;
+    font-size: 1rem;
+}
+
+.FIN {
+    color: darkgreen;
+    background-color: #d5ffd5;
+}
+
+.TBC {
+    color: #c40909;
+    background-color: #ffefd0;
+}
