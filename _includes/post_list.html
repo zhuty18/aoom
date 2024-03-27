@@ -4,10 +4,10 @@
         {% for post in site.posts %}
             {% if docs %}
                 {% if update contains post.title %}
-                    {% include post.html with post as post %}
+                    {% include post.html post=post %}
                 {% endif %}
             {% else %}
-                {% include post.html with post as post %}
+                {% include post.html post=post %}
             {% endif %}
             {% if forloop.index == site.post_max %}
                 {% break %}
