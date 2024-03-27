@@ -4,25 +4,4 @@ layout: default
 
 {{ content }}
 
-<div class="post">
-    <h2>最近更新</h2>
-    <ul class="post-list">
-        {% for post in site.posts %}
-        <li>
-            {% assign date_format = site.date_format %}
-            <span class="post-meta">{{ post.date | date: date_format }}</span>
-            <h2>
-                <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
-                    post.title
-                    | escape }}</a>
-            </h2>
-            <div class="post-preview">
-                {{ post.excerpt | markdownify | truncatewords: 30 }}
-            </div>
-        </li>
-        {% if forloop.index == site.post_max %}
-        {% break %}
-        {% endif %}
-        {% endfor %}
-    </ul>
-</div>
+{% render 'post_list.html' with false as docs %}

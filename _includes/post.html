@@ -1,0 +1,12 @@
+
+<li>
+    <span class="post-meta">{{ post.date | date: site.date_format }}</span>
+    <h2>
+        <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
+            post.title
+            | escape }}</a>
+    </h2>
+    <div class="post-preview">
+        {{ post.excerpt | markdownify | truncatewords: 30 }}
+    </div>
+</li>
