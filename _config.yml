@@ -11,7 +11,10 @@ nav:
 - name: ⬆️
   link: "#content"
 - name: ⤴️
-  link: ./
+  link: ..
+  con: /
+  other: .
+  id: up
 - name: 🏠
   link: /docs
 

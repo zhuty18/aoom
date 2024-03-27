@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#157878">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
+    {% include head_jump.html url=page.target %}
 </head>
 
 <body>
@@ -35,11 +35,7 @@
             {{ content }}
         </main>
     </div>
-    <div class="nav">
-        {% for item in site.nav %}
-        <a href="{{ item.link }}">{{ item.name }}</a>
-        {% endfor %}
-    </div>
+    {% include nav_foot.html %}
 </body>
 
 </html>
