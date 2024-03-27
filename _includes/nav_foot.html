@@ -9,10 +9,10 @@
             tar="{{ item.other }}"
         }
         con.insertAdjacentHTML('afterbegin',
-            "<a href="+tar+">{{ item.name }}</a>")
+            "<a href="+tar+" class=\"nav-foot-link\">{{ item.name }}</a>")
     </script>
         {% else %}
-    <a href="{{ item.link }}">{{ item.name }}</a>
+    <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
         {% endif %}
     {% endfor %}
 </div>
