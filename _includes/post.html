@@ -1,10 +1,9 @@
 
 <li>
+    {%  assign post = include.post %}
     <span class="post-meta">{{ post.date | date: site.date_format }}</span>
     <h2>
-        <a class="post-link" href="{{ post.target | absolute_url }}" title="{{ post.title }}">{{
-            post.title
-            | escape }}</a>
+        <a class="post-link" href="{{ post.target }}" title="{{ post.title }}">{{post.title }}</a>
     </h2>
     <div class="post-preview">
         {{ post.excerpt | markdownify | truncatewords: 30 }}
