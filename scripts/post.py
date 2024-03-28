@@ -41,6 +41,7 @@ target: /{target}
 title: {name_of(filename)}
 date: {format_time(get_time(his.time), POST_DATE)}
 category: {dir_name(path_of(filename))}
+cat_url: /{short_path(path_of(filename))}
 tags: 
   - {"FIN" if his.fin else "TBC"}
 length: {his.length}
