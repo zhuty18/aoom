@@ -13,6 +13,7 @@ from utils import (
     short_path,
     preview,
     dir_name,
+    path_of,
 )
 from work_record import WordCounter
 
@@ -26,7 +27,9 @@ def post(filename, counter):
     for it in os.listdir(POST_PATH):
         if name_of(filename) in it:
             os.remove(os.path.join(POST_PATH, it))
-    post_name = format_time(get_time(his.time), POST_TITLE).replace("{title}", his.name)
+    post_name = format_time(get_time(his.time), POST_TITLE).replace(
+        "{title}", his.name
+    )
     target = short_path(filename).replace(".md", "")
     if target.endswith("."):
         target = target[:-1] + "/html"
@@ -37,8 +40,10 @@ layout: forward
 target: /{target}
 title: {name_of(filename)}
 date: {format_time(get_time(his.time), POST_DATE)}
+category: {dir_name(path_of(filename))}
 tags: 
   - {"FIN" if his.fin else "TBC"}
+length: {his.length}
 ---
 
 {preview(filename)}
@@ -64,17 +69,21 @@ def post_change(counter):
     clear_post()
 
 
-def post_all(path, counter):
+def post_all(path, counter, allow_tbc=False, clear=True):
     """发布所有文件"""
     if counter is None:
         counter = WordCounter()
         counter.read_history()
     for item in os.listdir(path):
         if dir_name(os.path.join(path, item)):
-            post_all(os.path.join(path, item), counter)
-        elif name_of(item) in counter.history and counter.history[name_of(item)].fin:
-            post(os.path.join(path, item), counter)
-    clear_post()
+            post_all(os.path.join(path, item), counter, allow_tbc, False)
+        elif name_of(item) in counter.history and (
+            not os.path.isdir(os.path.join(path, item))
+        ):
+            if counter.history[name_of(item)].fin or allow_tbc:
+                post(os.path.join(path, item), counter)
+    if clear:
+        clear_post()
 
 
 if __name__ == "__main__":

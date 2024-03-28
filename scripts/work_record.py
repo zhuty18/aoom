@@ -196,17 +196,16 @@ class WordCounter:
             update_str = "\n  - ".join(info)
             update_str = f"\n  - {update_str}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
-
         with open(
             os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8"
         ) as f:
-            if log:
-                log_str += "# 最近一次更改的文件\n\n"
-                log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
-                log_str += "|:-|:-|:-|:-|\n"
-                log_str += "\n".join(log)
-                log_str += "\n"
-                log_str += "\n"
+            # if log:
+            #     log_str += "# 最近一次更改的文件\n\n"
+            #     log_str += "|文件名|上次提交时字数|本次提交字数|字数变化|\n"
+            #     log_str += "|:-|:-|:-|:-|\n"
+            #     log_str += "\n".join(log)
+            #     log_str += "\n"
+            #     log_str += "\n"
             log_str += dirs().strip()
             f.write(log_str)
 

@@ -76,8 +76,6 @@ README_NAME = "README.md"
 ARCHIVE_UPDATE = "{update_detail}"
 ARCHIVE_TITLE = f"""---
 layout: docs
-title: 狡兔百窟
-description: 兔子草的线上存档（仅展示已完结）
 update: {ARCHIVE_UPDATE}
 ---
 

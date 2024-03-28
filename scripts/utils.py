@@ -269,6 +269,13 @@ def doc_path(path):
     return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
+def path_of(path):
+    """上级路径"""
+    path = path.replace("\\", "/").split("/")
+    path.pop()
+    return "/".join(path)
+
+
 def name_of(path):
     """文件名"""
     return path.replace("\\", "/").replace(".md", "").split("/")[-1]
@@ -294,8 +301,8 @@ def dir_name(i: str):
         "YYS": "阴阳师",
         "YWJ": "曳尾记",
         "O/ON": "原创小说",
-        "translation/batfamily": "蝙家",
-        "translation/BruceHal": "蝙绿蝙",
+        "translation/batfamily": "翻译-蝙家",
+        "translation/BruceHal": "翻译-蝙绿蝙",
         "": "所有目录",
         "batlantern": "蝙绿官糖",
     }
