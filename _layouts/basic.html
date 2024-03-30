@@ -46,7 +46,9 @@
         {% include nav_foot.html %}
     </div>
     {% if site.password %}
+        {% unless page.url contains site.white %}
     <script src="/data/passlock.js"></script>
+        {% endunless %}
     {% endif %}
 </body>
 
