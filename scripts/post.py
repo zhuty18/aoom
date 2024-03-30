@@ -39,7 +39,8 @@ def post(filename, counter):
     for x in tags:
         make_index("tag", x)
     tags = "\n  - " + "\n  - ".join(tags)
-    make_index("category", dir_name(path_of(filename)))
+    if dir_name(path_of(filename)):
+        make_index("category", dir_name(path_of(filename)))
 
     target = short_path(filename).replace(".md", "")
     if target.endswith("."):

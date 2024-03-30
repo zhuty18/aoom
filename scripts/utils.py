@@ -464,7 +464,6 @@ def make_index(kind, name):
     """制作jekyll目录"""
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(os.path.join(path, name + ".md")):
-        print(os.path.join(path, name + ".md"))
         with open(os.path.join(path, name + ".md"), "w", encoding="utf8") as f:
             f.write("---\n")
             f.write(f"layout: {kind}\n")

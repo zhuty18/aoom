@@ -13,9 +13,11 @@
                     {% include post.html post=post %}
                 {% endif %}
             {% elsif include.type == "tags" %}
+                {% unless page.tags contains "黑历史" %}
                 {% if post.tags contains include.tag %}
                     {% include post.html post=post %}
                 {% endif %}
+                {% endunless %} 
             {% elsif include.type == "category" %}
                 {% if post.category == include.category %}
                     {% include post.html post=post %}
