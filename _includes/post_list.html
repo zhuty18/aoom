@@ -20,7 +20,12 @@
                 {% endunless %} 
             {% elsif include.type == "category" %}
                 {% if post.category == include.category %}
+                {% unless page.tags contains "黑历史" %}
                     {% include post.html post=post %}
+                {% endunless %}
+                {% if post.category == "黑历史" %}
+                    {% include post.html post=post %}
+                {% endif %}
                 {% endif %}
             {% else %}
                 {% include post.html post=post %}
