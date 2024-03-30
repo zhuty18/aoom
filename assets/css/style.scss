@@ -164,10 +164,19 @@ h2 a {
 }
 
 .password-require {
-    margin-top:auto;
-    align-items: center;
+    text-align: center;
+    color: black;
+    line-height: 1rem;
 }
 
-button{
+.lock-box {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
     font-size: 1rem;
 }

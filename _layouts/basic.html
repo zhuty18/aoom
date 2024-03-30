@@ -17,7 +17,6 @@
 
 <body>
     <!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
-    {% include passlock.html %}
     <div id="unlock">
         <div class="top">
             <header class="page-header" role="banner">
@@ -45,11 +44,7 @@
         </div>
         {% include nav_foot.html %}
     </div>
-    {% if site.password %}
-        {% unless page.url contains site.white %}
-    <script src="/data/passlock.js"></script>
-        {% endunless %}
-    {% endif %}
+    {% include passlock.html %}
 </body>
 
 </html>
