@@ -5,5 +5,5 @@ layout: default
 <h1>所有标签</h1>
 
 {% for tag in site.tags %}
-    <h2><a href="{{ tag }}">{{ tag }}</a></h2>
+    <h2><a href="{{ tag | first }}">{{ tag | first }}</a></h2>
 {% endfor %}
