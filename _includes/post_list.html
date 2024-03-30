@@ -13,25 +13,22 @@
                     {% include post.html post=post %}
                 {% endif %}
             {% elsif include.type == "tags" %}
-                {% unless page.tags contains "黑历史" %}
                 {% if post.tags contains include.tag %}
+                {% unless post.tags contains "黑历史" %}
+                    {% include post.html post=post %}
+                {% endunless %} 
+                {% if include.tag == "黑历史" %}
                     {% include post.html post=post %}
                 {% endif %}
-                {% endunless %} 
+                {% endif %}
             {% elsif include.type == "category" %}
                 {% if post.category == include.category %}
-                {% unless page.tags contains "黑历史" %}
+                {% unless post.tags contains "黑历史" %}
                     {% include post.html post=post %}
                 {% endunless %}
-                {% if post.category == "黑历史" %}
-                    {% include post.html post=post %}
-                {% endif %}
                 {% endif %}
             {% else %}
                 {% include post.html post=post %}
-            {% endif %}
-            {% if forloop.index == site.post_max %}
-                {% break %}
             {% endif %}
         {% endfor %}
     </ul>
