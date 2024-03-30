@@ -11,7 +11,7 @@ GIT_NAME = "tuzicao"
 GIT_EMAIL = "13718054285@163.com"
 
 # 文档根
-FILE_ROOT = "docs/"
+FILE_ROOT = "docs"
 
 # 生成网页
 GENERATE_WEB = False

@@ -1,3 +1,7 @@
+---
+tags: BatLantern JayKyle
+---
+
 # Wayne庄园冒险记
 
 Kyle真的挺高兴的。

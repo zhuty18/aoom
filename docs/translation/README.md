@@ -2,5 +2,5 @@
 
 |所有文件夹|
 |:-|
-|[蝙绿蝙](BruceHal)|
-|[蝙家](batfamily)|
+|[翻译-蝙绿蝙](BruceHal)|
+|[翻译-蝙家](batfamily)|

@@ -35,10 +35,6 @@ a.nav-foot-link {
     margin-bottom: 0.5rem;
 }
 
-.post-meta {
-    display: flex;
-}
-
 .post-meta :first-child {
     margin-top: auto;
 }
@@ -53,7 +49,6 @@ a.nav-foot-link {
 
 .tag {
     margin-left: 1rem;
-    margin-right: 1rem;
     padding-left: 0.2rem;
     border-style: solid;
     border-width: 1px;
@@ -95,16 +90,84 @@ h2 a {
 }
 .ad-text {
     float: right;
-    width: 80%;
+    font-size: 0.9rem;
+    line-height: 100%;
+    padding-left: 5%;
+}
+.ad {
+    color: brown;
+    background: antiquewhite;
+    padding-left: 0.5rem;
+    border-radius: 5px;
 }
 
-.headshot img {
+.head img {
     border-radius: 50%;
 }
-.headshot {
+
+.head {
     float: left;
     width: 20%;
 }
 .weibo-ad {
+    background: antiquewhite;
+    overflow: hidden;
+    height: 0px;
     display: flex;
+}
+.blank {
+    height: 1rem;
+}
+.ad-content {
+    width: 75%;
+}
+.main-content h1 {
+    margin-top: 1rem;
+}
+
+.page-header {
+    padding: 0;
+}
+
+.nav-head {
+    padding-top: 0.5rem;
+    display: flex;
+}
+.nav-head-head {
+    margin-left: auto;
+    float: left;
+}
+
+.nav-head-item {
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    float: right;
+    background-color: rgba(97, 159, 161, 0.7);
+    border-radius: 1rem;
+    font-size: 1rem;
+}
+.nav-head-tail {
+    width: 1.5rem;
+    float: right;
+}
+
+.nav-head-item a {
+    color: antiquewhite;
+    text-decoration: none;
+}
+
+.project-head {
+    padding: 4rem 5rem;
+}
+
+.post-meta span {
+    display: inline-block;
+}
+
+.password-require {
+    margin-top:auto;
+    align-items: center;
+}
+
+button{
+    font-size: 1rem;
 }

@@ -7,7 +7,7 @@ plugins:
 title: 狡兔百窟
 description: 兔子草的线上存档
 
-nav:
+nav-foot:
 - name: ⬆️
   link: "#content"
 - name: ⤴️
@@ -19,10 +19,20 @@ nav:
   link: /docs
 
 date_format: "%Y. %-m. %-d"
-post_max: 10
+post_max: 200
 
 redirect_back: /docs
 
-ad: content
+ad: content_pool
 ad_url: https://weibo.com/6488824497/O1srfjMvV
 ddl: 2024-04-10
+
+alive_tags:
+- BatLantern
+
+nav-head:
+- name: 标签
+  link: /tags
+
+password: true
+white: 互动整理

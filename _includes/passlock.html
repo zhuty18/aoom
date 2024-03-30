@@ -1,0 +1,10 @@
+{% if site.password %}
+{% unless page.url contains site.white %}
+<div id="pass-require" class="password-require">
+    该页面需要密码访问！
+    提示：我的id（首字母大写）
+    <input type="password" id="password">
+    <button onclick="unlock()">解锁</button>
+</div>
+{% endunless %}
+{% endif %}

@@ -19,6 +19,7 @@ from utils import (
     auto_hide,
     path_fin,
     doc_dir,
+    name_of,
 )
 import file_check
 from personal import (
@@ -157,6 +158,11 @@ class WordCounter:
                 and POST_PATH not in i
             ):
                 if os.path.exists(i):
+                    if (
+                        name_of(i) in self.history
+                        and file_length(i) == self.history[name_of(i)].length
+                    ):
+                        continue
                     self.changes.append(i)
                     file_check.count_file(i)
 

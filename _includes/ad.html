@@ -1,12 +1,23 @@
-<div class="ad">
-    <div class="weibo-ad">
-        <span class="headshot"><img src="/data/headshot.jpg"></span>
-        {% if site.ad == "content" %}
-        <span class="ad-text">你好，我是<del>发小卡片的</del>兔子草。你可能在LOF（兔子草）或者随缘（Atomic）见过我写的蝙绿文。
-            我计划出一个<b>个人蝙绿本</b>，收录《与生俱来》与几个短篇，在此诚邀看过我作品的朋友们参与内容投票！
-            本次投票放在微博，截止日期为{{ site.ddl | date: "%m月%d日" }}23点59分，届时评论区赞数最高的几个提名（3~4个）会被录入我的个人蝙绿本。
-            <a href="{{ site.ad_url }}">点此跳转微博，参与内容投票！</a>
-        </span>
-        {% endif %}
+<div class="ad" onclick="onShowChange()">
+    此处有一个蝙绿蝙内容调查广告，点击显示
+    <div id="{{ site.ad }}" class="weibo-ad">
+        <span class="head"><img src="/data/headshot.jpg"></span>
+        <div class="ad-content">
+            <div class="blank"></div>
+            {% if site.ad == "content_pool" %}
+            <span class="ad-text">
+                <p>你好，我是<del>发小卡片的</del>兔子草。你可能在<a href="https://atomic-tuzicao.lofter.com/">LOF（兔子草）</a>或者<a href="http://www.mtslash.me/home.php?mod=space&uid=421012&do=thread">随缘（Atomic）</a>见过我写的蝙绿文。</p>
+                <p>我计划出一个<b>个人蝙绿本</b>，收录《与生俱来》与几个短篇，在此诚邀看过我作品的朋友们参与内容投票！</p>
+                <p>本次投票放在微博，截止日期为{{ site.ddl | date: "%m月%d日" }}23点59分，届时评论区赞数最高的几个提名（3~4个）会被录入我的个人蝙绿本。</p>
+                <p><a href="{{ site.ad_url }}">点此跳转微博，参与内容投票！</a></p>
+            </span>
+            {% endif %}
+        </div>
     </div>
+    <script>
+        var ad = document.getElementById("{{ site.ad }}")
+        function onShowChange () {
+            ad.style.height = ad.style.height === "100%" ? "0px" : "100%"
+        }
+    </script>
 </div>

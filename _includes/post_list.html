@@ -1,9 +1,19 @@
 <div class="post">
-    <h2>最近更新</h2>
+    <h2>
+        {% if include.list_title %}
+            {{ include.list_title }}
+        {% else %} 
+        最近更新
+        {% endif %}
+        </h2>
     <ul class="post-list">
         {% for post in site.posts %}
-            {% if include.docs %}
+            {% if include.type == "docs" %}
                 {% if include.update contains post.title %}
+                    {% include post.html post=post %}
+                {% endif %}
+            {% elsif include.type == "tags" %}
+                {% if post.tags contains include.tag %}
                     {% include post.html post=post %}
                 {% endif %}
             {% else %}

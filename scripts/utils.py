@@ -260,13 +260,13 @@ def sub_path(path):
 
 def short_path(path: str) -> str:
     """文件名缩短至根目录"""
-    return path.replace(os.getcwd(), "").replace("\\", "/").strip("/")
+    return path.replace("/", "\\").replace(os.getcwd(), "").replace("\\", "/").strip("/")
 
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
     path = os.path.join(os.getcwd(), path)
-    return path.replace(doc_dir(), "").replace("\\", "/").strip("/")
+    return path.replace("/", "\\").replace(doc_dir(), "").replace("\\", "/").strip("/")
 
 
 def path_of(path):
@@ -427,3 +427,24 @@ def preview(filename):
             if "\n\n\n" in pre:
                 pre = pre.split("\n\n\n")[-1]
     return pre.strip().split("\n")[0]
+
+
+def get_predefine(filename):
+    """读取预定义内容"""
+    with open(filename, "r", encoding="utf8") as f:
+        content = f.read()
+        if content.startswith("---"):
+            pre_d = re.findall(re.compile(r"---\n(.*)\n---", re.S), content)[0]
+            return pre_d
+    return None
+
+
+def get_pre_key(pre_d, keyword):
+    """从预定义头中读取关键字参数"""
+    if pre_d and keyword in pre_d:
+        for item in pre_d.split("\n"):
+            if keyword in item:
+                l = item.split(" ")
+                l.pop(0)
+                return l
+    return None

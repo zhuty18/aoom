@@ -7,7 +7,13 @@
         <span class="date">{{ post.date | date: site.date_format }}</span>
         <span class="length">{{ post.length }}字</span>
         {% for tag in post.tags %}
-            <span class="tag {{ tag }}">{{ tag }}</span>
+            <span class="tag {{ tag }}">
+                {% if site.alive_tags contains tag %}
+                <a href="/tags/{{ tag }}">{{ tag }}</a>
+                {% else %}
+                {{ tag }}
+                {% endif %}
+            </span>
         {% endfor %}
     </span>
     <h2>

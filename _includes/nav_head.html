@@ -1,0 +1,9 @@
+<div class="nav-head">
+    <span class="nav-head-head"></span>
+    {% for item in site.nav-head %}
+        <span class="nav-head-item">
+        <a href={{ item.link }}>{{ item.name }}</a>
+        </span>
+    {% endfor %}
+    <span class="nav-head-tail"></span>
+</div>
