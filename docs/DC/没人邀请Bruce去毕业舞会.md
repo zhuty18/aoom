@@ -1,3 +1,7 @@
+---
+tags: BatLantern
+---
+
 # 没人邀请Bruce去毕业舞会
 
 
