@@ -19,7 +19,6 @@ from utils import (
     auto_hide,
     path_fin,
     doc_dir,
-    name_of,
 )
 import file_check
 from personal import (
@@ -34,6 +33,7 @@ from personal import (
     GENERATE_WEB,
     FIN_TITLE,
     TBC_TITLE,
+    FILE_ROOT
 )
 import web_make
 
@@ -154,17 +154,11 @@ class WordCounter:
                 INDEX_NAME not in i
                 and README_NAME not in i
                 and i.endswith(".md")
-                and "/" in i
+                and FILE_ROOT in i
                 and POST_PATH not in i
             ):
                 if os.path.exists(i):
-                    if (
-                        name_of(i) in self.history
-                        and file_length(i) == self.history[name_of(i)].length
-                    ):
-                        continue
                     self.changes.append(i)
-                    file_check.count_file(i)
 
     def update_result(self):
         """统计结果写入数据库"""
@@ -178,6 +172,10 @@ class WordCounter:
                     length_old = self.history[name].length
                 except KeyError:
                     length_old = 0
+                if length_new == length_old:
+                    continue
+                else:
+                    file_check.count_file(i)
                 link = doc_path(os.path.join(os.getcwd(), i))
                 info.append(name)
                 log.append(

@@ -260,13 +260,23 @@ def sub_path(path):
 
 def short_path(path: str) -> str:
     """文件名缩短至根目录"""
-    return path.replace("/", "\\").replace(os.getcwd(), "").replace("\\", "/").strip("/")
+    return (
+        path.replace("/", "\\")
+        .replace(os.getcwd(), "")
+        .replace("\\", "/")
+        .strip("/")
+    )
 
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
     path = os.path.join(os.getcwd(), path)
-    return path.replace("/", "\\").replace(doc_dir(), "").replace("\\", "/").strip("/")
+    return (
+        path.replace("/", "\\")
+        .replace(doc_dir(), "")
+        .replace("\\", "/")
+        .strip("/")
+    )
 
 
 def path_of(path):
@@ -447,4 +457,16 @@ def get_pre_key(pre_d, keyword):
                 l = item.split(" ")
                 l.pop(0)
                 return l
-    return None
+    return []
+
+
+def make_index(kind, name):
+    """制作jekyll目录"""
+    path = os.path.join(os.getcwd(), kind)
+    if not os.path.exists(os.path.join(path, name + ".md")):
+        print(os.path.join(path, name + ".md"))
+        with open(os.path.join(path, name + ".md"), "w", encoding="utf8") as f:
+            f.write("---\n")
+            f.write(f"layout: {kind}\n")
+            f.write(f"{kind}: {name}\n")
+            f.write("---\n")

@@ -1,3 +1,0 @@
----
-layout: tags_all
----

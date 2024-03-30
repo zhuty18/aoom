@@ -32,7 +32,9 @@ alive_tags:
 
 nav-head:
 - name: 标签
-  link: /tags
+  link: /tag
+- name: 类别
+  link: /category
 
-password: true
+# password: true
 white: batlantern

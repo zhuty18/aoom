@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+<h1>所有类别</h1>
+
+
+{% for category in site.categories %}
+    <h2><a href="{{ category | first }}">{{ category | first }}</a></h2>
+{% endfor %}

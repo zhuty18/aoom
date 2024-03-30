@@ -16,6 +16,7 @@ from utils import (
     path_of,
     get_predefine,
     get_pre_key,
+    make_index,
 )
 from work_record import WordCounter
 
@@ -34,8 +35,11 @@ def post(filename, counter):
     )
     pre_d = get_predefine(filename)
     tags = get_pre_key(pre_d, "tags")
-    if tags:
-        tags = "\n  - " + "\n  - ".join(tags)
+    tags.insert(0,"FIN" if his.fin else "TBC")
+    for x in tags:
+        make_index("tag", x)
+    tags = "\n  - " + "\n  - ".join(tags)
+    make_index("category", dir_name(path_of(filename)))
 
     target = short_path(filename).replace(".md", "")
     if target.endswith("."):
@@ -49,8 +53,7 @@ title: {name_of(filename)}
 date: {format_time(get_time(his.time), POST_DATE)}
 category: {dir_name(path_of(filename))}
 cat_url: /{short_path(path_of(filename))}
-tags: 
-  - {"FIN" if his.fin else "TBC"}{tags if tags else ""}
+tags: {tags if tags else ""}
 length: {his.length}
 ---
 
@@ -100,4 +103,4 @@ if __name__ == "__main__":
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
     else:
-        post_all(FILE_ROOT, COUNTER, clear=False)
+        post_all(FILE_ROOT, COUNTER)

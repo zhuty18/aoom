@@ -45,6 +45,13 @@
         {% include nav_foot.html %}
     </div>
     {% include passlock.html %}
+    {% if page.no_nav %}
+        <script>
+            document.getElementsByClassName("nav-head")[0].style.display="none"
+            document.getElementsByClassName("nav-foot")[0].style.display="none"
+            document.getElementsByClassName("top")[0].style.height="auto"
+        </script>
+    {% endif %}
 </body>
 
 </html>
