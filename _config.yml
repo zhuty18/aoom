@@ -27,9 +27,6 @@ ad: content_pool
 ad_url: https://weibo.com/6488824497/O1srfjMvV
 ddl: 2024-04-10
 
-alive_tags:
-- BatLantern
-
 nav-head:
 - name: 标签
   link: /tag
