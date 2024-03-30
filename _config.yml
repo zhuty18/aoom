@@ -19,7 +19,7 @@ nav-foot:
   link: /docs
 
 date_format: "%Y. %-m. %-d"
-post_max: 200
+post_max: 500
 
 redirect_back: /docs
 

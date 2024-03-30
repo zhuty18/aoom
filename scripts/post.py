@@ -35,7 +35,7 @@ def post(filename, counter):
     )
     pre_d = get_predefine(filename)
     tags = get_pre_key(pre_d, "tags")
-    tags.insert(0,"FIN" if his.fin else "TBC")
+    tags.insert(0, "FIN" if his.fin else "TBC")
     for x in tags:
         make_index("tag", x)
     tags = "\n  - " + "\n  - ".join(tags)
@@ -104,4 +104,4 @@ if __name__ == "__main__":
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
     else:
-        post_all(FILE_ROOT, COUNTER)
+        post_all(FILE_ROOT, COUNTER,True)

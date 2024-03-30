@@ -1,5 +1,5 @@
 ---
-tag: 黑历史
+tags: 黑历史
 ---
 
 # In the dormitory of the Slytherin Prince
