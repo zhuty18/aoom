@@ -93,7 +93,7 @@ POST_PATH = "_posts/"
 POST_DATE = "%Y-%m-%d"
 POST_TITLE = POST_DATE + "-{title}.md"
 
-POST_MAX = 500
+POST_MAX = 100
 PREVIEW_LENGTH = 150
 
 FIN_TITLE = "## 已完结"

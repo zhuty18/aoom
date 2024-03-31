@@ -28,7 +28,9 @@
                 {% endunless %}
                 {% endif %}
             {% else %}
+                {% unless post.tags contains "黑历史" %}
                 {% include post.html post=post %}
+                {% endunless %} 
             {% endif %}
         {% endfor %}
     </ul>

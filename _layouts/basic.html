@@ -18,9 +18,15 @@
 <body>
     <!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
     <div id="unlock">
+        {% if page.no_nav %}
+        <div class="top" style="height: auto;">
+        {% else %}
         <div class="top">
+        {% endif %}
             <header class="page-header" role="banner">
+                {% unless page.no_nav %}
                 {% include nav_head.html %}
+            {% endunless %}
                 <div class="project-head">
                 <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
                 <h2 class="project-tagline">{{ page.description | default: site.description | default:
@@ -44,14 +50,9 @@
         </div>
         {% include nav_foot.html %}
     </div>
+    {% unless page.no_nav %}
     {% include passlock.html %}
-    {% if page.no_nav %}
-        <script>
-            document.getElementsByClassName("nav-head")[0].style.display="none"
-            document.getElementsByClassName("nav-foot")[0].style.display="none"
-            document.getElementsByClassName("top")[0].style.height="auto"
-        </script>
-    {% endif %}
+    {% endunless %}
 </body>
 
 </html>
