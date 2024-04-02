@@ -1,5 +1,5 @@
 <div class="ad" onclick="onShowChange()">
-    我的<b>蝙绿本</b>在做内容投票，点击显示详情
+    我的<b>蝙绿本</b>在做内容投票，点击<span id="action">展开详情</span>
     <div id="{{ site.ad }}" class="weibo-ad">
         <span class="head"><img src="/data/headshot.jpg"></span>
         <div class="ad-content">
@@ -15,9 +15,16 @@
         </div>
     </div>
     <script>
-        var ad = document.getElementById("{{ site.ad }}")
         function onShowChange () {
-            ad.style.height = ad.style.height === "100%" ? "0px" : "100%"
+            var ad = document.getElementById("{{ site.ad }}")
+            var con = document.getElementById("action")
+            if (ad.style.height === "100%") {
+                ad.style.height = "0px"
+                con.innerText = "收起介绍"
+            } else {
+                ad.style.height = "100%"
+                con.innerText = "展开详情"
+            }
         }
     </script>
 </div>
