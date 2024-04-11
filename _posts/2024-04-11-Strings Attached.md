@@ -2,12 +2,12 @@
 layout: forward
 target: /docs/translation/BruceHal/Strings Attached
 title: Strings Attached
-date: 2024-03-26
+date: 2024-04-11
 category: 翻译-蝙绿蝙
 cat_url: /docs/translation/BruceHal
 tags: 
   - TBC
-length: 36915
+length: 38481
 ---
 
 一切始于他无法自持地盯着杰森。

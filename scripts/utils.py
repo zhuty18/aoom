@@ -258,11 +258,11 @@ def sub_path(path):
     return tmp.split("/")[-1]
 
 
-def short_path(path: str) -> str:
+def short_path(path: str, root=os.getcwd()) -> str:
     """文件名缩短至根目录"""
     return (
         path.replace("/", "\\")
-        .replace(os.getcwd(), "")
+        .replace(root.replace("/", "\\"), "")
         .replace("\\", "/")
         .strip("/")
     )
@@ -270,13 +270,7 @@ def short_path(path: str) -> str:
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
-    path = os.path.join(os.getcwd(), path)
-    return (
-        path.replace("/", "\\")
-        .replace(doc_dir(), "")
-        .replace("\\", "/")
-        .strip("/")
-    )
+    return short_path(path, doc_dir())
 
 
 def path_of(path):

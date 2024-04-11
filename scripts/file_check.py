@@ -12,6 +12,7 @@ import sys
 from utils import line_length, search_by_keyword
 from name_translate import name_tsl
 from web_make import to_html
+from personal import GENERATE_WEB
 
 
 def count_file(filename):
@@ -55,7 +56,7 @@ class FileChecker:
         if self.result is not None:
             self.tsl_result(mode)
             self.count_result()
-            if html:
+            if html and GENERATE_WEB:
                 self.html_result()
 
     def tsl_result(self, mode):
