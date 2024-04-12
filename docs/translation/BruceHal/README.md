@@ -4,7 +4,7 @@
 
 |名称|字数|修改时间|
 |:-|:-|:-|
-|[Strings Attached](Strings Attached.md)|38481|24.04.11 19:01|
+|[Strings Attached](Strings Attached.md)|40918|24.04.12 19:02|
 
 ## 已完结
 
