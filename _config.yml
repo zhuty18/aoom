@@ -23,7 +23,7 @@ post_max: 500
 
 redirect_back: /docs
 
-ad: content_pool
+# ad: content_pool
 ad_url: https://weibo.com/6193467293/5019016735492109
 ddl: 2024-04-17
 
