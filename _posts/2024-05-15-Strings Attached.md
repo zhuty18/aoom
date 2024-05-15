@@ -8,7 +8,7 @@ cat_url: /docs/translation/BruceHal
 tags: 
   - TBC
   - BatLantern
-length: 43671
+length: 43986
 ---
 
 一切始于他无法自持地盯着杰森。
