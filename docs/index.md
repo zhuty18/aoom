@@ -1,7 +1,14 @@
 ---
 layout: docs
 update: 
+  - Strings Attached
 ---
+
+# 最近一次更新的内容
+
+|文件名|上次提交时字数|本次提交字数|字数变化|
+|:-|:-|:-|:-|
+|[Strings Attached](translation/BruceHal/Strings Attached.md)|41740|43671|1931|
 
 # 所有目录
 

@@ -14,7 +14,7 @@ Neal Caffrey相亲记	900	20.12.12 09:51	False
 Q.E.D.	8291	23.09.20 03:01	True
 Soliloquy	9061	20.12.12 09:51	True
 Stop Me If You've Heard This One Before	14476	21.12.26 21:10	True
-Strings Attached	41740	24.04.15 18:25	False
+Strings Attached	43671	24.05.15 22:50	False
 Tremor	3962	20.12.12 09:51	False
 Wayne庄园冒险记	7119	21.10.07 22:44	True
 Wayne庄园的电影之夜	5163	21.02.22 21:34	False
