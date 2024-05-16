@@ -8,7 +8,7 @@ update:
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[Strings Attached](translation/BruceHal/Strings Attached.md)|43671|43986|315|
+|[Strings Attached](translation/BruceHal/Strings Attached.md)|43986|46231|2245|
 
 # 所有目录
 
