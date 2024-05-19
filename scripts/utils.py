@@ -83,7 +83,6 @@ def file_length(filename: str) -> int:
 def file_fin(filename: str) -> bool:
     """完成情况检测"""
     if path_fin(path_of(filename)):
-        print(filename)
         return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
@@ -273,7 +272,9 @@ def short_path(path: str, root=os.getcwd()) -> str:
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
-    return short_path(path, doc_dir())
+    res = short_path(path, doc_dir())
+    res = short_path(res, FILE_ROOT)
+    return res
 
 
 def path_of(path):

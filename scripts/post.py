@@ -4,7 +4,7 @@
 """
 import sys
 import os
-from personal import POST_PATH, POST_TITLE, POST_DATE, FILE_ROOT, POST_MAX
+from personal import POST_PATH, POST_DATE, FILE_ROOT, POST_MAX
 from utils import (
     search_by_keyword,
     name_of,
@@ -17,6 +17,7 @@ from utils import (
     get_predefine,
     get_pre_key,
     make_index,
+    doc_path
 )
 from work_record import WordCounter
 
