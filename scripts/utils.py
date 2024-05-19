@@ -82,6 +82,9 @@ def file_length(filename: str) -> int:
 
 def file_fin(filename: str) -> bool:
     """完成情况检测"""
+    if path_fin(path_of(filename)):
+        print(filename)
+        return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
         ends = {"END", "完结", "Q.E.D."}
@@ -309,6 +312,7 @@ def dir_name(i: str):
         "translation/BruceHal": "翻译-蝙绿蝙",
         "": "所有目录",
         "batlantern": "蝙绿官糖",
+        "blob": "短篇",
     }
     i = doc_path(i).strip()
     return dir_names.get(i, None)
@@ -414,7 +418,7 @@ def auto_hide():
 
 def path_fin(path):
     """路径是否默认为完结"""
-    fin_path = {"batlantern": True}
+    fin_path = {"batlantern": True, "blob": True}
     return fin_path.get(doc_path(path), False)
 
 

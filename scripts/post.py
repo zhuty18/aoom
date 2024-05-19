@@ -30,9 +30,7 @@ def post(filename, counter):
     for it in os.listdir(POST_PATH):
         if name_of(filename) in it:
             os.remove(os.path.join(POST_PATH, it))
-    post_name = format_time(get_time(his.time), POST_TITLE).replace(
-        "{title}", his.name
-    )
+
     pre_d = get_predefine(filename)
     tags = get_pre_key(pre_d, "tags")
     tags.insert(0, "FIN" if his.fin else "TBC")
@@ -42,16 +40,24 @@ def post(filename, counter):
     if dir_name(path_of(filename)):
         make_index("category", dir_name(path_of(filename)))
 
+    try:
+        date = get_pre_key(pre_d, "date")[0]
+    except IndexError:
+        date = format_time(get_time(his.time), POST_DATE)
+
     target = short_path(filename).replace(".md", "")
     if target.endswith("."):
         target = target[:-1] + "/html"
+
+    post_name = f"{date}-{his.name}.md"
+
     with open(os.path.join(POST_PATH, post_name), "w", encoding="utf8") as f:
         f.write(
             f"""---
 layout: forward
 target: /{target}
 title: {name_of(filename)}
-date: {format_time(get_time(his.time), POST_DATE)}
+date: {date}
 category: {dir_name(path_of(filename))}
 cat_url: /{short_path(path_of(filename))}
 tags: {tags if tags else ""}
@@ -104,4 +110,4 @@ if __name__ == "__main__":
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
     else:
-        post_all(FILE_ROOT, COUNTER,True)
+        post_all(FILE_ROOT, COUNTER, True)

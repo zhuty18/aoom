@@ -17,7 +17,6 @@ from utils import (
     short_path,
     doc_path,
     auto_hide,
-    path_fin,
     doc_dir,
 )
 import file_check
@@ -33,7 +32,7 @@ from personal import (
     GENERATE_WEB,
     FIN_TITLE,
     TBC_TITLE,
-    FILE_ROOT
+    FILE_ROOT,
 )
 import web_make
 
@@ -64,7 +63,8 @@ class FileRecord:
 
     def info(self):
         """信息条目"""
-        return f"|[{self.name}]({self.name}.md)|{self.length}|{self.time}|"
+        link = self.name.replace(" ", "%20")
+        return f"|[{self.name}]({link}.md)|{self.length}|{self.time}|"
 
     def merge(self, other):
         """数据融合"""
@@ -176,7 +176,9 @@ class WordCounter:
                     continue
                 else:
                     file_check.count_file(i)
-                link = doc_path(os.path.join(os.getcwd(), i))
+                link = doc_path(os.path.join(os.getcwd(), i)).replace(
+                    " ", "%20"
+                )
                 info.append(name)
                 log.append(
                     f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|"
@@ -253,7 +255,7 @@ class IndexBuilder:
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
-                if t.fin or path_fin(path):
+                if t.fin:
                     self.fin.append(t)
                 else:
                     self.tbc.append(t)

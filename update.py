@@ -35,16 +35,64 @@ if __name__ == "__main__":
     FILE_DIR = os.path.join(os.getcwd(), FILE_ROOT)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-c", "--autocommit", type=bool, default=GIT_COMMIT, nargs="?", const=not GIT_COMMIT)
+    parser.add_argument(
+        "-c",
+        "--autocommit",
+        type=bool,
+        default=GIT_COMMIT,
+        nargs="?",
+        const=not GIT_COMMIT,
+    )
     parser.add_argument("-m", "--message", default=DEFAULT_MESSAGE)
-    parser.add_argument("-s", "--statistic", type=bool, default=COUNT_WORD, nargs="?", const=not COUNT_WORD)
-    parser.add_argument("-word", "--word_cloud", type=str, default=WORD_CLOUD_TYPE)
-    parser.add_argument("-o", "--sort_order", type=str, default=DEFAULT_ORDER, nargs="?", const=ALT_ORDER)
-    parser.add_argument("-push", "--push", type=bool, default=GIT_PUSH, nargs="?", const=not GIT_PUSH)
-    parser.add_argument("-page", "--pages", type=bool, default=GENERATE_WEB, nargs="?", const=not GENERATE_WEB)
-    parser.add_argument("-a", "--add", type=bool, default=GIT_ADD, nargs="?", const=not GIT_ADD)
-    parser.add_argument("-w", "--web", type=bool, default=GIT_WEB, nargs="?", const=not GIT_WEB)
-    parser.add_argument("-post", "--post", type=bool, default=POST_CHANGE, nargs="?", const=not POST_CHANGE)
+    parser.add_argument(
+        "-s",
+        "--statistic",
+        type=bool,
+        default=COUNT_WORD,
+        nargs="?",
+        const=not COUNT_WORD,
+    )
+    parser.add_argument(
+        "-word", "--word_cloud", type=str, default=WORD_CLOUD_TYPE
+    )
+    parser.add_argument(
+        "-o",
+        "--sort_order",
+        type=str,
+        default=DEFAULT_ORDER,
+        nargs="?",
+        const=ALT_ORDER,
+    )
+    parser.add_argument(
+        "-push",
+        "--push",
+        type=bool,
+        default=GIT_PUSH,
+        nargs="?",
+        const=not GIT_PUSH,
+    )
+    parser.add_argument(
+        "-page",
+        "--pages",
+        type=bool,
+        default=GENERATE_WEB,
+        nargs="?",
+        const=not GENERATE_WEB,
+    )
+    parser.add_argument(
+        "-a", "--add", type=bool, default=GIT_ADD, nargs="?", const=not GIT_ADD
+    )
+    parser.add_argument(
+        "-w", "--web", type=bool, default=GIT_WEB, nargs="?", const=not GIT_WEB
+    )
+    parser.add_argument(
+        "-post",
+        "--post",
+        type=bool,
+        default=POST_CHANGE,
+        nargs="?",
+        const=not POST_CHANGE,
+    )
     args = parser.parse_args()
 
     # 格式化所有文档
@@ -98,4 +146,6 @@ if __name__ == "__main__":
     if args.word_cloud != "none":
         import word_cloud_make
 
-        word_cloud_make.WordPic(path=FILE_DIR, job=WORD_CLOUD_JOB, file=[args.word_cloud])
+        word_cloud_make.WordPic(
+            path=FILE_DIR, job=WORD_CLOUD_JOB, file=[args.word_cloud]
+        )
