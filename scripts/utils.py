@@ -397,19 +397,21 @@ def auto_hide():
             ori = f.read()
     except FileNotFoundError:
         ori = f"""{{
-    "files.exclude":{{
+    "files.exclude": {{
         {FIN_HEAD}
         {FIN_TEM}
         {FIN_TAIL}
     }}
 }}"""
+        if not os.path.exists(".vscode"):
+            os.mkdir(".vscode")
         with open(".vscode/settings.json", "w", encoding="utf8") as f:
             f.write(ori)
     s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
     s1 = re.findall(re.compile(rf"{FIN_HEAD}\n(.*?){FIN_TAIL}", re.S), s0)[0]
 
-    s2 = '": true,\n"'.join(finished)
-    s2 = f'"{s2}": true,\n'
+    s2 = '": true,\n        "'.join(finished)
+    s2 = f'        "{s2}": true,\n        '
 
     if finished:
         ori = ori.replace(s1, s2)
