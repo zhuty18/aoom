@@ -16,8 +16,7 @@ from utils import (
     path_of,
     get_predefine,
     get_pre_key,
-    make_index,
-    doc_path
+    make_index
 )
 from work_record import WordCounter
 

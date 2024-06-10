@@ -11,6 +11,7 @@ import sys
 
 if __name__ == "__main__":
     sys.path.append("./scripts")
+    os.system("git config --global core.quotepath false")
 
     from personal import (
         GIT_ADD,

@@ -17,6 +17,7 @@ from personal import (
     PREVIEW_LENGTH,
     INDEX_NAME,
     README_NAME,
+    DIR_NAMES,
 )
 
 
@@ -291,32 +292,8 @@ def name_of(path):
 
 def dir_name(i: str):
     """路径名"""
-    dir_names = {
-        "DC": "DC",
-        "DM": "数码宝贝",
-        "GTM": "银魂",
-        "FT": "童话系列（欧美）",
-        "DMC": "鬼泣",
-        "M": "漫威",
-        "O": "原创",
-        "Others": "其他",
-        "QZ": "全职",
-        "SC": "影评",
-        "SWY": "食物语",
-        "translation": "翻译",
-        "X": "X战警",
-        "XJ": "仙剑",
-        "YYS": "阴阳师",
-        "YWJ": "曳尾记",
-        "O/ON": "原创小说",
-        "translation/batfamily": "翻译-蝙家",
-        "translation/BruceHal": "翻译-蝙绿蝙",
-        "": "所有目录",
-        "batlantern": "蝙绿官糖",
-        "blob": "短篇",
-    }
     i = doc_path(i).strip()
-    return dir_names.get(i, None)
+    return DIR_NAMES.get(i, None)
 
 
 def dirs(path: str = doc_dir()):

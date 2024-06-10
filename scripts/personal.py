@@ -98,3 +98,29 @@ PREVIEW_LENGTH = 150
 
 FIN_TITLE = "## 已完结"
 TBC_TITLE = "## 未完结"
+
+# 文件夹名
+DIR_NAMES = {
+    "DC": "DC",
+    "DM": "数码宝贝",
+    "GTM": "银魂",
+    "FT": "童话系列（欧美）",
+    "DMC": "鬼泣",
+    "M": "漫威",
+    "ON/O": "其他原创",
+    "Others": "其他",
+    "QZ": "全职",
+    "SC": "影评",
+    "SWY": "食物语",
+    "translation": "翻译",
+    "X": "X战警",
+    "XJ": "仙剑",
+    "YYS": "阴阳师",
+    "YWJ": "曳尾记",
+    "ON": "原创小说",
+    "translation/batfamily": "翻译-蝙家",
+    "translation/BruceHal": "翻译-蝙绿蝙",
+    "": "所有目录",
+    "batlantern": "蝙绿官糖",
+    "blob": "短篇",
+}
