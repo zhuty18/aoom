@@ -347,11 +347,22 @@ def get_pre_key(pre_d, keyword):
 
 
 def make_index(kind, name):
-    """制作jekyll目录"""
+    """制作jekyll索引"""
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(os.path.join(path, name + ".md")):
         with open(os.path.join(path, name + ".md"), "w", encoding="utf8") as f:
             f.write("---\n")
             f.write(f"layout: {kind}\n")
             f.write(f"{kind}: {name}\n")
+            f.write("---\n")
+
+
+def make_index_dir(kind):
+    """制作jekyll索引路径"""
+    path = os.path.join(os.getcwd(), kind)
+    if not os.path.exists(path):
+        os.mkdir(path)
+        with open(os.path.join(path, INDEX_NAME), "w", encoding="utf8") as f:
+            f.write("---\n")
+            f.write(f"layout: {kind}_all\n")
             f.write("---\n")

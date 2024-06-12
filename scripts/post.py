@@ -17,6 +17,7 @@ from utils import (
     get_predefine,
     get_pre_key,
     make_index,
+    make_index_dir,
 )
 from work_record import WordCounter
 
@@ -108,10 +109,8 @@ if __name__ == "__main__":
     COUNTER = None
     if not os.path.exists(POST_PATH):
         os.mkdir(POST_PATH)
-    if not os.path.exists("tag"):
-        os.mkdir("tag")
-    if not os.path.exists("category"):
-        os.mkdir("category")
+    make_index_dir("tag")
+    make_index_dir("category")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         post_all(FILE_ROOT, COUNTER, True)
