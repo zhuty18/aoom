@@ -39,6 +39,8 @@ jobs:
       # You can test your matrix by printing the current Python version
       - name: Format
         run: python scripts/online_format.py
+      - name: Post
+        run: python scripts/post.py ONLINE
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Build with Jekyll

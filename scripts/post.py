@@ -4,7 +4,7 @@
 """
 import sys
 import os
-from personal import POST_PATH, POST_DATE, FILE_ROOT, POST_MAX
+from personal import POST_PATH, POST_DATE, FILE_ROOT, POST_MAX, INDEX_NAME
 from utils import (
     search_by_keyword,
     name_of,
@@ -16,7 +16,7 @@ from utils import (
     path_of,
     get_predefine,
     get_pre_key,
-    make_index
+    make_index,
 )
 from work_record import WordCounter
 
@@ -106,7 +106,20 @@ def post_all(path, counter, allow_tbc=False, clear=True):
 
 if __name__ == "__main__":
     COUNTER = None
-    if len(sys.argv) > 1:
+    if not os.path.exists(POST_PATH):
+        os.mkdir(POST_PATH)
+    if not os.path.exists("tag"):
+        os.mkdir("tag")
+    if not os.path.exists("category"):
+        os.mkdir("category")
+
+    if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
+        post_all(FILE_ROOT, COUNTER, True)
+        pre_d = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
+        change = get_pre_key(pre_d, "update")
+        for i in change:
+            post(search_by_keyword(i)[0], COUNTER)
+    elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
     else:

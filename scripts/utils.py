@@ -429,13 +429,16 @@ def get_predefine(filename):
 
 def get_pre_key(pre_d, keyword):
     """从预定义头中读取关键字参数"""
+    l = []
     if pre_d and keyword in pre_d:
         for item in pre_d.split("\n"):
             if keyword in item:
+                item = item.strip()
                 l = item.split(" ")
                 l.pop(0)
-                return l
-    return []
+            elif item.startswith("  - "):
+                l.append(item.strip("  - "))
+    return l
 
 
 def make_index(kind, name):
