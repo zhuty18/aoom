@@ -115,8 +115,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         post_all(FILE_ROOT, COUNTER, True)
-        pre_d = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
-        change = get_pre_key(pre_d, "update")
+        defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
+        change = get_pre_key(defs, "update")
         for i in change:
             post(search_by_keyword(i)[0], COUNTER)
     elif len(sys.argv) > 1:

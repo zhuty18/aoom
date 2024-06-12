@@ -19,6 +19,7 @@ from personal import (
     README_NAME,
     DIR_NAMES,
 )
+from name_def import names
 
 
 def format_time(timestamp: float = COMMIT_TIME, time_format=TIME_FORMAT) -> str:
@@ -100,102 +101,6 @@ def match_keys(keys: list, name: str) -> bool:
         if i in name:
             return True
     return False
-
-
-nick_names: list[tuple[str, str]] = [
-    # nick names
-    ("Dickie-bird", "迪基鸟"),
-    ("Diana", "戴安娜"),
-    ("Jay", "杰"),
-    ("Babs", "芭布斯"),
-    ("Dante", "但丁"),
-    ("W.E.", "韦恩集团"),
-    ("Mike", "迈克"),
-    ("MPD", "大都会警局"),
-    ("CCPD", "中心城警局"),
-    ("GCPD", "哥谭警局"),
-    ("Darkseid", "达克赛德"),
-    ("Atrocitus", "阿托希塔斯"),
-    ("OA", "欧阿"),
-    ("Rest in peace", "愿你安息"),
-    ("Laira", "莱拉"),
-    ("Talia", "塔利亚"),
-    ("Kory", "科莉"),
-    ("Donna", "唐娜"),
-    ("Bob", "鲍勃"),
-    ("Spoiler", "搅局者"),
-    ("Al Ghul", "奥·古"),
-    ("Sasha", "萨莎"),
-    ("Will", "威尔"),
-    ("Ganthet", "甘瑟"),
-    ("Sayd", "赛德"),
-    ("Krona", "科罗纳"),
-    ("Kilowog", "基洛沃格"),
-    ("Howard", "霍华德"),
-    ("Jane", "简"),
-    ("Sue", "苏"),
-    ("Clara", "克拉拉"),
-    ("Susan", "苏珊"),
-]
-
-names: list[tuple[str, str]] = [
-    # all people names
-    ("Richard Dick Grayson", "理查德·迪克·格雷森"),
-    ("Stephanie Steph Brown", "史蒂芬妮·史蒂·布朗"),
-    ("Roy Harper", "罗伊·哈珀"),
-    ("Cassandra Cassie Sandsmark", "卡珊德拉·凯西·珊德马克"),
-    ("Damian Dami Wayne", "达米安·达米·韦恩"),
-    ("Bruce Wayne", "布鲁斯·韦恩"),
-    ("Thomas Wayne", "托马斯·韦恩"),
-    ("Martha Wayne", "玛莎·韦恩"),
-    ("Cassandra Cass Cain", "卡珊德拉·卡珊·该隐"),
-    ("Jason Todd", "杰森·陶德"),
-    ("Clark Kent", "克拉克·肯特"),
-    ("Alfred Pennyworth", "阿尔弗雷德·潘尼沃斯"),
-    ("Harold Hal Jordan", "哈罗德·哈尔·乔丹"),
-    ("Timothy Tim Drake", "提摩西·提姆·德雷克"),
-    ("Barry Allen", "巴里·艾伦"),
-    ("Bart Allen", "巴特·艾伦"),
-    ("Wally West", "沃利·韦斯特"),
-    ("Jessica Jess Cruz", "杰西卡·杰西·克鲁兹"),
-    ("John Stewart", "约翰·斯图尔特"),
-    ("Oliver Ollie Queen", "奥利弗·奥利·奎恩"),
-    ("Dinah Lance", "戴娜·兰斯"),
-    ("Lian Harper", "莉安·哈珀"),
-    ("Lucius Fox", "卢修斯·福克斯"),
-    ("Kyle Rayner", "凯尔·雷纳"),
-    ("Guy Gardner", "盖·加德纳"),
-    ("Simon Baz", "西蒙·巴兹"),
-    ("Conner Kent", "康纳·肯特"),
-    ("Jonathan Jon Kent", "乔纳森·乔·肯特"),
-    ("Connor Hawke", "康纳·霍克"),
-    ("Perry White", "佩里·怀特"),
-    ("Lois Lane", "露易丝·莲恩"),
-    ("Matches Malone", "迈彻斯·马龙"),
-    ("Carmine Falcone", "卡迈恩·法尔科内"),
-    ("Martin Jordan", "马丁·乔丹"),
-    ("Jessica Jordan", "杰西卡·乔丹"),
-    ("Jack Jordan", "杰克·乔丹"),
-    ("Jim Jordan", "吉姆·乔丹"),
-    ("Barbara Gordon", "芭芭拉·戈登"),
-    ("Jim Gordon", "吉姆·戈登"),
-    ("Harvey Dent", "哈维·邓特"),
-    ("Lex Luthor", "莱克斯·卢瑟"),
-    ("Jonathan “Herc” Stone", "乔纳森·“赫克”·斯通"),
-    ("Jonathan Herc Stone", "乔纳森·赫克·斯通"),
-    ("Thaal Sinestro", "瑟尔·赛尼斯托"),
-    ("Barb Minerva", "芭布·密涅瓦"),
-    ("Vicki Vale", "维姬·维尔"),
-    ("Kate Kane", "凯特·凯恩"),
-    ("Thomas Elliot", "托马斯·埃利奥特"),
-    ("Oswald Cobblepot", "奥斯瓦尔德·科波特"),
-    ("Roman Sionis", "罗曼·西恩尼斯"),
-    ("Carol Ferris", "卡萝·费里斯"),
-    ("Abin Sur", "阿宾·苏"),
-    ("Amon Sur", "阿蒙·苏"),
-    ("Zatanna Zatara", "扎塔娜·扎塔拉"),
-    ("Jason Blood", "杰森·布拉德"),
-]
 
 
 def cut_name(name: str, index: list[int], cutter: str) -> str:

@@ -5,7 +5,6 @@
 import os
 from sys import argv
 from utils import (
-    nick_names,
     full_names,
     short_names,
     name_pieces,
@@ -13,6 +12,7 @@ from utils import (
     search_by_keyword,
     doc_dir,
 )
+from name_def import nick_names
 
 
 def translation_dir(mode):
