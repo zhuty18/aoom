@@ -147,13 +147,14 @@ h2 a {
     font-size: 1rem;
 }
 .nav-head-tail {
-    width: 1.5rem;
+    margin-right: auto;
     float: right;
 }
 
 .nav-head-item a {
-    color: antiquewhite;
+    color: white;
     text-decoration: none;
+    margin: 0 0.5rem 0 0.5rem;
 }
 
 .project-head {
