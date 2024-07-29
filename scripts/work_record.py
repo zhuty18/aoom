@@ -139,6 +139,7 @@ class WordCounter:
     def get_files(self):
         """读取变更的文件目录"""
         os.environ["PYTHONIOENCODING"] = "utf8"
+        os.system("git add .")
         with subprocess.Popen(
             ["git", "status", "-s"], stdout=subprocess.PIPE
         ) as pipe:
@@ -146,10 +147,7 @@ class WordCounter:
         output = output.decode("utf8")
         for i in output.split("\n"):
             if i:
-                i = i.split(" ")
-                i.pop(0)
-                i.pop(0)
-                i = " ".join(i).strip('"')
+                i = i.split(" ")[-1]
             if (
                 INDEX_NAME not in i
                 and README_NAME not in i

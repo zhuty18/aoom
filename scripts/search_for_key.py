@@ -4,7 +4,7 @@
 
 import os
 import sys
-from utils import doc_dir
+from utils import doc_dir, short_path
 
 
 class KeySearcher:
@@ -29,8 +29,7 @@ class KeySearcher:
         """在文件内检索"""
         with open(file, "r", encoding="utf-8") as f:
             have = False
-            title = file.replace(doc_dir() + "\\", "")
-            title = title.replace("\\", "/")
+            title = short_path(file)
             for i in f.readlines():
                 if self.key in i:
                     if not have:
