@@ -21,6 +21,8 @@ from utils import (
 )
 from work_record import WordCounter
 
+LOG_POST = False
+
 
 def post(filename, counter):
     """发布单个文件"""
@@ -68,6 +70,8 @@ length: {his.length}
 {preview(filename)}
 """
         )
+    if LOG_POST:
+        print(f"{name_of(filename)} posted.")
 
 
 def clear_post(post_max=POST_MAX):
@@ -79,6 +83,8 @@ def clear_post(post_max=POST_MAX):
         l = l[post_max:]
         for item in l:
             os.remove(os.path.join(POST_PATH, item))
+            if LOG_POST:
+                print(f"{name_of(item)} removed.")
 
 
 def post_change(counter):
@@ -113,6 +119,7 @@ if __name__ == "__main__":
     make_index_dir("category")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
+        LOG_POST = True
         post_all(FILE_ROOT, COUNTER, True)
         defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
         change = get_pre_key(defs, "update")
