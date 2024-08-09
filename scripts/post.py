@@ -70,8 +70,6 @@ length: {his.length}
 {preview(filename)}
 """
         )
-    if LOG_POST:
-        print(f"{name_of(filename)} posted.")
 
 
 def clear_post(post_max=POST_MAX):
@@ -83,8 +81,10 @@ def clear_post(post_max=POST_MAX):
         l = l[post_max:]
         for item in l:
             os.remove(os.path.join(POST_PATH, item))
-            if LOG_POST:
-                print(f"{name_of(item)} removed.")
+    if LOG_POST:
+        l = os.listdir(POST_PATH)
+        l.sort()
+        print("\n".join(l))
 
 
 def post_change(counter):
