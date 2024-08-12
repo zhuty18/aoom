@@ -27,7 +27,7 @@ from personal import (
     ARCHIVE_UPDATE,
     POST_PATH,
     INDEX_NAME,
-    README_NAME,
+    INDEX_FULL_NAME,
     POST_CHANGE,
     GENERATE_WEB,
     FIN_TITLE,
@@ -150,7 +150,7 @@ class WordCounter:
                 i = i.split(" ")[-1]
             if (
                 INDEX_NAME not in i
-                and README_NAME not in i
+                and INDEX_FULL_NAME not in i
                 and i.endswith(".md")
                 and FILE_ROOT in i
                 and POST_PATH not in i
@@ -247,7 +247,7 @@ class IndexBuilder:
         for i in os.listdir(path):
             if (
                 i.endswith(".md")
-                and not i.startswith(README_NAME)
+                and not i.startswith(INDEX_FULL_NAME)
                 and not i.startswith(INDEX_NAME)
             ):
                 if not i[0:-3] in counter.history.keys():
@@ -283,7 +283,9 @@ class IndexBuilder:
         if len(self.tbc) + len(self.fin) > 0:
             head = f"# {dir_name(path)}\n\n"
             with open(f"{path}/{INDEX_NAME}", "w", encoding="utf-8") as fi:
-                with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as fr:
+                with open(
+                    f"{path}/{INDEX_FULL_NAME}", "w", encoding="utf-8"
+                ) as fr:
                     fi.write(head)
                     fr.write(head)
                     if self.tbc:
@@ -291,7 +293,7 @@ class IndexBuilder:
                     fi.write(self.gen_content(self.fin, FIN_TITLE))
                     fr.write(self.gen_content(self.fin, FIN_TITLE))
         else:
-            with open(f"{path}/{README_NAME}", "w", encoding="utf-8") as fi:
+            with open(f"{path}/{INDEX_NAME}", "w", encoding="utf-8") as fi:
                 fi.write(dirs(path).strip() + "\n")
 
 

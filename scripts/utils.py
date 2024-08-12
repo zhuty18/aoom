@@ -16,7 +16,7 @@ from personal import (
     FILE_ROOT,
     PREVIEW_LENGTH,
     INDEX_NAME,
-    README_NAME,
+    INDEX_FULL_NAME,
     DIR_NAMES,
 )
 from name_def import names
@@ -221,7 +221,7 @@ def dirs(path: str = doc_dir()):
 
 def html_head(title: str) -> str:
     """网页头数据"""
-    if title == name_of(README_NAME) or title == name_of(INDEX_NAME):
+    if title == name_of(INDEX_FULL_NAME) or title == name_of(INDEX_NAME):
         title = WEB_NAME
     return f"""<!DOCTYPE html>
 <head>
