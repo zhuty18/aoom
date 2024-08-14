@@ -17,11 +17,7 @@
 
 <body>
     <!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
-    {% if page.no_nav %}
-    <div id="unlock" style="height: auto;">
-    {% else %}
     <div id="unlock">
-    {% endif %}
         <header class="page-header" role="banner">
             <div class="project-head">
             <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
@@ -49,8 +45,8 @@
     </div>
     {% unless page.no_nav %}
     {% include passlock.html %}
-    {% endunless %}
     {% include nav_foot.html %}
+    {% endunless %}
 </body>
 
 </html>
