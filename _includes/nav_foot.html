@@ -13,7 +13,9 @@
         </script>
     </div>
         {% else %}
-    <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+    <div>
+        <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+    </div>
         {% endif %}
     {% endfor %}
 </div>
