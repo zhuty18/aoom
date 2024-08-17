@@ -18,6 +18,7 @@ from utils import (
     doc_path,
     auto_hide,
     doc_dir,
+    path_of,
 )
 import file_check
 from personal import (
@@ -155,7 +156,7 @@ class WordCounter:
                 and FILE_ROOT in i
                 and POST_PATH not in i
             ):
-                if os.path.exists(i):
+                if os.path.exists(i) and dir_name(path_of(i)):
                     self.changes.append(i)
 
     def update_result(self):
