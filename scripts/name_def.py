@@ -32,6 +32,9 @@ nick_names: list[tuple[str, str]] = [
     ("Sue", "苏"),
     ("Clara", "克拉拉"),
     ("Susan", "苏珊"),
+    ("Raven", "渡鸦"),
+    ("Victor", "维克多"),
+    ("Zeta", "泽塔"),
 ]
 
 names: list[tuple[str, str]] = [
