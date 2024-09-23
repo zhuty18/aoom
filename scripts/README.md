@@ -119,3 +119,9 @@
 `python scripts/family_name.py`
 
 生成一个随机中文姓氏
+
+## 导出为$\LaTeX$
+
+`python scripts/file_to_latex.py [keyword] <depth>`
+
+深度为一级标题对应的$\LaTeX$标题，默认为0（chapter）。

@@ -36,7 +36,8 @@ def post(filename, counter):
 
     pre_d = get_predefine(filename)
     tags = get_pre_key(pre_d, "tags")
-    tags.insert(0, "FIN" if his.fin else "TBC")
+    if "FIN" not in tags:
+        tags.insert(0, "FIN" if his.fin else "TBC")
     for x in tags:
         make_index("tag", x)
     tags = "\n  - " + "\n  - ".join(tags)
