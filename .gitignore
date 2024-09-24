@@ -5,3 +5,4 @@ __pycache__
 data/change.txt
 _site
 .sass-cache
+*.tex
