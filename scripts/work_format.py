@@ -30,7 +30,7 @@ def format_blob(filename):
     path = filename.split("\\")
     name = path.pop(-1)
     new_name = name.split(" ")
-    date=new_name.pop(0)
+    date = new_name.pop(0)
     new_name = " ".join(new_name)
     new_name = new_name.replace(".txt", ".md")
     title = new_name.replace(".md", "")
@@ -53,8 +53,8 @@ def format_all(path):
         subdir = os.path.join(path, i)
         if os.path.isdir(subdir) and not "/." in subdir:
             format_all(subdir)
-        # elif subdir.__contains__("README"):
-        #     pass
+        elif "教程" in subdir:
+            pass
         elif "blob" in subdir:
             format_blob(subdir)
         elif (

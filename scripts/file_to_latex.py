@@ -29,7 +29,6 @@ class LatexConverter:
         for i in self.result:
             with open(i, "r", encoding="utf8") as f:
                 content = f.read()
-            pass_line = False
             with open(i.replace(".md", ".tex"), "w", encoding="utf8") as f:
                 f.write("\\documentclass[../main]{subfiles}" + "\n\n")
                 f.write("\\begin{document}" + "\n\n")
@@ -55,7 +54,7 @@ class LatexConverter:
 
 
 if __name__ == "__main__":
-    depth = 0
+    DEPTH = 0
     if len(sys.argv) > 2:
-        depth = int(sys.argv[2])
-    LatexConverter(sys.argv[1], depth)
+        DEPTH = int(sys.argv[2])
+    LatexConverter(sys.argv[1], DEPTH)
