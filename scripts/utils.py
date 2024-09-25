@@ -311,7 +311,13 @@ def preview(filename):
     """获取文件预览"""
     pre = ""
     with open(filename, "r", encoding="utf8") as f:
+        yaml = False
         for i in f.readlines():
+            if i == "---\n":
+                yaml = not yaml
+                continue
+            if yaml:
+                continue
             if i.startswith("#"):
                 continue
             pre += i
@@ -327,7 +333,7 @@ def get_predefine(filename):
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
         if content.startswith("---"):
-            pre_d = re.findall(re.compile(r"---\n(.*)\n---", re.S), content)[0]
+            pre_d = re.findall(re.compile(r"---\n(.*)\n---\n", re.S), content)[0]
             return pre_d
     return None
 

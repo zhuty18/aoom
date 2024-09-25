@@ -60,7 +60,7 @@ def post(filename, counter):
             f"""---
 layout: forward
 target: /{target}
-title: {name_of(filename)}
+title: {" ".join(get_pre_key(pre_d,"title"))}
 date: {date}
 category: {dir_name(path_of(filename))}
 cat_url: /{short_path(path_of(filename))}

@@ -14,9 +14,11 @@ def format_md(filename):
         if "title: " not in content and not "index" in filename:
             cont = []
             title = name_of(filename)
+            title_set = False
             for i in content.split("\n\n"):
-                if i.startswith("# "):
+                if i.startswith("# ") and not title_set:
                     title = i.replace("# ", "")
+                    title_set = True
                 else:
                     cont.append(i)
             content = "\n\n".join(cont)
