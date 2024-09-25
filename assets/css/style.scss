@@ -64,6 +64,11 @@ a.nav-foot-link {
     margin-bottom: auto;
 }
 
+.tag a{
+    color:inherit;
+    text-decoration:underline;
+}
+
 .FIN {
     color: darkgreen;
     background-color: #d5ffd5;
@@ -72,6 +77,16 @@ a.nav-foot-link {
 .TBC {
     color: #c40909;
     background-color: #ffefd0;
+}
+
+.BatLantern{
+    color:lightgreen;
+    background-color:#14500b;
+}
+
+.JayTim{
+    color:#f3c1c1;
+    background-color: darkred;;
 }
 
 .category {

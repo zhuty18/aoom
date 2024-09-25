@@ -5,7 +5,8 @@
 """
 
 import sys
-from utils import search_by_keyword
+import os
+from utils import search_by_keyword, name_of
 
 
 class LatexConverter:
@@ -29,7 +30,10 @@ class LatexConverter:
         for i in self.result:
             with open(i, "r", encoding="utf8") as f:
                 content = f.read()
-            with open(i.replace(".md", ".tex"), "w", encoding="utf8") as f:
+            filename = "latex/" + name_of(i) + ".tex"
+            if not os.path.exists("latex"):
+                os.mkdir("latex")
+            with open(filename, "w", encoding="utf8") as f:
                 f.write("\\documentclass[../main]{subfiles}" + "\n\n")
                 f.write("\\begin{document}" + "\n\n")
                 for line in content.split("\n\n"):
