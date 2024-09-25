@@ -3,7 +3,7 @@
 """线上格式化md"""
 
 import os
-from utils import doc_dir, dir_name
+from utils import doc_dir, dir_name, name_of
 
 
 def format_md(filename):
@@ -11,18 +11,20 @@ def format_md(filename):
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
     with open(filename, "w", encoding="utf8") as f:
-        cont = []
-        for i in content.split("\n\n"):
-            if i.startswith("# "):
-                title = i.replace("", "# ")
+        if "title: " not in content and not "index" in filename:
+            cont = []
+            title = name_of(filename)
+            for i in content.split("\n\n"):
+                if i.startswith("# "):
+                    title = i.replace("# ", "")
+                else:
+                    cont.append(i)
+            content = "\n\n".join(cont)
+            if content.startswith("---"):
+                content = content[3:]
+                content = f"---\ntitle: {title}" + content
             else:
-                cont.append(i)
-        content = "\n\n".join(cont)
-        if content.startswith("---"):
-            content = content[3:]
-            content = f"---\ntitle: {title}" + content
-        else:
-            content = f"---\ntitle: {title}\n---\n\n"
+                content = f"---\ntitle: {title}\n---\n\n" + content
         content = content.replace(
             "\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n"
         )
