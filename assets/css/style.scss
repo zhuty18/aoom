@@ -152,8 +152,8 @@ h2 a {
 .nav-head {
     padding-top: 0.5rem;
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    margin-top: 0.5rem;
 }
 
 .nav-head-item {
@@ -167,6 +167,16 @@ h2 a {
 
 .nav-head-item a {
     color: white;
+    text-decoration: none;
+}
+
+.headtag{
+    margin-left: 0rem;
+    font-size: 0.7rem;
+    border-radius: 15px;
+}
+
+.headtag a{
     text-decoration: none;
 }
 
