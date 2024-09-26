@@ -1,12 +1,11 @@
 <div class="nav-head">
-    <div class="nav-head-button">
     {% for item in site.nav-head %}
         <span class="nav-head-item">
         <a href={{ item.link }}>{{ item.name }}</a>
         </span>
     {% endfor %}
-    </div>
-    <div class="nav-head-button">
+</div>
+<div class="nav-head">
     {% for tag in page.tags %}
         <span class="tag {{ tag }}">
             {% if site.tags contains tag %}
@@ -16,5 +15,4 @@
             {% endif %}
         </span>
     {% endfor %}
-    </div>
 </div>
