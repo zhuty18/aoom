@@ -64,9 +64,9 @@ a.nav-foot-link {
     margin-bottom: auto;
 }
 
-.tag a{
-    color:inherit;
-    text-decoration:underline;
+.tag a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 .FIN {
@@ -79,14 +79,14 @@ a.nav-foot-link {
     background-color: #ffefd0;
 }
 
-.BatLantern{
-    color:lightgreen;
-    background-color:#14500b;
+.BatLantern {
+    color: lightgreen;
+    background-color: #14500b;
 }
 
-.JayTim{
-    color:#f3c1c1;
-    background-color: darkred;;
+.JayTim {
+    color: #f3c1c1;
+    background-color: darkred;
 }
 
 .category {
@@ -153,9 +153,9 @@ h2 a {
     padding-top: 0.5rem;
     display: flex;
 }
-.nav-head-head {
+.nav-head-button {
     margin-left: auto;
-    float: left;
+    margin-right: auto;
 }
 
 .nav-head-item {
@@ -165,10 +165,6 @@ h2 a {
     border-radius: 1rem;
     font-size: 1rem;
     margin: 0 0.5rem 0 0.5rem;
-}
-.nav-head-tail {
-    margin-right: auto;
-    float: right;
 }
 
 .nav-head-item a {
