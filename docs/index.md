@@ -1,7 +1,14 @@
 ---
 layout: docs
 update: 
+  - Batman Family History - 翻译
 ---
+
+# 最近一次更新的内容
+
+|文件名|上次提交时字数|本次提交字数|字数变化|
+|:-|:-|:-|:-|
+|[Batman Family History - 翻译](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|0|2663|2663|
 
 # 所有目录
 

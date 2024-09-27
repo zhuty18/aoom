@@ -148,7 +148,8 @@ class WordCounter:
         output = output.decode("utf8")
         for i in output.split("\n"):
             if i:
-                i = i.split(" ")[-1]
+                i = i.split("  ")[-1]
+                i = i.strip('"')
             if (
                 INDEX_NAME not in i
                 and INDEX_FULL_NAME not in i
