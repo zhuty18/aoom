@@ -9,7 +9,7 @@ import os
 import re
 from utils import search_by_keyword, name_of
 
-TARGET = "D:\\MyResositories\\fanfiction\\atomic\\chapter"
+TARGET = "D:\\MyResositories\\fanfiction\\detective\\Parts"
 
 
 class LatexConverter:

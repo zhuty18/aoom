@@ -1,16 +1,16 @@
 ---
 layout: docs
 update: 
-  - 巨人肩膀之上：哥谭背后的男人们
+  - 蓝鲸花
 change:
-  - docs/translation/batfamily/Batman Family History - 翻译.md
+  - docs/DC/蓝鲸花.md
 ---
 
 # 最近一次更新的内容
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2774|2770|-4|
+|[蓝鲸花](DC/蓝鲸花.md)|5199|6512|1313|
 
 # 所有目录
 
