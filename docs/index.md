@@ -10,7 +10,7 @@ change:
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2713|2774|61|
+|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2774|2770|-4|
 
 # 所有目录
 

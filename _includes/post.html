@@ -20,6 +20,6 @@
         <a class="post-link" href="{{ post.target }}" title="{{ post.title }}">{{post.title }}</a>
     </h2>
     <div class="post-preview">
-        {{ post.excerpt | markdownify | truncatewords: 30 }}
+        {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
     </div>
 </li>

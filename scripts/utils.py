@@ -325,7 +325,7 @@ def preview(filename):
                 break
             if "\n\n\n" in pre:
                 pre = pre.split("\n\n\n")[-1]
-    return pre.strip().split("\n")[0]
+    return pre.strip()
 
 
 def get_predefine(filename):
