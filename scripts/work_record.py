@@ -19,6 +19,7 @@ from utils import (
     auto_hide,
     doc_dir,
     path_of,
+    title_of,
 )
 import file_check
 from personal import (
@@ -179,9 +180,9 @@ class WordCounter:
                 link = doc_path(os.path.join(os.getcwd(), i)).replace(
                     " ", "%20"
                 )
-                info.append(name)
+                info.append(title_of(i))
                 log.append(
-                    f"|[{name}]({link})|{length_old}|{length_new}|{length_new-length_old}|"
+                    f"|[{title_of(i)}]({link})|{length_old}|{length_new}|{length_new-length_old}|"
                 )
                 self.total_change += length_new - length_old
                 try:

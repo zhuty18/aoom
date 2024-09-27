@@ -333,7 +333,9 @@ def get_predefine(filename):
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
         if content.startswith("---"):
-            pre_d = re.findall(re.compile(r"---\n(.*)\n---\n", re.S), content)[0]
+            pre_d = re.findall(re.compile(r"---\n(.*)\n---\n", re.S), content)[
+                0
+            ]
             return pre_d
     return None
 
@@ -372,3 +374,15 @@ def make_index_dir(kind):
             f.write("---\n")
             f.write(f"layout: {kind}_all\n")
             f.write("---\n")
+
+
+def title_of(filename):
+    """获得文件标题"""
+    title = name_of(filename)
+    with open(filename, "r", encoding="utf8") as f:
+        content = f.read()
+        for i in content.split("\n\n"):
+            if i.startswith("# "):
+                title = i.replace("# ", "")
+                break
+    return title
