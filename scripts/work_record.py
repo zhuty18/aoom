@@ -202,6 +202,9 @@ class WordCounter:
         if info:
             update_str = "\n  - ".join(info)
             update_str = f"\n  - {update_str}"
+        update_str+='\nchange:'
+        if self.changes:
+            update_str+= f"\n  - {"\n  - ".join(self.changes)}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
         with open(
             os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8"

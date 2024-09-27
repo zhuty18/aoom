@@ -2,13 +2,15 @@
 layout: docs
 update: 
   - 巨人肩膀之上：哥谭背后的男人们
+change:
+  - docs/translation/batfamily/Batman Family History - 翻译.md
 ---
 
 # 最近一次更新的内容
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2663|2713|50|
+|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2713|2774|61|
 
 # 所有目录
 

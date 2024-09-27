@@ -124,9 +124,9 @@ if __name__ == "__main__":
         LOG_POST = True
         post_all(FILE_ROOT, COUNTER, True)
         defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
-        change = get_pre_key(defs, "update")
+        change = get_pre_key(defs, "change")
         for i in change:
-            post(search_by_keyword(i)[0], COUNTER)
+            post(i, COUNTER)
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
