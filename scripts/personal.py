@@ -93,6 +93,7 @@ POST_PATH = "_posts/"
 POST_DATE = "%Y-%m-%d"
 POST_TITLE = POST_DATE + "-{title}.md"
 
+# post上限，0为关闭功能，-1为不设置上限
 POST_MAX = 100
 PREVIEW_LENGTH = 150
 

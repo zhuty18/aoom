@@ -75,17 +75,18 @@ length: {his.length}
 
 def clear_post(post_max=POST_MAX):
     """控制post上限"""
-    l = os.listdir(POST_PATH)
-    l.sort()
-    l.reverse()
-    if len(l) > post_max:
-        l = l[post_max:]
-        for item in l:
-            os.remove(os.path.join(POST_PATH, item))
-    if LOG_POST:
+    if post_max >= 0:
         l = os.listdir(POST_PATH)
         l.sort()
-        print("\n".join(l))
+        l.reverse()
+        if len(l) > post_max:
+            l = l[post_max:]
+            for item in l:
+                os.remove(os.path.join(POST_PATH, item))
+        if LOG_POST:
+            l = os.listdir(POST_PATH)
+            l.sort()
+            print("\n".join(l))
 
 
 def post_change(counter):

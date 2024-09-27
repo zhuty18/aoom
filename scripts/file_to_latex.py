@@ -6,7 +6,10 @@
 
 import sys
 import os
+import re
 from utils import search_by_keyword, name_of
+
+TARGET = "D:\\MyResositories\\fanfiction\\atomic\\chapter"
 
 
 class LatexConverter:
@@ -15,6 +18,8 @@ class LatexConverter:
     def __init__(self, key, depth):
         self.result = search_by_keyword(key)
         if self.result is not None:
+            for i in self.result:
+                print(name_of(i))
             self.depth = depth
             self.to_latex()
 
@@ -30,9 +35,9 @@ class LatexConverter:
         for i in self.result:
             with open(i, "r", encoding="utf8") as f:
                 content = f.read()
-            filename = "latex/" + name_of(i) + ".tex"
-            if not os.path.exists("latex"):
-                os.mkdir("latex")
+            filename = TARGET + "/" + name_of(i) + ".tex"
+            if not os.path.exists(TARGET):
+                os.mkdir(TARGET)
             with open(filename, "w", encoding="utf8") as f:
                 f.write("\\documentclass[../main]{subfiles}" + "\n\n")
                 f.write("\\begin{document}" + "\n\n")
@@ -48,11 +53,18 @@ class LatexConverter:
                     elif line.startswith("---"):
                         pass
                     else:
+                        l = re.findall(re.compile(r"\[\^\d+\]", re.S), line)
+                        for i in l:
+                            line = line.replace(i, "")
                         f.write(
-                            line.replace("·", "{\\splitdot}").replace(
-                                "——", "{\\chsline}"
-                            )
-                            + "\n\n"
+                            (
+                                line.replace("·", "{\\splitdot}")
+                                .replace("——", "{\\chsline}")
+                                .replace("%", "\\%")
+                                .replace("$", "\\$")
+                                .strip()
+                                + "\n\n"
+                            ).replace("END\n", "\\storyend\n")
                         )
                 f.write("\\end{document}")
 
