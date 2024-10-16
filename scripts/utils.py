@@ -309,9 +309,9 @@ def path_fin(path):
 
 def preview(filename):
     """获取文件预览"""
-    pre = ""
     with open(filename, "r", encoding="utf8") as f:
         yaml = False
+        pre = ""
         for i in f.readlines():
             if i == "---\n":
                 yaml = not yaml
@@ -319,14 +319,10 @@ def preview(filename):
             if yaml:
                 continue
             if i.startswith("#"):
-                pre += "<br>\n"
                 continue
-            pre += i
-            if len(pre) > PREVIEW_LENGTH:
+            if len(i) > PREVIEW_LENGTH * 0.5:
+                pre = i.strip()
                 break
-            if "<br>\n\n" in pre:
-                pre = pre.split("<br>\n\n")[-1]
-    pre = pre.strip().split("\n")[0]
     if len(pre) > PREVIEW_LENGTH * 1.2:
         return pre[:PREVIEW_LENGTH] + "……"
     return pre
