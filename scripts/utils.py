@@ -324,8 +324,8 @@ def preview(filename):
             pre += i
             if len(pre) > PREVIEW_LENGTH:
                 break
-            if "\n\n<br>\n" in pre:
-                pre = pre.split("\n\n<br>\n")[-1]
+            if "<br>\n\n" in pre:
+                pre = pre.split("<br>\n\n")[-1]
     return pre.strip()
 
 
