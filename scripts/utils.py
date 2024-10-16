@@ -320,7 +320,7 @@ def preview(filename):
                 continue
             if i.startswith("#"):
                 continue
-            if len(i) > PREVIEW_LENGTH * 0.5:
+            if len(i) > PREVIEW_LENGTH * 0.2:
                 pre = i.strip()
                 break
     if len(pre) > PREVIEW_LENGTH * 1.2:
