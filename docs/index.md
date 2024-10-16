@@ -1,19 +1,8 @@
 ---
 layout: docs
 update: 
-  - 巨人肩膀之上：哥谭背后的男人们
-  - 同人文LaTeX排版教程
 change:
-  - docs/translation/batfamily/Batman Family History - 翻译.md
-  - docs/同人文LaTeX排版教程.md
 ---
-
-# 最近一次更新的内容
-
-|文件名|上次提交时字数|本次提交字数|字数变化|
-|:-|:-|:-|:-|
-|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|3888|3920|32|
-|[同人文LaTeX排版教程](同人文LaTeX排版教程.md)|12427|12429|2|
 
 # 所有目录
 

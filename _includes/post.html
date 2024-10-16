@@ -17,7 +17,7 @@
         {% endfor %}
     </span>
     <h2>
-        <a class="post-link" href="{{ post.target }}" title="{{ post.title }}">{{post.title }}</a>
+        <a class="post-link" href="{{ post.link }}" title="{{ post.title }}">{{ post.title }}</a>
     </h2>
     <div class="post-preview">
         {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
