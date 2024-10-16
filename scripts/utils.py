@@ -324,7 +324,9 @@ def preview(filename):
                 pre = i.strip()
                 break
     if len(pre) > PREVIEW_LENGTH * 1.2:
-        return pre[:PREVIEW_LENGTH] + "……"
+        pre = pre[:PREVIEW_LENGTH] + "……"
+    if pre.startswith("*"):
+        pre += "*"
     return pre
 
 
