@@ -378,11 +378,14 @@ def make_index_dir(kind):
 
 def title_of(filename):
     """获得文件标题"""
-    title = name_of(filename)
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read()
-        for i in content.split("\n\n"):
-            if i.startswith("# "):
-                title = i.replace("# ", "")
-                break
-    return title
+    try:
+        return get_pre_key(get_predefine(filename), "title")[0]
+    except IndexError:
+        title = name_of(filename)
+        with open(filename, "r", encoding="utf8") as f:
+            content = f.read()
+            for i in content.split("\n\n"):
+                if i.startswith("# "):
+                    title = i.replace("# ", "")
+                    break
+        return title
