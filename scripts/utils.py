@@ -319,12 +319,13 @@ def preview(filename):
             if yaml:
                 continue
             if i.startswith("#"):
-                pre += "\n\n"
+                pre += "<br>\n"
+                continue
             pre += i
             if len(pre) > PREVIEW_LENGTH:
                 break
-            if "\n\n\n" in pre:
-                pre = pre.split("\n\n\n")[-1]
+            if "\n\n<br>\n" in pre:
+                pre = pre.split("\n\n<br>\n")[-1]
     return pre.strip()
 
 
