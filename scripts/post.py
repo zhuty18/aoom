@@ -66,9 +66,8 @@ category: {dir_name(path_of(filename))}
 cat_url: /{short_path(path_of(filename))}
 tags: {tags if tags else ""}
 length: {his.length}
+excerpt: {preview(filename)}
 ---
-
-{preview(filename)}
 """
         )
 

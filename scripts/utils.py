@@ -326,7 +326,10 @@ def preview(filename):
                 break
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>\n\n")[-1]
-    return pre.strip()
+    pre = pre.strip().split("\n")[0]
+    if len(pre) > PREVIEW_LENGTH * 1.2:
+        return pre[:PREVIEW_LENGTH] + "……"
+    return pre
 
 
 def get_predefine(filename):
