@@ -2,15 +2,21 @@
 layout: docs
 update: 
   - 蓝鲸花
+  - 巨人肩膀之上：哥谭背后的男人们
+  - $\LaTeX$的优点
 change:
   - docs/DC/蓝鲸花.md
+  - docs/translation/batfamily/Batman Family History - 翻译.md
+  - docs/同人文LaTeX排版教程.md
 ---
 
 # 最近一次更新的内容
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[蓝鲸花](DC/蓝鲸花.md)|5199|6512|1313|
+|[蓝鲸花](DC/蓝鲸花.md)|6512|7754|1242|
+|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|2770|3888|1118|
+|[$\LaTeX$的优点](同人文LaTeX排版教程.md)|12020|12427|407|
 
 # 所有目录
 

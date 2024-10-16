@@ -290,7 +290,7 @@ $\LaTeX$默认寻找同系列的字体作为其加粗和斜体，但可以自行
 
 ### 连字
 
-英文衬线字体中存在连字（ligature）。为了提升易读性，独立设计某些字符串的显示方式，而非简单的字母相邻。最经典的三个案例如下图（字体为*Vollkorn*）。
+英文衬线字体中存在连字（ligature），通过设计优化某些字符串的显示方式来提升易读性。最经典的三个案例如下图（字体为*Vollkorn*）。
 
 ![image-20240925165217790](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251652932.png)
 
@@ -299,6 +299,8 @@ $\LaTeX$默认载入一部分通用连字（OTF中tag为liga），能提升英�
 ![image-20240925155915007](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251559165.png)
 
 配置时可以添加一个`[Ligatures=XXX]`参数，启用一些其他tag里的连字，见上图。其中Common是默认打开的。
+
+可以用[FontDrop!](https://fontdrop.info)这个网站来查看字体内连字。有些字体虽然设计了连字，但并没有正确标注，导致这些连字虽然存在但却无法使用。面对这种情况，可以用[FontForge](https://fontforge.org/en-US/)软件进行[手动标注](https://fontforge.org/docs/tutorial/editexample4.html)。
 
 ## 中文字符字体配置
 
@@ -346,21 +348,23 @@ $\LaTeX$默认载入一部分通用连字（OTF中tag为liga），能提升英�
 
 - 外语
 
-外语的免费字体很多（特别是仅支持ASCII字符的免费字体），在挑花眼的同时，最好也关注一下与中文的混排效果。
+外语的免费字体很多（特别是仅支持ASCII字符的免费字体），在挑花眼的同时，最好也关注一下一些进阶选项，以提升混排效果。这里介绍一些实用的花招，更详细的推荐阅读`fontspec`包文档。
 
-以下是一些样例，中文使用思源宋体Regular；英文字体均是从网站[1001 Fonts](https://www.1001fonts.com)下载的免费商用字体，全部使用Regular字重的正体。
+以下是一些样例，中文使用思源宋体Regular；英文字体均是从网站[1001 Fonts](https://www.1001fonts.com)下载的免费商用字体，全部使用Regular字重的默认配置。
 
 ![image-20240925150307087](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251503272.png)
 
-*Neuton*虽然设计好看，但字母显著偏小。
+*Neuton*虽然设计好看，但字母显著偏小。配置时建议用`[Scale=比例]`参数放大。
 
 *Libre Baskerville*和*Cormorant*的默认字重都与中文差异颇大。
 
 *EB Garamond*的字母字重与中文相当契合，但其数字放在中文内会显得很弱。
 
-*Vollkorn*的整体字重略高一些，英文显得略粗，但数字在与中文混排时保持了恰当的视觉重量。
+*Vollkorn*的整体字重略高一些，英文显得略粗，数字在与中文混排时保持了恰当的视觉重量。但由于数字采用了与英文相同的三格设计（俗称OldStyle），在数字与汉字混排时看起来会很诡异。建议使用`[Numbers=Lining]`切换到等高数字，该功能与连字类似，不是所有字体都包含。
 
-*Spectral*的字母设计更接近等宽字体，字距比起中文明显偏高。
+*Spectral*的字母设计更接近等宽字体，字距比起中文明显偏高。建议使用`[LetterSpace=改变值（如-3）]`来降低字母间距。
+
+令，如果想要调整空格宽度，使用`[WordSpace=空格宽度]`参数即可。
 
 不过本质上，**混排字体的选择取决于文本的字符频**。如果文中存在大量字母（例如ABO中，Alpha/Beta/Omega三个单词会反复出现），那么就应当主要关注字母能否融入正文。
 
@@ -391,7 +395,13 @@ $\LaTeX$默认载入一部分通用连字（OTF中tag为liga），能提升英�
 \newCJKfontfamily\xbsong{[Source Han Serif SemiBold]}
 ```
 
-第四步，天涯何处无芳草，字体到处都是，换一个吧。
+第四步，直接配置字体文件名，支持绝对路径和`fc-list`中能找到的字体名。只要字体在你电脑上，用这个方法就可以百分百找到。该方案只支持XeTeX和LuaTeX两个引擎，巧了，就是支持中文的两个引擎。
+
+```latex
+\newfontfamily\vollkorn{Vollkorn-Regular.otf}
+```
+
+第五步，天涯何处无芳草，字体到处都是，换一个吧。
 
 # 建立文档
 
@@ -797,6 +807,7 @@ footskip=12mm,
 
 ```latex
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markboth{\leftmark}{#1}}
 ```
 
 ## 页面风格使用
@@ -821,6 +832,15 @@ footskip=12mm,
 
 ```latex
 \renewcommand{\headrulewidth}{宽度}
+```
+
+如果希望页眉页脚溢出在文字区外，可以使用以下写法：
+
+```latex
+\fancyhfoffset[位置]{溢出值} % 用H/F这组位置标记来明确是页眉还是页脚
+% 单独设置页眉或页脚的溢出
+\fancyheadoffset[位置]{溢出值}
+\fancyfootoffset[位置]{溢出值}
 ```
 
 # 杂七杂八

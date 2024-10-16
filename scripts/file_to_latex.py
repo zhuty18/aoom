@@ -28,6 +28,8 @@ class LatexConverter:
         t = line.split(" ")[-1]
         title = {-1: "part", 0: "chapter", 1: "section", 2: "subsection"}
         i = line.count("#") - 1 + self.depth
+        if i == -1:
+            return f"\\{title[i]}{{{t}}}\n\\renewcommand{{\\parttitle}}{{{t}}}"
         return f"\\{title[i]}{{{t}}}"
 
     def to_latex(self):
@@ -40,7 +42,7 @@ class LatexConverter:
                 os.mkdir(TARGET)
             with open(filename, "w", encoding="utf8") as f:
                 f.write("\\documentclass[../main]{subfiles}" + "\n\n")
-                f.write("\\begin{document}" + "\n\n")
+                f.write("\\begin{document}\n\n\\pagestyle{mystyle}\n\n")
                 for line in content.split("\n\n"):
                     if line.startswith("#"):
                         f.write(self.title(line) + "\n\n")
