@@ -5,6 +5,5 @@ __pycache__
 data/change.txt
 _site
 .sass-cache
-*.tex
 *机翻*
 *OCR*

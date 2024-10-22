@@ -3,7 +3,7 @@
 2814扇区最辣的男人	936	24.05.19 12:36	True
 Batman Family History - OCR原文	3028	24.09.27 13:14	False
 Batman Family History - 机翻	9115	24.09.27 13:14	False
-Batman Family History - 翻译	3920	24.10.17 00:52	False
+Batman Family History - 翻译	6738	24.10.22 22:29	False
 Beyond	10190	21.08.30 00:49	True
 Bruce和Clark的假约会	527	20.10.29 12:47	False
 Bruce是个成熟的蝙蝠侠了	1203	24.05.19 12:36	True
@@ -34,6 +34,9 @@ Tremor	3962	20.12.12 09:51	False
 Uncle Clark	396	24.05.19 12:36	True
 Wayne庄园冒险记	7119	21.10.07 22:44	True
 Wayne庄园的电影之夜	5163	21.02.22 21:34	False
+Who is Bruce Wayne - OCR	893	24.10.22 22:29	False
+Who is Bruce Wayne - 机翻	2643	24.10.22 22:29	False
+Who is Bruce Wayne - 翻译	9	24.10.22 22:29	False
 Women and girls	4363	20.12.12 09:51	False
 kpi最高的那个魅魔被包养之后	1070	24.05.19 12:36	True
 say my name	873	24.05.19 12:36	True
@@ -357,7 +360,7 @@ say my name	873	24.05.19 12:36	True
 缘结	19162	20.12.12 09:51	False
 缺心眼也要谈恋爱	4678	20.12.12 09:51	False
 罗宾	198	24.05.19 12:36	True
-肉体记忆	33038	24.09.04 02:25	True
+肉体记忆	33075	24.10.22 22:29	True
 育儿文学	115	24.05.19 12:36	True
 自家兄弟	2103	24.05.19 12:36	True
 舍不得	4135	20.12.12 09:51	True

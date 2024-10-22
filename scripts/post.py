@@ -69,7 +69,6 @@ length: {his.length}
 ---
 
 {preview(filename)}
-
 """
         )
 

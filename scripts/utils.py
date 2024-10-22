@@ -324,16 +324,17 @@ def preview(filename):
             pre += i
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>\n\n")[-1]
-            if len(pre) > PREVIEW_LENGTH:
+            if len(pre) > PREVIEW_LENGTH * 0.8:
                 pre = pre.strip()
+                print(pre)
                 break
     for i in pre.split("\n\n"):
         if len(i) > PREVIEW_LENGTH * 0.2:
-            pre = i
+            pre = i.strip()
             break
     if len(pre) > PREVIEW_LENGTH * 1.2:
         pre = pre[:PREVIEW_LENGTH] + "……"
-    if pre.startswith("*"):
+    if pre.startswith("*") and not pre.endswith("*"):
         pre += "*"
     return pre
 
