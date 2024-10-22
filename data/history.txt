@@ -3,7 +3,7 @@
 2814扇区最辣的男人	936	24.05.19 12:36	True
 Batman Family History - OCR原文	3028	24.09.27 13:14	False
 Batman Family History - 机翻	9115	24.09.27 13:14	False
-Batman Family History - 翻译	6738	24.10.22 22:29	False
+Batman Family History - 翻译	6739	24.10.22 22:34	True
 Beyond	10190	21.08.30 00:49	True
 Bruce和Clark的假约会	527	20.10.29 12:47	False
 Bruce是个成熟的蝙蝠侠了	1203	24.05.19 12:36	True
