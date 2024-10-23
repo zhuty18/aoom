@@ -41,8 +41,9 @@ import web_make
 try:
     from xpinyin import Pinyin
 except ModuleNotFoundError:
-    print("请安装xpinyin模块！")
-    sys.exit()
+    if sys.platform.__contains__("window"):
+        print("请安装xpinyin模块！")
+        sys.exit()
 
 
 class FileRecord:
@@ -266,8 +267,9 @@ class IndexBuilder:
 
     def sort_index(self, l: list, order):
         """索引排序"""
-        pin = Pinyin()
-        l.sort(key=lambda x: pin.get_pinyin(x.name))
+        if sys.platform.__contains__("window"):
+            pin = Pinyin()
+            l.sort(key=lambda x: pin.get_pinyin(x.name))
         if order == "time":
             l.sort(key=lambda x: get_time(x.time), reverse=True)
 
