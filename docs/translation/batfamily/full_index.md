@@ -4,7 +4,7 @@
 
 |名称|字数|修改时间|
 |:-|:-|:-|
-|[Who is Bruce Wayne - 翻译](Who%20is%20Bruce%20Wayne%20-%20翻译.md)|9|24.10.22 22:29|
+|[Who is Bruce Wayne - 翻译](Who%20is%20Bruce%20Wayne%20-%20翻译.md)|284|24.10.23 17:23|
 |[Who is Bruce Wayne - 机翻](Who%20is%20Bruce%20Wayne%20-%20机翻.md)|2643|24.10.22 22:29|
 |[Who is Bruce Wayne - OCR](Who%20is%20Bruce%20Wayne%20-%20OCR.md)|893|24.10.22 22:29|
 |[Batman Family History - 机翻](Batman%20Family%20History%20-%20机翻.md)|9115|24.09.27 13:14|

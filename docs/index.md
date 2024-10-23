@@ -1,9 +1,10 @@
 ---
 layout: docs
 update: 
-  - 巨人肩膀之上：哥谭背后的男人们
+  - 布鲁斯·韦恩是谁？
+  - 同人文LaTeX排版教程
 change:
-  - docs/translation/batfamily/Batman Family History - 翻译.md
+  - docs/translation/batfamily/Who is Bruce Wayne - 翻译.md
   - docs/同人文LaTeX排版教程.md
 ---
 
@@ -11,7 +12,8 @@ change:
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[巨人肩膀之上：哥谭背后的男人们](translation/batfamily/Batman%20Family%20History%20-%20翻译.md)|6738|6739|1|
+|[布鲁斯·韦恩是谁？](translation/batfamily/Who%20is%20Bruce%20Wayne%20-%20翻译.md)|9|284|275|
+|[同人文LaTeX排版教程](同人文LaTeX排版教程.md)|12429|12599|170|
 
 # 所有目录
 

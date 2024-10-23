@@ -36,7 +36,7 @@ Wayne庄园冒险记	7119	21.10.07 22:44	True
 Wayne庄园的电影之夜	5163	21.02.22 21:34	False
 Who is Bruce Wayne - OCR	893	24.10.22 22:29	False
 Who is Bruce Wayne - 机翻	2643	24.10.22 22:29	False
-Who is Bruce Wayne - 翻译	9	24.10.22 22:29	False
+Who is Bruce Wayne - 翻译	284	24.10.23 17:23	False
 Women and girls	4363	20.12.12 09:51	False
 kpi最高的那个魅魔被包养之后	1070	24.05.19 12:36	True
 say my name	873	24.05.19 12:36	True
@@ -151,7 +151,7 @@ say my name	873	24.05.19 12:36	True
 只存在于武士酒吧的谈话	528	24.05.19 12:36	True
 叶修死了	1368	20.12.12 09:51	False
 叶氏猫薄荷	8278	20.12.12 09:51	True
-同人文LaTeX排版教程	12429	24.10.17 00:52	False
+同人文LaTeX排版教程	12599	24.10.23 17:23	False
 后宫才艺大赛	15043	20.10.23 19:47	False
 向日葵花开的方向	11945	24.07.29 16:14	False
 听说叶修谈恋爱了	3855	20.12.12 09:51	True

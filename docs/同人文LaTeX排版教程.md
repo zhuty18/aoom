@@ -208,7 +208,7 @@ $\LaTeX$需要`ctex`包来处理中文，需要`xelatex`或`lualatex`引擎才�
 
 `ctex`包默认根据**当前操作系统**选择字体配置，策略如下
 
-![ctex预设包](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409042105996.webp)
+![ctex预设包](data/ctex.png)
 
 `ctex`包内有若干套预设好的字体配置，可在导入时使用`[fontset=X]`选择，`X`为包名，详见。对于装了全套方正字体的用户，可以一键`[fontset=founder]`使用全套方正字体配置。
 
@@ -229,11 +229,9 @@ $\LaTeX$需要`ctex`包来处理中文，需要`xelatex`或`lualatex`引擎才�
 
 首先是寻找字体，代码寻找字体需要使用字体的系统名称，在Windows中，简单的查找系统字体方法是运行`fc-list`命令。注意$\LaTeX$只能找到$\LaTeX$内自带的字体和`C:\Windows\Fonts\`目录下的字体。因此安装字体时，需要选择**为所有用户安装**。
 
-不知道字体系列名时，可以用系统命令`fc-list >> fonts.txt`生成一个字体表文件进行查找。增加`:lang-zh`参数可以指定检索中文字体。注意一些字体虽然使用时是中文，但其字体文件会被识别为日文或韩文，不会出现在检索结果中。
+可以用系统命令`fc-list >> fonts.txt`生成一个字体表文件，包括系统上的可用字体。增加`:lang-zh`参数可以指定过滤筛选中文字体。注意一些字体虽然使用时是中文，但其字体文件会被识别为日文或韩文，不会出现在结果中。确定**英文系列名**时，可以用`fc-list | Select-String "系列名"`来筛选字体列表。中文名可能会是乱码，建议只用英文名进行此项操作。
 
-确定**英文系列名**时，可以用`fc-list | Select-String "系列名"`来筛选字体列表。中文名可能会是乱码，建议只用英文名进行检索。
-
-这里使用开源字体*Vollkorn*系列举例，`fc-list | Select-String "Vollkorn"`得到的结果如下
+得出的结果中包含字体名，这里使用开源字体*Vollkorn*系列举例，`fc-list | Select-String "Vollkorn"`得到的结果如下
 
 ```
 C:/Windows/fonts/Vollkorn-Medium.otf: Vollkorn,Vollkorn Medium:style=Medium,Regular
@@ -249,6 +247,19 @@ C:/Windows/fonts/Vollkorn-Semibold.otf: Vollkorn,Vollkorn Semibold:style=Semibol
 其中`*.otf:`和`:style`之间的即为字体在系统里的名称。对于字体的特殊风格，可以直接以`字体名 风格`作为字体名加载，如`Vollkorn Semibold Italic`。切记区分大小写，有的字体里会是`SemiBold`，有的是`Semibold`。
 
 注：一些字体名中含有`-`，在打印时会增加转义符显示为`\-`，使用这些字体时输入`-`即可。
+
+另外，也可以使用[FontDrop!](https://fontdrop.info)网站解析单个字体文件，获得字体名。解析样例字体*EBGaramondSC12-Regular.otf*时结果如下。
+
+```
+You see EB Garamond SC
+
+Name: EB Garamond SmallCaps 12 Regular. Style name: 12 Regular. Version 0.016
+© Created by Georg Duffner with FontForge 2.0 (http://fontforge.sf.net)
+
+License: Copyright 2010-2013, Georg A. Duffner (<http://www.georgduffner.at/ebgaramond|g.duffner@gmail.com>), 2013 Siva Kalyan This Font Software 
+```
+
+其中`You see`后的是字体系列名，而`Name`与`. Style name`之间的即为字体本身在系统里的名称（对于风格字体，即为指定时使用的名称）。
 
 ## 外语字符字体配置
 
@@ -293,11 +304,11 @@ $\LaTeX$默认寻找同系列的字体作为其加粗和斜体，但可以自行
 
 英文衬线字体中存在连字（ligature），通过设计优化某些字符串的显示方式来提升易读性。最经典的三个案例如下图（字体为*Vollkorn*）。
 
-![image-20240925165217790](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251652932.png)
+![连字样例](data/fil.png)
 
 $\LaTeX$默认载入一部分通用连字（OTF中tag为liga），能提升英文文本的易读性。而一些字体对连字的设计比较充分，还使用了其他的连字tag。通常类别有：clig指上下文连字（contextual），能使手写体中产生连笔；dlig指自由连字（discretionary），会使文字更花俏；hlig指历史连字（historical）能令文字看起来较为复古；rlig标记必需连字（Required），可以实现“将英语字母拼合得到其他字母”，例如ae拼合为æ。
 
-![image-20240925155915007](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251559165.png)
+![连字配置](data/ligatures.png)
 
 配置时可以添加一个`[Ligatures=XXX]`参数，启用一些其他tag里的连字，见上图。其中Common是默认打开的。
 
@@ -353,7 +364,7 @@ $\LaTeX$默认载入一部分通用连字（OTF中tag为liga），能提升英�
 
 以下是一些样例，中文使用思源宋体Regular；英文字体均是从网站[1001 Fonts](https://www.1001fonts.com)下载的免费商用字体，全部使用Regular字重的默认配置。
 
-![image-20240925150307087](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251503272.png)
+![字体对比](data/fonts.png)
 
 *Neuton*虽然设计好看，但字母显著偏小。配置时建议用`[Scale=比例]`参数放大。
 
@@ -429,7 +440,7 @@ $\LaTeX$原生有着`article`、`book`、`report`三种文档类别，对应的`
 
 ### 字号使用
 
-![](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409251839401.png)
+![字号](data/fontsize.png)
 
 在不同的文档字号时，各个字号命令的对应的字号如上图。
 
@@ -439,7 +450,7 @@ $\LaTeX$原生有着`article`、`book`、`report`三种文档类别，对应的`
 
 `geometry`是处理布局的包，参数极多，这里只介绍少量常用内容，有其他需求建议阅读文档。
 
-![image-20240904214715287](https://raw.githubusercontent.com/zhuty18/pic_src/main/202409042147364.png)
+![纸面布局](data/paper.png)
 
 参数不需要全部设置，水平竖直方向各三个即可，最后一个会自动计算。注意水平方向`left, right`和`inner, outer`这两组是二选一的关系。双页印刷应当使用`inner, outer`这组参数，会根据页面单双自动调整文字区域位置。
 
