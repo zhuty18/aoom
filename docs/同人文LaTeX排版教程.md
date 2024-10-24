@@ -847,13 +847,13 @@ $\LaTeX$中没有预设记录`part`标题的变量，可以自己设置
 
 % 重载part宏
 \let\origpart\part
-\renewcommand*{\part}[2][]{%
+\renewcommand*{\part}[2][]{
     \ifx\\#1\\% optional argument not present?
-    \origpart{#2}%
-        \renewcommand*\parttitle{#2}%
+    \origpart{#2}
+        \renewcommand*\parttitle{#2}
     \else
-    \origpart[#1]{#2}%
-        \renewcommand*\parttitle{#1}%
+    \origpart[#1]{#2}
+        \renewcommand*\parttitle{#1}
     \fi
 }
 ```
