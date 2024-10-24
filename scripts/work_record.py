@@ -41,7 +41,7 @@ import web_make
 try:
     from xpinyin import Pinyin
 except ModuleNotFoundError:
-    if sys.platform.__contains__("window"):
+    if "win" in sys.platform:
         print("请安装xpinyin模块！")
         sys.exit()
 
@@ -203,9 +203,9 @@ class WordCounter:
         if info:
             update_str = "\n  - ".join(info)
             update_str = f"\n  - {update_str}"
-        update_str+='\nchange:'
+        update_str += "\nchange:"
         if self.changes:
-            update_str+= f"\n  - {"\n  - ".join(self.changes)}"
+            update_str += f"\n  - {"\n  - ".join(self.changes)}"
         log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
         with open(
             os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8"
@@ -267,7 +267,7 @@ class IndexBuilder:
 
     def sort_index(self, l: list, order):
         """索引排序"""
-        if sys.platform.__contains__("window"):
+        if "win" in sys.platform:
             pin = Pinyin()
             l.sort(key=lambda x: pin.get_pinyin(x.name))
         if order == "time":

@@ -1,16 +1,22 @@
 ---
 layout: docs
 update: 
-  - 布鲁斯·韦恩是谁
+  - 蓝鲸花
+  - 布鲁斯·韦恩是谁？
+  - 同人文LaTeX排版教程
 change:
+  - docs/DC/蓝鲸花.md
   - docs/translation/batfamily/Who is Bruce Wayne - 翻译.md
+  - docs/同人文LaTeX排版教程.md
 ---
 
 # 最近一次更新的内容
 
 |文件名|上次提交时字数|本次提交字数|字数变化|
 |:-|:-|:-|:-|
-|[布鲁斯·韦恩是谁](translation/batfamily/Who%20is%20Bruce%20Wayne%20-%20翻译.md)|284|421|137|
+|[蓝鲸花](DC/蓝鲸花.md)|7754|9216|1462|
+|[布鲁斯·韦恩是谁？](translation/batfamily/Who%20is%20Bruce%20Wayne%20-%20翻译.md)|421|422|1|
+|[同人文LaTeX排版教程](同人文LaTeX排版教程.md)|12599|12803|204|
 
 # 所有目录
 
