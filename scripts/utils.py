@@ -334,7 +334,7 @@ def preview(filename):
             break
     if len(pre) > PREVIEW_LENGTH * 1.2:
         pre = pre[:PREVIEW_LENGTH] + "……"
-    if pre.startswith("*") and not pre.endswith("*"):
+    if pre.count("*") % 2 == 1:
         pre += "*"
     return pre
 
