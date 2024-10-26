@@ -149,6 +149,8 @@ class WordCounter:
             output = pipe.communicate()[0]
         output = output.decode("utf8")
         for i in output.split("\n"):
+            if "->" in i:
+                i = i.split("->")[-1].strip()
             if i:
                 i = i.split("  ")[-1]
                 i = i.strip('"')

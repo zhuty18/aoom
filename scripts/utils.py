@@ -86,6 +86,8 @@ def file_fin(filename: str) -> bool:
     """完成情况检测"""
     if path_fin(path_of(filename)):
         return True
+    if "FIN" in get_pre_key(get_predefine(filename), "tags"):
+        return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
         ends = {"END", "完结", "Q.E.D."}
