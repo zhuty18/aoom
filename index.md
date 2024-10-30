@@ -6,4 +6,4 @@ layout: home
 
 个人[线上存档](docs)。
 
-[LaTeX同人文本排版教程](docs\同人文LaTeX排版教程)
+[LaTeX同人本排版教程](docs\同人本LaTeX排版教程)

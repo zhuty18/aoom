@@ -23,49 +23,57 @@ class LatexConverter:
             self.depth = depth
             self.to_latex()
 
-    def title(self, line):
-        """标题替换"""
-        t = line.split(" ")[-1]
-        title = {-1: "part", 0: "chapter", 1: "section", 2: "subsection"}
-        i = line.count("#") - 1 + self.depth
-        return f"\\{title[i]}{{{t}}}"
-
     def to_latex(self):
         """将目标文件转换为latex"""
         for i in self.result:
-            with open(i, "r", encoding="utf8") as f:
-                content = f.read()
             filename = TARGET + "/" + name_of(i) + ".tex"
             if not os.path.exists(TARGET):
                 os.mkdir(TARGET)
+            with open(i, "r", encoding="utf8") as f:
+                tmp = f.read()
+            tmp = tmp.replace("\n\n\n", "\n\nBLANKLINE\n")
+            with open(
+                filename.replace(".tex", ".md"), "w", encoding="utf8"
+            ) as f:
+                f.write(tmp)
+            os.system(f"pandoc {filename.replace(".tex", ".md")} -o {filename}")
+            os.remove(filename.replace(".tex", ".md"))
+
+            with open(filename, "r", encoding="utf8") as f:
+                content = (
+                    f.read()
+                    .replace("·", "{\\splitdot}")
+                    .replace("------", "{\\chsline}")
+                    .replace("END\n", "\\storyend\n")
+                    .replace("BLANKLINE", "\\blankline")
+                    .replace("``", "“")
+                    .replace("''", "”")
+                    .replace("\\ldots\\ldots ", "\\ldots\\ldots")
+                    .replace("\\ldots\\ldots{}", "\\ldots\\ldots")
+                    .replace("\\ldots\\ldots", "……")
+                    .strip()
+                )
+            l = re.findall(re.compile(r"\\label\{.[^\n]+\}", re.S), content)
+            for j in l:
+                content = content.replace(j, "")
+
+            title = {-1: "part", 0: "chapter", 1: "section", 2: "subsection"}
+            res = []
+            for j in content.split("\n\n"):
+                j = j.replace("\n", " ")
+                for k in title.items():
+                    if j.startswith("\\" + k[1]):
+                        j = j.replace(
+                            "\\" + k[1], "\\" + title[k[0] - 1 + self.depth]
+                        )
+                res.append(j)
+            res.append("")
+            res = "\n\n".join(res)
+
             with open(filename, "w", encoding="utf8") as f:
                 f.write("\\documentclass[../main]{subfiles}" + "\n\n")
                 f.write("\\begin{document}\n\n\\pagestyle{mystyle}\n\n")
-                for line in content.split("\n\n"):
-                    if line.startswith("#"):
-                        f.write(self.title(line) + "\n\n")
-                    elif line == "":
-                        f.write("\\blankline" + "\n\n")
-                    elif line.startswith("------"):
-                        pass
-                    elif line.startswith("[^"):
-                        pass
-                    elif line.startswith("---"):
-                        pass
-                    else:
-                        l = re.findall(re.compile(r"\[\^\d+\]", re.S), line)
-                        for i in l:
-                            line = line.replace(i, "")
-                        f.write(
-                            (
-                                line.replace("·", "{\\splitdot}")
-                                .replace("——", "{\\chsline}")
-                                .replace("%", "\\%")
-                                .replace("$", "\\$")
-                                .strip()
-                                + "\n\n"
-                            ).replace("END\n", "\\storyend\n")
-                        )
+                f.write(res)
                 f.write("\\end{document}")
 
 
