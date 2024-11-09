@@ -3,6 +3,10 @@ layout: default
 ---
 
 <head>
+  <link
+    rel="icon"
+    href="{{ "/favicon.ico" | relative_url }}"
+    type="image/x-icon">
   {% include head_jump.html url=page.target %}
 </head>
 
@@ -15,13 +19,6 @@ layout: default
 {% endif %}
 
 {{ content }}
-
-<main
-  id="content"
-  class="main-content"
-  role="main">
-  {{ content }}
-</main>
 
 {% unless page.no_nav %}
   {% include passlock.html %}
