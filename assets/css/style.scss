@@ -162,7 +162,6 @@ h2 a {
 }
 
 .nav-head {
-    padding-top: 0.5rem;
     display: flex;
     justify-content: center;
     margin-top: 0.5rem;
@@ -183,8 +182,8 @@ h2 a {
 }
 
 .nav-head-wrapper {
-    position: absolute;
-    left: 0pt;
+    width: 15rem;
+    margin-left: auto;
 }
 
 .headtag {
