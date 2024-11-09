@@ -1,7 +1,7 @@
 <div class="nav-foot">
-    {% for item in site.nav-foot %}
-        {% if item.id %}
-    <div id="{{ item.id }}">
+  {% for item in site.nav-foot %}
+    {% if item.id %}
+      <div id="{{ item.id }}">
         <script>
             var con=document.getElementById('{{ item.id }}')
             var tar="{{ item.link }}"
@@ -9,13 +9,13 @@
                 tar="{{ item.other }}"
             }
             con.insertAdjacentHTML('afterbegin',
-                "<a href={{ site.baseurl }}"+tar+" class=\"nav-foot-link\">{{ item.name }}</a>")
+                "<a href="+tar+" class=\"nav-foot-link\">{{ item.name }}</a>")
         </script>
-    </div>
-        {% else %}
-    <div>
+      </div>
+    {% else %}
+      <div>
         <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
-    </div>
-        {% endif %}
-    {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
 </div>
