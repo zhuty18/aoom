@@ -14,11 +14,11 @@ nav-foot:
   link: "#content"
 - name: ⤴️
   link: ..
-  con: /
+  con: site.baseurl/
   other: .
   id: up
 - name: 🏠
-  link: /docs
+  link: site.baseurl/docs
 
 date_format: "%Y. %-m. %-d"
 post_max: 500
