@@ -3,13 +3,7 @@
 
 @import "{{ site.theme }}";
 
-header,
-.header_wrap,
-footer,
-.site-footer,
-.footer_wrap,
-#forkme_banner,
-a#forkme_banner {
+footer{
     display: none;
 }
 

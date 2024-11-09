@@ -19,7 +19,8 @@ def format_md(filename):
                 if i.startswith("# ") and not title_set:
                     title = i.replace("# ", "")
                     title_set = True
-                cont.append(i)
+                else:
+                    cont.append(i)
             content = "\n\n".join(cont)
             if content.startswith("---"):
                 content = content[3:]
