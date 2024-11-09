@@ -86,7 +86,7 @@ def clear_post(post_max=POST_MAX):
         if LOG_POST:
             l = os.listdir(POST_PATH)
             l.sort()
-            print("\n".join(l))
+            # print("\n".join(l))
 
 
 def post_change(counter):
