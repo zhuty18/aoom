@@ -3,7 +3,8 @@
 
 @import "{{ site.theme }}";
 
-footer{
+footer,
+.btn {
     display: none;
 }
 
@@ -150,10 +151,6 @@ h2 a {
 }
 .main-content :first-child {
     margin-top: auto;
-}
-
-.page-header {
-    padding: 0;
 }
 
 .nav-head {

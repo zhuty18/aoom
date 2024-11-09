@@ -40,9 +40,6 @@ future: true
 
 excerpt_word: 120
 
-show_downloads: false
-github.is_project_page: false
-
 defaults:
   - scope:
       path: "" # 设置作用于整个站点
