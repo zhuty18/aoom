@@ -9,7 +9,7 @@ import os
 import re
 from utils import search_by_keyword, name_of
 
-TARGET = "D:\\MyResositories\\fanfiction\\detective\\Parts"
+TARGET = "D:\\MyResositories\\fanfiction-sample"
 
 
 class LatexConverter:
@@ -57,7 +57,13 @@ class LatexConverter:
             for j in l:
                 content = content.replace(j, "")
 
-            title = {-1: "part", 0: "chapter", 1: "section", 2: "subsection"}
+            title = {
+                -1: "part",
+                0: "chapter",
+                1: "section",
+                2: "subsection",
+                3: "subsubsection",
+            }
             res = []
             for j in content.split("\n\n"):
                 j = j.replace("\n", " ")
