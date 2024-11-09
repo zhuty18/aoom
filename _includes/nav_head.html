@@ -1,18 +1,20 @@
-<div class="nav-head">
+<div class="nav-head-wrapper">
+  <div class="nav-head">
     {% for item in site.nav-head %}
-        <span class="nav-head-item">
+      <span class="nav-head-item">
         <a href={{ item.link }}>{{ item.name }}</a>
-        </span>
+      </span>
     {% endfor %}
-</div>
-<div class="nav-head">
+  </div>
+  <div class="nav-head-tags">
     {% for tag in page.tags %}
-        <span class="tag headtag {{ tag }}">
-            {% if site.tags contains tag %}
-            <a href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>
-            {% else %}
-            {{ tag }}
-            {% endif %}
-        </span>
+      <span class="tag headtag {{ tag }}">
+        {% if site.tags contains tag %}
+          <a href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>
+        {% else %}
+          {{ tag }}
+        {% endif %}
+      </span>
     {% endfor %}
+  </div>
 </div>

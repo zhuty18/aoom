@@ -27,7 +27,7 @@ footer,
     opacity: 80%;
 }
 
-.main-content .nav-foot div {
+.nav-foot div {
     margin-top: auto;
     margin-bottom: auto;
     height: 2.5rem;
@@ -153,6 +153,9 @@ h2 a {
 .main-content h1 {
     margin-top: 1rem;
 }
+.main-content :first-child {
+    margin-top: auto;
+}
 
 .page-header {
     padding: 0;
@@ -177,6 +180,11 @@ h2 a {
 .nav-head-item a {
     color: white;
     text-decoration: none;
+}
+
+.nav-head-wrapper {
+    position: absolute;
+    left: 0pt;
 }
 
 .headtag {
