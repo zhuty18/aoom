@@ -1,6 +1,6 @@
 domain: zhuty18.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://zhuty18.github.io  # the base hostname and protocol for your site, e.g. http://example.com
-baseurl: /aoom      # place folder name if the site is served in a subfolder
+baseurl: /aoom/      # place folder name if the site is served in a subfolder
 remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/merlot@v0.2.0
 # remote_theme: pages-themes/slate@v0.2.0
@@ -14,11 +14,11 @@ nav-foot:
   link: "#content"
 - name: ⤴️
   link: ..
-  con: site.baseurl/
+  con: /
   other: .
   id: up
 - name: 🏠
-  link: site.baseurl/docs
+  link: /docs
 
 date_format: "%Y. %-m. %-d"
 post_max: 500

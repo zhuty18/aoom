@@ -9,7 +9,7 @@
     {% for tag in page.tags %}
         <span class="tag headtag {{ tag }}">
             {% if site.tags contains tag %}
-            <a href="/tag/{{ tag }}">{{ tag }}</a>
+            <a href="{{ site.baseurl }}/tag/{{ tag }}">{{ tag }}</a>
             {% else %}
             {{ tag }}
             {% endif %}

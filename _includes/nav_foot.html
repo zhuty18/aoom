@@ -14,7 +14,7 @@
     </div>
         {% else %}
     <div>
-        <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+        <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
     </div>
         {% endif %}
     {% endfor %}
