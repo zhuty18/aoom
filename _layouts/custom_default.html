@@ -1,0 +1,29 @@
+---
+layout: custom_default
+---
+
+<head>
+  {% include head_jump.html url=page.target %}
+</head>
+
+{% unless page.no_nav %}
+  {% include nav_head.html %}
+{% endunless %}
+
+{% if site.ad %}
+  {% include ad.html %}
+{% endif %}
+
+{{ content }}
+
+<main
+  id="content"
+  class="main-content"
+  role="main">
+  {{ content }}
+</main>
+
+{% unless page.no_nav %}
+  {% include passlock.html %}
+  {% include nav_foot.html %}
+{% endunless %}

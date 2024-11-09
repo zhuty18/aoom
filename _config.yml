@@ -1,6 +1,6 @@
 domain: zhuty18.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://zhuty18.github.io  # the base hostname and protocol for your site, e.g. http://example.com
-baseurl: /aoom/      # place folder name if the site is served in a subfolder
+baseurl: /aoom      # place folder name if the site is served in a subfolder
 remote_theme: pages-themes/cayman@v0.2.0
 # remote_theme: pages-themes/merlot@v0.2.0
 # remote_theme: pages-themes/slate@v0.2.0
@@ -41,3 +41,13 @@ white: batlantern
 future: true
 
 excerpt_word: 120
+
+show_downloads: false
+github.is_project_page: false
+
+defaults:
+  - scope:
+      path: "" # 设置作用于整个站点
+      type: "pages" # 或 "pages"，适用于所有文章或页面
+    values:
+      layout: "custom_default"
