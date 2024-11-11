@@ -4,32 +4,32 @@
 提交至git
 """
 
-import os
-import time
 import argparse
+import os
 import sys
+import time
 
 if __name__ == "__main__":
     sys.path.append("./scripts")
     os.system("git config --global core.quotepath false")
 
     from personal import (
-        GIT_ADD,
-        GIT_COMMIT,
-        GIT_PUSH,
+        ALT_ORDER,
+        CHANGE_SAVE,
         COUNT_WORD,
-        WORD_CLOUD_TYPE,
-        WORD_CLOUD_JOB,
         DEFAULT_MESSAGE,
         DEFAULT_ORDER,
-        ALT_ORDER,
-        GENERATE_WEB,
-        GIT_NAME,
-        GIT_EMAIL,
-        GIT_WEB,
-        CHANGE_SAVE,
         FILE_ROOT,
+        GENERATE_WEB,
+        GIT_ADD,
+        GIT_COMMIT,
+        GIT_EMAIL,
+        GIT_NAME,
+        GIT_PUSH,
+        GIT_WEB,
         POST_CHANGE,
+        WORD_CLOUD_JOB,
+        WORD_CLOUD_TYPE,
     )
 
     COMMIT_TIME = time.time()

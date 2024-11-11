@@ -4,13 +4,13 @@
 
 1. 安装 python
 
-开发使用的 python 版本是 3.7.4，在 Ubuntu20.04 & Ubuntu18.04 上，用 python3.8 做过测试。
+    开发使用的 python 最低版本是 3.7.4。用3.8，3.9，3.12都做过测试。
 
-请确保安装的 python 版本不低于 3.7。
+    请确保安装的 python 版本不低于 3.7。
 
 2. 安装依赖
 
-执行命令`python -m pip install --user -r requirements.txt`即可
+    thon -m pip install --user -r requirements.txt`即可
 
 3. 根据你需要的功能运行脚本
 
@@ -28,7 +28,7 @@
 |:-|:-|:-|
 |-a|是否添加所有修改|使用此参数，行为与默认值不同|
 |-c|是否提交|使用此参数，行为与默认值不同|
-|-m|提交信息|与`git commit -m [message]`的效果类似<br>如果不使用此参数，则会按照默认的信息提交|
+|-m|提交信息|与`git commit -m [message]`的效果类似</br>如果不使用此参数，则会按照默认的信息提交|
 |-p|是否推送到远程分支|使用此参数，行为与默认值不同|
 
 如果不提交，则参数没有意义。
@@ -122,6 +122,10 @@
 
 ## 导出为$\LaTeX$
 
-`python scripts/file_to_latex.py [keyword] <depth>`
+`python scripts/file_to_latex.py [keyword] [-d depth] [-o output_name] [-p path]`
 
-深度为一级标题对应的$\LaTeX$标题，默认为0（chapter）。
+深度depth为一级标题对应的$\LaTeX$标题，默认为0（chapter）。
+
+输出路径path可以使用相对路径，默认为`./latex_output`。
+
+输出文件名output_name默认为原文件名，可以自行制定（不含后缀）。
