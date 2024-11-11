@@ -3,7 +3,8 @@
 """重构仓库后融合过往历史"""
 
 import os
-from work_record import WordCounter, FileRecord
+
+from work_record import FileRecord, WordCounter
 
 old_history = "data/old_history.txt"
 new_history = "data/history.txt"

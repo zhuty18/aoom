@@ -3,7 +3,8 @@
 """线上格式化md"""
 
 import os
-from utils import doc_dir, dir_name, name_of
+
+from utils import dir_name, doc_dir, name_of
 
 
 def format_md(filename):

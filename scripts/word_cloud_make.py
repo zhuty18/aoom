@@ -1,15 +1,16 @@
 # coding=utf-8
 import os
 import sys
+
 from utils import match_keys
 
 try:
     import jieba
     import jieba.analyse
-    import wordcloud
     import matplotlib
-    import matplotlib.pyplot as plt
     import matplotlib.font_manager as fm
+    import matplotlib.pyplot as plt
+    import wordcloud
 except ModuleNotFoundError:
     print("Requirements Not Found!")
 
@@ -34,18 +35,26 @@ class WordPic:
                 self.drawPic(subdir, i)
 
     def drawPic(self, path, name):
-        if name.endswith(".md") and (not name.__contains__("README")) and match_keys(self.keys, name):
+        if (
+            name.endswith(".md")
+            and (not name.__contains__("README"))
+            and match_keys(self.keys, name)
+        ):
             print("Drawing " + name)
             if self.job == "r":
                 os.remove(path.replace(".md", ".png"))
             else:
                 f = open(path, "r", encoding="utf-8")
                 str = f.read()
-                keywords = jieba.analyse.extract_tags(str, withWeight=True, topK=50)
+                keywords = jieba.analyse.extract_tags(
+                    str, withWeight=True, topK=50
+                )
                 # print(name.replace('.md',''))
                 # print(keywords)
                 fre = {keyword[0]: keyword[1] for keyword in keywords}
-                wc = wordcloud.WordCloud(font_path="myfont.ttf", width=600, height=400)
+                wc = wordcloud.WordCloud(
+                    font_path="myfont.ttf", width=600, height=400
+                )
                 wc.fit_words(fre)
                 if self.job.__contains__("s"):
                     wc.to_file(path.replace(".md", ".png"))

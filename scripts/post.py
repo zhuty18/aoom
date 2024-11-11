@@ -2,22 +2,23 @@
 """
 发布文件到POST_PATH文件夹
 """
-import sys
 import os
-from personal import POST_PATH, POST_DATE, FILE_ROOT, POST_MAX, INDEX_NAME
+import sys
+
+from personal import FILE_ROOT, INDEX_NAME, POST_DATE, POST_MAX, POST_PATH
 from utils import (
-    search_by_keyword,
-    name_of,
-    format_time,
-    get_time,
-    short_path,
-    preview,
     dir_name,
-    path_of,
-    get_predefine,
+    format_time,
     get_pre_key,
+    get_predefine,
+    get_time,
     make_index,
     make_index_dir,
+    name_of,
+    path_of,
+    preview,
+    search_by_keyword,
+    short_path,
 )
 from work_record import WordCounter
 

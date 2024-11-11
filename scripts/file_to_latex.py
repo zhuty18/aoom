@@ -4,10 +4,11 @@
 将markdown变为latex
 """
 
-import sys
 import os
 import re
-from utils import search_by_keyword, name_of
+import sys
+
+from utils import name_of, search_by_keyword
 
 TARGET = "D:\\MyResositories\\fanfiction-sample"
 

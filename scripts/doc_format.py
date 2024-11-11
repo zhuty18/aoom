@@ -2,11 +2,10 @@
 
 """将doc文件变为markdown"""
 
+import argparse
 import os
 import platform
-import argparse
 import sys
-
 
 try:
     from win32com import client as wc
@@ -36,7 +35,9 @@ def to_markdown(path, name, rm):
     elif name.endswith(".doc"):
         word = wc.Dispatch("Word.Application")
         doc = word.Documents.Open(path)  # 目标路径下的文件
-        doc.SaveAs(path + "x", 12, False, "", True, "", False, False, False, False)  # 转化后路径下的文件
+        doc.SaveAs(
+            path + "x", 12, False, "", True, "", False, False, False, False
+        )  # 转化后路径下的文件
         doc.Close()
         word.Quit()
         to_markdown(path + "x", name + "x", rm)
@@ -65,6 +66,8 @@ def get_all_files(path, rm):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-r", "--remove", type=bool, default=False, nargs="?", const=True)
+parser.add_argument(
+    "-r", "--remove", type=bool, default=False, nargs="?", const=True
+)
 args = parser.parse_args()
 get_all_files(os.getcwd(), args.remove)

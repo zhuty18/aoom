@@ -3,8 +3,9 @@
 """把所有完成作品加入git临时目录"""
 
 import os
-from utils import file_fin, dir_name, short_path
-from personal import INDEX_NAME, INDEX_FULL_NAME
+
+from personal import INDEX_FULL_NAME, INDEX_NAME
+from utils import dir_name, file_fin, short_path
 
 
 def go_over(path):

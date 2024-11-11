@@ -9,10 +9,11 @@
 """
 
 import sys
-from utils import line_length, search_by_keyword
+
 from name_translate import name_tsl
-from web_make import to_html
 from personal import GENERATE_WEB
+from utils import line_length, search_by_keyword
+from web_make import to_html
 
 
 def count_file(filename):
@@ -77,7 +78,7 @@ class FileChecker:
 
 
 if __name__ == "__main__":
-    from personal import DEFAULT_TRANSLATE, TRANSLATE_MODE, BACKWARD_MODE
+    from personal import BACKWARD_MODE, DEFAULT_TRANSLATE, TRANSLATE_MODE
 
     MODE = DEFAULT_TRANSLATE
     if len(sys.argv) > 2:

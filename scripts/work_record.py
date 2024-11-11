@@ -3,40 +3,41 @@
 """文件记录"""
 
 import os
-import sys
 import re
 import subprocess
-from utils import (
-    dirs,
-    format_time,
-    format_log_time,
-    get_time,
-    dir_name,
-    file_length,
-    file_fin,
-    short_path,
-    doc_path,
-    auto_hide,
-    doc_dir,
-    path_of,
-    title_of,
-)
+import sys
+
 import file_check
+import web_make
 from personal import (
-    DEFAULT_ORDER,
-    HISTORY_PATH,
     ARCHIVE_TITLE,
     ARCHIVE_UPDATE,
-    POST_PATH,
-    INDEX_NAME,
-    INDEX_FULL_NAME,
-    POST_CHANGE,
-    GENERATE_WEB,
-    FIN_TITLE,
-    TBC_TITLE,
+    DEFAULT_ORDER,
     FILE_ROOT,
+    FIN_TITLE,
+    GENERATE_WEB,
+    HISTORY_PATH,
+    INDEX_FULL_NAME,
+    INDEX_NAME,
+    POST_CHANGE,
+    POST_PATH,
+    TBC_TITLE,
 )
-import web_make
+from utils import (
+    auto_hide,
+    dir_name,
+    dirs,
+    doc_dir,
+    doc_path,
+    file_fin,
+    file_length,
+    format_log_time,
+    format_time,
+    get_time,
+    path_of,
+    short_path,
+    title_of,
+)
 
 try:
     from xpinyin import Pinyin

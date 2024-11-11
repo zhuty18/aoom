@@ -4,9 +4,10 @@
 
 import os
 import re
+
 import markdown
-from utils import dir_name, dirs, html_head, short_path, doc_dir, name_of
-from personal import CHANGE_SAVE, INDEX_FULL_NAME, INDEX_NAME, FIN_TITLE
+from personal import CHANGE_SAVE, FIN_TITLE, INDEX_FULL_NAME, INDEX_NAME
+from utils import dir_name, dirs, doc_dir, html_head, name_of, short_path
 
 
 def read_index(path):

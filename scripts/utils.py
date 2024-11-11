@@ -3,23 +3,24 @@
 """功能函数"""
 
 import os
-import time
 import re
+import time
+
+from name_def import names
 from personal import (
     COMMIT_TIME,
-    TIME_FORMAT,
-    WEB_NAME,
+    DIR_NAMES,
+    FILE_ROOT,
     FIN_HEAD,
     FIN_TAIL,
     FIN_TEM,
     HISTORY_PATH,
-    FILE_ROOT,
-    PREVIEW_LENGTH,
-    INDEX_NAME,
     INDEX_FULL_NAME,
-    DIR_NAMES,
+    INDEX_NAME,
+    PREVIEW_LENGTH,
+    TIME_FORMAT,
+    WEB_NAME,
 )
-from name_def import names
 
 
 def format_time(timestamp: float = COMMIT_TIME, time_format=TIME_FORMAT) -> str:
