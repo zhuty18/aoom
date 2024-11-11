@@ -4,7 +4,7 @@
 """
 
 # 网站名称
-WEB_NAME = "兔子草"
+WEB_NAME = "兔子草 | Atomic"
 
 # git使用的提交署名
 GIT_NAME = "tuzicao"
@@ -76,6 +76,7 @@ INDEX_FULL_NAME = "full_index.md"
 ARCHIVE_UPDATE = "{update_detail}"
 ARCHIVE_TITLE = f"""---
 layout: docs
+title: {WEB_NAME}
 update: {ARCHIVE_UPDATE}
 ---
 
