@@ -1,28 +1,28 @@
 {% if site.password %}
-{% unless page.url contains site.white %}
-<div class="lock-box">
-    <div id="pass-require" class="password-require">
+  {% unless page.url contains site.white %}
+    <div class="lock-box">
+      <div id="pass-require" class="password-require">
         <p>该页面需要密码访问！</p>
         <p>提示：我的id（首字母大写）</p>
         <input type="password" id="password">
         <button onclick="unlock()">解锁</button>
+      </div>
     </div>
-</div>
-<script>
-    function unlock () {
+    <script>
+      function unlock () {
         var pre_pass = ""
         if (document.cookie.includes("lock")) {
-            pre_pass = document.cookie.split(";")[0]
+          pre_pass = document.cookie.split(";")[0]
         }
         var password = document.getElementById("password").value
         if (password.includes("Tuzicao") || pre_pass.includes("Tuzicao")) {
-            document.getElementById("pass-require").style.display = "none"
-            document.getElementById("unlock").style.display = ""
-            document.cookie = "lock=" + "Tuzicao"
+          document.getElementById("pass-require").style.display = "none"
+          document.getElementById("unlock").style.display = ""
+          document.cookie = "lock=" + "Tuzicao"
         }
-    }
-    document.getElementById("unlock").style.display = "none"
-    unlock()
+      }
+      document.getElementById("unlock").style.display = "none"
+      unlock()
     </script>
-{% endunless %}
+  {% endunless %}
 {% endif %}

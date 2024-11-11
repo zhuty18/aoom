@@ -1,37 +1,37 @@
 <div class="post">
-    <h2>
-        {% if include.list_title %}
-            {{ include.list_title }}
-        {% else %} 
-        最近更新
+  <h2>
+    {% if include.list_title %}
+      {{ include.list_title }}
+    {% else %}
+      最近更新
+    {% endif %}
+  </h2>
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if include.type == "docs" %}
+        {% if include.update contains post.title %}
+          {% include post.html post=post %}
         {% endif %}
-        </h2>
-    <ul class="post-list">
-        {% for post in site.posts %}
-            {% if include.type == "docs" %}
-                {% if include.update contains post.title %}
-                    {% include post.html post=post %}
-                {% endif %}
-            {% elsif include.type == "tags" %}
-                {% if post.tags contains include.tag %}
-                {% unless post.tags contains "黑历史" %}
-                    {% include post.html post=post %}
-                {% endunless %} 
-                {% if include.tag == "黑历史" %}
-                    {% include post.html post=post %}
-                {% endif %}
-                {% endif %}
-            {% elsif include.type == "category" %}
-                {% if post.category == include.category %}
-                {% unless post.tags contains "黑历史" %}
-                    {% include post.html post=post %}
-                {% endunless %}
-                {% endif %}
-            {% else %}
-                {% unless post.tags contains "黑历史" %}
-                {% include post.html post=post %}
-                {% endunless %} 
-            {% endif %}
-        {% endfor %}
-    </ul>
+      {% elsif include.type == "tags" %}
+        {% if post.tags contains include.tag %}
+          {% unless post.tags contains "黑历史" %}
+            {% include post.html post=post %}
+          {% endunless %}
+          {% if include.tag == "黑历史" %}
+            {% include post.html post=post %}
+          {% endif %}
+        {% endif %}
+      {% elsif include.type == "category" %}
+        {% if post.category == include.category %}
+          {% unless post.tags contains "黑历史" %}
+            {% include post.html post=post %}
+          {% endunless %}
+        {% endif %}
+      {% else %}
+        {% unless post.tags contains "黑历史" %}
+          {% include post.html post=post %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+  </ul>
 </div>
