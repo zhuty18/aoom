@@ -17,6 +17,7 @@ nav-foot:
   id: up
 - name: 🏠
   link: /docs
+  type: "home"
 
 date_format: "%Y. %-m. %-d"
 post_max: 500

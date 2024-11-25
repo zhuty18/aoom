@@ -38,6 +38,9 @@ a.nav-foot-link {
     width: 2.5rem;
     text-align: center;
 }
+.main-content .nav-foot :first-child {
+    margin-top: auto;
+}
 
 .post-list h2 {
     margin-top: 0.6rem;
@@ -148,9 +151,6 @@ h2 a {
 }
 .main-content h1 {
     margin-top: 1rem;
-}
-.main-content :first-child {
-    margin-top: auto;
 }
 
 .nav-head {

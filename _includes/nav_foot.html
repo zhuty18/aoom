@@ -14,7 +14,11 @@
       </div>
     {% else %}
       <div>
-        <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+        {% if item.type == "home" %}
+          <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+        {% else %}
+          <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+        {% endif %}
       </div>
     {% endif %}
   {% endfor %}
