@@ -10,7 +10,7 @@
 
 2. 安装依赖
 
-    thon -m pip install --user -r requirements.txt`即可
+    python -m pip install --user -r requirements.txt`即可
 
 3. 根据你需要的功能运行脚本
 
