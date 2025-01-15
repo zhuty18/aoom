@@ -1,0 +1,225 @@
+{
+  "main": {
+    "id": "6a53151d159e881a",
+    "type": "split",
+    "children": [
+      {
+        "id": "f88791717737b73f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "44d97083ea4eaee5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "logs/2025-01-15.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-01-15"
+            }
+          },
+          {
+            "id": "ff226a501727f93d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_templates/logs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "logs"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9597081951d5eb37",
+    "type": "split",
+    "children": [
+      {
+        "id": "c1f2fd470266c212",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7c874051cdf7a35",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "5afda85e6079dfbe",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#BatLantern",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "055829644fc50520",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "00e0a33998493af3",
+    "type": "split",
+    "children": [
+      {
+        "id": "082e061e2cebecf7",
+        "type": "tabs",
+        "dimension": 40,
+        "children": [
+          {
+            "id": "e723befff5a4818a",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "8956916cf58007eb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          },
+          {
+            "id": "293784f8f721dcac",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          }
+        ]
+      },
+      {
+        "id": "538d184045893f94",
+        "type": "tabs",
+        "dimension": 60,
+        "children": [
+          {
+            "id": "966beab25c763ab2",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          },
+          {
+            "id": "6ebbe011b807b03f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "508ae2dbe1cf9c9f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 250.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "graph:查看关系图谱": false
+    }
+  },
+  "active": "44d97083ea4eaee5",
+  "lastOpenFiles": [
+    "_templates/logs.md",
+    "logs/2025-01-15.md",
+    "_templates/new_note.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "未命名.md",
+    "_templates",
+    "todo.md",
+    "QZ/明星煌煌.md",
+    "blob.md",
+    "QZ/武侠AU1-据说武林盟主要娶第一美人.md",
+    "logs",
+    "2023-02-04.md",
+    "QZ/index.md",
+    "index.md",
+    "DC/布鲁斯睁开眼.md",
+    "QZ/卖腐这件小事.md",
+    "DC/full_index.md",
+    "DC/index.md",
+    "blob/full_index.md"
+  ]
+}

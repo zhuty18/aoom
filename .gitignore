@@ -1,7 +1,5 @@
 __pycache__
-.obsidian/
-.vscode/
-.DS_Store
+**/.DS_Store
 data/change.txt
 _site
 .sass-cache

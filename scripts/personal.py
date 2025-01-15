@@ -95,7 +95,7 @@ POST_DATE = "%Y-%m-%d"
 POST_TITLE = POST_DATE + "-{title}.md"
 
 # post上限，0为关闭功能，-1为不设置上限
-POST_MAX = 100
+POST_MAX = 10
 PREVIEW_LENGTH = 100
 
 FIN_TITLE = "## 已完结"
