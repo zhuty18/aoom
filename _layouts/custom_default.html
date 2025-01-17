@@ -9,7 +9,7 @@ layout: default
 {% unless page.no_nav %}
   <script>
     header=document.getElementsByClassName("page-header")[0]
-    header.insertAdjacentHTML("beforeend",\`{% include nav_head.html %}\`)
+    header.insertAdjacentHTML("beforeend",{% raw %}`{% endraw %}{% include nav_head.html %}{% raw %}`{% endraw %})
   </script>
 {% endunless %}
 
