@@ -416,7 +416,7 @@ def mark_fin(filename):
 
 def mark_post(filename):
     """将预定义post标注为true"""
-    add_predef(filename, "post", "true", "false")
+    return add_predef(filename, "post", "true", "false")
 
 
 def make_index(kind, name):
