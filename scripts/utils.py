@@ -371,21 +371,52 @@ def get_pre_key(pre_d, keyword):
     return l
 
 
-def mark_post(filename):
-    """将预定义post标注为true"""
+def add_predef(filename, key, value, ignore=None):
+    """添加预定义"""
     pre_d = get_predefine(filename)
-    posted = get_pre_key(pre_d, "post")
-    if "true" in posted or "false" in posted:
+    if not pre_d:
+        with open(filename, "r", encoding="utf8") as f:
+            content = f.read()
+        with open(filename, "w", encoding="utf8") as f:
+            f.write(
+                f"""---
+{key}: value
+---
+
+"""
+            )
+            f.write(content)
+            return 1
+    tmp = get_pre_key(pre_d, "key")
+    if not tmp:
+        new_pre = pre_d + f"\n{key}: {value}"
+    elif value in tmp:
         return 0
-    if "post:" in pre_d:
-        new_predef = pre_d.replace("post:", "post: true")
+    elif ignore and ignore in tmp:
+        return 0
     else:
-        new_predef = pre_d + "\npost: true"
+        new_pre = pre_d.replace(f"{key}:", "{key}: {value}")
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
     with open(filename, "w", encoding="utf8") as f:
-        f.write(content.replace(pre_d, new_predef))
+        f.write(content.replace(pre_d, new_pre))
     return 1
+
+
+def mark_category(filename):
+    """在预定义中增加类"""
+    add_predef(filename, "category", dir_name(path_of(filename)))
+
+
+def mark_fin(filename):
+    """标注已完成作品"""
+    if file_fin(filename):
+        add_predef(filename, "tags", "FIN")
+
+
+def mark_post(filename):
+    """将预定义post标注为true"""
+    add_predef(filename, "post", "true", "false")
 
 
 def make_index(kind, name):

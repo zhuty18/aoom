@@ -5,7 +5,15 @@
 import os
 import sys
 
-from utils import dir_name, doc_dir, name_of, search_by_keyword
+from utils import (
+    add_predef,
+    dir_name,
+    doc_dir,
+    mark_category,
+    mark_fin,
+    name_of,
+    search_by_keyword,
+)
 
 
 def format_md(filename):
@@ -25,16 +33,14 @@ def format_md(filename):
                 else:
                     cont.append(i)
             content = "\n\n".join(cont)
-            if content.startswith("---"):
-                content = content[3:]
-                content = f"---\ntitle: {title}" + content
-            else:
-                content = f"---\ntitle: {title}\n---\n\n" + content
         content = content.replace(
             "\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n"
         )
         content = content.replace("\n\n\n", "\n\n<br>\n")
         f.write(content)
+    add_predef(filename, "title", title)
+    mark_category(filename)
+    mark_fin(filename)
 
 
 def format_dir(path):
