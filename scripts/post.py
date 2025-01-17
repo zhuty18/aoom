@@ -52,6 +52,12 @@ def post(filename, counter):
     if target.endswith("."):
         target = target[:-1] + "/html"
 
+    try:
+        posted = get_pre_key(pre_d, "post")[0]
+        mark = f"post: {posted}\n"
+    except IndexError:
+        mark = ""
+
     post_name = f"{date}-{his.name}.md"
     POST_LIST.append((post_name))
 
@@ -66,7 +72,7 @@ category: {dir_name(path_of(filename))}
 cat_url: /{short_path(path_of(filename))}
 tags: {tags if tags else ""}
 length: {his.length}
----
+{mark}---
 
 {preview(filename)}
 """
