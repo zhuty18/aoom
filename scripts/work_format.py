@@ -14,8 +14,14 @@ def format_file(filename):
     f.close()
     f = open(filename, "w", encoding="utf-8")
     # print(content)
+    pre_def = False
     for i in content:
         if filename.endswith(".py"):
+            f.write(i.strip("\n") + "\n")
+        elif "---\n" in i:
+            pre_def = not pre_def
+            f.write(i.strip("\n") + "\n")
+        elif pre_def:
             f.write(i.strip("\n") + "\n")
         else:
             f.write(i.strip() + "\n")

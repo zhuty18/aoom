@@ -1,8 +1,7 @@
 ---
-date:
-"{ date }":
-tags:
-- 日志
+category: 日志
+post: false
+date: {{date}}
 ---
 
 # 今日日志

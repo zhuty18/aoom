@@ -24,7 +24,7 @@ def count_file(filename):
         f.close()
     elif not filename.endswith(".md"):
         print("only support plain text and MarkDown files!")
-    else:
+    elif not "_templates" in filename:
         f = open(filename, "r", encoding="utf-8")
         filename = filename.replace("\\", "/")
         filename = filename.split("/")

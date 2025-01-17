@@ -1,7 +1,5 @@
 ---
-date:
-"{ date }":
+date: {{date}}
 category:
 tags:
-post: false
 ---
