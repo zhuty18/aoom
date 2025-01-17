@@ -20,6 +20,7 @@ def format_md(filename):
             for i in content.split("\n\n"):
                 if i.startswith("# ") and not title_set:
                     title = i.replace("# ", "")
+                    title = title.strip("*")
                     title_set = True
                 else:
                     cont.append(i)
