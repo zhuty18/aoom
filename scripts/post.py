@@ -99,7 +99,6 @@ def post_change(filename, counter):
         if his.name in item:
             mark_post(os.path.join(POST_PATH, item))
             break
-    clear_post()
 
 
 def post_all(path, counter, allow_tbc=False, clear=True):
@@ -112,8 +111,6 @@ def post_all(path, counter, allow_tbc=False, clear=True):
         ):
             if counter.history[name_of(item)].fin or allow_tbc:
                 post(os.path.join(path, item), counter)
-    if clear:
-        clear_post()
 
 
 if __name__ == "__main__":
@@ -130,6 +127,7 @@ if __name__ == "__main__":
         change = get_pre_key(defs, "change")
         for i in change:
             post_change(i, COUNTER)
+        clear_post()
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
