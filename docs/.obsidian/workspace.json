@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a74d5f4b7ec1145b",
+        "id": "1987d736a447b55c",
         "type": "tabs",
         "children": [
           {
-            "id": "27d4961084aad390",
+            "id": "0a96a3d3db7d0962",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_templates/logs.md",
+                "file": "QZ/暗恋是八个人的兵荒马乱.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "logs"
+              "title": "暗恋是八个人的兵荒马乱"
             }
           }
         ]
@@ -145,7 +145,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_templates/logs.md",
+                "file": "QZ/暗恋是八个人的兵荒马乱.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +155,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "logs 的反向链接列表"
+              "title": "暗恋是八个人的兵荒马乱 的反向链接列表"
             }
           },
           {
@@ -188,12 +188,12 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "27d4961084aad390",
+  "active": "0a96a3d3db7d0962",
   "lastOpenFiles": [
-    "_templates/new_note.md",
-    "_templates/logs.md",
-    "QZ/暗恋是八个人的兵荒马乱.md",
     "QZ/明星煌煌.md",
+    "_templates/logs.md",
+    "_templates/new_note.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
     "QZ/爱情杀手.md",
     "todo.md",
     "DMC/Q.E.D..md",

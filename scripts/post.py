@@ -25,7 +25,7 @@ from work_record import WordCounter
 LOG_POST = False
 
 
-def post(filename, counter):
+def post(filename, counter, marked=False):
     """发布单个文件"""
     if counter is None:
         counter = WordCounter()
@@ -36,6 +36,12 @@ def post(filename, counter):
             os.remove(os.path.join(POST_PATH, it))
 
     pre_d = get_predefine(filename)
+    if not marked:
+        if "false" in get_pre_key(pre_d, "post"):
+            return
+    else:
+        if "true" not in get_pre_key(pre_d, "post"):
+            return
     tags = get_pre_key(pre_d, "tags")
     if "FIN" not in tags:
         tags.insert(0, "FIN" if his.fin else "TBC")
@@ -114,6 +120,20 @@ def post_all(path, counter, allow_tbc=False, clear=True):
         clear_post()
 
 
+def post_marked(path, counter):
+    """发布被标记post的"""
+    if counter is None:
+        counter = WordCounter()
+        counter.read_history()
+    for item in os.listdir(path):
+        if dir_name(os.path.join(path, item)):
+            post_marked(os.path.join(path, item), counter)
+        elif name_of(item) in counter.history and (
+            not os.path.isdir(os.path.join(path, item))
+        ):
+            post(os.path.join(path, item), counter, True)
+
+
 if __name__ == "__main__":
     COUNTER = None
     if not os.path.exists(POST_PATH):
@@ -124,6 +144,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         LOG_POST = True
         post_all(FILE_ROOT, COUNTER, True)
+        post_marked(FILE_ROOT, COUNTER)
         defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
         change = get_pre_key(defs, "change")
         for i in change:
