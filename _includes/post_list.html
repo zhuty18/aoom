@@ -27,6 +27,12 @@
             {% include post.html post=post %}
           {% endunless %}
         {% endif %}
+      {% elseif include.type == "home" %}
+        {% if post.post %}
+          {% unless post.tags contains "黑历史" %}
+            {% include post.html post=post %}
+          {% endunless %}
+        {% endif %}
       {% else %}
         {% unless post.tags contains "黑历史" %}
           {% include post.html post=post %}

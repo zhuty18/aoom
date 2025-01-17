@@ -3,8 +3,9 @@
 """线上格式化md"""
 
 import os
+import sys
 
-from utils import dir_name, doc_dir, name_of
+from utils import dir_name, doc_dir, name_of, search_by_keyword
 
 
 def format_md(filename):
@@ -45,4 +46,8 @@ def format_dir(path):
 
 
 if __name__ == "__main__":
-    format_dir(doc_dir())
+    if len(sys.argv) == 1:
+        format_dir(doc_dir())
+    else:
+        for i in search_by_keyword(sys.argv[1]):
+            format_md(i)

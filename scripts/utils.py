@@ -362,9 +362,28 @@ def get_pre_key(pre_d, keyword):
                 item = item.strip()
                 l = item.split(" ")
                 l.pop(0)
+            elif ":" in item:
+                break
             elif item.startswith("  - "):
                 l.append(item.strip("  - "))
     return l
+
+
+def mark_post(filename):
+    """将预定义post标注为true"""
+    pre_d = get_predefine(filename)
+    posted = get_pre_key(pre_d, "post")
+    if "true" in posted or "false" in posted:
+        return 0
+    if "post:" in pre_d:
+        new_predef = pre_d.replace("post:", "post: true")
+    else:
+        new_predef = pre_d + "\npost: true"
+    with open(filename, "r", encoding="utf8") as f:
+        content = f.read()
+    with open(filename, "w", encoding="utf8") as f:
+        f.write(content.replace(pre_d, new_predef))
+    return 1
 
 
 def make_index(kind, name):

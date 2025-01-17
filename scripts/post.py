@@ -14,6 +14,7 @@ from utils import (
     get_time,
     make_index,
     make_index_dir,
+    mark_post,
     name_of,
     path_of,
     preview,
@@ -22,10 +23,10 @@ from utils import (
 )
 from work_record import WordCounter
 
-LOG_POST = False
+POST_LIST = []
 
 
-def post(filename, counter, marked=False):
+def post(filename, counter):
     """发布单个文件"""
     if counter is None:
         counter = WordCounter()
@@ -36,12 +37,6 @@ def post(filename, counter, marked=False):
             os.remove(os.path.join(POST_PATH, it))
 
     pre_d = get_predefine(filename)
-    if not marked:
-        if "false" in get_pre_key(pre_d, "post"):
-            return
-    else:
-        if "true" not in get_pre_key(pre_d, "post"):
-            return
     tags = get_pre_key(pre_d, "tags")
     if "FIN" not in tags:
         tags.insert(0, "FIN" if his.fin else "TBC")
@@ -61,6 +56,7 @@ def post(filename, counter, marked=False):
         target = target[:-1] + "/html"
 
     post_name = f"{date}-{his.name}.md"
+    POST_LIST.append((post_name))
 
     with open(os.path.join(POST_PATH, post_name), "w", encoding="utf8") as f:
         f.write(
@@ -83,23 +79,23 @@ length: {his.length}
 def clear_post(post_max=POST_MAX):
     """控制post上限"""
     if post_max >= 0:
-        l = os.listdir(POST_PATH)
-        l.sort()
-        l.reverse()
-        if len(l) > post_max:
-            l = l[post_max:]
-            for item in l:
-                os.remove(os.path.join(POST_PATH, item))
-        if LOG_POST:
-            l = os.listdir(POST_PATH)
-            l.sort()
-            # print("\n".join(l))
+        POST_LIST.sort()
+        POST_LIST.reverse()
+
+        posted = 0
+        for item in POST_LIST:
+            posted += mark_post(os.path.join(POST_PATH, item))
+            if posted == post_max:
+                break
 
 
-def post_change(counter):
-    """发布本次改动的文件"""
-    for it in counter.changes:
-        post(os.path.join(os.getcwd(), it), counter)
+def post_change(filename, counter):
+    """标记本次改动的文件为post"""
+    his = counter.history[name_of(filename)]
+    for item in POST_LIST:
+        if his.name in item:
+            mark_post(os.path.join(POST_PATH, item))
+            break
     clear_post()
 
 
@@ -120,20 +116,6 @@ def post_all(path, counter, allow_tbc=False, clear=True):
         clear_post()
 
 
-def post_marked(path, counter):
-    """发布被标记post的"""
-    if counter is None:
-        counter = WordCounter()
-        counter.read_history()
-    for item in os.listdir(path):
-        if dir_name(os.path.join(path, item)):
-            post_marked(os.path.join(path, item), counter)
-        elif name_of(item) in counter.history and (
-            not os.path.isdir(os.path.join(path, item))
-        ):
-            post(os.path.join(path, item), counter, True)
-
-
 if __name__ == "__main__":
     COUNTER = None
     if not os.path.exists(POST_PATH):
@@ -142,13 +124,11 @@ if __name__ == "__main__":
     make_index_dir("category")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
-        LOG_POST = True
         post_all(FILE_ROOT, COUNTER, True)
-        post_marked(FILE_ROOT, COUNTER)
         defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
         change = get_pre_key(defs, "change")
         for i in change:
-            post(i, COUNTER)
+            post_change(i, COUNTER)
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
