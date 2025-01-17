@@ -11,10 +11,14 @@
             "id": "f81f64723123b122",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "QZ/卖腐这件小事.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "卖腐这件小事"
             }
           }
         ]
@@ -109,9 +113,11 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {},
+              "state": {
+                "file": "QZ/卖腐这件小事.md"
+              },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "卖腐这件小事 的大纲"
             }
           },
           {
@@ -151,6 +157,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "QZ/卖腐这件小事.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -160,7 +167,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "卖腐这件小事 的反向链接列表"
             }
           },
           {
@@ -194,7 +201,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a7c874051cdf7a35",
+  "active": "f81f64723123b122",
   "lastOpenFiles": [
     "trash/Neal Caffrey相亲记.md",
     "trash/MKB射出了蝙蝠镖之后.md",
