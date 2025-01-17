@@ -8,8 +8,8 @@ layout: default
 
 {% unless page.no_nav %}
   <script>
-    header=document.getElementsByClassName("page-header")
-    header.insertAdjacentHTML("{% include nav_head.html %}")
+    header=document.getElementsByClassName("page-header")[0]
+    header.insertAdjacentHTML("beforeend",\`{% include nav_head.html %}\`)
   </script>
 {% endunless %}
 
