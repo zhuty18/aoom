@@ -20,10 +20,10 @@ def format_md(filename):
     """格式化单文件"""
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
+    title = name_of(filename)
     with open(filename, "w", encoding="utf8") as f:
         if "title: " not in content and not "index" in filename:
             cont = []
-            title = name_of(filename)
             title_set = False
             for i in content.split("\n\n"):
                 if i.startswith("# ") and not title_set:
