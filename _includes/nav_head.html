@@ -5,6 +5,11 @@
         <a href="{{ site.baseurl }}{{ item.link }}">{{ item.name }}</a>
       </span>
     {% endfor %}
+    {% for item in page.category %}
+      <span class="nav-head-category {{item}}">
+        <a href="{{ site.baseurl }}/category/{{ item }}">{{ item }}</a>
+      </span>
+    {% endfor %}
   </div>
   <div class="nav-head-tags nav-head">
     {% for tag in page.tags %}
