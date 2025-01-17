@@ -380,7 +380,7 @@ def add_predef(filename, key, value, ignore=None):
         with open(filename, "w", encoding="utf8") as f:
             f.write(
                 f"""---
-{key}: value
+{key}: {value}
 ---
 
 """
