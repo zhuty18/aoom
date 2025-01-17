@@ -14,29 +14,18 @@
         {% endif %}
       {% elsif include.type == "tags" %}
         {% if post.tags contains include.tag %}
-          {% unless post.tags contains "黑历史" %}
-            {% include post.html post=post %}
-          {% endunless %}
-          {% if include.tag == "黑历史" %}
-            {% include post.html post=post %}
-          {% endif %}
+          {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "category" %}
         {% if post.category == include.category %}
-          {% unless post.tags contains "黑历史" %}
-            {% include post.html post=post %}
-          {% endunless %}
+          {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "home" %}
         {% if post.post %}
-          {% unless post.tags contains "黑历史" %}
-            {% include post.html post=post %}
-          {% endunless %}
+          {% include post.html post=post %}
         {% endif %}
       {% else %}
-        {% unless post.tags contains "黑历史" %}
-          {% include post.html post=post %}
-        {% endunless %}
+        {% include post.html post=post %}
       {% endif %}
     {% endfor %}
   </ul>

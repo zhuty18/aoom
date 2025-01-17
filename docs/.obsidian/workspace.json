@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1987d736a447b55c",
+        "id": "dba80f94dcaa33d3",
         "type": "tabs",
         "children": [
           {
-            "id": "0a96a3d3db7d0962",
+            "id": "f81f64723123b122",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "QZ/暗恋是八个人的兵荒马乱.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "暗恋是八个人的兵荒马乱"
+              "title": "新标签页"
             }
           }
         ]
@@ -72,12 +68,22 @@
               "icon": "lucide-bookmark",
               "title": "书签"
             }
+          },
+          {
+            "id": "d67a7b405e2634be",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {},
+              "icon": "clock",
+              "title": "Recent Files"
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 247.5
   },
   "right": {
     "id": "00e0a33998493af3",
@@ -145,7 +151,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "QZ/暗恋是八个人的兵荒马乱.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +160,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "暗恋是八个人的兵荒马乱 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -185,32 +190,40 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "graph:查看关系图谱": false
+      "graph:查看关系图谱": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0a96a3d3db7d0962",
+  "active": "a7c874051cdf7a35",
   "lastOpenFiles": [
-    "QZ/明星煌煌.md",
-    "_templates/logs.md",
-    "_templates/new_note.md",
-    "QZ/暗恋是八个人的兵荒马乱.md",
-    "QZ/爱情杀手.md",
-    "todo.md",
-    "DMC/Q.E.D..md",
-    "index.md",
-    "logs/2025-01-16.md",
-    "logs/2025-01-15.md",
-    "未命名.md",
+    "trash/Neal Caffrey相亲记.md",
+    "trash/MKB射出了蝙蝠镖之后.md",
+    "trash/In the dormitory of the Slytherin Prince.md",
+    "trash/Bruce和Clark的假约会.md",
+    "trash/预言.md",
+    "trash/雨中局.md",
+    "trash/一往.md",
+    "trash/一次意外的分裂.md",
+    "trash/小美人鱼.md",
+    "trash/小凡下山记.md",
+    "trash/乡村爱情30题.md",
+    "trash/系统配对.md",
+    "trash/我未婚夫是Batman.md",
+    "trash/我们是时候讨论一下这些问题了.md",
+    "trash/我可能看上了假皇叔.md",
+    "trash/我更喜欢用手术刀.md",
+    "trash/未命名小段子.md",
+    "trash/王者之罪.md",
+    "trash/万圣夜与见家长.md",
+    "trash/天堂岛的留学生.md",
+    "trash/天道.md",
+    "trash/他不一样.md",
+    "trash/摄影棚门口.md",
+    "trash/谁还不是个玩枪的呢.md",
+    "trash/哨兵和向导.md",
+    "QZ/如何统治联盟.md",
+    "trash",
     "_templates",
-    "blob.md",
-    "QZ/武侠AU1-据说武林盟主要娶第一美人.md",
-    "logs",
-    "2023-02-04.md",
-    "QZ/index.md",
-    "DC/布鲁斯睁开眼.md",
-    "QZ/卖腐这件小事.md",
-    "DC/full_index.md",
-    "DC/index.md",
-    "blob/full_index.md"
+    "logs"
   ]
 }

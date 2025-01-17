@@ -1,5 +1,9 @@
 {
   "showInlineTitle": false,
   "showLineNumber": true,
-  "promptDelete": false
+  "promptDelete": false,
+  "useMarkdownLinks": true,
+  "userIgnoreFilters": [
+    "trash/"
+  ]
 }
