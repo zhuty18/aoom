@@ -358,7 +358,9 @@ def get_pre_key(pre_d, keyword):
     l = []
     if pre_d and keyword in pre_d:
         found = False
+        print("!!!")
         for item in pre_d.split("\n"):
+            print(item)
             if keyword in item:
                 found = True
                 item = item.strip()
@@ -387,7 +389,7 @@ def add_predef(filename, key, value, ignore=None):
             )
             f.write(content)
             return 1
-    tmp = get_pre_key(pre_d, "key")
+    tmp = get_pre_key(pre_d, key)
     if not tmp:
         new_pre = pre_d + f"\n{key}: {value}"
     elif value in tmp:
@@ -395,7 +397,7 @@ def add_predef(filename, key, value, ignore=None):
     elif ignore and ignore in tmp:
         return 0
     else:
-        new_pre = pre_d.replace(f"{key}:", "{key}: {value}")
+        new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
     with open(filename, "w", encoding="utf8") as f:

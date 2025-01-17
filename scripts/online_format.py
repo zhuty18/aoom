@@ -5,6 +5,7 @@
 import os
 import sys
 
+from personal import INDEX_FULL_NAME, INDEX_NAME
 from utils import (
     add_predef,
     dir_name,
@@ -22,7 +23,7 @@ def format_md(filename):
         content = f.read()
     title = name_of(filename)
     with open(filename, "w", encoding="utf8") as f:
-        if "title: " not in content and not "index" in filename:
+        if "title: " not in content:
             cont = []
             title_set = False
             for i in content.split("\n\n"):
@@ -38,9 +39,10 @@ def format_md(filename):
         )
         content = content.replace("\n\n\n", "\n\n<br>\n")
         f.write(content)
-    add_predef(filename, "title", title)
-    mark_category(filename)
-    mark_fin(filename)
+    add_predef(filename, "title", title, "")
+    if INDEX_NAME not in filename and INDEX_FULL_NAME not in filename:
+        mark_category(filename)
+        mark_fin(filename)
 
 
 def format_dir(path):
