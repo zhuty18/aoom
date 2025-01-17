@@ -357,14 +357,16 @@ def get_pre_key(pre_d, keyword):
     """从预定义头中读取关键字参数"""
     l = []
     if pre_d and keyword in pre_d:
+        found = False
         for item in pre_d.split("\n"):
             if keyword in item:
+                found = True
                 item = item.strip()
                 l = item.split(" ")
                 l.pop(0)
-            elif ":" in item:
+            elif ":" in item and found:
                 break
-            elif item.startswith("  - "):
+            elif item.startswith("  - ") and found:
                 l.append(item.strip("  - "))
     return l
 

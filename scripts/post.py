@@ -28,9 +28,6 @@ POST_LIST = []
 
 def post(filename, counter):
     """发布单个文件"""
-    if counter is None:
-        counter = WordCounter()
-        counter.read_history()
     his = counter.history[name_of(filename)]
     for it in os.listdir(POST_PATH):
         if name_of(filename) in it:
@@ -101,9 +98,6 @@ def post_change(filename, counter):
 
 def post_all(path, counter, allow_tbc=False, clear=True):
     """发布所有文件"""
-    if counter is None:
-        counter = WordCounter()
-        counter.read_history()
     for item in os.listdir(path):
         if dir_name(os.path.join(path, item)):
             post_all(os.path.join(path, item), counter, allow_tbc, False)
@@ -117,7 +111,8 @@ def post_all(path, counter, allow_tbc=False, clear=True):
 
 
 if __name__ == "__main__":
-    COUNTER = None
+    COUNTER = WordCounter()
+    COUNTER.read_history()
     if not os.path.exists(POST_PATH):
         os.mkdir(POST_PATH)
     make_index_dir("tag")
@@ -132,5 +127,6 @@ if __name__ == "__main__":
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
             post(i, COUNTER)
+            post_change(i, COUNTER)
     else:
         post_all(FILE_ROOT, COUNTER, True)
