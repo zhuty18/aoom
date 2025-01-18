@@ -7,7 +7,6 @@ import sys
 
 from personal import (
     FILE_ROOT,
-    INDEX_FULL_NAME,
     INDEX_NAME,
     LOG_PATH,
     POST_DATE,
@@ -106,8 +105,7 @@ def post_work(filename, counter):
 
 def post_log(filename):
     """post一条日志"""
-    post(filename, "日志")
-    add_predef(filename, "post", "false", True)
+    add_predef(post(filename, "日志"), "post", "false", True)
 
 
 def clear_post(post_max=POST_MAX):

@@ -21,9 +21,9 @@
           {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "home" %}
-        {% unless post.post == "false" %}
+        {% if post.post %}
           {% include post.html post=post %}
-        {% endunless %}
+        {% endif %}
       {% else %}
         {% include post.html post=post %}
       {% endif %}
