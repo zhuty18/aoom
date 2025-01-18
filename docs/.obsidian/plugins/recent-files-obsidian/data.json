@@ -1,20 +1,24 @@
 {
   "recentFiles": [
     {
-      "basename": "12.22，带真男朋友回家",
-      "path": "blob/12.22，带真男朋友回家.md"
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
+      "basename": "new_note",
+      "path": "_templates/new_note.md"
     },
     {
       "basename": "2025-01-17",
       "path": "logs/2025-01-17.md"
     },
     {
-      "basename": "2025-01-15",
-      "path": "logs/2025-01-15.md"
+      "basename": "12.22，带真男朋友回家",
+      "path": "blob/12.22，带真男朋友回家.md"
     },
     {
-      "basename": "logs",
-      "path": "_templates/logs.md"
+      "basename": "2025-01-15",
+      "path": "logs/2025-01-15.md"
     },
     {
       "basename": "卖腐这件小事",
@@ -195,10 +199,6 @@
     {
       "basename": "迟到的初恋",
       "path": "trash/迟到的初恋.md"
-    },
-    {
-      "basename": "乘波宠物店",
-      "path": "trash/乘波宠物店.md"
     }
   ],
   "omittedPaths": [],

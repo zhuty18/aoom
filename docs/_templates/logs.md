@@ -1,6 +1,4 @@
 ---
-category: 日志
-post: false
 date: {{date}}
 ---
 

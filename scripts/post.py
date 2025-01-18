@@ -7,6 +7,7 @@ import sys
 
 from personal import (
     FILE_ROOT,
+    INDEX_FULL_NAME,
     INDEX_NAME,
     LOG_PATH,
     POST_DATE,
@@ -106,6 +107,7 @@ def post_work(filename, counter):
 def post_log(filename):
     """post一条日志"""
     post(filename, "日志")
+    add_predef(filename, "post", "false", True)
 
 
 def clear_post(post_max=POST_MAX):
@@ -135,13 +137,13 @@ def post_all(path, counter, allow_tbc=False):
     for item in os.listdir(path):
         if dir_name(os.path.join(path, item)):
             post_all(os.path.join(path, item), counter, allow_tbc)
+        elif LOG_PATH in short_path(path) and name_of(item) in counter.history:
+            post_log(os.path.join(path, item))
         elif name_of(item) in counter.history and (
             not os.path.isdir(os.path.join(path, item))
         ):
             if counter.history[name_of(item)].fin or allow_tbc:
                 post_work(os.path.join(path, item), counter)
-        elif LOG_PATH in path and not os.path.isdir(path):
-            post_log(path)
 
 
 if __name__ == "__main__":

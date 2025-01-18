@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "blob/12.22，带真男朋友回家.md",
+                "file": "_templates/logs.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "12.22，带真男朋友回家"
+              "title": "logs"
             }
           }
         ],
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#blob",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,8 +98,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -218,8 +217,10 @@
   },
   "active": "f46cdeb567e3c181",
   "lastOpenFiles": [
+    "_templates/new_note.md",
     "logs/2025-01-17.md",
     "logs/2025-01-15.md",
+    "blob/12.22，带真男朋友回家.md",
     "_templates/logs.md",
     "logs/2025-01-18.md",
     "trash/Neal Caffrey相亲记.md",
@@ -242,8 +243,6 @@
     "trash/王者之罪.md",
     "trash/万圣夜与见家长.md",
     "trash/天堂岛的留学生.md",
-    "trash/天道.md",
-    "trash/他不一样.md",
     "trash",
     "_templates",
     "logs"
