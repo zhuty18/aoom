@@ -219,8 +219,8 @@ class WordCounter:
                 log_str += "|:-|:-|:-|:-|\n"
                 log_str += "\n".join(log)
                 log_str += "\n"
-                log_str += "\n"
-            log_str += "#" + dirs().strip()
+                # log_str += "\n"
+            # log_str += "#" + dirs().strip()
             f.write(log_str)
 
     def update_history(self):
@@ -333,6 +333,6 @@ if __name__ == "__main__":
         web_make.all_html(force=True)
     auto_hide()
     if POST_CHANGE:
-        from post import post_change
+        from post import mark_as_post
 
-        post_change(wcr)
+        mark_as_post(wcr)

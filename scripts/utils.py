@@ -306,7 +306,7 @@ def auto_hide():
 
 def path_fin(path):
     """路径是否默认为完结"""
-    fin_path = {"batlantern": True, "blob": True}
+    fin_path = {"batlantern": True, "blob": True, "logs": True}
     return fin_path.get(doc_path(path), False)
 
 
@@ -358,9 +358,7 @@ def get_pre_key(pre_d, keyword):
     l = []
     if pre_d and keyword in pre_d:
         found = False
-        print("!!!")
         for item in pre_d.split("\n"):
-            print(item)
             if keyword in item:
                 found = True
                 item = item.strip()
@@ -373,7 +371,7 @@ def get_pre_key(pre_d, keyword):
     return l
 
 
-def add_predef(filename, key, value, ignore=None):
+def add_predef(filename, key, value, no_multi=False):
     """添加预定义"""
     pre_d = get_predefine(filename)
     if not pre_d:
@@ -394,7 +392,7 @@ def add_predef(filename, key, value, ignore=None):
         new_pre = pre_d + f"\n{key}: {value}"
     elif value in tmp:
         return 0
-    elif ignore and ignore in tmp:
+    elif no_multi and len(tmp) > 0:
         return 0
     else:
         new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
@@ -418,7 +416,7 @@ def mark_fin(filename):
 
 def mark_post(filename):
     """将预定义post标注为true"""
-    return add_predef(filename, "post", "true", "false")
+    return add_predef(filename, "post", "true", True)
 
 
 def make_index(kind, name):

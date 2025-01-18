@@ -5,8 +5,16 @@
 import os
 import sys
 
-from personal import FILE_ROOT, INDEX_NAME, POST_DATE, POST_MAX, POST_PATH
+from personal import (
+    FILE_ROOT,
+    INDEX_NAME,
+    LOG_PATH,
+    POST_DATE,
+    POST_MAX,
+    POST_PATH,
+)
 from utils import (
+    add_predef,
     dir_name,
     format_time,
     get_pre_key,
@@ -26,57 +34,78 @@ from work_record import WordCounter
 POST_LIST = []
 
 
-def post(filename, counter):
+def post(filename, name, default_time=None, length=None):
     """发布单个文件"""
-    his = counter.history[name_of(filename)]
-    for it in os.listdir(POST_PATH):
-        if name_of(filename) in it:
-            os.remove(os.path.join(POST_PATH, it))
 
+    # 获取文件预定义
     pre_d = get_predefine(filename)
-    tags = get_pre_key(pre_d, "tags")
-    if "FIN" not in tags:
-        tags.insert(0, "FIN" if his.fin else "TBC")
-    for x in tags:
-        make_index("tag", x)
-    tags = "\n  - " + "\n  - ".join(tags)
-    if dir_name(path_of(filename)):
-        make_index("category", dir_name(path_of(filename)))
 
+    # 获取post日期
     try:
         date = get_pre_key(pre_d, "date")[0]
     except IndexError:
-        date = format_time(get_time(his.time), POST_DATE)
+        date = format_time(get_time(default_time), POST_DATE)
 
-    target = short_path(filename).replace(".md", "")
-    if target.endswith("."):
-        target = target[:-1] + "/html"
+    # 生成post名
+    post_name = f"{date}-{name}.md"
+    post_path = os.path.join(POST_PATH, post_name)
 
-    try:
-        posted = get_pre_key(pre_d, "post")[0]
-        mark = f"post: {posted}\n"
-    except IndexError:
-        mark = ""
-
-    post_name = f"{date}-{his.name}.md"
-    POST_LIST.append((post_name))
-
-    with open(os.path.join(POST_PATH, post_name), "w", encoding="utf8") as f:
+    # 建立post文件
+    with open(post_path, "w", encoding="utf8") as f:
         f.write(
             f"""---
-layout: forward
-target: /{target}
-title: {" ".join(get_pre_key(pre_d,"title"))}
-date: {date}
-category: {dir_name(path_of(filename))}
-cat_url: /{short_path(path_of(filename))}
-tags: {tags if tags else ""}
-length: {his.length}
-{mark}---
+{pre_d}
+---
 
 {preview(filename)}
 """
         )
+
+    # 添加跳转
+    add_predef(post_path, "layout", "forward")
+    target = short_path(filename).replace(".md", "")
+    if target.endswith("."):
+        target = target[:-1] + "/html"
+    add_predef(post_path, "target", target)
+    # 添加类别路径
+    add_predef(post_path, "cat_url", short_path(path_of(filename)))
+
+    # 记录post
+    POST_LIST.append(post_name)
+
+    # 建立标签索引
+    for x in get_pre_key(pre_d, "tags"):
+        make_index("tag", x)
+    # 建立类别索引
+    if dir_name(path_of(filename)):
+        make_index("category", dir_name(path_of(filename)))
+
+    return post_path
+
+
+def post_work(filename, counter):
+    """发布单个文件"""
+
+    # 阅读该文件历史
+    his = counter.history[name_of(filename)]
+
+    post_path = post(filename, his.name, his.time)
+
+    pre_d = get_predefine(post_path)
+    # 添加完结标
+    if "FIN" not in get_pre_key(pre_d, "tags"):
+        add_predef(post_path, "tags", "TBC")
+        make_index("tag", "TBC")
+    # 添加日期和长度
+    add_predef(
+        post_path, "date", format_time(get_time(his.time), POST_DATE), True
+    )
+    add_predef(post_path, "length", his.length)
+
+
+def post_log(filename):
+    """post一条日志"""
+    post(filename, "日志")
 
 
 def clear_post(post_max=POST_MAX):
@@ -92,7 +121,7 @@ def clear_post(post_max=POST_MAX):
                 break
 
 
-def post_change(filename, counter):
+def mark_as_post(filename, counter):
     """标记本次改动的文件为post"""
     his = counter.history[name_of(filename)]
     for item in POST_LIST:
@@ -101,16 +130,18 @@ def post_change(filename, counter):
             break
 
 
-def post_all(path, counter, allow_tbc=False, clear=True):
+def post_all(path, counter, allow_tbc=False):
     """发布所有文件"""
     for item in os.listdir(path):
         if dir_name(os.path.join(path, item)):
-            post_all(os.path.join(path, item), counter, allow_tbc, False)
+            post_all(os.path.join(path, item), counter, allow_tbc)
         elif name_of(item) in counter.history and (
             not os.path.isdir(os.path.join(path, item))
         ):
             if counter.history[name_of(item)].fin or allow_tbc:
-                post(os.path.join(path, item), counter)
+                post_work(os.path.join(path, item), counter)
+        elif LOG_PATH in path:
+            post_log(path)
 
 
 if __name__ == "__main__":
@@ -126,11 +157,14 @@ if __name__ == "__main__":
         defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
         change = get_pre_key(defs, "change")
         for i in change:
-            post_change(i, COUNTER)
+            mark_as_post(i, COUNTER)
         clear_post()
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
-            post(i, COUNTER)
-            post_change(i, COUNTER)
+            if LOG_PATH not in short_path(i):
+                post_work(i, COUNTER)
+                mark_as_post(i, COUNTER)
+            else:
+                post_log(i)
     else:
         post_all(FILE_ROOT, COUNTER, True)

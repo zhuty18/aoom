@@ -5,7 +5,7 @@
 import os
 import sys
 
-from personal import INDEX_FULL_NAME, INDEX_NAME
+from personal import INDEX_FULL_NAME, INDEX_NAME, LOG_PATH
 from utils import (
     add_predef,
     dir_name,
@@ -14,6 +14,7 @@ from utils import (
     mark_fin,
     name_of,
     search_by_keyword,
+    short_path,
 )
 
 
@@ -39,10 +40,11 @@ def format_md(filename):
         )
         content = content.replace("\n\n\n", "\n\n<br>\n")
         f.write(content)
-    add_predef(filename, "title", title, "")
+    add_predef(filename, "title", title, True)
     if INDEX_NAME not in filename and INDEX_FULL_NAME not in filename:
         mark_category(filename)
-        mark_fin(filename)
+        if LOG_PATH not in short_path(filename):
+            mark_fin(filename)
 
 
 def format_dir(path):

@@ -116,7 +116,7 @@ if __name__ == "__main__":
     if args.post:
         import post
 
-        post.post_change(counter)
+        post.mark_as_post(counter)
 
     # 构建网页
     if args.pages:

@@ -6,7 +6,9 @@ layout: custom_default
 
 
 {% for category in site.categories %}
-  <h2>
-    <a href="{{ category | first }}">{{ category | first }}</a>
-  </h2>
+  {% unless category == '日志' %}
+    <h2>
+      <a href="{{ category | first }}">{{ category | first }}</a>
+    </h2>
+  {% endunless %}
 {% endfor %}
