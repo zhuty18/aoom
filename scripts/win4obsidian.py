@@ -28,7 +28,6 @@ def touch_obsidian():
     """将obsidian内文件换行符处理掉"""
     OBSIDIAN_PATH = "docs/.obsidian"
     if "Windows" in platform.system():
-        print("on windows")
         touch_sub(OBSIDIAN_PATH)
 
 

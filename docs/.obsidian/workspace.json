@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "logs/2025-01-17.md",
+                "file": "blob/12.22，带真男朋友回家.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "2025-01-17"
+              "title": "12.22，带真男朋友回家"
             }
           }
         ],
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#blob",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +98,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -129,10 +130,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "QZ/卖腐这件小事.md"
+                "file": "blob/12.22，带真男朋友回家.md"
               },
               "icon": "lucide-list",
-              "title": "卖腐这件小事 的大纲"
+              "title": "12.22，带真男朋友回家 的大纲"
             }
           },
           {
@@ -148,7 +149,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "538d184045893f94",
@@ -216,8 +218,8 @@
   },
   "active": "f46cdeb567e3c181",
   "lastOpenFiles": [
-    "logs/2025-01-15.md",
     "logs/2025-01-17.md",
+    "logs/2025-01-15.md",
     "_templates/logs.md",
     "logs/2025-01-18.md",
     "trash/Neal Caffrey相亲记.md",
