@@ -140,7 +140,7 @@ def post_all(path, counter, allow_tbc=False):
         ):
             if counter.history[name_of(item)].fin or allow_tbc:
                 post_work(os.path.join(path, item), counter)
-        elif LOG_PATH in path:
+        elif LOG_PATH in path and not os.path.isdir(path):
             post_log(path)
 
 
