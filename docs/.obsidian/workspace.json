@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_templates/logs.md",
+                "file": "QZ/暗恋是八个人的兵荒马乱.md",
                 "mode": "source",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "logs"
+              "title": "暗恋是八个人的兵荒马乱"
             }
           }
         ],
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "post",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -217,11 +217,11 @@
   },
   "active": "f46cdeb567e3c181",
   "lastOpenFiles": [
+    "_templates/logs.md",
     "_templates/new_note.md",
     "logs/2025-01-17.md",
     "logs/2025-01-15.md",
     "blob/12.22，带真男朋友回家.md",
-    "_templates/logs.md",
     "logs/2025-01-18.md",
     "trash/Neal Caffrey相亲记.md",
     "trash/MKB射出了蝙蝠镖之后.md",

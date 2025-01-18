@@ -5,5 +5,7 @@
   "useMarkdownLinks": true,
   "userIgnoreFilters": [
     "trash/"
-  ]
+  ],
+  "strictLineBreaks": false,
+  "propertiesInDocument": "visible"
 }

@@ -51,6 +51,7 @@ def line_length(s: str) -> int:
     a = s.strip("#")
     a = a.strip()
     a = a.replace("</br>", "")
+    a = a.replace("<br>", "")
     res = 0
     t = False
     for i in a:
