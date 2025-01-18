@@ -1,6 +1,18 @@
 {
   "recentFiles": [
     {
+      "basename": "2025-01-17",
+      "path": "logs/2025-01-17.md"
+    },
+    {
+      "basename": "2025-01-15",
+      "path": "logs/2025-01-15.md"
+    },
+    {
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
       "basename": "卖腐这件小事",
       "path": "QZ/卖腐这件小事.md"
     },
@@ -187,18 +199,6 @@
     {
       "basename": "不该装百叶窗的一百个理由",
       "path": "trash/不该装百叶窗的一百个理由.md"
-    },
-    {
-      "basename": "八月湖水平",
-      "path": "trash/八月湖水平.md"
-    },
-    {
-      "basename": "初夜权",
-      "path": "DC/初夜权.md"
-    },
-    {
-      "basename": "超英副业",
-      "path": "DC/超英副业.md"
     }
   ],
   "omittedPaths": [],

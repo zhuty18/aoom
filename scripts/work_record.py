@@ -19,7 +19,6 @@ from personal import (
     HISTORY_PATH,
     INDEX_FULL_NAME,
     INDEX_NAME,
-    POST_CHANGE,
     POST_PATH,
     TBC_TITLE,
 )
@@ -332,7 +331,3 @@ if __name__ == "__main__":
     if GENERATE_WEB:
         web_make.all_html(force=True)
     auto_hide()
-    if POST_CHANGE:
-        from post import mark_as_post
-
-        mark_as_post(wcr)

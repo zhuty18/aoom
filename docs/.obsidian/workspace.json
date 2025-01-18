@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "卖腐这件小事"
             }
+          },
+          {
+            "id": "f46cdeb567e3c181",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "logs/2025-01-17.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2025-01-17"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -133,8 +148,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "538d184045893f94",
@@ -197,12 +211,15 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "graph:查看关系图谱": false,
-      "obsidian-git:Open Git source control": false
+      "graph:查看关系图谱": false
     }
   },
-  "active": "f81f64723123b122",
+  "active": "f46cdeb567e3c181",
   "lastOpenFiles": [
+    "logs/2025-01-15.md",
+    "logs/2025-01-17.md",
+    "_templates/logs.md",
+    "logs/2025-01-18.md",
     "trash/Neal Caffrey相亲记.md",
     "trash/MKB射出了蝙蝠镖之后.md",
     "trash/In the dormitory of the Slytherin Prince.md",
@@ -225,10 +242,6 @@
     "trash/天堂岛的留学生.md",
     "trash/天道.md",
     "trash/他不一样.md",
-    "trash/摄影棚门口.md",
-    "trash/谁还不是个玩枪的呢.md",
-    "trash/哨兵和向导.md",
-    "QZ/如何统治联盟.md",
     "trash",
     "_templates",
     "logs"

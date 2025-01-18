@@ -375,6 +375,7 @@ def add_predef(filename, key, value, no_multi=False):
     """添加预定义"""
     pre_d = get_predefine(filename)
     if not pre_d:
+        # 无预定义头
         with open(filename, "r", encoding="utf8") as f:
             content = f.read()
         with open(filename, "w", encoding="utf8") as f:
@@ -389,12 +390,19 @@ def add_predef(filename, key, value, no_multi=False):
             return 1
     tmp = get_pre_key(pre_d, key)
     if not tmp:
+        # 预定义头内无key
         new_pre = pre_d + f"\n{key}: {value}"
     elif value in tmp:
+        # key已有值value
         return 0
     elif no_multi and len(tmp) > 0:
+        # key已有值且不许补充
         return 0
+    elif not no_multi and len(tmp) > 0:
+        # key已有值且可补充，即tags
+        new_pre = pre_d.replace(f"{key}:", f"{key}:\n  - {value}")
     else:
+        # key已定义但为空值
         new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()

@@ -4,7 +4,7 @@ post: false
 date: {{date}}
 ---
 
-# 今日日志
+# {{date:YY.M.D}}日志
 
 ## 清单
 

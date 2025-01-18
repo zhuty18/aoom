@@ -34,7 +34,7 @@ from work_record import WordCounter
 POST_LIST = []
 
 
-def post(filename, name, default_time=None, length=None):
+def post(filename, name, default_time=None):
     """发布单个文件"""
 
     # 获取文件预定义
