@@ -400,8 +400,12 @@ def add_predef(filename, key, value, no_multi=False):
         return 0
     elif not no_multi and len(tmp) > 0:
         # key已有值且可补充，即tags
-        new_pre = pre_d.replace(f"{key}: ", f"{key}:\n  - ")
-        new_pre = new_pre.replace(f"{key}:", f"{key}:\n  - {value}")
+        if f"{key}: " in pre_d:
+            # tag写在同一行
+            new_pre = pre_d.replace(f"{key}: ", f"{key}: {value} ")
+        else:
+            # tag分开写了
+            new_pre = pre_d.replace(f"{key}:", f"{key}:\n  - {value}")
     else:
         # key已定义但为空值
         new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
