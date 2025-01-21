@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2020-11-05
+length: 1203
 ---
 
 # Bruce是个成熟的蝙蝠侠了

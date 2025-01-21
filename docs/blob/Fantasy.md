@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-10-07
+length: 312
 ---
 
 # Fantasy

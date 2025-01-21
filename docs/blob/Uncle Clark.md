@@ -1,5 +1,6 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-05-18
 ---
 
@@ -65,6 +66,7 @@ Dick：不。我当初只是想当个酷小孩来着。
 
 <br>
 
+length: 396
 ---
 
 <br>

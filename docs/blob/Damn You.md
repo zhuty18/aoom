@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2020-12-09
+length: 718
 ---
 
 # Damn You

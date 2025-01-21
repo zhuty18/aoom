@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-05-26
+length: 760
 ---
 
 # Never Have I Ever

@@ -1,3 +1,7 @@
+---
+length: 605
+---
+
 # Life's Propose
 
 "What's it all about?" She asked.
@@ -12,7 +16,7 @@ Luckily, she's no completely stranger.
 
 <br>
 
-
+<br>
 <br>
 Alfred came in, with a... surprising gift. A thumb drive with a label "to Bruce".
 
@@ -34,7 +38,7 @@ What she had brought was... actually very useful.
 
 <br>
 
-
+<br>
 <br>
 "Why don't you smile? I mean for real." She asked.
 
@@ -70,7 +74,7 @@ Of course she will survive.
 
 <br>
 
-
+<br>
 <br>
 I'm not sure befriend with Neve Hofftard is a good idea for me. Though I have a lot of bad friends but this one just...
 

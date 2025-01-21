@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-10-08
+length: 219
 ---
 
 # Jason做饭的条件
@@ -9,13 +11,13 @@ date: 2021-10-08
 
 <br>
 
-
+<br>
 <br>
 他所承认的有限几个朋友（Dick、Talia、Rose、Damian、Kyle、Bizarro、Harley、杀手鳄）中，大于等于2个人礼貌地请求他
 
 <br>
 
-
+<br>
 <br>
 他所承认的有限的几个亲友（Artemis、Donna、Barbara、Steph、Cass、Kory、Tim）中，大于等于2个人要求他
 

@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-08-14
+length: 607
 ---
 
 # Conner Kent染发始末

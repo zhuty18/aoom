@@ -1,5 +1,6 @@
 ---
 tags: FIN BatLantern
+length: 5491
 ---
 
 # Hal公寓的二十四小时

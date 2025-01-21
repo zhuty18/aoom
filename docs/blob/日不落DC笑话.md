@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-07-26
+length: 816
 ---
 
 # 日不落DC笑话

@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-10-22
+length: 1070
 ---
 
 # kpi最高的那个魅魔被包养之后

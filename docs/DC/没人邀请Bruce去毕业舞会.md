@@ -1,5 +1,6 @@
 ---
 tags: FIN BatLantern
+length: 7293
 ---
 
 # 没人邀请Bruce去毕业舞会

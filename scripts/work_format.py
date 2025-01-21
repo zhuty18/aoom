@@ -4,8 +4,15 @@
 
 import os
 
-from personal import LOG_PATH
-from utils import doc_dir, short_path
+from personal import INDEX_FULL_NAME, INDEX_NAME, LOG_PATH
+from utils import (
+    add_predef,
+    doc_dir,
+    file_fin,
+    file_length,
+    mark_fin,
+    short_path,
+)
 
 
 def format_file(filename):
@@ -16,17 +23,31 @@ def format_file(filename):
     f = open(filename, "w", encoding="utf-8")
     # print(content)
     pre_def = False
+    res = ""
     for i in content:
         if filename.endswith(".py"):
-            f.write(i.strip("\n") + "\n")
+            res += i.strip("\n") + "\n"
         elif "---\n" in i:
             pre_def = not pre_def
-            f.write(i.strip("\n") + "\n")
+            res += i.strip("\n") + "\n"
         elif pre_def or LOG_PATH in short_path(filename):
-            f.write(i.strip("\n") + "\n")
+            res += i.strip("\n") + "\n"
         else:
-            f.write(i.strip() + "\n")
+            res += i.strip() + "\n"
+    if not filename.endswith(".py"):
+        res = res.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
+        res = res.replace("\n\n\n", "\n\n<br>\n")
+    f.write(res)
     f.close()
+    if (
+        filename.endswith(".md")
+        and LOG_PATH not in short_path(filename)
+        and INDEX_NAME not in filename
+        and INDEX_FULL_NAME not in filename
+    ):
+        add_predef(filename, "length", str(file_length(filename)))
+    if file_fin(filename):
+        mark_fin(filename)
 
 
 def format_blob(filename):
@@ -44,7 +65,7 @@ def format_blob(filename):
     title = new_name.replace(".md", "")
     path.append(new_name)
     new_name = "\\".join(path)
-    new = f"---\ntags: blob\ndate: {date}\n---\n\n"
+    new = f"---\ndate: {date}\n---\n\n"
     with open(new_name, "w", encoding="utf8") as f:
         new += f"# {title}\n\n"
         for _ in range(6):
@@ -63,8 +84,8 @@ def format_all(path):
             format_all(subdir)
         elif "教程" in subdir:
             pass
-        elif "blob" in subdir:
-            format_blob(subdir)
+        # elif "blob" in subdir:
+        #     format_blob(subdir)
         elif (
             subdir.endswith(".md")
             or subdir.endswith(".txt")
@@ -76,4 +97,4 @@ def format_all(path):
 
 
 if __name__ == "__main__":
-    format_all(os.path.join(doc_dir(), "blob"))
+    format_all(doc_dir())

@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-03-16
+length: 114
 ---
 
 # Tomcat

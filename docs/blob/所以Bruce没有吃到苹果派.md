@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-10-22
+length: 1278
 ---
 
 # 所以Bruce没有吃到苹果派

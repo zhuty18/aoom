@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-04-08
+length: 370
 ---
 
 # Jump off the roof

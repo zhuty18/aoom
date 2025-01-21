@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-07-08
+length: 3922
 ---
 
 # 星球大的游乐场&Enjoyable
@@ -9,7 +11,7 @@ date: 2021-07-08
 
 <br>
 
-
+<br>
 <br>
 “Bruce老爷。”Alfred端着托盘走到他身后，把他杯子里的红茶续上。
 

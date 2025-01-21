@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2021-02-17
+length: 873
 ---
 
 # say my name

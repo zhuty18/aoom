@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2022-01-16
+length: 1154
 ---
 
 # Fuck， Marry， Kill

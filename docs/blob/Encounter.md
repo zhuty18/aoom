@@ -1,6 +1,8 @@
 ---
-tags: FIN blob
+tags:
+  - FIN
 date: 2020-11-07
+length: 830
 ---
 
 # Encounter

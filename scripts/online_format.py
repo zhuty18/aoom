@@ -27,13 +27,13 @@ def format_md(filename):
         if "title: " not in content:
             cont = []
             title_set = False
-            for i in content.split("\n\n"):
-                if i.startswith("# ") and not title_set:
-                    title = i.replace("# ", "")
+            for line in content.split("\n\n"):
+                if line.startswith("# ") and not title_set:
+                    title = line.replace("# ", "")
                     title = title.strip("*")
                     title_set = True
                 else:
-                    cont.append(i)
+                    cont.append(line)
             content = "\n\n".join(cont)
         content = content.replace(
             "\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n"
@@ -49,11 +49,11 @@ def format_md(filename):
 
 def format_dir(path):
     """格式化文件夹"""
-    for i in os.listdir(path):
-        if dir_name(os.path.join(path, i)):
-            format_dir(os.path.join(path, i))
-        elif i.endswith(".md"):
-            format_md(os.path.join(path, i))
+    for item in os.listdir(path):
+        if dir_name(os.path.join(path, item)):
+            format_dir(os.path.join(path, item))
+        elif item.endswith(".md"):
+            format_md(os.path.join(path, item))
 
 
 if __name__ == "__main__":
