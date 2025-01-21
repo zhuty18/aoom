@@ -8,5 +8,9 @@
   ],
   "strictLineBreaks": false,
   "propertiesInDocument": "visible",
-  "useTab": false
+  "useTab": false,
+  "attachmentFolderPath": "/",
+  "newFileLocation": "current",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative"
 }

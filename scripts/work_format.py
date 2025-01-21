@@ -4,7 +4,8 @@
 
 import os
 
-from utils import doc_dir
+from personal import LOG_PATH
+from utils import doc_dir, short_path
 
 
 def format_file(filename):
@@ -21,7 +22,7 @@ def format_file(filename):
         elif "---\n" in i:
             pre_def = not pre_def
             f.write(i.strip("\n") + "\n")
-        elif pre_def:
+        elif pre_def or LOG_PATH in short_path(filename):
             f.write(i.strip("\n") + "\n")
         else:
             f.write(i.strip() + "\n")
