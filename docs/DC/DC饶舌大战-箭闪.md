@@ -12,7 +12,7 @@ there was a superhero...
 饶舌对决
 RAP BATTLE
 
-
+<br>
 
 闪电侠
 THE FLASH
@@ -26,7 +26,7 @@ GREEN ARROW
 饶舌对决 正式开始
 Let the rap battle begin
 
-
+<br>
 
 又一个跟风的超英
 Another superhero in my shadow
@@ -100,7 +100,7 @@ My boy and me are the brave and the bold
 根本没人稀罕你
 no one cares who you are
 
-
+<br>
 
 我是谁？
 What's my name?
@@ -180,7 +180,7 @@ you wanna live like a Disney Princess?
 去找正联Elsa啊
 Please, Go find Elsa
 
-
+<br>
 
 噢 我像童话故事
 Oh, I'm the one who's naive
@@ -227,7 +227,7 @@ One more time Miranda Warning
 走出警局前他就是我的了
 he was mine before step out of CCPD
 
-
+<br>
 
 一个情场菜鸟
 A relationship rookie
@@ -277,7 +277,7 @@ First one arrived then became Parallax
 因为你害怕没我懂他，是不是？
 Because you were afraid of I knew him better, weren't ya?
 
-
+<br>
 
 你以为很逗咩？
 You think that's funny?
@@ -303,7 +303,7 @@ Superheros' today
 是因为我胸前这颗闪电球
 based on this lighting bolt on my chest
 
-
+<br>
 
 你粉丝多 你CP火
 If you're so adored

@@ -1,20 +1,24 @@
+---
+tags: FIN
+---
+
 # Stop Me If You've Heard This One Before
 
 By FabulaRasa
 
-
+<br>
 
 # 听过就打断我
 
 翻译：兔子草
 
-
+<br>
 
 ## Summary：
 
 Hal和Bruce磋商对朋友、对家人、以及对自己出柜。
 
-
+<br>
 
 ## 译者评论：
 
@@ -22,7 +26,7 @@ Hal和Bruce磋商对朋友、对家人、以及对自己出柜。
 
 其中我最喜欢的三个桥段如下：Bruce的演讲，Bruce一口气说这么多话真是太少见了hhhh；Jason（虽然就在全文开头但我还是不剧透了）Hal；聊壮志凌云那一段（这电影真的是T0级代餐你们信我！）。
 
-
+<br>
 
 ## 正文：
 

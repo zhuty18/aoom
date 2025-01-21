@@ -1,5 +1,5 @@
 ---
-tags: blob
+tags: FIN blob
 date: 2021-05-18
 ---
 
@@ -47,11 +47,11 @@ Bruce：你先。
 
 Clark：你先。
 
-
+<br>
 
 ---
 
-
+<br>
 
 Dick：这样，他俩还琢磨为什么我不把他们当长辈呢？
 
@@ -59,15 +59,15 @@ Alfred：我相信这就是人们所说的“男人永远是男孩”，Richard�
 
 Dick：不。我当初只是想当个酷小孩来着。
 
+<br>
 
+<br>
 
-
-
-
+<br>
 
 ---
 
-
+<br>
 
 长大的Jason：Uncle Clark？噫，恶不恶心。
 

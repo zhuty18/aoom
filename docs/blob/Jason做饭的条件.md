@@ -1,5 +1,5 @@
 ---
-tags: blob
+tags: FIN blob
 date: 2021-10-08
 ---
 
@@ -7,16 +7,16 @@ date: 2021-10-08
 
 下述条件满足一个即可
 
+<br>
 
 
-
-
+<br>
 他所承认的有限几个朋友（Dick、Talia、Rose、Damian、Kyle、Bizarro、Harley、杀手鳄）中，大于等于2个人礼貌地请求他
 
+<br>
 
 
-
-
+<br>
 他所承认的有限的几个亲友（Artemis、Donna、Barbara、Steph、Cass、Kory、Tim）中，大于等于2个人要求他
 
 Roy说“我饿了Jaybird”
