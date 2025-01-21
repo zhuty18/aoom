@@ -4,12 +4,13 @@
 
 import os
 
-from personal import INDEX_FULL_NAME, INDEX_NAME, LOG_PATH
+from personal import LOG_PATH
 from utils import (
     add_predef,
     doc_dir,
     file_fin,
     file_length,
+    ignore_in_format,
     mark_fin,
     short_path,
 )
@@ -42,8 +43,8 @@ def format_file(filename):
     if (
         filename.endswith(".md")
         and LOG_PATH not in short_path(filename)
-        and INDEX_NAME not in filename
-        and INDEX_FULL_NAME not in filename
+        and not ignore_in_format(filename)
+        and "_" not in filename
     ):
         add_predef(filename, "length", str(file_length(filename)))
     if file_fin(filename):

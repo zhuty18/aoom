@@ -1,8 +1,68 @@
 {
   "recentFiles": [
     {
+      "basename": "README",
+      "path": "QZ/README.md"
+    },
+    {
+      "basename": "暗恋是八个人的兵荒马乱",
+      "path": "QZ/暗恋是八个人的兵荒马乱.md"
+    },
+    {
+      "basename": "README",
+      "path": "DC/README.md"
+    },
+    {
+      "basename": "new_README",
+      "path": "_templates/new_README.md"
+    },
+    {
+      "basename": "日不落DC笑话",
+      "path": "blob/日不落DC笑话.md"
+    },
+    {
+      "basename": "new_note",
+      "path": "_templates/new_note.md"
+    },
+    {
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
+      "basename": "2025-01-22",
+      "path": "logs/2025-01-22.md"
+    },
+    {
+      "basename": "full_index",
+      "path": "DM/full_index.md"
+    },
+    {
+      "basename": "index",
+      "path": "DM/index.md"
+    },
+    {
       "basename": "index",
       "path": "DC/index.md"
+    },
+    {
+      "basename": "full_index",
+      "path": "DC/full_index.md"
+    },
+    {
+      "basename": "肉体记忆",
+      "path": "DC/肉体记忆.md"
+    },
+    {
+      "basename": "2025-01-21",
+      "path": "logs/2025-01-21.md"
+    },
+    {
+      "basename": "todo",
+      "path": "todo.md"
+    },
+    {
+      "basename": "Hal公寓的二十四小时",
+      "path": "DC/Hal公寓的二十四小时.md"
     },
     {
       "basename": "Uncle Clark",
@@ -139,66 +199,6 @@
     {
       "basename": "Bruce是个成熟的蝙蝠侠了",
       "path": "blob/Bruce是个成熟的蝙蝠侠了.md"
-    },
-    {
-      "basename": "Damn You",
-      "path": "blob/Damn You.md"
-    },
-    {
-      "basename": "Fuck， Marry， Kill",
-      "path": "blob/Fuck， Marry， Kill.md"
-    },
-    {
-      "basename": "Tomcat",
-      "path": "blob/Tomcat.md"
-    },
-    {
-      "basename": "五十三封情书",
-      "path": "blob/五十三封情书.md"
-    },
-    {
-      "basename": "无内鬼，来点正联笑话",
-      "path": "blob/无内鬼，来点正联笑话.md"
-    },
-    {
-      "basename": "卧室的功用",
-      "path": "blob/卧室的功用.md"
-    },
-    {
-      "basename": "卧室",
-      "path": "blob/卧室.md"
-    },
-    {
-      "basename": "为什么说离婚中受伤最大的永远是孩子",
-      "path": "blob/为什么说离婚中受伤最大的永远是孩子.md"
-    },
-    {
-      "basename": "为什么不要酒后搞恶作剧",
-      "path": "blob/为什么不要酒后搞恶作剧.md"
-    },
-    {
-      "basename": "万圣夜，见鬼日",
-      "path": "blob/万圣夜，见鬼日.md"
-    },
-    {
-      "basename": "挺变态的脑洞有了更变态的后续",
-      "path": "blob/挺变态的脑洞有了更变态的后续.md"
-    },
-    {
-      "basename": "天杀的求婚",
-      "path": "blob/天杀的求婚.md"
-    },
-    {
-      "basename": "谈话",
-      "path": "blob/谈话.md"
-    },
-    {
-      "basename": "所以Bruce没有吃到苹果派",
-      "path": "blob/所以Bruce没有吃到苹果派.md"
-    },
-    {
-      "basename": "所谓妹子",
-      "path": "blob/所谓妹子.md"
     }
   ],
   "omittedPaths": [],

@@ -15,6 +15,7 @@ from personal import (
     FIN_TAIL,
     FIN_TEM,
     HISTORY_PATH,
+    IGNORE_FILES,
     INDEX_FULL_NAME,
     INDEX_NAME,
     PREVIEW_LENGTH,
@@ -468,3 +469,11 @@ def title_of(filename):
                     title = i.replace("# ", "")
                     break
         return title
+
+
+def ignore_in_format(filename):
+    """格式化中忽略此索引文件"""
+    for i in IGNORE_FILES:
+        if i in filename:
+            return True
+    return False

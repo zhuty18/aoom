@@ -4,25 +4,51 @@
     "type": "split",
     "children": [
       {
-        "id": "2bc0ea130ef71831",
-        "type": "tabs",
+        "id": "f70368f2b734b36b",
+        "type": "split",
         "children": [
           {
-            "id": "3e3efb62c1eae156",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "DC/index.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "index"
-            }
+            "id": "363b9f239a4803d9",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "b71f5ee09eaf0727",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "QZ/README.md",
+                    "mode": "source",
+                    "source": true
+                  },
+                  "icon": "lucide-file",
+                  "title": "README"
+                }
+              }
+            ]
+          },
+          {
+            "id": "ecf8a8147434a725",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "1108de7c4f337f45",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "DC/README.md",
+                    "mode": "preview",
+                    "source": true
+                  },
+                  "icon": "lucide-file",
+                  "title": "README"
+                }
+              }
+            ]
           }
-        ]
+        ],
+        "direction": "horizontal"
       }
     ],
     "direction": "vertical"
@@ -88,7 +114,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 247.5
+    "width": 232.5110321044922
   },
   "right": {
     "id": "00e0a33998493af3",
@@ -115,10 +141,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "blob/12.22，带真男朋友回家.md"
+                "file": "QZ/README.md"
               },
               "icon": "lucide-list",
-              "title": "12.22，带真男朋友回家 的大纲"
+              "title": "README 的大纲"
             }
           },
           {
@@ -134,8 +160,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "538d184045893f94",
@@ -153,14 +178,15 @@
             }
           },
           {
-            "id": "bf969c3baa8b6afb",
+            "id": "3e3efb62c1eae156",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "todo.md",
                 "mode": "preview",
-                "source": true
+                "backlinks": false,
+                "source": false
               },
               "icon": "lucide-file",
               "title": "todo"
@@ -211,13 +237,32 @@
       "switcher:打开快速切换": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
+      "templater-obsidian:Templater": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "graph:查看关系图谱": false
     }
   },
-  "active": "3e3efb62c1eae156",
+  "active": "b71f5ee09eaf0727",
   "lastOpenFiles": [
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "QZ/README.md",
+    "DC/README.md",
+    "_templates/new_README.md",
+    "blob/日不落DC笑话.md",
+    "_templates/new_note.md",
+    "_templates/logs.md",
+    "logs/2025-01-22.md",
+    "未命名.canvas",
+    "DM/full_index.md",
+    "未命名",
+    "DM/index.md",
+    "DC/index.md",
+    "DC/full_index.md",
+    "DC/肉体记忆.md",
+    "logs/2025-01-21.md",
+    "todo.md",
+    "DC/Hal公寓的二十四小时.md",
     "blob/Uncle Clark.md",
     "blob/总而言之布鲁斯有了一个孙子.md",
     "blob/kpi最高的那个魅魔被包养之后.md",
@@ -228,22 +273,6 @@
     "blob/找出真正的哈尔乔丹.md",
     "blob/育儿文学.md",
     "blob/仪式.md",
-    "blob/星战士.md",
-    "blob/相声搭档红双喜.md",
-    "blob/午后.md",
-    "blob/一间空屋.md",
-    "blob/自家兄弟.md",
-    "blob/真相时间.md",
-    "blob/Conner Kent染发始末.md",
-    "blob/Fantasy.md",
-    "blob/Never Have I Ever.md",
-    "blob/星球大的游乐场&Enjoyable.md",
-    "blob/Jump off the roof.md",
-    "blob/一句话地狱笑话.md",
-    "blob/say my name.md",
-    "blob/竹马？天降？.md",
-    "blob/一次磕磕绊绊的初恋.md",
-    "blob/Jason做饭的条件.md",
     "trash",
     "_templates",
     "logs"

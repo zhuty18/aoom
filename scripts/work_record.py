@@ -130,6 +130,8 @@ class WordCounter:
         self.read_history()
         self.get_files()
         self.update_result()
+        #TODO: 注入时间戳
+        # self.
 
     def read_history(self):
         """从历史记录中读取已有条目"""

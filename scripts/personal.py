@@ -126,3 +126,5 @@ DIR_NAMES = {
 }
 
 LOG_PATH = "docs/logs"
+
+IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]

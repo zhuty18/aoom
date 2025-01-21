@@ -1,6 +1,5 @@
 ---
 date: {{date}}
-length: 23
 ---
 
 # {{date:YY.M.D}}日志
