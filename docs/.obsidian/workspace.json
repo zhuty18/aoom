@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "dba80f94dcaa33d3",
+        "id": "2bc0ea130ef71831",
         "type": "tabs",
         "children": [
           {
-            "id": "f81f64723123b122",
+            "id": "f04f8aeb43f6a240",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QZ/卖腐这件小事.md",
+                "file": "logs/2025-01-21.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "卖腐这件小事"
-            }
-          },
-          {
-            "id": "f46cdeb567e3c181",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "QZ/暗恋是八个人的兵荒马乱.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "暗恋是八个人的兵荒马乱"
+              "title": "2025-01-21"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -67,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "post",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -148,8 +133,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "538d184045893f94",
@@ -164,6 +148,20 @@
               "state": {},
               "icon": "lucide-git-fork",
               "title": "关系图谱"
+            }
+          },
+          {
+            "id": "bf969c3baa8b6afb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "todo"
             }
           },
           {
@@ -199,7 +197,8 @@
               "title": "暗恋是八个人的兵荒马乱 的出链列表"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -215,12 +214,20 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "f46cdeb567e3c181",
+  "active": "f04f8aeb43f6a240",
   "lastOpenFiles": [
-    "_templates/logs.md",
-    "_templates/new_note.md",
+    "DC/蝙蝠洞里的惨案.md",
+    "logs/2025-01-21.md",
+    "todo.md",
+    "DC/重生之我在哥谭赶早高峰.md",
     "logs/2025-01-17.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-21 10-02-57.md",
     "logs/2025-01-15.md",
+    "_templates/logs.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-20 11-48-36.md",
+    "QZ/爱情杀手.md",
+    "_templates/new_note.md",
     "blob/12.22，带真男朋友回家.md",
     "logs/2025-01-18.md",
     "trash/Neal Caffrey相亲记.md",
@@ -235,14 +242,6 @@
     "trash/小凡下山记.md",
     "trash/乡村爱情30题.md",
     "trash/系统配对.md",
-    "trash/我未婚夫是Batman.md",
-    "trash/我们是时候讨论一下这些问题了.md",
-    "trash/我可能看上了假皇叔.md",
-    "trash/我更喜欢用手术刀.md",
-    "trash/未命名小段子.md",
-    "trash/王者之罪.md",
-    "trash/万圣夜与见家长.md",
-    "trash/天堂岛的留学生.md",
     "trash",
     "_templates",
     "logs"

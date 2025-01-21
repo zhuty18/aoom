@@ -1,5 +1,42 @@
 {
-  "recentFiles": [],
+  "recentFiles": [
+    {
+      "basename": "2025-01-21",
+      "path": "logs/2025-01-21.md"
+    },
+    {
+      "basename": "蝙蝠洞里的惨案",
+      "path": "DC/蝙蝠洞里的惨案.md"
+    },
+    {
+      "basename": "todo",
+      "path": "todo.md"
+    },
+    {
+      "basename": "重生之我在哥谭赶早高峰",
+      "path": "DC/重生之我在哥谭赶早高峰.md"
+    },
+    {
+      "basename": "2025-01-17",
+      "path": "logs/2025-01-17.md"
+    },
+    {
+      "basename": "2025-01-15",
+      "path": "logs/2025-01-15.md"
+    },
+    {
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
+      "basename": "暗恋是八个人的兵荒马乱",
+      "path": "QZ/暗恋是八个人的兵荒马乱.md"
+    },
+    {
+      "basename": "爱情杀手",
+      "path": "QZ/爱情杀手.md"
+    }
+  ],
   "omittedPaths": [],
   "omittedTags": [],
   "updateOn": "file-open",

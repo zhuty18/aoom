@@ -7,5 +7,6 @@
     "trash/"
   ],
   "strictLineBreaks": false,
-  "propertiesInDocument": "visible"
+  "propertiesInDocument": "visible",
+  "useTab": false
 }
