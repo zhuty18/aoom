@@ -96,11 +96,8 @@ def post_work(filename, counter):
     if "FIN" not in get_pre_key(pre_d, "tags"):
         add_predef(post_path, "tags", "TBC")
         make_index("tag", "TBC")
-    # 添加日期和长度
-    add_predef(
-        post_path, "date", format_time(get_time(his.time), POST_DATE), True
-    )
-    add_predef(post_path, "length", his.length)
+    # 添加日期
+    add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)
 
 
 def post_log(filename):
