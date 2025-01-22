@@ -265,8 +265,6 @@ class SearchForFile:
                         and name_of(i) == self.key
                         and not ignore_in_format(i)
                     ):
-                        if self.key=="README":
-                            print(i)
                         self.res.append(i)
                 else:
                     if match_keys([self.key], i) and i.endswith(".md"):
@@ -390,7 +388,7 @@ def get_pre_key(pre_d, keyword):
     return l
 
 
-def add_predef(filename, key, value, no_multi=False):
+def add_predef(filename, key, value, no_multi=False, change=False):
     """添加预定义"""
     pre_d = get_predefine(filename)
     if not pre_d:
@@ -417,7 +415,19 @@ def add_predef(filename, key, value, no_multi=False):
     elif no_multi and len(tmp) > 0:
         # key已有值且不许补充
         return 0
-    elif not no_multi and len(tmp) > 0:
+    elif not tmp:
+        # key已定义但为空值
+        new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
+    elif change:
+        # key已有值且可替换，即auto_date
+        new_pre = []
+        for i in pre_d.split("\n"):
+            if key in i:
+                new_pre.append(f"{key}: {value}")
+            else:
+                new_pre.append(i)
+        new_pre = "\n".join(new_pre)
+    elif not no_multi:
         # key已有值且可补充，即tags
         if f"{key}: " in pre_d:
             # tag写在同一行
@@ -425,9 +435,6 @@ def add_predef(filename, key, value, no_multi=False):
         else:
             # tag分开写了
             new_pre = pre_d.replace(f"{key}:", f"{key}:\n  - {value}")
-    else:
-        # key已定义但为空值
-        new_pre = pre_d.replace(f"{key}:", f"{key}: {value}")
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
     with open(filename, "w", encoding="utf8") as f:

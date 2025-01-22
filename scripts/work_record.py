@@ -257,7 +257,7 @@ class WordCounter:
         """为文件标注更新日期"""
         for name, value in self.history.items():
             filename = search_by_name(name)
-            add_predef(filename, "date", value.get_date(), True)
+            add_predef(filename, "auto_date", value.get_date(), change=True)
 
 
 class IndexBuilder:
@@ -280,11 +280,7 @@ class IndexBuilder:
     def build_index(self, path, counter: WordCounter):
         """建立索引"""
         for i in os.listdir(path):
-            if (
-                i.endswith(".md")
-                and not i.startswith(INDEX_FULL_NAME)
-                and not i.startswith(INDEX_NAME)
-            ):
+            if i.endswith(".md") and not ignore_in_format(i):
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
