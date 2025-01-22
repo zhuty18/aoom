@@ -1,7 +1,3 @@
----
-tags: FIN
----
-
 # <% tp.file.folder() %>
 
 ## 未完结

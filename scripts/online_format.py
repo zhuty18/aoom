@@ -44,8 +44,9 @@ def format_md(filename):
     add_predef(filename, "title", title, True)
     if not ignore_in_format(filename):
         mark_category(filename)
-        if LOG_PATH not in short_path(filename):
-            mark_fin(filename)
+        mark_fin(filename)
+    elif LOG_PATH in short_path(filename):
+        mark_category(filename)
 
 
 def format_dir(path):

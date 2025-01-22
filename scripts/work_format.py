@@ -40,15 +40,10 @@ def format_file(filename):
         res = res.replace("\n\n\n", "\n\n<br>\n")
     f.write(res)
     f.close()
-    if (
-        filename.endswith(".md")
-        and LOG_PATH not in short_path(filename)
-        and not ignore_in_format(filename)
-        and "_" not in filename
-    ):
+    if filename.endswith(".md") and not ignore_in_format(filename):
         add_predef(filename, "length", str(file_length(filename)))
-    if file_fin(filename):
-        mark_fin(filename)
+        if file_fin(filename):
+            mark_fin(filename)
 
 
 def format_blob(filename):

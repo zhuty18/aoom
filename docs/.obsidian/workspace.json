@@ -4,51 +4,20 @@
     "type": "split",
     "children": [
       {
-        "id": "f70368f2b734b36b",
-        "type": "split",
+        "id": "363b9f239a4803d9",
+        "type": "tabs",
         "children": [
           {
-            "id": "363b9f239a4803d9",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "b71f5ee09eaf0727",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "QZ/README.md",
-                    "mode": "source",
-                    "source": true
-                  },
-                  "icon": "lucide-file",
-                  "title": "README"
-                }
-              }
-            ]
-          },
-          {
-            "id": "ecf8a8147434a725",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "1108de7c4f337f45",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "DC/README.md",
-                    "mode": "preview",
-                    "source": true
-                  },
-                  "icon": "lucide-file",
-                  "title": "README"
-                }
-              }
-            ]
+            "id": "b71f5ee09eaf0727",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"
@@ -79,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#FIN",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -110,7 +79,8 @@
               "title": "Recent Files"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -160,7 +130,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "538d184045893f94",
@@ -245,34 +216,34 @@
   },
   "active": "b71f5ee09eaf0727",
   "lastOpenFiles": [
-    "QZ/暗恋是八个人的兵荒马乱.md",
-    "QZ/README.md",
-    "DC/README.md",
-    "_templates/new_README.md",
-    "blob/日不落DC笑话.md",
-    "_templates/new_note.md",
-    "_templates/logs.md",
-    "logs/2025-01-22.md",
-    "未命名.canvas",
-    "DM/full_index.md",
-    "未命名",
+    "X/index.md",
+    "X/full_index.md",
+    "XJ/index.md",
+    "XJ/full_index.md",
+    "blob/index.md",
+    "blob/full_index.md",
+    "M/index.md",
+    "M/full_index.md",
+    "ON/index.md",
+    "ON/full_index.md",
+    "ON/O/index.md",
+    "ON/O/full_index.md",
+    "FT/index.md",
+    "FT/full_index.md",
+    "GTM/index.md",
+    "GTM/full_index.md",
     "DM/index.md",
-    "DC/index.md",
-    "DC/full_index.md",
-    "DC/肉体记忆.md",
-    "logs/2025-01-21.md",
-    "todo.md",
-    "DC/Hal公寓的二十四小时.md",
-    "blob/Uncle Clark.md",
-    "blob/总而言之布鲁斯有了一个孙子.md",
-    "blob/kpi最高的那个魅魔被包养之后.md",
-    "blob/追踪器.md",
-    "blob/只存在于武士酒吧的谈话.md",
-    "blob/占有欲.md",
-    "blob/直男笑话一则.md",
-    "blob/找出真正的哈尔乔丹.md",
-    "blob/育儿文学.md",
-    "blob/仪式.md",
+    "DM/full_index.md",
+    "YYS/index.md",
+    "YYS/full_index.md",
+    "YWJ/index.md",
+    "YWJ/full_index.md",
+    "Others/index.md",
+    "Others/full_index.md",
+    "SWY/index.md",
+    "SWY/full_index.md",
+    "未命名.canvas",
+    "未命名",
     "trash",
     "_templates",
     "logs"

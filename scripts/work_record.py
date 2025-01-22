@@ -12,6 +12,7 @@ import web_make
 from personal import (
     ARCHIVE_TITLE,
     ARCHIVE_UPDATE,
+    DATE_FORMAT,
     DEFAULT_ORDER,
     FILE_ROOT,
     FIN_TITLE,
@@ -23,6 +24,7 @@ from personal import (
     TBC_TITLE,
 )
 from utils import (
+    add_predef,
     auto_hide,
     dir_name,
     dirs,
@@ -33,7 +35,10 @@ from utils import (
     format_log_time,
     format_time,
     get_time,
+    ignore_in_format,
+    name_of,
     path_of,
+    search_by_name,
     short_path,
     title_of,
 )
@@ -82,6 +87,9 @@ class FileRecord:
             self.time = other.time
             self.fin = other.fin
 
+    def get_date(self):
+        return format_time(get_time(self.time), DATE_FORMAT)
+
     @staticmethod
     def from_record(record: str):
         """从历史记录中的信息条目读取"""
@@ -129,9 +137,9 @@ class WordCounter:
         """工作函数"""
         self.read_history()
         self.get_files()
+        self.clear_history()
         self.update_result()
-        #TODO: 注入时间戳
-        # self.
+        self.add_time()
 
     def read_history(self):
         """从历史记录中读取已有条目"""
@@ -157,8 +165,7 @@ class WordCounter:
                 i = i.split("  ")[-1]
                 i = i.strip('"')
             if (
-                INDEX_NAME not in i
-                and INDEX_FULL_NAME not in i
+                not ignore_in_format(i)
                 and i.endswith(".md")
                 and FILE_ROOT in i
                 and POST_PATH not in i
@@ -166,12 +173,23 @@ class WordCounter:
                 if os.path.exists(i) and dir_name(path_of(i)):
                     self.changes.append(i)
 
+    def clear_history(self):
+        """清除历史记录中消失了的文件"""
+        tmp = {}
+        for k, v in self.history.items():
+            try:
+                search_by_name(k)
+                tmp[k] = v
+            except FileNotFoundError:
+                pass
+        self.history = tmp
+
     def update_result(self):
         """统计结果写入数据库"""
         log = []
         info = []
         for i in self.changes:
-            name = re.findall(re.compile(r".*/(.*).md$", re.S), i)[0]
+            name = name_of(i)
             try:
                 length_new = file_length(i)
                 try:
@@ -234,6 +252,12 @@ class WordCounter:
         """存储改变文档至临时目录"""
         with open(path, "w", encoding="utf8") as f:
             f.write("\n".join(self.changes))
+
+    def add_time(self):
+        """为文件标注更新日期"""
+        for name, value in self.history.items():
+            filename = search_by_name(name)
+            add_predef(filename, "date", value.get_date(), True)
 
 
 class IndexBuilder:

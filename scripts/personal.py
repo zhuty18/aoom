@@ -64,6 +64,8 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 DEFAULT_TRANSLATE = None
 # 默认的时间戳格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
+# 默认的日期格式
+DATE_FORMAT = "%Y-%m-%d"
 
 # index
 INDEX_NAME = "index.md"
@@ -127,4 +129,4 @@ DIR_NAMES = {
 
 LOG_PATH = "docs/logs"
 
-IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
+IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md", "todo.md"]

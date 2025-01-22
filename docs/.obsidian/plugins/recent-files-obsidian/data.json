@@ -1,20 +1,40 @@
 {
   "recentFiles": [
     {
-      "basename": "README",
-      "path": "QZ/README.md"
-    },
-    {
-      "basename": "暗恋是八个人的兵荒马乱",
-      "path": "QZ/暗恋是八个人的兵荒马乱.md"
+      "basename": "new_README",
+      "path": "_templates/new_README.md"
     },
     {
       "basename": "README",
       "path": "DC/README.md"
     },
     {
-      "basename": "new_README",
-      "path": "_templates/new_README.md"
+      "basename": "README",
+      "path": "QZ/README.md"
+    },
+    {
+      "basename": "2025-01-21",
+      "path": "logs/2025-01-21.md"
+    },
+    {
+      "basename": "2025-01-22",
+      "path": "logs/2025-01-22.md"
+    },
+    {
+      "basename": "2025-01-17",
+      "path": "logs/2025-01-17.md"
+    },
+    {
+      "basename": "188-顾总吃醋",
+      "path": "Others/188-顾总吃醋.md"
+    },
+    {
+      "basename": "2025-01-15",
+      "path": "logs/2025-01-15.md"
+    },
+    {
+      "basename": "暗恋是八个人的兵荒马乱",
+      "path": "QZ/暗恋是八个人的兵荒马乱.md"
     },
     {
       "basename": "日不落DC笑话",
@@ -29,32 +49,8 @@
       "path": "_templates/logs.md"
     },
     {
-      "basename": "2025-01-22",
-      "path": "logs/2025-01-22.md"
-    },
-    {
-      "basename": "full_index",
-      "path": "DM/full_index.md"
-    },
-    {
-      "basename": "index",
-      "path": "DM/index.md"
-    },
-    {
-      "basename": "index",
-      "path": "DC/index.md"
-    },
-    {
-      "basename": "full_index",
-      "path": "DC/full_index.md"
-    },
-    {
       "basename": "肉体记忆",
       "path": "DC/肉体记忆.md"
-    },
-    {
-      "basename": "2025-01-21",
-      "path": "logs/2025-01-21.md"
     },
     {
       "basename": "todo",
@@ -127,78 +123,6 @@
     {
       "basename": "真相时间",
       "path": "blob/真相时间.md"
-    },
-    {
-      "basename": "Conner Kent染发始末",
-      "path": "blob/Conner Kent染发始末.md"
-    },
-    {
-      "basename": "Fantasy",
-      "path": "blob/Fantasy.md"
-    },
-    {
-      "basename": "Never Have I Ever",
-      "path": "blob/Never Have I Ever.md"
-    },
-    {
-      "basename": "星球大的游乐场&Enjoyable",
-      "path": "blob/星球大的游乐场&Enjoyable.md"
-    },
-    {
-      "basename": "Jump off the roof",
-      "path": "blob/Jump off the roof.md"
-    },
-    {
-      "basename": "一句话地狱笑话",
-      "path": "blob/一句话地狱笑话.md"
-    },
-    {
-      "basename": "say my name",
-      "path": "blob/say my name.md"
-    },
-    {
-      "basename": "竹马？天降？",
-      "path": "blob/竹马？天降？.md"
-    },
-    {
-      "basename": "一次磕磕绊绊的初恋",
-      "path": "blob/一次磕磕绊绊的初恋.md"
-    },
-    {
-      "basename": "Jason做饭的条件",
-      "path": "blob/Jason做饭的条件.md"
-    },
-    {
-      "basename": "友 情 变 质",
-      "path": "blob/友 情 变 质.md"
-    },
-    {
-      "basename": "遗愿",
-      "path": "blob/遗愿.md"
-    },
-    {
-      "basename": "一只很好看的手",
-      "path": "blob/一只很好看的手.md"
-    },
-    {
-      "basename": "Encounter",
-      "path": "blob/Encounter.md"
-    },
-    {
-      "basename": "最后还是阿福全权负责了婚礼",
-      "path": "blob/最后还是阿福全权负责了婚礼.md"
-    },
-    {
-      "basename": "一个挺变态的脑洞",
-      "path": "blob/一个挺变态的脑洞.md"
-    },
-    {
-      "basename": "最喜欢的超级英雄",
-      "path": "blob/最喜欢的超级英雄.md"
-    },
-    {
-      "basename": "Bruce是个成熟的蝙蝠侠了",
-      "path": "blob/Bruce是个成熟的蝙蝠侠了.md"
     }
   ],
   "omittedPaths": [],

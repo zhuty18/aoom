@@ -18,6 +18,7 @@ from personal import (
     IGNORE_FILES,
     INDEX_FULL_NAME,
     INDEX_NAME,
+    LOG_PATH,
     PREVIEW_LENGTH,
     TIME_FORMAT,
     WEB_NAME,
@@ -239,12 +240,13 @@ def html_head(title: str) -> str:
 class SearchForFile:
     """搜索含有关键词的文件"""
 
-    def __init__(self, key: str):
+    def __init__(self, key: str, name_match=False):
         self.key = key
         self.res = []
+        self.name_match = name_match
         self.check_dir(doc_dir())
         if not self.res:
-            print(
+            raise FileNotFoundError(
                 "没有找到"
                 + self.key
                 + "！请确认是否存在含有该字符串的文件名（不含路径）！"
@@ -257,8 +259,18 @@ class SearchForFile:
             if os.path.isdir(i):
                 self.check_dir(i)
             else:
-                if match_keys([self.key], i) and i.endswith(".md"):
-                    self.res.append(i)
+                if self.name_match:
+                    if (
+                        i.endswith(".md")
+                        and name_of(i) == self.key
+                        and not ignore_in_format(i)
+                    ):
+                        if self.key=="README":
+                            print(i)
+                        self.res.append(i)
+                else:
+                    if match_keys([self.key], i) and i.endswith(".md"):
+                        self.res.append(i)
 
     def result(self):
         """搜索结果"""
@@ -268,6 +280,11 @@ class SearchForFile:
 def search_by_keyword(key):
     """搜索含有关键词的文件"""
     return SearchForFile(key).result()
+
+
+def search_by_name(name):
+    """根据文件名搜索文件"""
+    return SearchForFile(name, True).result()[0]
 
 
 def auto_hide():
@@ -476,4 +493,4 @@ def ignore_in_format(filename):
     for i in IGNORE_FILES:
         if i in filename:
             return True
-    return False
+    return LOG_PATH in short_path(filename) or "_" in filename
