@@ -41,7 +41,7 @@ def format_file(filename):
     f.write(res)
     f.close()
     if filename.endswith(".md") and not ignore_in_format(filename):
-        add_predef(filename, "length", str(file_length(filename)))
+        add_predef(filename, "length", str(file_length(filename)), change=True)
         if file_fin(filename):
             mark_fin(filename)
 
