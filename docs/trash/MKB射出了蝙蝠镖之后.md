@@ -1,6 +1,7 @@
 ---
 length: 2767
 tags: FIN
+auto_date: 2020-12-12
 ---
 
 # MKB射出了蝙蝠镖之后

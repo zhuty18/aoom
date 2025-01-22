@@ -1,6 +1,7 @@
 ---
 tags: FIN
 length: 14476
+auto_date: 2021-12-26
 ---
 
 # Stop Me If You've Heard This One Before

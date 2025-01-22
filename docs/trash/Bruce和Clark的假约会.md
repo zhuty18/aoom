@@ -1,5 +1,6 @@
 ---
 length: 527
+auto_date: 2020-10-29
 ---
 
 # Bruce和Clark的假约会

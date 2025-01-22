@@ -20,6 +20,7 @@ from personal import (
     HISTORY_PATH,
     INDEX_FULL_NAME,
     INDEX_NAME,
+    LOG_PATH,
     POST_PATH,
     TBC_TITLE,
 )
@@ -280,7 +281,9 @@ class IndexBuilder:
     def build_index(self, path, counter: WordCounter):
         """建立索引"""
         for i in os.listdir(path):
-            if i.endswith(".md") and not ignore_in_format(i):
+            if i.endswith(".md") and not ignore_in_format(
+                os.path.join(path, i)
+            ):
                 if not i[0:-3] in counter.history.keys():
                     counter.history[i[0:-3]] = FileRecord.from_path(i, path)
                 t = counter.history[i[0:-3]]
@@ -341,7 +344,7 @@ def update_index(counter, path, order, force=False):
                     break
             if change or force:
                 update_index(counter, subdir, order, force)
-    if path != doc_dir() and dir_name(path):
+    if path != doc_dir() and dir_name(path) and LOG_PATH not in path:
         IndexBuilder(path, counter, order)
 
 

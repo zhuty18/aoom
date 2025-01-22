@@ -3,6 +3,7 @@ tags:
   - FIN
 date: 2020-11-05
 length: 1203
+auto_date: 2024-05-19
 ---
 
 # Bruce是个成熟的蝙蝠侠了

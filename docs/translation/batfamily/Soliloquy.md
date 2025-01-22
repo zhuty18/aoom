@@ -1,6 +1,7 @@
 ---
 tags: FIN
 length: 9061
+auto_date: 2020-12-12
 ---
 
 # **Soliloquy**

@@ -1,6 +1,7 @@
 ---
 tags: FIN BatLantern
 length: 5491
+auto_date: 2022-07-09
 ---
 
 # Hal公寓的二十四小时

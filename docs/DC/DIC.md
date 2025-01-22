@@ -1,5 +1,6 @@
 ---
 length: 49512
+auto_date: 2022-07-09
 ---
 
 # Daddy Issue Club

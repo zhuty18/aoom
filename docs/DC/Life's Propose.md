@@ -1,5 +1,6 @@
 ---
 length: 605
+auto_date: 2023-08-17
 ---
 
 # Life's Propose

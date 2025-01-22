@@ -1,6 +1,7 @@
 ---
 tags: FIN BatLantern
 length: 7293
+auto_date: 2020-12-12
 ---
 
 # 没人邀请Bruce去毕业舞会
