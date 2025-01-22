@@ -29,16 +29,12 @@ def format_md(filename):
             title_set = False
             for line in content.split("\n\n"):
                 if line.startswith("# ") and not title_set:
-                    title = line.replace("# ", "")
+                    title = line.replace("# ", "").strip()
                     title = title.strip("*")
                     title_set = True
                 else:
                     cont.append(line)
             content = "\n\n".join(cont)
-        content = content.replace(
-            "\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n"
-        )
-        content = content.replace("\n\n\n", "\n\n<br>\n")
         f.write(content)
     add_predef(filename, "title", title, True)
     if not ignore_in_format(filename):
