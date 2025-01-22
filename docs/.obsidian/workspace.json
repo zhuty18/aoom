@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DC/重生之我在哥谭赶早高峰.md",
+                "file": "todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "重生之我在哥谭赶早高峰"
+              "title": "todo"
             }
           }
         ]
@@ -114,10 +114,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DC/重生之我在哥谭赶早高峰.md"
+                "file": "todo.md"
               },
               "icon": "lucide-list",
-              "title": "重生之我在哥谭赶早高峰 的大纲"
+              "title": "todo 的大纲"
             }
           },
           {
@@ -219,6 +219,10 @@
   "active": "d0220e3aab8c8b35",
   "lastOpenFiles": [
     "logs/2025-01-21.md",
+    "todo.md",
+    "DC/蝙蝠洞里的惨案.md",
+    "DC/达米安·韦恩绑架案.md",
+    "DC/重生之我在哥谭赶早高峰.md",
     "logs/2025-01-22.md",
     "logs/2025-01-17.md",
     "QZ/师娘教的.md",
@@ -230,8 +234,6 @@
     "DC/没办法父母遗嘱要我结婚.md",
     "DC/一切从蝙蝠侠决定站街说起.md",
     "DC/与雇主约会违反职业道德.md",
-    "DC/蝙蝠洞里的惨案.md",
-    "todo.md",
     "DC/白雪狐狸公主.md",
     "DC/王子钓鱼会钓上空军吗.md",
     "DC/如何潜规则过气天王.md",
@@ -242,8 +244,6 @@
     "DC/星舰学院51系.md",
     "QZ/暗恋是八个人的兵荒马乱.md",
     "QZ/明星煌煌.md",
-    "DC/谁帅.md",
-    "DC/宿醉之后.md",
     "未命名.canvas",
     "未命名",
     "trash",
