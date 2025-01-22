@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "363b9f239a4803d9",
+        "id": "9d843b3fefe3a23e",
         "type": "tabs",
         "children": [
           {
-            "id": "b71f5ee09eaf0727",
+            "id": "62d085906b450f81",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "DC/重生之我在哥谭赶早高峰.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "重生之我在哥谭赶早高峰"
             }
           }
         ]
@@ -79,8 +83,7 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -130,8 +133,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "538d184045893f94",
@@ -214,8 +216,18 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "b71f5ee09eaf0727",
+  "active": "62d085906b450f81",
   "lastOpenFiles": [
+    "logs/2025-01-21.md",
+    "DC/重生之我在哥谭赶早高峰.md",
+    "todo.md",
+    "logs/2025-01-22.md",
+    "QZ/README.md",
+    "logs/2025-01-17.md",
+    "Others/188-顾总吃醋.md",
+    "logs/2025-01-15.md",
+    "DC/README.md",
+    "_templates/new_README.md",
     "X/index.md",
     "X/full_index.md",
     "XJ/index.md",
@@ -232,16 +244,6 @@
     "FT/full_index.md",
     "GTM/index.md",
     "GTM/full_index.md",
-    "DM/index.md",
-    "DM/full_index.md",
-    "YYS/index.md",
-    "YYS/full_index.md",
-    "YWJ/index.md",
-    "YWJ/full_index.md",
-    "Others/index.md",
-    "Others/full_index.md",
-    "SWY/index.md",
-    "SWY/full_index.md",
     "未命名.canvas",
     "未命名",
     "trash",
