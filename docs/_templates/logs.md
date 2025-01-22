@@ -6,7 +6,7 @@ date: {{date}}
 
 ```dataview
 LIST
-WHERE date and date = date({{date}})
+WHERE choice(date, date = date({{date}}), auto_date = date({{date}})) and !contains(file.folder,"logs")
 ```
 
 ## 清单

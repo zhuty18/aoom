@@ -12,7 +12,6 @@ from utils import (
     doc_dir,
     ignore_in_format,
     mark_category,
-    mark_fin,
     name_of,
     search_by_keyword,
     short_path,
@@ -44,7 +43,6 @@ def format_md(filename):
     add_predef(filename, "title", title, True)
     if not ignore_in_format(filename):
         mark_category(filename)
-        mark_fin(filename)
     elif LOG_PATH in short_path(filename):
         mark_category(filename)
 

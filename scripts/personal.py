@@ -129,4 +129,4 @@ DIR_NAMES = {
 
 LOG_PATH = "docs/logs"
 
-IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md", "todo.md"]
+IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md", "todo.md", "TODO.md"]

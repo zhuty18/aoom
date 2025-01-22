@@ -3,15 +3,16 @@
 """格式化文件库"""
 
 import os
+import sys
 
 from personal import LOG_PATH
 from utils import (
     add_predef,
     doc_dir,
-    file_fin,
     file_length,
     ignore_in_format,
     mark_fin,
+    search_by_keyword,
     short_path,
 )
 
@@ -42,8 +43,7 @@ def format_file(filename):
     f.close()
     if filename.endswith(".md") and not ignore_in_format(filename):
         add_predef(filename, "length", str(file_length(filename)), change=True)
-        if file_fin(filename):
-            mark_fin(filename)
+        mark_fin(filename)
 
 
 def format_blob(filename):
@@ -93,4 +93,8 @@ def format_all(path):
 
 
 if __name__ == "__main__":
-    format_all(doc_dir())
+    if len(sys.argv) == 1:
+        format_all(doc_dir())
+    else:
+        for i in search_by_keyword(sys.argv[1]):
+            format_file(i)
