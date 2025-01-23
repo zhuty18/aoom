@@ -363,7 +363,6 @@ def get_predefine(filename):
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
         if content.startswith("---"):
-            print(filename)
             try:
                 pre_d = re.findall(
                     re.compile(r"---\n(.*)\n---\n", re.S), content
