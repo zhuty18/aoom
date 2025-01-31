@@ -10,6 +10,7 @@ layout: default
   <script>
     header=document.getElementsByClassName("page-header")[0]
     header.insertAdjacentHTML("beforeend",{% raw %}`{% endraw %}{% include nav_head.html %}{% raw %}`{% endraw %})
+    header.insertAdjacentHTML("afterbegin","<h3>{{ page.length }}字</h3>")
   </script>
 {% endunless %}
 

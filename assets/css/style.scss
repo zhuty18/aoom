@@ -195,10 +195,9 @@ h2 a {
 
 .nav-head-category {
     background: rgba(172, 209, 249, 0.57);
-    padding: 0.2rem 0.7rem 0.2rem 0.7rem;
     font-size: 0.8rem;
     border-radius: 37%;
-    margin: 0.5rem 1rem 0.5rem 1rem;
+    margin: auto 0.7rem auto 0.7rem;
     width: max-content;
 }
 
@@ -224,4 +223,12 @@ h2 a {
 
 button {
     font-size: 1rem;
+}
+
+.length-info {
+    font-size: 0.9rem;
+    line-height: initial;
+    white-space: nowrap;
+    margin: auto;
+    font-weight: normal;
 }
