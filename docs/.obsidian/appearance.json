@@ -1,5 +1,5 @@
 {
-  "cssTheme": "Blue Topaz",
+  "cssTheme": "Vicious",
   "theme": "moonstone",
   "showViewHeader": true,
   "monospaceFontFamily": "Fira Code",
@@ -7,5 +7,6 @@
   "interfaceFontFamily": "Source Han Sans CN",
   "textFontFamily": "FZPingXianYaSongS-R-GB",
   "translucency": false,
-  "accentColor": ""
+  "accentColor": "#73e571",
+  "nativeMenus": false
 }

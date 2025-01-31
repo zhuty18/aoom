@@ -4,21 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "56987e6f87473a31",
+        "id": "25dabcefccf0e635",
         "type": "tabs",
         "children": [
           {
-            "id": "be278323d11c4a95",
+            "id": "be81bcceba6978dd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QZ/明星煌煌.md",
+                "file": "QZ/贼在太医院.md",
                 "mode": "source",
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "明星煌煌"
+              "title": "贼在太医院"
             }
           }
         ]
@@ -40,7 +41,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -52,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "明星煌煌",
+                "query": "tag:#武侠au",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -83,12 +85,11 @@
               "title": "Recent Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 232.5110321044922
+    "width": 225.5
   },
   "right": {
     "id": "00e0a33998493af3",
@@ -97,7 +98,7 @@
       {
         "id": "082e061e2cebecf7",
         "type": "tabs",
-        "dimension": 40,
+        "dimension": 29.2572463768116,
         "children": [
           {
             "id": "e723befff5a4818a",
@@ -115,10 +116,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "todo.md"
+                "file": "logs/2025-01-31.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "todo 的大纲"
+              "title": "2025-01-31 的大纲"
             }
           },
           {
@@ -128,18 +132,21 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "538d184045893f94",
         "type": "tabs",
-        "dimension": 60,
+        "dimension": 70.7427536231884,
         "children": [
           {
             "id": "966beab25c763ab2",
@@ -159,8 +166,8 @@
               "state": {
                 "file": "todo.md",
                 "mode": "preview",
-                "backlinks": false,
-                "source": false
+                "source": false,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "todo"
@@ -209,44 +216,51 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:打开快速切换": true,
-      "canvas:新建白板": true,
       "daily-notes:打开/创建今天的日记": false,
       "templater-obsidian:Templater": false,
       "templates:插入模板": true,
       "command-palette:打开命令面板": false,
-      "graph:查看关系图谱": false,
-      "publish:发布更改": false
+      "graph:查看关系图谱": false
     }
   },
-  "active": "be278323d11c4a95",
+  "active": "be81bcceba6978dd",
   "lastOpenFiles": [
     "todo.md",
+    "QZ/贼在太医院.md",
+    "QZ/师娘教的.md",
+    "_templates/new_note.md",
+    "logs/2025-01-18.md",
+    "logs/2025-01-31.md",
+    "logs/2025-01-17.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "logs/2025-01-15.md",
     "DC/在校园谈的当然是校园恋爱.md",
+    "logs/2025-01-23.md",
     "logs/2025-01-22.md",
     "logs/2025-01-21.md",
-    "DC/校园恋情的若干条注意事项.md",
-    "logs/2025-01-23.md",
-    "未命名.canvas",
-    "_templates/new_note.md",
-    "_templates/new_README.md",
+    "Others/平行世界第一炒股大赛.md",
+    "_templates/checklist.md",
     "_templates/logs.md",
-    "logs/2025-01-24.md",
-    "logs/2025-01-15.md",
-    "logs/2025-01-17.md",
-    "QZ/明星煌煌.md",
-    "DC/重生之我在哥谭赶早高峰.md",
-    "DC/我想见你.md",
-    "DC/危险性行为.md",
-    "DC/一切要从蝙蝠侠决定站街那天说起.md",
-    "DC/从飞行员到绿灯侠到总统.md",
-    "DC/如何潜规则过气天王.md",
-    "DC/蝙蝠洞里的惨案.md",
-    "DC/达米安·韦恩绑架案.md",
-    "QZ/师娘教的.md",
-    "QZ/据说武林盟主要娶第一美人.md",
-    "DC/没办法父母遗嘱要我结婚.md",
-    "DC/与雇主约会违反职业道德.md",
-    "未命名",
+    "logs/2025-02-21.md",
+    "fanfiction/同人本LaTeX排版教程.md",
+    "fanfiction/data/paper.png",
+    "fanfiction/data/ligatures.png",
+    "fanfiction/data/fontsize.png",
+    "fanfiction/data/fonts.png",
+    "fanfiction/data/fil.png",
+    "fanfiction/data/ctex.png",
+    "fanfiction/data",
+    "fanfiction",
+    "DMC/逆转的红衣女子.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-31 18-18-59.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-31 17-48-37.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-31 16-44-22.md",
+    "Tasks Plugin - Review and check your Statuses 2025-01-31 16-46-16.md",
+    "QZ/README.md",
+    "DC/README.md",
+    "_templates/new_README.md",
+    "tags",
+    "未命名.canvas",
     "trash",
     "_templates",
     "logs"

@@ -10,5 +10,3 @@ WHERE choice(date, date = date({{date}}), auto_date = date({{date}})) and !conta
 ```
 
 ## 清单
-
-- [ ] #task 待办事项

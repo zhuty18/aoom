@@ -1,7 +1,7 @@
 {
   "globalQuery": "path does not include _templates",
   "globalFilter": "#task",
-  "removeGlobalFilter": false,
+  "removeGlobalFilter": true,
   "taskFormat": "tasksPluginEmoji",
   "setCreatedDate": true,
   "setDoneDate": true,
@@ -18,14 +18,14 @@
     "coreStatuses": [
       {
         "symbol": " ",
-        "name": "Todo",
-        "nextStatusSymbol": "x",
+        "name": "待办",
+        "nextStatusSymbol": "A",
         "availableAsCommand": true,
         "type": "TODO"
       },
       {
         "symbol": "x",
-        "name": "Done",
+        "name": "完成",
         "nextStatusSymbol": " ",
         "availableAsCommand": true,
         "type": "DONE"
@@ -33,18 +33,46 @@
     ],
     "customStatuses": [
       {
-        "symbol": "/",
-        "name": "In Progress",
+        "symbol": "*",
+        "name": "重要",
         "nextStatusSymbol": "x",
-        "availableAsCommand": true,
+        "availableAsCommand": false,
         "type": "IN_PROGRESS"
       },
       {
-        "symbol": "-",
-        "name": "Cancelled",
+        "symbol": "I",
+        "name": "创意",
         "nextStatusSymbol": " ",
-        "availableAsCommand": true,
+        "availableAsCommand": false,
+        "type": "NON_TASK"
+      },
+      {
+        "symbol": "-",
+        "name": "取消",
+        "nextStatusSymbol": " ",
+        "availableAsCommand": false,
         "type": "CANCELLED"
+      },
+      {
+        "symbol": "/",
+        "name": "暂停",
+        "nextStatusSymbol": "x",
+        "availableAsCommand": false,
+        "type": "TODO"
+      },
+      {
+        "symbol": "a",
+        "name": "系列",
+        "nextStatusSymbol": "x",
+        "availableAsCommand": false,
+        "type": "IN_PROGRESS"
+      },
+      {
+        "symbol": "A",
+        "name": "进行中",
+        "nextStatusSymbol": "x",
+        "availableAsCommand": false,
+        "type": "IN_PROGRESS"
       }
     ]
   },

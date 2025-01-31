@@ -12,5 +12,10 @@
   "attachmentFolderPath": "/",
   "newFileLocation": "current",
   "alwaysUpdateLinks": true,
-  "newLinkFormat": "relative"
+  "newLinkFormat": "relative",
+  "showIndentGuide": true,
+  "foldIndent": false,
+  "readableLineLength": true,
+  "foldHeading": false,
+  "rightToLeft": false
 }

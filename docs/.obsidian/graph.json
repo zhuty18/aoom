@@ -1,17 +1,17 @@
 {
-  "collapse-filter": true,
-  "search": "",
-  "showTags": false,
+  "collapse-filter": false,
+  "search": "-file:index",
+  "showTags": true,
   "showAttachments": false,
-  "hideUnresolved": false,
+  "hideUnresolved": true,
   "showOrphans": true,
-  "collapse-color-groups": false,
+  "collapse-color-groups": true,
   "colorGroups": [
     {
       "query": "tag:#TODO  ",
       "color": {
         "a": 1,
-        "rgb": 9781755
+        "rgb": 15032801
       }
     }
   ],
@@ -21,10 +21,10 @@
   "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 0.49621456185567,
-  "repelStrength": 10,
-  "linkStrength": 1,
-  "linkDistance": 250,
-  "scale": 0.0700183177878706,
+  "centerStrength": 0.355670103092784,
+  "repelStrength": 7.27835051546392,
+  "linkStrength": 0.722680412371134,
+  "linkDistance": 306,
+  "scale": 0.09816448406964684,
   "close": true
 }
