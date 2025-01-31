@@ -6,5 +6,6 @@
   "baseFontSize": 13,
   "interfaceFontFamily": "Source Han Sans CN",
   "textFontFamily": "FZPingXianYaSongS-R-GB",
-  "translucency": false
+  "translucency": false,
+  "accentColor": ""
 }
