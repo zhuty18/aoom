@@ -5,7 +5,7 @@
   "monospaceFontFamily": "Fira Code",
   "baseFontSize": 13,
   "interfaceFontFamily": "Source Han Sans CN",
-  "textFontFamily": "EB Garamond 12,FZPingXianYaSongS-R-GB",
+  "textFontFamily": "FZPingXianYaSongS-R-GB",
   "translucency": false,
   "accentColor": "#00db00"
 }

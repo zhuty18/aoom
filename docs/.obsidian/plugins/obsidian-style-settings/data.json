@@ -1,12 +1,15 @@
 {
-  "obsidian-prism-theme@@color-schemes-lt": "pt-color-scheme-pistachio-lt",
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-avocado-topaz",
+  "obsidian-prism-theme@@color-schemes-lt": "pt-color-scheme-pistachio-lt",
   "blue-topaz-theme@@background-settings-workplace-background-image": false,
   "blue-topaz-theme@@background-image-settings-switch": false,
   "blue-topaz-theme@@background-image-settings-markdown-page-options": "background-image-settings-markdown-page-transparent",
   "blue-topaz-theme@@toggle-calendar-shadow": true,
   "blue-topaz-theme@@toggle-calendar-transparent": true,
   "blue-topaz-theme@@style-options-for-calendar-plugin": "style-options-for-calendar-plugin-default",
+  "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-blue-mountain",
+  "blue-topaz-theme@@background-notebook-liked-switch": false,
+  "blue-topaz-theme@@notebook-liked-markdown-page-options": "notebook-liked-markdown-page-grid-notebook-2",
   "blue-topaz-theme@@toggle-checked-decoration": false,
   "blue-topaz-theme@@circular-checkbox": false,
   "blue-topaz-theme@@rainbow-checklist": false,
@@ -15,7 +18,7 @@
   "blue-topaz-theme@@enable-alternative-checkboxes": true,
   "ITS@@accent-color": false,
   "ITS@@s-d": false,
-  "ITS@@select": "none",
+  "ITS@@select": "dnd",
   "ITS@@drwn": false,
   "ITS@@t-d": false,
   "ITS@@nord": false,
@@ -88,5 +91,9 @@
   "vicious@@italicscolors": "itl-C009",
   "vicious@@bold-italicscolors": "bld-itl-C011",
   "test@@Check-List-Strikeout": "none",
-  "things-style@@mobile-black-background": false
+  "things-style@@mobile-black-background": false,
+  "ITS@@mini": false,
+  "ITS@@its-d": false,
+  "things-style@@fancy-code": true,
+  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-theme-dark-night-sky"
 }

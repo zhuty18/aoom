@@ -4,34 +4,27 @@
 
 ```dataview
 TASK
-WHERE contains(text,"进度")
+WHERE status = "!" and contains(text,"📚") and contains(file.path,"logs")
 ```
 
 ## 待办事项
 
 ```tasks
-filter by function task.status.type=="TODO" || task.status.type=="IN_PROGRESS"
-short
-hide task count
-hide backlink
+FILTER BY FUNCTION (task.status.symbol != "!" && task.status.type == "IN_PROGRESS") || task.status.type == "TODO"
+SORT BY status.type
+SORT BY path REVERSE
 ```
 
-## 创意
+## 脑洞
 
 ```tasks
-filter by function task.status.type=="NON_TASK"
-short
-hide task count
-hide backlink
+FILTER BY FUNCTION task.status.type == "NON_TASK"
 ```
 
 ## 已完成任务
 
 ```tasks
-filter by function task.status.type=="DONE" || task.status.type=="CANCELLED"
-short
-sort by status.type
-sort by done reverse
-hide backlink
-hide task count
+DONE
+SORT BY status.type
+SORT BY done REVERSE
 ```

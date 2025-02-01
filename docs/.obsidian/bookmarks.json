@@ -1,3 +1,9 @@
 {
-  "items": []
+  "items": [
+    {
+      "type": "file",
+      "ctime": 1738407670949,
+      "path": "todo.md"
+    }
+  ]
 }

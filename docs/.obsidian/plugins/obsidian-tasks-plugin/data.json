@@ -1,9 +1,9 @@
 {
-  "globalQuery": "path does not include _templates",
+  "globalQuery": "path does not include _templates\nshort\nhide task count\nhide backlink\nshow tree",
   "globalFilter": "📚",
   "removeGlobalFilter": true,
   "taskFormat": "tasksPluginEmoji",
-  "setCreatedDate": true,
+  "setCreatedDate": false,
   "setDoneDate": true,
   "setCancelledDate": true,
   "autoSuggestInEditor": false,
@@ -33,6 +33,13 @@
     ],
     "customStatuses": [
       {
+        "symbol": "!",
+        "name": "当前",
+        "nextStatusSymbol": "x",
+        "availableAsCommand": false,
+        "type": "IN_PROGRESS"
+      },
+      {
         "symbol": "*",
         "name": "重要",
         "nextStatusSymbol": "x",
@@ -47,32 +54,18 @@
         "type": "NON_TASK"
       },
       {
+        "symbol": "/",
+        "name": "暂停",
+        "nextStatusSymbol": "!",
+        "availableAsCommand": false,
+        "type": "IN_PROGRESS"
+      },
+      {
         "symbol": "-",
         "name": "取消",
         "nextStatusSymbol": " ",
         "availableAsCommand": false,
         "type": "CANCELLED"
-      },
-      {
-        "symbol": "/",
-        "name": "暂停",
-        "nextStatusSymbol": "x",
-        "availableAsCommand": false,
-        "type": "TODO"
-      },
-      {
-        "symbol": "D",
-        "name": "系列",
-        "nextStatusSymbol": "x",
-        "availableAsCommand": false,
-        "type": "IN_PROGRESS"
-      },
-      {
-        "symbol": "b",
-        "name": "进行中",
-        "nextStatusSymbol": "x",
-        "availableAsCommand": false,
-        "type": "IN_PROGRESS"
       }
     ]
   },
