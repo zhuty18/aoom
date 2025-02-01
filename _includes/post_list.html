@@ -6,7 +6,7 @@
       最近更新
     {% endif %}
   </h2>
-  <ul class="post-list">
+  <div class="post-list">
     {% for post in site.posts %}
       {% if include.type == "docs" %}
         {% if include.update contains post.title %}
@@ -28,5 +28,5 @@
         {% include post.html post=post %}
       {% endif %}
     {% endfor %}
-  </ul>
+  </div>
 </div>
