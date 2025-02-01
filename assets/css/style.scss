@@ -59,6 +59,26 @@ a.nav-foot-link {
     list-style-type: square;
 }
 
+.tag-display {
+    display: block;
+    float: inline-start;
+    font-size: 1.1rem;
+    border-radius: 14%;
+    width: 6rem;
+    height: 6rem;
+    align-content: center;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 1rem;
+    background: whitesmoke;
+    color: cadetblue;
+}
+
+.tag-display a {
+    color: inherit;
+}
+
 .tag {
     margin-left: 1rem;
     padding-left: 0.2rem;
@@ -105,6 +125,13 @@ a.nav-foot-link {
     padding: 0.2rem 0.7rem 0.2rem 0.7rem;
     font-size: 0.8rem;
     border-radius: 37%;
+}
+
+.category-display {
+    margin: 1rem;
+    font-size: 1.1rem;
+    padding-left: 2rem;
+    border-radius: 5%;
 }
 
 .category a {
