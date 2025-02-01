@@ -2,17 +2,17 @@
 
 ## Basic
 
-- [ ] **Todo** #task
-- [A] *In Progress* #task
-- [x] ***Done*** #task
-- [-] ==Cancelled== #task
+- [ ] **Todo** TASK
+- [A] *In Progress* TASK
+- [x] ***Done*** TASK
+- [-] ==Cancelled== TASK
 
 ## Forward
 
-- [*] Star #task
-- [I] Idea #task
-- [/] Pause #task
-- [a] Archive #task
+- [*] Star TASK
+- [I] Idea TASK
+- [/] Pause TASK
+- [a] Archive TASK
 
 ## Information
 

@@ -495,7 +495,7 @@ def title_of(filename):
                 if i.startswith("# "):
                     title = i.replace("# ", "")
                     break
-        return title
+        return title.strip()
 
 
 def ignore_in_format(filename):

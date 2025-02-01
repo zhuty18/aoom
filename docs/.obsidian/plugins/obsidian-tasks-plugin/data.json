@@ -1,6 +1,6 @@
 {
   "globalQuery": "path does not include _templates",
-  "globalFilter": "#task",
+  "globalFilter": "TASK",
   "removeGlobalFilter": true,
   "taskFormat": "tasksPluginEmoji",
   "setCreatedDate": true,

@@ -10,10 +10,10 @@ layout: default
   <script>
     header=document.getElementsByClassName("page-header")[0]
     header.insertAdjacentHTML("beforeend",{% raw %}`{% endraw %}{% include nav_head.html %}{% raw %}`{% endraw %})
-    title=document.getElementsByClassName("project-name")[0]
-    title.insertAdjacentHTML("afterend",`{% if page.length %}
-    <h3 class="length-info">{{ page.length }}字</h3>
-    {% endif %}`)
+    {% if page.length %}
+      title=document.getElementsByClassName("project-name")[0]
+      title.insertAdjacentHTML("afterend",`<h3 class="length-info">{{ page.length }}字</h3>`)
+    {% endif %}
   </script>
 {% endunless %}
 

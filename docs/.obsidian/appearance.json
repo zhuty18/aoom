@@ -1,12 +1,11 @@
 {
   "cssTheme": "Vicious",
-  "theme": "moonstone",
+  "theme": "system",
   "showViewHeader": true,
   "monospaceFontFamily": "Fira Code",
   "baseFontSize": 13,
   "interfaceFontFamily": "Source Han Sans CN",
   "textFontFamily": "FZPingXianYaSongS-R-GB",
   "translucency": false,
-  "accentColor": "#73e571",
-  "nativeMenus": false
+  "accentColor": "#00ff00"
 }

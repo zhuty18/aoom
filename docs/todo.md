@@ -3,18 +3,19 @@
 ## 当前任务
 
 ```tasks
-filter by function task.status.type=="IN_PROGRESS" && task.status.symbol!="I"
+not done
 sort by path reverse
 short
+tags include #2025蝙绿企划
 hide task count
 hide backlink
+hide tags
 ```
 
-还有`\=round((date("2025-02-18")-date(now)).day,0)`天，个人企划进度`$=dv.pages("#2025蝙绿企划 and #FIN").length`/`$=dv.pages("#2025蝙绿企划").length`，还剩`$=dv.pages("#2025蝙绿企划 and #TODO").length`篇，加油！
-
 ```dataview
-LIST length + "字 "+dateformat(choice(date,date,auto_date),"yy.M.d ") + " " + filter(file.tags,(x) => !contains(x,"TODO")&!contains(x,"蝙绿")&!contains(x,"BatLantern"))
-FROM #TODO and #2025蝙绿企划
+LIST length + "字 "+dateformat(choice(date,date,auto_date),"yy.M.d ") + " " + filter(file.tags,(x) => !contains(x,"蝙绿")&!contains(x,"BatLantern"))
+FROM #2025蝙绿企划 and -#FIN
+WHERE !contains(file.path,"logs")
 SORT choice(date,date,auto_date) DESC
 ```
 
@@ -28,20 +29,12 @@ FROM #2025蝙绿企划 and #FIN
 ## 待进行任务
 
 ```tasks
-filter by function task.status.type == "TODO"
+not done
 short
+NOT (tags include #2025蝙绿企划)
 sort by urgency
 hide task count
 hide backlink
-```
-
-## 其他任务
-
-其他还有`$=dv.pages("#TODO and -#2025蝙绿企划").length`篇，努力！
-
-```dataview
-LIST length + "字 "+dateformat(choice(date,date,auto_date),"yy.M.d ") + " " + filter(file.tags,(x) => !contains(x, "TODO") )
-FROM #TODO and -#2025蝙绿企划
 ```
 
 ## 创意
@@ -57,7 +50,7 @@ hide backlink
 ## 已完成任务
 
 ```tasks
-done
+filter by function task.status.type=="DONE" || task.status.type=="CANCELLED"
 short
 sort by status.type
 sort by done reverse
