@@ -78,14 +78,9 @@ a.nav-foot-link {
 }
 
 .tag-display {
-    display: block;
     float: inline-start;
     font-size: 1.1rem;
     border-radius: 14%;
-    width: 7rem;
-    height: 7rem;
-    align-content: center;
-    text-align: center;
     padding: 0.5rem;
     margin: 1rem;
 }
@@ -131,17 +126,28 @@ a.nav-foot-link {
     padding: 0.2rem 0.6rem;
     font-size: 0.8rem;
     border-radius: 37%;
+    color: #3d9ad2;
 }
 
 .category-display {
     margin: 1rem;
     font-size: 1.1rem;
-    padding-left: 2rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 5%;
 }
 
 .category a {
-    color: #3d9ad2;
+    color: inherit;
+}
+
+.DC {
+    color: #f9efef;
+    background: rgba(57, 153, 239, 0.71);
+}
+
+.全职 {
+    color: red;
+    background: rgba(255, 12, 12, 0.102);
 }
 
 h2 a {
