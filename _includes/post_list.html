@@ -1,11 +1,9 @@
 <div class="post">
-  <h2>
-    {% if include.list_title %}
+  {% if include.list_title %}
+    <h2>
       {{ include.list_title }}
-    {% else %}
-      最近更新
-    {% endif %}
-  </h2>
+    </h2>
+  {% endif %}
   <div class="post-list">
     {% for post in site.posts %}
       {% if include.type == "docs" %}
