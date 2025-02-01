@@ -87,5 +87,6 @@
   "vicious@@boldcolors": "bold-C010",
   "vicious@@italicscolors": "itl-C009",
   "vicious@@bold-italicscolors": "bld-itl-C011",
-  "test@@Check-List-Strikeout": "none"
+  "test@@Check-List-Strikeout": "none",
+  "things-style@@mobile-black-background": false
 }

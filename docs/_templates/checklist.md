@@ -3,7 +3,7 @@
 ## Basic
 
 - [ ] **Todo** TASK
-- [A] *In Progress* TASK
+- [b] *In Progress* TASK
 - [x] ***Done*** TASK
 - [-] ==Cancelled== TASK
 
@@ -12,7 +12,7 @@
 - [*] Star TASK
 - [I] Idea TASK
 - [/] Pause TASK
-- [a] Archive TASK
+- [D] Archive TASK
 
 ## Information
 
