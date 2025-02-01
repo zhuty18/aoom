@@ -468,7 +468,7 @@ def make_index(kind, name):
         with open(os.path.join(path, name + ".md"), "w", encoding="utf8") as f:
             f.write("---\n")
             f.write(f"layout: {kind}\n")
-            f.write(f"{kind}: {name}\n")
+            f.write(f"title: {name}\n")
             f.write("---\n")
 
 
