@@ -4,22 +4,59 @@
     "type": "split",
     "children": [
       {
-        "id": "25dabcefccf0e635",
+        "id": "b16734d01d5b9841",
         "type": "tabs",
         "children": [
           {
-            "id": "f7a9c6a81fadc86c",
+            "id": "192395ae0c2557b1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DC/没活就去咬打火机.md",
+                "file": "todo.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "没活就去咬打火机"
+              "title": "todo"
+            }
+          },
+          {
+            "id": "c6bb3c0458e0a58c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DC/白雪狐狸公主.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "白雪狐狸公主"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "6c212b90a104d469",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "26b51d5474f6a095",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DC/王子钓美人鱼也会空军吗.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "王子钓美人鱼也会空军吗"
             }
           }
         ]
@@ -89,7 +126,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 225.5
+    "width": 291
   },
   "right": {
     "id": "00e0a33998493af3",
@@ -223,17 +260,22 @@
       "graph:查看关系图谱": false
     }
   },
-  "active": "f7a9c6a81fadc86c",
+  "active": "c6bb3c0458e0a58c",
   "lastOpenFiles": [
-    "logs/2025-02-01.md",
+    "DC/王子钓美人鱼也会空军吗.md",
+    "DC/白雪狐狸公主.md",
     "todo.md",
+    "logs/2025-01-21.md",
+    "DC/七月之痒.md",
+    "DC/委托：荒宅里的鲜血.md",
+    "logs/2025-02-01.md",
     "DC/如何追求离异飞行员.md",
+    "DC/没活就去咬打火机.md",
     "DC/一切要从蝙蝠侠决定站街那天说起.md",
     "DC/README.md",
     "DC/副作用.md",
     "DC/蓝鲸花.md",
     "DC/不讲理的乔丹太太.md",
-    "DC/白雪狐狸公主.md",
     "_templates/new_note.md",
     "_templates/new_README.md",
     "logs/2025-01-15.md",
@@ -248,17 +290,12 @@
     "fanfiction/data/fil.png",
     "fanfiction/data",
     "fanfiction",
-    "logs/2025-01-21.md",
     "DC/哥谭小学亲子活动日.md",
     "QZ/明星煌煌.md",
     "logs/2025-01-18.md",
     "logs/2025-01-17.md",
     "_templates/checklist.md",
     "Tasks Plugin - Review and check your Statuses 2025-02-01 18-09-14.md",
-    "DC/王子钓美人鱼也会空军吗.md",
-    "QZ/你🐧是不是有个祖传的恋爱脑？.md",
-    "index.md",
-    "logs/2025-01-23.md",
     "tags",
     "未命名.canvas",
     "trash",

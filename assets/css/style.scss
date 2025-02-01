@@ -59,26 +59,6 @@ a.nav-foot-link {
     list-style-type: square;
 }
 
-.tag-display {
-    display: block;
-    float: inline-start;
-    font-size: 1.1rem;
-    border-radius: 14%;
-    width: 6rem;
-    height: 6rem;
-    align-content: center;
-    text-align: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    margin: 1rem;
-    background: whitesmoke;
-    color: cadetblue;
-}
-
-.tag-display a {
-    color: inherit;
-}
-
 .tag {
     margin-left: 1rem;
     padding-left: 0.2rem;
@@ -99,6 +79,24 @@ a.nav-foot-link {
     text-decoration: underline;
 }
 
+.tag-display {
+    display: block;
+    float: inline-start;
+    font-size: 1.1rem;
+    border-radius: 14%;
+    width: 7rem;
+    height: 7rem;
+    align-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.tag-display a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .FIN {
     color: darkgreen;
     background-color: #d5ffd5;
@@ -117,6 +115,16 @@ a.nav-foot-link {
 .JayTim {
     color: #f3c1c1;
     background-color: darkred;
+}
+
+.\32 025蝙绿企划 {
+    color: darkgreen;
+    background: white;
+}
+
+.武侠au {
+    color: whitesmoke;
+    background: crimson;
 }
 
 .category {
