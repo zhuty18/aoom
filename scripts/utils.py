@@ -472,7 +472,7 @@ def make_index(kind, name):
             f.write("---\n")
 
 
-def make_index_dir(kind):
+def make_index_dir(kind, name):
     """制作jekyll索引路径"""
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(path):
@@ -480,6 +480,7 @@ def make_index_dir(kind):
         with open(os.path.join(path, INDEX_NAME), "w", encoding="utf8") as f:
             f.write("---\n")
             f.write(f"layout: {kind}_all\n")
+            f.write(f"title: 全部{name}\n")
             f.write("---\n")
 
 

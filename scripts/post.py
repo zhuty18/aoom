@@ -146,8 +146,8 @@ if __name__ == "__main__":
     COUNTER.read_history()
     if not os.path.exists(POST_PATH):
         os.mkdir(POST_PATH)
-    make_index_dir("tag")
-    make_index_dir("category")
+    make_index_dir("tag","标签")
+    make_index_dir("category","分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         post_all(FILE_ROOT, COUNTER, True)

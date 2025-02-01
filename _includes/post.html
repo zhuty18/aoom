@@ -1,7 +1,7 @@
 <li>
   {% assign post = include.post %}
   <span class="post-meta">
-    <span class="category">
+    <span class="category {{ post.category }}">
       <a href="{{ site.baseurl }}/category/{{ post.category }}">{{ post.category }}</a>
     </span>
     <span class="date">{{ post.date | date: site.date_format }}</span>
