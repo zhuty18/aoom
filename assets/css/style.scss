@@ -42,9 +42,20 @@ a.nav-foot-link {
     margin-top: auto;
 }
 
+.post-card {
+    border-color: #148e16;
+    border-style: dotted;
+    border-width: 1.5px;
+    border-radius: 1rem;
+    padding: 0.5rem 0.3rem;
+    margin: 0.5rem auto;
+    background: aliceblue;
+}
+
 .post-list h2 {
     margin-top: 0.6rem;
     margin-bottom: 0.5rem;
+    margin-left: 1rem;
 }
 
 .post-meta :first-child {
@@ -53,6 +64,7 @@ a.nav-foot-link {
 
 .post-preview {
     margin-top: 0;
+    margin-left: 1rem;
 }
 
 .tag {
