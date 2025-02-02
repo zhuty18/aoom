@@ -19,7 +19,7 @@
       {
         "symbol": " ",
         "name": "待办",
-        "nextStatusSymbol": "b",
+        "nextStatusSymbol": "*",
         "availableAsCommand": true,
         "type": "TODO"
       },
@@ -33,14 +33,14 @@
     ],
     "customStatuses": [
       {
-        "symbol": "!",
+        "symbol": "*",
         "name": "当前",
         "nextStatusSymbol": "x",
         "availableAsCommand": false,
         "type": "IN_PROGRESS"
       },
       {
-        "symbol": "*",
+        "symbol": "!",
         "name": "重要",
         "nextStatusSymbol": "x",
         "availableAsCommand": false,
@@ -56,7 +56,7 @@
       {
         "symbol": "/",
         "name": "暂停",
-        "nextStatusSymbol": "!",
+        "nextStatusSymbol": "*",
         "availableAsCommand": false,
         "type": "IN_PROGRESS"
       },

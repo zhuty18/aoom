@@ -3,16 +3,14 @@
 ## Basic
 
 - [ ] 📚 **Todo**
-- [b] 📚 *In Progress*
+- [*] 📚 *In Progress*
 - [x] 📚 ***Done***
 - [-] 📚 ==Cancelled==
 ## Forward
 
-- [!] 📚 Ongoing
-- [*] 📚 Star
+- [!] 📚 Important
 - [I] 📚 Idea
 - [/] 📚 Pause
-- [D] 📚 Archive
 
 ## Information
 

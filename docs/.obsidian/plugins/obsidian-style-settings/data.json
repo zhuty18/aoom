@@ -95,5 +95,6 @@
   "ITS@@mini": false,
   "ITS@@its-d": false,
   "things-style@@fancy-code": true,
-  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-theme-dark-night-sky"
+  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-theme-dark-night-sky",
+  "minimal-style@@dataview-inline-lists": false
 }

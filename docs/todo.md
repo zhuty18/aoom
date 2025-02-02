@@ -4,13 +4,13 @@
 
 ```dataview
 TASK
-WHERE status = "!" and contains(text,"📚") and contains(file.path,"logs")
+WHERE (status = "*" or status = "!") and contains(text,"📚") and contains(file.path,"logs")
 ```
 
 ## 待办事项
 
 ```tasks
-FILTER BY FUNCTION (task.status.symbol != "!" && task.status.type == "IN_PROGRESS") || task.status.type == "TODO"
+FILTER BY FUNCTION (task.status.symbol != "*" && task.status.symbol != "!" && task.status.type == "IN_PROGRESS") || task.status.type == "TODO"
 SORT BY status.type
 SORT BY path REVERSE
 ```
@@ -25,6 +25,7 @@ FILTER BY FUNCTION task.status.type == "NON_TASK"
 
 ```tasks
 DONE
+FILTER BY FUNCTION task.status.type!="NON_TASK"
 SORT BY status.type
 SORT BY done REVERSE
 ```

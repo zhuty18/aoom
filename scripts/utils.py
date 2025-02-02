@@ -347,10 +347,6 @@ def preview(filename):
             if len(pre) > PREVIEW_LENGTH * 0.8:
                 pre = pre.strip()
                 break
-    for i in pre.split("\n\n"):
-        if len(i) > PREVIEW_LENGTH * 0.2:
-            pre = i.strip()
-            break
     if len(pre) > PREVIEW_LENGTH * 1.2:
         pre = pre[:PREVIEW_LENGTH] + "……"
     if pre.count("*") % 2 == 1:
