@@ -3,10 +3,6 @@
 
 @import "{{ site.theme }}";
 
-.main-content :first-child {
-    margin-top: unset;
-}
-
 footer,
 .btn {
     display: none;
@@ -44,7 +40,7 @@ a.nav-foot-link:first-child {
 }
 
 .post-card {
-    border-color: #148e16;
+    border-color: #15997469;
     border-style: double;
     border-width: 3px;
     border-radius: 0.3rem;
@@ -87,11 +83,6 @@ a.nav-foot-link:first-child {
     font-size: 0.6rem;
     background: whitesmoke;
     color: cadetblue;
-}
-
-.tag a {
-    color: inherit;
-    text-decoration: underline;
 }
 
 .tag-display {
@@ -149,6 +140,7 @@ a.nav-foot-link:first-child {
     font-size: 0.8rem;
     border-radius: 0.8rem;
     color: #3d9ad2;
+    text-align: center;
 }
 
 .category-display {
@@ -156,10 +148,6 @@ a.nav-foot-link:first-child {
     font-size: 1.1rem;
     padding: 0.5rem 1.5rem;
     border-radius: 0.2rem;
-}
-
-.category a {
-    color: inherit;
 }
 
 .DC {
@@ -170,10 +158,6 @@ a.nav-foot-link:first-child {
 .全职 {
     color: red;
     background: rgba(255, 12, 12, 0.102);
-}
-
-h2 a {
-    color: blueviolet;
 }
 
 .date {
@@ -256,10 +240,6 @@ h2 a {
     margin: auto 0.1rem auto 0.1rem;
     font-size: 0.7rem;
     border-radius: 15px;
-}
-
-.headtag a {
-    text-decoration: none;
 }
 
 .nav-head-category {
