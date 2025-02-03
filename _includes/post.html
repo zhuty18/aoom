@@ -1,10 +1,26 @@
 <div class="post-card">
   {% assign post = include.post %}
   <span class="post-meta">
-    <span class="date">{{ post.date | date: site.date_format }}</span>
     <span class="category {{ post.category }}">
       <a href="{{ site.baseurl }}/category/{{ post.category }}">{{ post.category }}</a>
     </span>
+    <span class="date">{{ post.date | date: site.date_format }}</span>
+  </span>
+  <span class="post-content">
+    <h2>
+      <a
+        class="post-link"
+        href="{{ site.baseurl }}/{{ post.target }}"
+        title="{{ post.title }}">{{ post.title }}</a>
+    </h2>
+    <div class="post-preview">
+      {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
+    </div>
+  </span>
+  {% if post.length %}
+    <span class="length">{{ post.length }}字</span>
+  {% endif %}
+  <span class="post-meta-tag">
     {% for tag in post.tags %}
       {% if site.tags contains tag %}
         <span class="tag {{ tag }}">
@@ -13,16 +29,4 @@
       {% endif %}
     {% endfor %}
   </span>
-  <h2>
-    <a
-      class="post-link"
-      href="{{ site.baseurl }}/{{ post.target }}"
-      title="{{ post.title }}">{{ post.title }}</a>
-    {% if post.length %}
-      <span class="length">{{ post.length }}字</span>
-    {% endif %}
-  </h2>
-  <div class="post-preview">
-    {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
-  </div>
 </div>

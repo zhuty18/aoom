@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+.main-content :first-child {
+    margin-top: unset;
+}
+
 footer,
 .btn {
     display: none;
@@ -38,32 +42,28 @@ a.nav-foot-link {
     width: 2.5rem;
     text-align: center;
 }
-.main-content .nav-foot :first-child {
-    margin-top: auto;
-}
 
 .post-card {
     border-color: #148e16;
     border-style: dotted;
     border-width: 1.5px;
     border-radius: 1rem;
-    padding: 0.5rem 0.3rem;
-    margin: 0.5rem auto;
+    padding: 0.5rem;
+    margin: 1rem auto;
+    display: table;
 }
 
-.post-list h2 {
+.post-content {
+    margin-left: 0.5rem;
+}
+
+.post-content h2 {
     margin-top: 0.6rem;
     margin-bottom: 0.5rem;
-    margin-left: 1rem;
 }
 
-.post-meta :first-child {
-    margin-top: auto;
-}
-
-.post-preview {
-    margin-top: 0;
-    margin-left: 1rem;
+.post-meta-tag {
+    float: right;
 }
 
 .tag {
@@ -174,6 +174,7 @@ h2 a {
 .length {
     margin-left: 0.5rem;
     font-size: 0.8rem;
+    color: #159957;
 }
 
 .ad-text {
