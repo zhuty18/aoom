@@ -122,7 +122,6 @@ a.nav-foot-link:first-child {
     float: right;
 }
 
-.tag:first-child,
 .tag {
     margin: 0.25rem;
     padding-left: 0.3rem;
@@ -186,7 +185,7 @@ a.nav-foot-link:first-child {
 
 .category {
     margin: auto 0.5rem;
-    background: rgba(172, 209, 249, 0.57);
+    background: rgb(208, 229, 252);
     padding: 0.2rem 0.6rem;
     font-size: 0.8rem;
     border-radius: 0.8rem;
@@ -203,12 +202,12 @@ a.nav-foot-link:first-child {
 
 .DC {
     color: #f9efef;
-    background: rgba(57, 153, 239, 0.7);
+    background: rgb(116, 183, 244);
 }
 
 .全职 {
     color: red;
-    background: rgba(255, 233, 233, 0.7);
+    background: rgb(255, 240, 240);
 }
 
 .date {

@@ -3,7 +3,9 @@ layout: custom_default
 ---
 
 {% for tag in site.tags %}
-  <div class="tag tag-display {{ tag[0] }}">
-    <a href="{{ tag[0] }}">{{ tag[0] }}</a>
-  </div>
+  <a href="{{ tag[0] }}">
+    <div class="tag tag-display {{ tag[0] }}">
+      {{ tag[0] }}
+    </div>
+  </a>
 {% endfor %}

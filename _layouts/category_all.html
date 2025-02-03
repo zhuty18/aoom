@@ -5,8 +5,10 @@ title: 所有类别
 
 {% for category in site.categories %}
   {% unless category == '日志' %}
-    <div class="category category-display {{ category[0] }}">
-      <a href="{{ category[0] }}">{{ category[0] }}</a>
-    </div>
+    <a href="{{ category[0] }}">
+      <div class="category category-display {{ category[0] }}">
+        {{ category[0] }}
+      </div>
+    </a>
   {% endunless %}
 {% endfor %}
