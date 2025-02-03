@@ -11,7 +11,6 @@
 - [!] 📚 Important
 - [I] 📚 Idea
 - [/] 📚 Pause
-- [f] 📚 Mark
 
 ## Information
 

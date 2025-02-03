@@ -200,7 +200,8 @@ class WordCounter:
                 if length_new == length_old:
                     continue
                 else:
-                    file_check.count_file(i)
+                    file_check.count_file(i, False)
+                    print(f"{name_of(i)}\t{length_old} -> {length_new}")
                 link = doc_path(os.path.join(os.getcwd(), i)).replace(
                     " ", "%20"
                 )

@@ -2,14 +2,14 @@
 
 ## 重要任务
 
+```tasks
+FILTER BY FUNCTION task.status.symbol == "!"
+```
+
 ```dataview
 TASK
 WHERE status = "!" and contains(text,"📚") and contains(file.path,"logs")
 SORT status
-```
-
-```tasks
-FILTER BY FUNCTION task.status.symbol == "!"
 ```
 
 ## 待办事项
@@ -23,7 +23,6 @@ SORT BY FUNCTION task.status.symbol
 
 ```tasks
 FILTER BY FUNCTION task.status.type == "NON_TASK"
-SORT BY path REVERSE
 ```
 
 ## 已完成

@@ -16,13 +16,14 @@ from utils import line_length, search_by_keyword
 from web_make import to_html
 
 
-def count_file(filename):
+def count_file(filename, p=True):
     """对文件进行字数统计"""
     if filename.endswith(".txt"):
         f = open(filename, "r", encoding="utf-8")
-        print(filename + "\t" + str(line_length(f.read())))
+        if p:
+            print(filename + "\t" + str(line_length(f.read())))
         f.close()
-    elif not filename.endswith(".md"):
+    elif not filename.endswith(".md") and p:
         print("only support plain text and MarkDown files!")
     elif not "_templates" in filename:
         f = open(filename, "r", encoding="utf-8")
@@ -37,15 +38,17 @@ def count_file(filename):
         for i in f.readlines():
             if i.startswith("#"):
                 if chapter != "":
-                    print("\t" * last + chapter + "\t" + str(num))
+                    if p:
+                        print("\t" * last + chapter + "\t" + str(num))
                     total += num
                     num = 0
                 last = i.count("#") - 1
                 chapter = i.strip("#").strip()
             num += line_length(i.strip())
-        print("\t" * last + chapter + "\t" + str(num))
+        if p:
+            print("\t" * last + chapter + "\t" + str(num))
         total += num
-        if chapter != filename:
+        if chapter != filename and p:
             print(filename + "\t" + str(total))
 
 
