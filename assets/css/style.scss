@@ -13,6 +13,52 @@ footer,
     overflow-y: auto;
 }
 
+.nav-head {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.nav-head-item {
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    float: right;
+    background-color: rgba(97, 159, 161, 0.7);
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    margin: 0 0.5rem 0 0.5rem;
+    opacity: 88%;
+    color: white;
+}
+
+.nav-head-wrapper {
+    width: 15rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.headtag {
+    margin: auto 0.1rem auto 0.1rem;
+    font-size: 0.7rem;
+    border-radius: 15px;
+}
+
+.nav-head-category {
+    background: rgba(172, 209, 249, 0.57);
+    font-size: 0.8rem;
+    border-radius: 37%;
+    margin: auto 0.7rem auto 0.7rem;
+    width: max-content;
+}
+
+.nav-head-category a {
+    color: #ebf4fd;
+    text-decoration: none;
+}
+
+.project-head {
+    padding: 4rem 5rem;
+}
+
 .nav-foot {
     display: grid;
     justify-content: center;
@@ -56,6 +102,11 @@ a.nav-foot-link:first-child {
 
 .post-content {
     margin-left: 0.5rem;
+}
+
+.post-content a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .post-content h2:first-child {
@@ -152,12 +203,12 @@ a.nav-foot-link:first-child {
 
 .DC {
     color: #f9efef;
-    background: rgba(57, 153, 239, 0.71);
+    background: rgba(57, 153, 239, 0.7);
 }
 
 .全职 {
     color: red;
-    background: rgba(255, 12, 12, 0.102);
+    background: rgba(255, 233, 233, 0.7);
 }
 
 .date {
@@ -207,60 +258,6 @@ a.nav-foot-link:first-child {
 }
 .main-content h1 {
     margin-top: 1rem;
-}
-
-.nav-head {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5rem;
-}
-
-.nav-head-item {
-    padding: 0.3rem 1rem 0.3rem 1rem;
-    float: right;
-    background-color: rgba(97, 159, 161, 0.7);
-    border-radius: 1rem;
-    font-size: 0.9rem;
-    margin: 0 0.5rem 0 0.5rem;
-    opacity: 88%;
-}
-
-.nav-head-item a {
-    color: white;
-    text-decoration: none;
-}
-
-.nav-head-wrapper {
-    width: 15rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.headtag {
-    margin: auto 0.1rem auto 0.1rem;
-    font-size: 0.7rem;
-    border-radius: 15px;
-}
-
-.nav-head-category {
-    background: rgba(172, 209, 249, 0.57);
-    font-size: 0.8rem;
-    border-radius: 37%;
-    margin: auto 0.7rem auto 0.7rem;
-    width: max-content;
-}
-
-.nav-head-category a {
-    color: #ebf4fd;
-    text-decoration: none;
-}
-
-.project-head {
-    padding: 4rem 5rem;
-}
-
-.post-meta span {
-    display: inline-block;
 }
 
 .password-require {
