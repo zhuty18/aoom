@@ -327,7 +327,7 @@ def path_fin(path):
     return fin_path.get(doc_path(path), False)
 
 
-def preview(filename):
+def excerpt(filename):
     """获取文件预览"""
     with open(filename, "r", encoding="utf8") as f:
         yaml = False

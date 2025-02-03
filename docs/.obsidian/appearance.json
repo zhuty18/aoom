@@ -7,5 +7,7 @@
   "interfaceFontFamily": "Source Han Sans CN",
   "textFontFamily": "FZPingXianYaSongS-R-GB",
   "translucency": false,
-  "accentColor": "#00db00"
+  "accentColor": "#6bd747",
+  "showRibbon": true,
+  "enabledCssSnippets": []
 }

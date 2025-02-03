@@ -16,6 +16,7 @@ from personal import (
 from utils import (
     add_predef,
     dir_name,
+    excerpt,
     format_time,
     get_pre_key,
     get_predefine,
@@ -25,7 +26,6 @@ from utils import (
     mark_post,
     name_of,
     path_of,
-    preview,
     search_by_keyword,
     short_path,
 )
@@ -55,9 +55,12 @@ def post(filename, name, default_time=None):
         f.write(
             f"""---
 {pre_d}
+excerpt_separator: <!--more-->
 ---
 
-{preview(filename)}
+{excerpt(filename)}
+
+<!--more-->
 """
         )
 
@@ -146,8 +149,8 @@ if __name__ == "__main__":
     COUNTER.read_history()
     if not os.path.exists(POST_PATH):
         os.mkdir(POST_PATH)
-    make_index_dir("tag","标签")
-    make_index_dir("category","分类")
+    make_index_dir("tag", "标签")
+    make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         post_all(FILE_ROOT, COUNTER, True)

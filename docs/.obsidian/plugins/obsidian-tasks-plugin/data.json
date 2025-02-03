@@ -1,5 +1,5 @@
 {
-  "globalQuery": "path does not include _templates\nshort\nhide task count\nhide backlink\nshow tree",
+  "globalQuery": "PATH DOES NOT INCLUDE _templates\nSHORT\nSORT BY status.type\nHIDE TASK COUNT\nHIDE BACKLINK\nHIDE POSTPONE BUTTON\nSHOW TREE",
   "globalFilter": "📚",
   "removeGlobalFilter": true,
   "taskFormat": "tasksPluginEmoji",
@@ -19,7 +19,7 @@
       {
         "symbol": " ",
         "name": "待办",
-        "nextStatusSymbol": "*",
+        "nextStatusSymbol": "x",
         "availableAsCommand": true,
         "type": "TODO"
       },
@@ -35,7 +35,7 @@
       {
         "symbol": "*",
         "name": "当前",
-        "nextStatusSymbol": "x",
+        "nextStatusSymbol": "!",
         "availableAsCommand": false,
         "type": "IN_PROGRESS"
       },
