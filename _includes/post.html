@@ -1,17 +1,16 @@
 <div class="post-card">
   {% assign post = include.post %}
-  <span class="post-meta">
-    <span class="date">{{ post.date | date: site.date_format }}</span>
-    <a href="{{ site.baseurl }}/category/{{ post.category }}">
-      <span class="category {{ post.category }}">{{ post.category }}</span>
-    </a>
-  </span>
   <div class="post-content">
+    <span class="post-meta">
+      <span class="date">{{ post.date | date: site.date_format }}</span>
+      <a href="{{ site.baseurl }}/category/{{ post.category }}">
+        <span class="category {{ post.category }}">{{ post.category }}</span>
+      </a>
+    </span>
     <a
       class="post-link"
       href="{{ site.baseurl }}/{{ post.target }}"
       title="{{ post.title }}">
-      <h2>{{ post.title }}</h2>
       <div class="post-preview">
         {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
       </div>
