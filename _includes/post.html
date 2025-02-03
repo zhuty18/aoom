@@ -1,10 +1,10 @@
 <div class="post-card">
   {% assign post = include.post %}
   <span class="post-meta">
+    <span class="date">{{ post.date | date: site.date_format }}</span>
     <a href="{{ site.baseurl }}/category/{{ post.category }}">
       <span class="category {{ post.category }}">{{ post.category }}</span>
     </a>
-    <span class="date">{{ post.date | date: site.date_format }}</span>
   </span>
   <div class="post-content">
     <a
