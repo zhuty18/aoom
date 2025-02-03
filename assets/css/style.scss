@@ -17,6 +17,7 @@ footer,
     display: flex;
     justify-content: center;
     margin-top: 0.5rem;
+    align-items: center;
 }
 
 .nav-head-item {
@@ -133,6 +134,7 @@ a.nav-foot-link:first-child {
     font-size: 0.6rem;
     background: whitesmoke;
     color: cadetblue;
+    display: block;
 }
 
 .tag-display {
@@ -191,6 +193,7 @@ a.nav-foot-link:first-child {
     border-radius: 0.8rem;
     color: #3d9ad2;
     text-align: center;
+    display: block;
 }
 
 .category-display {
