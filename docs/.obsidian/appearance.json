@@ -8,6 +8,6 @@
   "textFontFamily": "FZPingXianYaSongS-R-GB",
   "translucency": false,
   "accentColor": "#6bd747",
-  "showRibbon": true,
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [],
+  "showRibbon": true
 }

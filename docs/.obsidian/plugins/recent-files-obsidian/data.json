@@ -1,20 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "2025-02-04",
+      "path": "logs/2025-02-04.md"
+    },
+    {
+      "basename": "2025-02-03",
+      "path": "logs/2025-02-03.md"
+    },
+    {
+      "basename": "README",
+      "path": "DC/README.md"
+    },
+    {
       "basename": "海拔1689千米",
       "path": "DC/海拔1689千米.md"
     },
     {
-      "basename": "2025-01-21",
-      "path": "logs/2025-01-21.md"
-    },
-    {
-      "basename": "2025-01-31",
-      "path": "logs/2025-01-31.md"
-    },
-    {
       "basename": "todo",
       "path": "todo.md"
+    },
+    {
+      "basename": "2025-01-21",
+      "path": "logs/2025-01-21.md"
     },
     {
       "basename": "checklist",
@@ -77,10 +85,6 @@
       "path": "DC/一切要从蝙蝠侠决定站街那天说起.md"
     },
     {
-      "basename": "README",
-      "path": "DC/README.md"
-    },
-    {
       "basename": "副作用",
       "path": "DC/副作用.md"
     },
@@ -103,6 +107,10 @@
     {
       "basename": "2025-01-15",
       "path": "logs/2025-01-15.md"
+    },
+    {
+      "basename": "2025-01-31",
+      "path": "logs/2025-01-31.md"
     },
     {
       "basename": "哥谭小学亲子活动日",
@@ -191,10 +199,6 @@
     {
       "basename": "棋逢对手",
       "path": "DC/棋逢对手.md"
-    },
-    {
-      "basename": "肉体记忆",
-      "path": "DC/肉体记忆.md"
     }
   ],
   "omittedPaths": [],

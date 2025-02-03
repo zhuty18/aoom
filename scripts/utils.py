@@ -343,8 +343,8 @@ def excerpt(filename):
                 continue
             pre += i
             if "<br>\n\n" in pre:
-                pre = pre.split("<br>\n\n")[-1]
-            if len(pre) > PREVIEW_LENGTH * 0.8:
+                pre = pre.split("<br>")[0]
+            if len(pre) > PREVIEW_LENGTH * 0.6:
                 pre = pre.strip()
                 break
     if len(pre) > PREVIEW_LENGTH * 1.2:
