@@ -6,7 +6,7 @@
     </span>
     <span class="date">{{ post.date | date: site.date_format }}</span>
   </span>
-  <span class="post-content">
+  <div class="post-content">
     <h2>
       <a
         class="post-link"
@@ -16,7 +16,7 @@
     <div class="post-preview">
       {{ post.excerpt | markdownify | truncatewords: site.excerpt_word }}
     </div>
-  </span>
+  </div>
   {% if post.length %}
     <span class="length">{{ post.length }}字</span>
   {% endif %}

@@ -36,7 +36,7 @@ footer,
     display: flex;
 }
 
-a.nav-foot-link {
+a.nav-foot-link:first-child {
     margin-top: auto;
     margin-bottom: auto;
     width: 2.5rem;
@@ -45,27 +45,37 @@ a.nav-foot-link {
 
 .post-card {
     border-color: #148e16;
-    border-style: dotted;
-    border-width: 1.5px;
-    border-radius: 1rem;
+    border-style: double;
+    border-width: 3px;
+    border-radius: 0.3rem;
     padding: 0.5rem;
-    margin: 1rem auto;
+    margin: 2rem auto;
     display: table;
+    width: 100%;
+}
+
+.post-meta {
+    float: right;
 }
 
 .post-content {
     margin-left: 0.5rem;
 }
 
-.post-content h2 {
+.post-content h2:first-child {
     margin-top: 0.6rem;
     margin-bottom: 0.5rem;
+}
+
+.post-preview {
+    font-size: 0.9rem;
 }
 
 .post-meta-tag {
     float: right;
 }
 
+.tag:first-child,
 .tag {
     margin: 0.25rem;
     padding-left: 0.3rem;
