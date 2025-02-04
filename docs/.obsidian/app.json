@@ -9,7 +9,7 @@
   "strictLineBreaks": false,
   "propertiesInDocument": "visible",
   "useTab": false,
-  "attachmentFolderPath": "/",
+  "attachmentFolderPath": "./attachments",
   "newFileLocation": "current",
   "alwaysUpdateLinks": true,
   "newLinkFormat": "relative",

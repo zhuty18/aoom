@@ -4,6 +4,7 @@
     "cssclasses": "multitext",
     "tags": "tags",
     "date": "date",
-    "post": "checkbox"
+    "post": "checkbox",
+    "no_nav": "checkbox"
   }
 }
