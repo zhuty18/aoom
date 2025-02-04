@@ -15,7 +15,7 @@
               "state": {
                 "file": "logs/2025-01-21.md",
                 "mode": "source",
-                "source": false,
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
@@ -43,17 +43,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "logs/2025-02-04.md",
+                "file": "todo.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-04"
+              "title": "todo"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "6aca82eb12917857",
@@ -274,23 +273,23 @@
       "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false
     }
   },
-  "active": "03fac1ee4e38eccf",
+  "active": "bb27ea0b135a3d0d",
   "lastOpenFiles": [
-    "logs/2025-02-03.md",
-    "logs/2025-02-04.md",
-    "DC/README.md",
+    "todo.md",
     "DC/海拔1689千米.md",
+    "logs/2025-02-04.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "logs/2025-02-03.md",
+    "DC/README.md",
     "DC/肉体记忆.md",
     "logs/2025-01-21.md",
     "logs/2025-01-31.md",
-    "todo.md",
     "_templates/checklist.md",
     "00D19AEF.png",
     "00D18DD0.png",
     "logs/2025-02-01.md",
     "logs/2025-02-02.md",
     "logs/2025-01-22.md",
-    "QZ/暗恋是八个人的兵荒马乱.md",
     "未命名",
     "Tasks Plugin - Review and check your Statuses 2025-02-03 12-57-04.md",
     "Tasks Plugin - Review and check your Statuses 2025-02-03 12-55-59.md",

@@ -17,8 +17,6 @@ Luckily, she's no completely stranger.
 
 <br>
 
-<br>
-<br>
 Alfred came in, with a... surprising gift. A thumb drive with a label "to Bruce".
 
 "It's from Miss Hofftard." He said, "She dropped by a few minutes ago, said it was a peace offering."
@@ -39,8 +37,6 @@ What she had brought was... actually very useful.
 
 <br>
 
-<br>
-<br>
 "Why don't you smile? I mean for real." She asked.
 
 Lying on the ground, bleeding out.
@@ -75,8 +71,6 @@ Of course she will survive.
 
 <br>
 
-<br>
-<br>
 I'm not sure befriend with Neve Hofftard is a good idea for me. Though I have a lot of bad friends but this one just...
 
 The first sign is Jason seems to like her. He tended to like people who can give me aneurysms. Tim, Talia, Roy, Rose...
