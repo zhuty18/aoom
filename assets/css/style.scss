@@ -16,23 +16,23 @@ footer,
 .nav-head {
     display: flex;
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
     align-items: center;
+    height: 2rem;
 }
 
 .nav-head-item {
     padding: 0.3rem 1rem 0.3rem 1rem;
     float: right;
     background-color: rgba(97, 159, 161, 0.7);
-    border-radius: 1rem;
-    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
     margin: 0 0.5rem 0 0.5rem;
     opacity: 88%;
     color: white;
 }
 
 .nav-head-wrapper {
-    width: 15rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -43,21 +43,12 @@ footer,
     border-radius: 15px;
 }
 
-.nav-head-category {
-    background: rgba(172, 209, 249, 0.57);
-    font-size: 0.8rem;
-    border-radius: 37%;
-    margin: auto 0.7rem auto 0.7rem;
-    width: max-content;
-}
-
-.nav-head-category a {
-    color: #ebf4fd;
-    text-decoration: none;
-}
-
 .project-head {
     padding: 4rem 5rem;
+}
+
+.project-tagline {
+    margin-bottom: 0.5rem;
 }
 
 .nav-foot {
@@ -201,6 +192,12 @@ a.nav-foot-link:first-child {
     font-size: 1.1rem;
     padding: 0.5rem 1.5rem;
     border-radius: 0.2rem;
+}
+
+.nav-head-category {
+    width: max-content;
+    font-size: 0.6rem;
+    padding: 0 0.5rem;
 }
 
 .DC {
