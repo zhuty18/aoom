@@ -25,9 +25,11 @@ from personal import (
 )
 
 
-def format_time(timestamp: float = COMMIT_TIME, time_format=TIME_FORMAT) -> str:
+def format_time(
+    time_stamp: float = COMMIT_TIME, time_format=TIME_FORMAT
+) -> str:
     """格式化某个时间戳，默认为当下"""
-    t = time.localtime(timestamp)
+    t = time.localtime(time_stamp)
     res = time.strftime(time_format, t)
     return res
 
@@ -156,7 +158,6 @@ def wrong_translates():
     yield ("Jo 马龙", "Jo Malone")
     yield ("马龙（马龙）", "马龙（Malone）")
     yield ("迈彻斯（迈彻斯）", "迈彻斯（Matches）")
-    yield ("布鲁斯 Wayyyne", "布鲁斯·韦——恩")
     yield (" 奥·古", "·奥·古")
     yield ("Mr. 韦恩", "Mr. Wayne")
 
