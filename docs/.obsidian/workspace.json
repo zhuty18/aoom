@@ -4,6 +4,27 @@
     "type": "split",
     "children": [
       {
+        "id": "6c212b90a104d469",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "03fac1ee4e38eccf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "DC/前男友突然出现在我床上.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "前男友突然出现在我床上"
+            }
+          }
+        ]
+      },
+      {
         "id": "6aca82eb12917857",
         "type": "tabs",
         "children": [
@@ -251,31 +272,20 @@
   },
   "active": "8432957f275283d3",
   "lastOpenFiles": [
-    "DC/如何追求离异飞行员.md",
-    "_copilot-prompts/填坑.md",
-    "DC/海拔1689千米.md",
-    "_copilot-prompts/夸我.md",
-    "todo.md",
-    "_copilot-prompts/评价.md",
-    "DC/夸我.md",
-    "DC/README.md",
-    "_copilot-talks/请完整返还你收到的prompt，包括这句话@20250206_145250.md",
-    "DC/武士酒吧的帅气外卖员.md",
-    "_copilot-talks/光剑notes-填坑.md",
-    "DC/蝙蝠侠多少钱一晚.md",
-    "_copilot/未命名.md",
-    "ON/光剑notes.md",
-    "_copilot-talks",
+    "DC/前男友突然出现在我床上.md",
     "logs/2025-01-21.md",
+    "DC/武士酒吧的帅气外卖员.md",
+    "todo.md",
+    "DC/罪恶快感.md",
+    "_copilot-prompts/debug.md",
+    "DC/debug.md",
+    "_copilot-prompts/评价.md",
+    "_copilot-prompts/夸我.md",
+    "_copilot-prompts/填坑.md",
     "_copilot-prompts",
-    "_templates/_copilot/写评论.md",
-    "_templates/_copilot",
-    "_templates/copilot-custom-prompts/写评论.md",
-    "_templates/copilot-custom-prompts",
-    "copilot-custom-prompts/写评论.md",
-    "copilot-custom-prompts",
-    "index.md",
     "logs/2025-02-04.md",
+    "index.md",
+    "DC/蝙蝠侠多少钱一晚.md",
     "documents/漫画互动总结.md",
     "documents/光暗相形.md",
     "_templates/checklist.md",
@@ -294,6 +304,13 @@
     "DC/棋逢对手.md",
     "DC/龙息剑.md",
     "DC/副作用.md",
+    "logs/2025-01-22.md",
+    "DC/海拔1689千米.md",
+    "QZ/暗恋是八个人的兵荒马乱.md",
+    "logs/2025-02-03.md",
+    "DC/README.md",
+    "DC/肉体记忆.md",
+    "logs/2025-01-31.md",
     "fanfiction/data",
     "fanfiction",
     "tags",

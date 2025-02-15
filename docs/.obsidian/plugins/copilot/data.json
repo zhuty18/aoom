@@ -115,7 +115,7 @@
       "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "https://api.deepseek.com/v1",
-      "apiKey": "sk-2b23ba4b4d954975964a0f1c035250c9",
+      "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
       "isEmbeddingModel": false,
       "temperature": 0.1,
       "context": 1000,
@@ -183,16 +183,6 @@
       "enabled": true,
       "isBuiltIn": true,
       "isEmbeddingModel": true
-    },
-    {
-      "name": "deepseek-chat",
-      "provider": "3rd party (openai-format)",
-      "enabled": true,
-      "isBuiltIn": false,
-      "baseUrl": "https://api.deepseek.com/v1",
-      "apiKey": "sk-2b23ba4b4d954975964a0f1c035250c9",
-      "isEmbeddingModel": true,
-      "enableCors": false
     }
   ],
   "embeddingRequestsPerSecond": 10,
@@ -248,9 +238,10 @@
     }
   },
   "promptUsageTimestamps": {
-    "填坑": 1738815945541,
+    "填坑": 1738984945123,
     "评价": 1738826257696,
-    "夸我": 1738838720600
+    "夸我": 1738838720600,
+    "debug": 1739002266843
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
 }
