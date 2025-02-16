@@ -32,7 +32,6 @@ Uncle Clark	396	24.05.19 12:36	True
 Wayne庄园冒险记	7119	21.10.07 22:44	True
 Wayne庄园的电影之夜	5163	21.02.22 21:34	False
 Women and girls	4363	20.12.12 09:51	False
-debug	0	25.02.15 11:12	False
 kpi最高的那个魅魔被包养之后	1070	24.05.19 12:36	True
 say my name	873	24.05.19 12:36	True
 一个挺变态的脑洞	3153	24.05.19 12:36	True
