@@ -29,16 +29,18 @@ def format_time(
     time_stamp: float = COMMIT_TIME, time_format=TIME_FORMAT
 ) -> str:
     """格式化某个时间戳，默认为当下"""
+    if not time_stamp:
+        time_stamp = COMMIT_TIME
     t = time.localtime(time_stamp)
     res = time.strftime(time_format, t)
     return res
 
 
-def format_log_time(time_str) -> str:
+def format_log_time(time_str: str) -> str:
     """格式化从git log中读取的时间"""
-    tmp = time.strptime(time_str, "%a %b %d %H:%M:%S %Y")
-    tmp = time.localtime(time.mktime(tmp))
-    return format_time(time.mktime(tmp))
+    time_stc = time.strptime(time_str, "%a %b %d %H:%M:%S %Y")
+    local_time = time.localtime(time.mktime(time_stc))
+    return format_time(time.mktime(local_time))
 
 
 def get_time(time_str: str = None) -> float:

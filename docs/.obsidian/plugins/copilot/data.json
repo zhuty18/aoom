@@ -121,6 +121,19 @@
       "context": 1000,
       "stream": true,
       "enableCors": true
+    },
+    {
+      "name": "deepseek-r1:14b-32k",
+      "provider": "ollama",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "",
+      "apiKey": "",
+      "isEmbeddingModel": false,
+      "temperature": 0.1,
+      "context": 1000,
+      "stream": true,
+      "enableCors": true
     }
   ],
   "activeEmbeddingModels": [
@@ -239,9 +252,10 @@
   },
   "promptUsageTimestamps": {
     "填坑": 1738984945123,
-    "评价": 1738826257696,
-    "夸我": 1738838720600,
-    "debug": 1739002266843
+    "评价": 1739706492906,
+    "夸我": 1739706101568,
+    "debug": 1739706996266,
+    "续写": 1739702965467
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
 }

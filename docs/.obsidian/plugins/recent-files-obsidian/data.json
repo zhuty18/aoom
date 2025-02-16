@@ -1,16 +1,64 @@
 {
   "recentFiles": [
     {
+      "basename": "祸从口出",
+      "path": "QZ/祸从口出.md"
+    },
+    {
+      "basename": "评价",
+      "path": "_copilot-prompts/评价.md"
+    },
+    {
+      "basename": "夸我",
+      "path": "_copilot-prompts/夸我.md"
+    },
+    {
+      "basename": "填坑",
+      "path": "_copilot-prompts/填坑.md"
+    },
+    {
+      "basename": "续写",
+      "path": "_copilot-prompts/续写.md"
+    },
+    {
+      "basename": "师娘教的",
+      "path": "QZ/师娘教的.md"
+    },
+    {
+      "basename": "知了只能活一个夏天",
+      "path": "QZ/知了只能活一个夏天.md"
+    },
+    {
+      "basename": "debug",
+      "path": "_copilot-prompts/debug.md"
+    },
+    {
+      "basename": "你🐧是不是有个祖传的恋爱脑？",
+      "path": "QZ/你🐧是不是有个祖传的恋爱脑？.md"
+    },
+    {
+      "basename": "海拔1689千米",
+      "path": "DC/海拔1689千米.md"
+    },
+    {
+      "basename": "checklist",
+      "path": "_templates/checklist.md"
+    },
+    {
+      "basename": "new_README",
+      "path": "_templates/new_README.md"
+    },
+    {
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
       "basename": "前男友突然出现在我床上",
       "path": "DC/前男友突然出现在我床上.md"
     },
     {
       "basename": "todo",
       "path": "todo.md"
-    },
-    {
-      "basename": "海拔1689千米",
-      "path": "DC/海拔1689千米.md"
     },
     {
       "basename": "武士酒吧的帅气外卖员",
@@ -35,10 +83,6 @@
     {
       "basename": "蝙蝠侠多少钱一晚",
       "path": "DC/蝙蝠侠多少钱一晚.md"
-    },
-    {
-      "basename": "checklist",
-      "path": "_templates/checklist.md"
     },
     {
       "basename": "棋逢对手",
@@ -129,10 +173,6 @@
       "path": "_templates/new_note.md"
     },
     {
-      "basename": "new_README",
-      "path": "_templates/new_README.md"
-    },
-    {
       "basename": "2025-01-15",
       "path": "logs/2025-01-15.md"
     },
@@ -159,46 +199,6 @@
     {
       "basename": "在校园谈的当然是校园恋爱",
       "path": "DC/在校园谈的当然是校园恋爱.md"
-    },
-    {
-      "basename": "一只名叫Highball的猫",
-      "path": "DC/一只名叫Highball的猫.md"
-    },
-    {
-      "basename": "我想见你",
-      "path": "DC/我想见你.md"
-    },
-    {
-      "basename": "index",
-      "path": "DC/index.md"
-    },
-    {
-      "basename": "校园恋情的若干条注意事项",
-      "path": "DC/校园恋情的若干条注意事项.md"
-    },
-    {
-      "basename": "logs",
-      "path": "_templates/logs.md"
-    },
-    {
-      "basename": "重生之我在哥谭赶早高峰",
-      "path": "DC/重生之我在哥谭赶早高峰.md"
-    },
-    {
-      "basename": "危险性行为",
-      "path": "DC/危险性行为.md"
-    },
-    {
-      "basename": "从飞行员到绿灯侠到总统",
-      "path": "DC/从飞行员到绿灯侠到总统.md"
-    },
-    {
-      "basename": "如何潜规则过气天王",
-      "path": "DC/如何潜规则过气天王.md"
-    },
-    {
-      "basename": "蝙蝠洞里的惨案",
-      "path": "DC/蝙蝠洞里的惨案.md"
     }
   ],
   "omittedPaths": [],

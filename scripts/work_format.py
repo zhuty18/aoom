@@ -26,16 +26,16 @@ def format_file(filename):
     # print(content)
     pre_def = False
     res = ""
-    for i in content:
+    for line in content:
         if filename.endswith(".py"):
-            res += i.strip("\n") + "\n"
-        elif "---\n" in i:
+            res += line.strip("\n") + "\n"
+        elif "---\n" in line:
             pre_def = not pre_def
-            res += i.strip("\n") + "\n"
+            res += line.strip("\n") + "\n"
         elif pre_def or LOG_PATH in short_path(filename):
-            res += i.strip("\n") + "\n"
+            res += line.strip("\n") + "\n"
         else:
-            res += i.strip() + "\n"
+            res += line.strip() + "\n"
     if not filename.endswith(".py"):
         res = res.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
         res = res.replace("\n\n\n", "\n\n<br>\n")
@@ -74,8 +74,8 @@ def format_blob(filename):
 def format_all(path):
     """从根目录起格式化所有文件"""
     l = os.listdir(path)
-    for i in l:
-        subdir = os.path.join(path, i)
+    for item in l:
+        subdir = os.path.join(path, item)
         if os.path.isdir(subdir) and not "/." in subdir:
             format_all(subdir)
         elif "教程" in subdir:

@@ -55,7 +55,9 @@ except ModuleNotFoundError:
 class FileRecord:
     """文件记录"""
 
-    def __init__(self, name, length, time, fin):
+    def __init__(
+        self, name: str, length: int | None, time: str | None, fin: bool
+    ):
         self.name = name
         self.length = length
         self.time = time
@@ -108,7 +110,7 @@ class FileRecord:
         output = output.decode("utf8")
         commit = None
         for i in output.split("\n"):
-            if i.startswith("Date:"):
+            if i.startswith("Date: "):
                 commit = i
                 break
         if commit is not None:
@@ -119,7 +121,7 @@ class FileRecord:
         else:
             time_formatted = format_time()
         return FileRecord(
-            name[0:-3],
+            name[:-3],
             file_length(full_path),
             time_formatted,
             file_fin(full_path),
