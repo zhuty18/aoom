@@ -191,8 +191,7 @@
               "title": "Copilot"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       },
       {
         "id": "538d184045893f94",
@@ -270,12 +269,13 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "8432957f275283d3",
+  "active": "03fac1ee4e38eccf",
   "lastOpenFiles": [
+    "todo.md",
     "DC/前男友突然出现在我床上.md",
+    "DC/海拔1689千米.md",
     "logs/2025-01-21.md",
     "DC/武士酒吧的帅气外卖员.md",
-    "todo.md",
     "DC/罪恶快感.md",
     "_copilot-prompts/debug.md",
     "DC/debug.md",
@@ -305,7 +305,6 @@
     "DC/龙息剑.md",
     "DC/副作用.md",
     "logs/2025-01-22.md",
-    "DC/海拔1689千米.md",
     "QZ/暗恋是八个人的兵荒马乱.md",
     "logs/2025-02-03.md",
     "DC/README.md",
