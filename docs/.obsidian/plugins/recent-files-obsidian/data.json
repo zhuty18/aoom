@@ -1,6 +1,82 @@
 {
   "recentFiles": [
     {
+      "basename": "海拔1689千米",
+      "path": "DC/海拔1689千米.md"
+    },
+    {
+      "basename": "与生俱来",
+      "path": "DC/与生俱来.md"
+    },
+    {
+      "basename": "蝙蝠洞里的惨案",
+      "path": "DC/蝙蝠洞里的惨案.md"
+    },
+    {
+      "basename": "new_README",
+      "path": "_templates/new_README.md"
+    },
+    {
+      "basename": "new_note",
+      "path": "_templates/new_note.md"
+    },
+    {
+      "basename": "logs",
+      "path": "_templates/logs.md"
+    },
+    {
+      "basename": "todo",
+      "path": "todo.md"
+    },
+    {
+      "basename": "checklist",
+      "path": "_templates/checklist.md"
+    },
+    {
+      "basename": "你叶神永远是你叶神",
+      "path": "QZ/你叶神永远是你叶神.md"
+    },
+    {
+      "basename": "2025-02-19",
+      "path": "logs/2025-02-19.md"
+    },
+    {
+      "basename": "2025-02-04",
+      "path": "logs/2025-02-04.md"
+    },
+    {
+      "basename": "如何追求离异飞行员",
+      "path": "DC/如何追求离异飞行员.md"
+    },
+    {
+      "basename": "2025-01-21",
+      "path": "logs/2025-01-21.md"
+    },
+    {
+      "basename": "在校园谈的当然是校园恋爱",
+      "path": "DC/在校园谈的当然是校园恋爱.md"
+    },
+    {
+      "basename": "肉体记忆",
+      "path": "DC/肉体记忆.md"
+    },
+    {
+      "basename": "debug",
+      "path": "_copilot-prompts/debug.md"
+    },
+    {
+      "basename": "我认识了个新朋友",
+      "path": "Others/我认识了个新朋友.md"
+    },
+    {
+      "basename": "知了只能活一个夏天",
+      "path": "QZ/知了只能活一个夏天.md"
+    },
+    {
+      "basename": "追逐荣耀的路上",
+      "path": "QZ/追逐荣耀的路上.md"
+    },
+    {
       "basename": "祸从口出",
       "path": "QZ/祸从口出.md"
     },
@@ -25,52 +101,16 @@
       "path": "QZ/师娘教的.md"
     },
     {
-      "basename": "知了只能活一个夏天",
-      "path": "QZ/知了只能活一个夏天.md"
-    },
-    {
-      "basename": "debug",
-      "path": "_copilot-prompts/debug.md"
-    },
-    {
       "basename": "你🐧是不是有个祖传的恋爱脑？",
       "path": "QZ/你🐧是不是有个祖传的恋爱脑？.md"
-    },
-    {
-      "basename": "海拔1689千米",
-      "path": "DC/海拔1689千米.md"
-    },
-    {
-      "basename": "checklist",
-      "path": "_templates/checklist.md"
-    },
-    {
-      "basename": "new_README",
-      "path": "_templates/new_README.md"
-    },
-    {
-      "basename": "logs",
-      "path": "_templates/logs.md"
     },
     {
       "basename": "前男友突然出现在我床上",
       "path": "DC/前男友突然出现在我床上.md"
     },
     {
-      "basename": "todo",
-      "path": "todo.md"
-    },
-    {
       "basename": "武士酒吧的帅气外卖员",
       "path": "DC/武士酒吧的帅气外卖员.md"
-    },
-    {
-      "basename": "2025-01-21",
-      "path": "logs/2025-01-21.md"
-    },
-    {
-      "basename": "2025-02-04",
-      "path": "logs/2025-02-04.md"
     },
     {
       "basename": "黄粱",
@@ -149,10 +189,6 @@
       "path": "DC/委托：荒宅里的鲜血.md"
     },
     {
-      "basename": "如何追求离异飞行员",
-      "path": "DC/如何追求离异飞行员.md"
-    },
-    {
       "basename": "没活就去咬打火机",
       "path": "DC/没活就去咬打火机.md"
     },
@@ -163,42 +199,6 @@
     {
       "basename": "蓝鲸花",
       "path": "DC/蓝鲸花.md"
-    },
-    {
-      "basename": "不讲理的乔丹太太",
-      "path": "DC/不讲理的乔丹太太.md"
-    },
-    {
-      "basename": "new_note",
-      "path": "_templates/new_note.md"
-    },
-    {
-      "basename": "2025-01-15",
-      "path": "logs/2025-01-15.md"
-    },
-    {
-      "basename": "2025-01-31",
-      "path": "logs/2025-01-31.md"
-    },
-    {
-      "basename": "哥谭小学亲子活动日",
-      "path": "DC/哥谭小学亲子活动日.md"
-    },
-    {
-      "basename": "明星煌煌",
-      "path": "QZ/明星煌煌.md"
-    },
-    {
-      "basename": "2025-01-18",
-      "path": "logs/2025-01-18.md"
-    },
-    {
-      "basename": "2025-01-17",
-      "path": "logs/2025-01-17.md"
-    },
-    {
-      "basename": "在校园谈的当然是校园恋爱",
-      "path": "DC/在校园谈的当然是校园恋爱.md"
     }
   ],
   "omittedPaths": [],

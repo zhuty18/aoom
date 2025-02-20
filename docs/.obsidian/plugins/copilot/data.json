@@ -14,12 +14,12 @@
   "googleApiKey": "",
   "openRouterAiApiKey": "",
   "defaultChainType": "llm_chain",
-  "defaultModelKey": "gpt-4o|openai",
-  "embeddingModelKey": "copilot-plus-small|copilot-plus",
+  "defaultModelKey": "deepseek-chat|3rd party (openai-format)",
+  "embeddingModelKey": "BAAI/bge-m3|3rd party (openai-format)",
   "temperature": 1.5,
   "maxTokens": 1000,
   "contextTurns": 15,
-  "userSystemPrompt": "",
+  "userSystemPrompt": "你是一个AI担任的文学批评者，具有优良的文学品味和逻辑性。请注意，只根据已掌握的知识或收到的文本作出回复，如果不确定，可以明确说出来。",
   "openAIProxyBaseUrl": "",
   "openAIEmbeddingProxyBaseUrl": "",
   "stream": true,
@@ -29,49 +29,74 @@
   "defaultOpenArea": "view",
   "customPromptsFolder": "_copilot-prompts",
   "indexVaultToVectorStore": "ON MODE SWITCH",
-  "qaExclusions": "",
+  "qaExclusions": "trash",
   "qaInclusions": "",
   "chatNoteContextPath": "",
   "chatNoteContextTags": [],
   "enableIndexSync": true,
   "debug": false,
   "enableEncryption": false,
-  "maxSourceChunks": 3,
+  "maxSourceChunks": 5,
   "groqApiKey": "",
+  "mistralApiKey": "",
   "activeModels": [
     {
       "name": "copilot-plus-flash",
       "provider": "copilot-plus",
       "enabled": false,
       "isBuiltIn": true,
-      "core": true
+      "core": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
       "name": "gpt-4o",
       "provider": "openai",
       "enabled": false,
       "isBuiltIn": true,
-      "core": true
+      "core": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
       "name": "gpt-4o-mini",
       "provider": "openai",
       "enabled": false,
       "isBuiltIn": true,
-      "core": true
+      "core": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
       "name": "claude-3-5-sonnet-latest",
       "provider": "anthropic",
       "enabled": false,
       "isBuiltIn": true,
-      "core": true
+      "core": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
-      "name": "gpt-4-turbo",
+      "name": "o1-mini",
       "provider": "openai",
       "enabled": false,
-      "isBuiltIn": true
+      "isBuiltIn": true,
+      "capabilities": [
+        "reasoning"
+      ]
+    },
+    {
+      "name": "o3-mini",
+      "provider": "openai",
+      "enabled": false,
+      "isBuiltIn": true,
+      "capabilities": [
+        "reasoning"
+      ]
     },
     {
       "name": "claude-3-5-haiku-latest",
@@ -92,16 +117,22 @@
       "isBuiltIn": true
     },
     {
-      "name": "gemini-1.5-pro",
+      "name": "gemini-2.0-pro-exp",
       "provider": "google",
       "enabled": false,
-      "isBuiltIn": true
+      "isBuiltIn": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
-      "name": "gemini-1.5-flash",
+      "name": "gemini-2.0-flash",
       "provider": "google",
       "enabled": false,
-      "isBuiltIn": true
+      "isBuiltIn": true,
+      "capabilities": [
+        "vision"
+      ]
     },
     {
       "name": "azure-openai",
@@ -114,11 +145,25 @@
       "provider": "3rd party (openai-format)",
       "enabled": true,
       "isBuiltIn": false,
-      "baseUrl": "https://api.deepseek.com/v1",
+      "baseUrl": "https://api.deepseek.com",
       "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
       "isEmbeddingModel": false,
-      "temperature": 0.1,
-      "context": 1000,
+      "capabilities": [],
+      "stream": true,
+      "enableCors": true,
+      "displayName": ""
+    },
+    {
+      "name": "deepseek-reasoner",
+      "provider": "3rd party (openai-format)",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "https://api.deepseek.com",
+      "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
+      "isEmbeddingModel": false,
+      "capabilities": [
+        "reasoning"
+      ],
       "stream": true,
       "enableCors": true
     },
@@ -128,11 +173,28 @@
       "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "",
-      "apiKey": "",
+      "apiKey": "api-key",
       "isEmbeddingModel": false,
-      "temperature": 0.1,
-      "context": 1000,
+      "capabilities": [
+        "reasoning"
+      ],
       "stream": true,
+      "displayName": "deepseek-reasoner-local",
+      "enableCors": true
+    },
+    {
+      "name": "deepseek-r1:1.5b-32k",
+      "provider": "ollama",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "",
+      "apiKey": "api-key",
+      "isEmbeddingModel": false,
+      "capabilities": [
+        "reasoning"
+      ],
+      "stream": true,
+      "displayName": "deepseek-r1-weak",
       "enableCors": true
     }
   ],
@@ -147,11 +209,13 @@
     },
     {
       "name": "copilot-plus-large",
-      "provider": "copilot-plus",
+      "provider": "copilot-plus-jina",
       "enabled": true,
       "isBuiltIn": true,
       "isEmbeddingModel": true,
-      "core": true
+      "core": true,
+      "believerExclusive": true,
+      "dimensions": 1024
     },
     {
       "name": "copilot-plus-multilingual",
@@ -159,7 +223,8 @@
       "enabled": true,
       "isBuiltIn": true,
       "isEmbeddingModel": true,
-      "core": true
+      "core": true,
+      "dimensions": 512
     },
     {
       "name": "text-embedding-3-small",
@@ -181,7 +246,8 @@
       "provider": "cohereai",
       "enabled": true,
       "isBuiltIn": true,
-      "isEmbeddingModel": true
+      "isEmbeddingModel": true,
+      "enableCors": false
     },
     {
       "name": "text-embedding-004",
@@ -196,13 +262,25 @@
       "enabled": true,
       "isBuiltIn": true,
       "isEmbeddingModel": true
+    },
+    {
+      "name": "BAAI/bge-m3",
+      "provider": "3rd party (openai-format)",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "https://api.siliconflow.cn/v1/",
+      "apiKey": "sk-shqpbkcoptfnhabeshieywazgcidepdejbilyibiwypbexlv",
+      "isEmbeddingModel": true,
+      "capabilities": [],
+      "enableCors": true
     }
   ],
-  "embeddingRequestsPerSecond": 10,
+  "embeddingRequestsPerMin": 90,
+  "embeddingBatchSize": 16,
   "disableIndexOnMobile": true,
   "showSuggestedPrompts": false,
-  "showRelevantNotes": false,
-  "numPartitions": 1,
+  "showRelevantNotes": true,
+  "numPartitions": 3,
   "enabledCommands": {
     "fix-grammar-prompt": {
       "enabled": false
@@ -233,29 +311,11 @@
     },
     "make-shorter-prompt": {
       "enabled": false
-    },
-    "make-longer-prompt": {
-      "enabled": false
-    },
-    "eli5-prompt": {
-      "enabled": false
-    },
-    "press-release-prompt": {
-      "enabled": false
-    },
-    "translate-selection-prompt": {
-      "enabled": false
-    },
-    "change-tone-prompt": {
-      "enabled": false
     }
   },
   "promptUsageTimestamps": {
-    "填坑": 1738984945123,
-    "评价": 1739706492906,
-    "夸我": 1739706101568,
-    "debug": 1739706996266,
-    "续写": 1739702965467
+    "评价": 1739784150687,
+    "debug": 1739858835906
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
 }
