@@ -2,7 +2,7 @@
   "showInlineTitle": false,
   "showLineNumber": true,
   "promptDelete": false,
-  "useMarkdownLinks": true,
+  "useMarkdownLinks": false,
   "userIgnoreFilters": [
     "trash/"
   ],

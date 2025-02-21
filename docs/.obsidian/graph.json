@@ -1,9 +1,9 @@
 {
   "collapse-filter": false,
-  "search": "-file:index",
-  "showTags": true,
+  "search": "path:明星煌煌  ",
+  "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": true,
+  "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": true,
   "colorGroups": [
@@ -21,10 +21,10 @@
   "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 0.355670103092784,
-  "repelStrength": 7.27835051546392,
-  "linkStrength": 0.722680412371134,
-  "linkDistance": 306,
-  "scale": 0.09816448406964684,
+  "centerStrength": 0.304768041237113,
+  "repelStrength": 13.2764175257732,
+  "linkStrength": 0.656813788659794,
+  "linkDistance": 291,
+  "scale": 0.10467079609123126,
   "close": true
 }

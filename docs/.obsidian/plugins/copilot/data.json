@@ -14,7 +14,7 @@
   "googleApiKey": "",
   "openRouterAiApiKey": "",
   "defaultChainType": "llm_chain",
-  "defaultModelKey": "deepseek-chat|3rd party (openai-format)",
+  "defaultModelKey": "qwen-max-latest|3rd party (openai-format)",
   "embeddingModelKey": "BAAI/bge-m3|3rd party (openai-format)",
   "temperature": 1.5,
   "maxTokens": 1000,
@@ -36,7 +36,7 @@
   "enableIndexSync": true,
   "debug": false,
   "enableEncryption": false,
-  "maxSourceChunks": 5,
+  "maxSourceChunks": 10,
   "groqApiKey": "",
   "mistralApiKey": "",
   "activeModels": [
@@ -143,7 +143,7 @@
     {
       "name": "deepseek-chat",
       "provider": "3rd party (openai-format)",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": false,
       "baseUrl": "https://api.deepseek.com",
       "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
@@ -156,7 +156,7 @@
     {
       "name": "deepseek-reasoner",
       "provider": "3rd party (openai-format)",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": false,
       "baseUrl": "https://api.deepseek.com",
       "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
@@ -170,7 +170,7 @@
     {
       "name": "deepseek-r1:14b-32k",
       "provider": "ollama",
-      "enabled": true,
+      "enabled": false,
       "isBuiltIn": false,
       "baseUrl": "",
       "apiKey": "api-key",
@@ -183,19 +183,45 @@
       "enableCors": true
     },
     {
-      "name": "deepseek-r1:1.5b-32k",
-      "provider": "ollama",
+      "name": "qwen-max-latest",
+      "provider": "3rd party (openai-format)",
       "enabled": true,
       "isBuiltIn": false,
-      "baseUrl": "",
-      "apiKey": "api-key",
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKey": "sk-4971e985262c44738542a22564014b45",
+      "isEmbeddingModel": false,
+      "capabilities": [],
+      "stream": true,
+      "displayName": "",
+      "enableCors": true
+    },
+    {
+      "name": "qwen-long",
+      "provider": "3rd party (openai-format)",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKey": "sk-4971e985262c44738542a22564014b45",
+      "isEmbeddingModel": false,
+      "capabilities": [],
+      "stream": true,
+      "displayName": "",
+      "enableCors": true
+    },
+    {
+      "name": "deepseek-r1",
+      "provider": "3rd party (openai-format)",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "apiKey": "sk-d2b0d14a32d44fd7a79f273d6214e176",
       "isEmbeddingModel": false,
       "capabilities": [
         "reasoning"
       ],
       "stream": true,
-      "displayName": "deepseek-r1-weak",
-      "enableCors": true
+      "enableCors": true,
+      "displayName": "deepseek-r1-qwen"
     }
   ],
   "activeEmbeddingModels": [
@@ -279,8 +305,8 @@
   "embeddingBatchSize": 16,
   "disableIndexOnMobile": true,
   "showSuggestedPrompts": false,
-  "showRelevantNotes": true,
-  "numPartitions": 3,
+  "showRelevantNotes": false,
+  "numPartitions": 5,
   "enabledCommands": {
     "fix-grammar-prompt": {
       "enabled": false
@@ -314,8 +340,9 @@
     }
   },
   "promptUsageTimestamps": {
-    "评价": 1739784150687,
-    "debug": 1739858835906
+    "评价": 1740106044244,
+    "debug": 1740102473683,
+    "续写": 1740118007679
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
 }

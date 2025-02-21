@@ -4,22 +4,108 @@
     "type": "split",
     "children": [
       {
-        "id": "6aca82eb12917857",
+        "id": "1ede3eed7df182cc",
         "type": "tabs",
+        "dimension": 59.56719817767654,
         "children": [
           {
-            "id": "8432957f275283d3",
+            "id": "ff3c0f5dbe76eb1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DC/海拔1689千米.md",
+                "file": "明星煌煌/实力评级.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "海拔1689千米"
+              "title": "实力评级"
+            }
+          },
+          {
+            "id": "fda96c5fe7c1f7cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "明星煌煌/精神力.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "精神力"
+            }
+          },
+          {
+            "id": "6fd52dbe0af415c1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "明星煌煌/机甲.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "机甲"
+            }
+          },
+          {
+            "id": "5f6bd04860929194",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "明星煌煌/联盟.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "联盟"
+            }
+          },
+          {
+            "id": "f76f9c0a4ba52890",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "明星煌煌/陈果.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "陈果"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "a664a571d16ac032",
+        "type": "tabs",
+        "dimension": 40.43280182232346,
+        "children": [
+          {
+            "id": "1ba83af3e637af7b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "QZ/明星煌煌.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "明星煌煌"
             }
           }
         ]
@@ -42,7 +128,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -54,7 +140,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#2025蝙绿企划",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,12 +171,11 @@
               "title": "Copilot"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 291
+    "width": 312.5110321044922
   },
   "right": {
     "id": "00e0a33998493af3",
@@ -149,16 +234,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "QZ/你叶神永远是你叶神.md",
+                "file": "明星煌煌/机甲.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "你叶神永远是你叶神 的大纲"
+              "title": "机甲 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "538d184045893f94",
@@ -176,22 +262,12 @@
             }
           },
           {
-            "id": "966beab25c763ab2",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "关系图谱"
-            }
-          },
-          {
             "id": "6ebbe011b807b03f",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "todo.md",
+                "file": "明星煌煌/机甲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -201,7 +277,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "todo 的反向链接列表"
+              "title": "机甲 的反向链接列表"
             }
           },
           {
@@ -210,19 +286,32 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "QZ/暗恋是八个人的兵荒马乱.md",
+                "file": "明星煌煌/机甲.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "暗恋是八个人的兵荒马乱 的出链列表"
+              "title": "机甲 的出链列表"
+            }
+          },
+          {
+            "id": "52d3cac72320ef40",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "graph",
+              "state": {},
+              "pinned": true,
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 367
+    "width": 355.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -236,34 +325,35 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "8432957f275283d3",
+  "active": "6fd52dbe0af415c1",
   "lastOpenFiles": [
-    "DC/与生俱来.md",
-    "DC/海拔1689千米.md",
-    "DC/蝙蝠洞里的惨案.md",
-    "_templates/new_README.md",
-    "_templates/new_note.md",
-    "_templates/logs.md",
-    "todo.md",
+    "明星煌煌/王杰希.md",
+    "明星煌煌/方士谦.md",
+    "明星煌煌/黄少天.md",
+    "明星煌煌/叶修.md",
+    "明星煌煌/精神力.md",
+    "明星煌煌/机甲.md",
+    "明星煌煌/陈果.md",
+    "明星煌煌/喻文州.md",
+    "明星煌煌/实力评级.md",
+    "明星煌煌/联盟.md",
+    "QZ/明星煌煌.md",
+    "明星煌煌/中央军.md",
+    "明星煌煌/蓝雨军区.md",
+    "明星煌煌/嘉世军区.md",
+    "明星煌煌/微草军区.md",
+    "明星煌煌/军区.md",
+    "明星煌煌/虫.md",
     "_templates/checklist.md",
-    "QZ/你叶神永远是你叶神.md",
-    "logs/2025-02-19.md",
-    "logs/2025-02-21.md",
-    "logs/2025-02-04.md",
-    "DC/如何追求离异飞行员.md",
-    "logs/2025-01-21.md",
-    "DC/在校园谈的当然是校园恋爱.md",
-    "DC/肉体记忆.md",
-    "_copilot-prompts/debug.md",
-    "Others/我认识了个新朋友.md",
-    "QZ/知了只能活一个夏天.md",
-    "QZ/追逐荣耀的路上.md",
-    "QZ/祸从口出.md",
+    "_templates/未命名.md",
+    "明星煌煌/星煌帝国.md",
+    "明星煌煌",
+    "DC/海拔1689千米.md",
     "_copilot-prompts/评价.md",
-    "_copilot-prompts/夸我.md",
-    "_copilot-prompts/填坑.md",
-    "_copilot-prompts/续写.md",
-    "QZ/师娘教的.md",
+    "todo.md",
+    "待办.md",
+    "DC/如何追求离异飞行员.md",
+    "如何追求离异飞行员.md",
     "_copilot-prompts",
     "documents/comic/27.jpg",
     "documents/comic/26.jpg",

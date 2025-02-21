@@ -10,18 +10,18 @@ FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
 ## #2025蝙绿企划
 ```dataview
 list without id
-choice(contains(file.tags,"FIN"),"- [x]","- [*]") + " " +
+choice((date(now)-date(choice(date,date,auto_date))).day < 3,"- [f]","- [b]") + " " +
 file.link + " " +
 filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")) + " " +
 length + "字 " +
 dateformat(choice(date,date,auto_date),"yy.M.d")
 FROM #2025蝙绿企划
-WHERE !contains(file.path,"logs")
+WHERE !contains(file.path,"logs") and !contains(file.name,"todo")
 SORT choice(date,date,auto_date) DESC
 SORT contains(file.tags,"FIN")
+LIMIT 12
 ```
 
-<br>
 ## 待办事项
 
 ```tasks
