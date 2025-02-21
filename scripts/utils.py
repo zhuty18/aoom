@@ -16,6 +16,7 @@ from personal import (
     FIN_TEM,
     HISTORY_PATH,
     IGNORE_FILES,
+    IGNORE_PATH,
     INDEX_FULL_NAME,
     INDEX_NAME,
     LOG_PATH,
@@ -503,4 +504,7 @@ def ignore_in_format(filename):
     for i in IGNORE_FILES:
         if i in filename:
             return True
-    return LOG_PATH in short_path(filename) or "_" in filename
+    for i in IGNORE_PATH:
+        if i in short_path(filename):
+            return True
+    return "_" in filename

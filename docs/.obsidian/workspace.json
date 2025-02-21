@@ -14,13 +14,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "明星煌煌/实力评级.md",
+                "file": "明星煌煌/星煌帝国.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "实力评级"
+              "title": "星煌帝国"
             }
           },
           {
@@ -44,13 +44,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "明星煌煌/机甲.md",
+                "file": "QZ/明星煌煌.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "机甲"
+              "title": "明星煌煌"
             }
           },
           {
@@ -83,8 +83,7 @@
               "title": "陈果"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "a664a571d16ac032",
@@ -234,13 +233,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "明星煌煌/机甲.md",
+                "file": "明星煌煌/星煌帝国.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "机甲 的大纲"
+              "title": "星煌帝国 的大纲"
             }
           }
         ],
@@ -267,7 +266,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "明星煌煌/机甲.md",
+                "file": "明星煌煌/星煌帝国.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -277,7 +276,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "机甲 的反向链接列表"
+              "title": "星煌帝国 的反向链接列表"
             }
           },
           {
@@ -286,12 +285,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "明星煌煌/机甲.md",
+                "file": "明星煌煌/星煌帝国.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "机甲 的出链列表"
+              "title": "星煌帝国 的出链列表"
             }
           },
           {
@@ -325,35 +324,36 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "6fd52dbe0af415c1",
+  "active": "ff3c0f5dbe76eb1f",
   "lastOpenFiles": [
-    "明星煌煌/王杰希.md",
-    "明星煌煌/方士谦.md",
-    "明星煌煌/黄少天.md",
-    "明星煌煌/叶修.md",
-    "明星煌煌/精神力.md",
-    "明星煌煌/机甲.md",
-    "明星煌煌/陈果.md",
-    "明星煌煌/喻文州.md",
-    "明星煌煌/实力评级.md",
+    "明星煌煌/人物/王杰希.md",
     "明星煌煌/联盟.md",
+    "明星煌煌/精神力.md",
     "QZ/明星煌煌.md",
+    "明星煌煌/人物/江波涛.md",
+    "明星煌煌/实力评级.md",
+    "明星煌煌/机甲.md",
+    "明星煌煌/星煌帝国.md",
+    "明星煌煌/人物/周泽楷.md",
+    "明星煌煌/虫.md",
+    "明星煌煌/人物/方士谦.md",
+    "明星煌煌/人物/喻文州.md",
+    "明星煌煌/人物/黄少天.md",
+    "明星煌煌/人物",
+    "明星煌煌/人物/叶修.md",
+    "明星煌煌/陈果.md",
     "明星煌煌/中央军.md",
     "明星煌煌/蓝雨军区.md",
     "明星煌煌/嘉世军区.md",
     "明星煌煌/微草军区.md",
     "明星煌煌/军区.md",
-    "明星煌煌/虫.md",
     "_templates/checklist.md",
     "_templates/未命名.md",
-    "明星煌煌/星煌帝国.md",
     "明星煌煌",
     "DC/海拔1689千米.md",
     "_copilot-prompts/评价.md",
     "todo.md",
     "待办.md",
-    "DC/如何追求离异飞行员.md",
-    "如何追求离异飞行员.md",
     "_copilot-prompts",
     "documents/comic/27.jpg",
     "documents/comic/26.jpg",

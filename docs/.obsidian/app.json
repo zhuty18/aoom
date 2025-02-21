@@ -11,7 +11,7 @@
   "useTab": false,
   "attachmentFolderPath": "./attachments",
   "newFileLocation": "current",
-  "alwaysUpdateLinks": true,
+  "alwaysUpdateLinks": false,
   "newLinkFormat": "relative",
   "showIndentGuide": true,
   "foldIndent": false,
