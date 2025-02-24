@@ -129,5 +129,7 @@
   "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-dracula",
   "blue-topaz-theme@@tag-style-option": "rainbow-tag",
   "blue-topaz-theme@@font-size-split": "1em",
-  "blue-topaz-theme@@default-split-style": false
+  "blue-topaz-theme@@default-split-style": false,
+  "blue-topaz-theme@@dvtable-style-options": "default-dvtable",
+  "blue-topaz-theme@@full-width-dvtable": false
 }

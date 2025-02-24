@@ -5,6 +5,7 @@
 ```tasks
 FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
 (due this week) OR (no due date)
+SORT BY FUNCTION task.status.symbol
 ```
 
 ## #2025蝙绿企划

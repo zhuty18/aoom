@@ -168,21 +168,6 @@
       "enableCors": true
     },
     {
-      "name": "deepseek-r1:14b-32k",
-      "provider": "ollama",
-      "enabled": false,
-      "isBuiltIn": false,
-      "baseUrl": "",
-      "apiKey": "api-key",
-      "isEmbeddingModel": false,
-      "capabilities": [
-        "reasoning"
-      ],
-      "stream": true,
-      "displayName": "deepseek-reasoner-local",
-      "enableCors": true
-    },
-    {
       "name": "qwen-max-latest",
       "provider": "3rd party (openai-format)",
       "enabled": true,
@@ -305,7 +290,7 @@
   "embeddingBatchSize": 16,
   "disableIndexOnMobile": true,
   "showSuggestedPrompts": false,
-  "showRelevantNotes": false,
+  "showRelevantNotes": true,
   "numPartitions": 5,
   "enabledCommands": {
     "fix-grammar-prompt": {
@@ -340,9 +325,10 @@
     }
   },
   "promptUsageTimestamps": {
-    "评价": 1740106044244,
-    "debug": 1740102473683,
-    "续写": 1740118007679
+    "评价": 1740184988088,
+    "debug": 1740184978120,
+    "续写": 1740118007679,
+    "填坑": 1740185146568
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
 }

@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "path:明星煌煌  ",
+  "search": "",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
@@ -25,6 +25,6 @@
   "repelStrength": 13.2764175257732,
   "linkStrength": 0.656813788659794,
   "linkDistance": 291,
-  "scale": 0.10467079609123126,
+  "scale": 0.0697805307274875,
   "close": true
 }

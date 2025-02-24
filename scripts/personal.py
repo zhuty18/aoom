@@ -125,6 +125,7 @@ DIR_NAMES = {
     "batlantern": "蝙绿官糖",
     "blob": "短篇",
     "logs": "日志",
+    "DR": "龙族",
 }
 
 LOG_PATH = "docs/logs"

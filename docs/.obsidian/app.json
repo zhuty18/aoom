@@ -2,7 +2,7 @@
   "showInlineTitle": false,
   "showLineNumber": true,
   "promptDelete": false,
-  "useMarkdownLinks": false,
+  "useMarkdownLinks": true,
   "userIgnoreFilters": [
     "trash/"
   ],
@@ -11,7 +11,7 @@
   "useTab": false,
   "attachmentFolderPath": "./attachments",
   "newFileLocation": "current",
-  "alwaysUpdateLinks": false,
+  "alwaysUpdateLinks": true,
   "newLinkFormat": "relative",
   "showIndentGuide": true,
   "foldIndent": false,
