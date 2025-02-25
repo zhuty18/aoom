@@ -10,7 +10,7 @@ SORT BY FUNCTION task.status.symbol
 
 ## #2025蝙绿企划
 ```dataview
-list without id
+LIST WITHOUT ID
 choice((date(now)-date(choice(date,date,auto_date))).day < 3,"- [f]","- [b]") + " " +
 file.link + " " +
 filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")) + " " +

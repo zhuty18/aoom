@@ -290,7 +290,7 @@
   "embeddingBatchSize": 16,
   "disableIndexOnMobile": true,
   "showSuggestedPrompts": false,
-  "showRelevantNotes": true,
+  "showRelevantNotes": false,
   "numPartitions": 5,
   "enabledCommands": {
     "fix-grammar-prompt": {
@@ -327,7 +327,7 @@
   "promptUsageTimestamps": {
     "评价": 1740184988088,
     "debug": 1740184978120,
-    "续写": 1740118007679,
+    "续写": 1740407311740,
     "填坑": 1740185146568
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"
