@@ -1,6 +1,6 @@
 {
-  "collapse-filter": true,
-  "search": "path:明星煌煌  -file:年谱",
+  "collapse-filter": false,
+  "search": "path:明星煌煌 ",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
@@ -25,6 +25,6 @@
   "repelStrength": 15.0869845360825,
   "linkStrength": 0.751852448453608,
   "linkDistance": 400,
-  "scale": 0.03185142567839949,
+  "scale": 0.04536356381395128,
   "close": true
 }

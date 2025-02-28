@@ -13,16 +13,47 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "DR/楚子航为什么保留他当过龙性恋的历史？.md",
+                "file": "明星煌煌/人物/张佳乐.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "张佳乐"
+            }
+          },
+          {
+            "id": "4cbcb31469994f91",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "明星煌煌/人物/周泽楷.md",
+                "mode": "source",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "周泽楷"
+            }
+          },
+          {
+            "id": "68a63ffabfc2d64e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "楚子航为什么保留他当过龙性恋的历史？"
+              "title": "todo"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -54,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#2025蝙绿企划",
+                "query": "tag:#未揭露",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,7 +211,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "明星煌煌/人物/张新杰.md",
+                "file": "todo.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -190,7 +221,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "张新杰 的反向链接列表"
+              "title": "todo 的反向链接列表"
             }
           },
           {
@@ -199,12 +230,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DC/README.md",
+                "file": "明星煌煌/年谱.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "README 的出链列表"
+              "title": "年谱 的出链列表"
             }
           },
           {
@@ -219,8 +250,7 @@
               "title": "关系图谱"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -238,34 +268,34 @@
       "copilot:Open Copilot Chat": false
     }
   },
-  "active": "52d3cac72320ef40",
+  "active": "a7c874051cdf7a35",
   "lastOpenFiles": [
-    "DR/楚子航为什么保留他当过龙性恋的历史？.md",
-    "DC/README.md",
-    "DC/这就是我们.md",
-    "DC/让酒.md",
-    "DC/一切要从蝙蝠侠决定站街那天说起.md",
-    "todo.md",
-    "logs/2025-02-24.md",
-    "DR/恺撒为什么保留他当过直男的历史？.md",
-    "DR/路明非为什么保留他暗恋失败的历史？.md",
     "logs/2025-02-04.md",
-    "DC/向日葵花开的方向.md",
-    "明星煌煌/组织/嘉王朝.md",
-    "明星煌煌/人物/嘉王朝/楚云秀.md",
-    "明星煌煌/人物/嘉王朝/金香.md",
+    "todo.md",
+    "logs/2025-02-21.md",
+    "logs/2025-02-28.md",
+    "明星煌煌/组织/联盟学院.md",
+    "QZ/明星煌煌.md",
+    "明星煌煌/年表.md",
+    "明星煌煌/人物/邱非.md",
+    "明星煌煌/人物/周泽楷.md",
+    "明星煌煌/人物/韩文清.md",
+    "明星煌煌/人物/公子.md",
     "明星煌煌/人物/张佳乐.md",
-    "明星煌煌/人物/嘉王朝/苏沐秋.md",
-    "明星煌煌/人物/嘉王朝/肖时钦.md",
-    "明星煌煌/人物/嘉王朝/刘皓.md",
+    "明星煌煌/人物/孙翔.md",
+    "明星煌煌/人物/兴欣/叶修.md",
+    "明星煌煌/人物/林敬言.md",
+    "DC/一切要从蝙蝠侠决定站街那天说起.md",
+    "明星煌煌/营养剂.md",
+    "明星煌煌/精神力.md",
+    "明星煌煌/组织/嘉王朝.md",
+    "明星煌煌/人物/顾止.md",
+    "明星煌煌/人物/方士谦.md",
+    "明星煌煌/人物/方锐.md",
     "明星煌煌/人物/嘉王朝/崔立.md",
-    "明星煌煌/人物/吴启.md",
-    "明星煌煌/人物/晨星.md",
-    "明星煌煌/人物/嘉王朝/叶秋.md",
-    "明星煌煌/年谱.md",
-    "明星煌煌/机甲/机甲.md",
-    "DC/如何追求离异飞行员.md",
-    "DR/README.md",
+    "明星煌煌/人物/嘉王朝/楚云秀.md",
+    "明星煌煌/虫族.md",
+    "明星煌煌/人物/嘉王朝/陈夜辉.md",
     "DR",
     "明星煌煌/人物/兴欣",
     "明星煌煌/人物/嘉王朝",

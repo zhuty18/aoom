@@ -143,7 +143,7 @@
     {
       "name": "deepseek-chat",
       "provider": "3rd party (openai-format)",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "https://api.deepseek.com",
       "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
@@ -156,7 +156,7 @@
     {
       "name": "deepseek-reasoner",
       "provider": "3rd party (openai-format)",
-      "enabled": false,
+      "enabled": true,
       "isBuiltIn": false,
       "baseUrl": "https://api.deepseek.com",
       "apiKey": "sk-23a553116a064a1bb2013909c9652d34",
@@ -325,9 +325,9 @@
     }
   },
   "promptUsageTimestamps": {
-    "评价": 1740184988088,
+    "评价": 1740534771690,
     "debug": 1740184978120,
-    "续写": 1740407311740,
+    "续写": 1740552006812,
     "填坑": 1740185146568
   },
   "defaultConversationNoteName": "{$topic}@{$date}_{$time}"

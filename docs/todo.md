@@ -20,7 +20,7 @@ FROM #2025蝙绿企划
 WHERE !contains(file.path,"logs") and !contains(file.name,"todo")
 SORT choice(date,date,auto_date) DESC
 SORT contains(file.tags,"FIN")
-LIMIT 12
+LIMIT 4
 ```
 
 ## 待办事项
