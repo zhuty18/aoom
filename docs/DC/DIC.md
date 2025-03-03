@@ -1,5 +1,5 @@
 ---
-length: 49512
+word_count: 49512
 auto_date: 2022-07-09
 ---
 

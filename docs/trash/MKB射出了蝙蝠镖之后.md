@@ -1,5 +1,5 @@
 ---
-length: 2767
+word_count: 2767
 tags: FIN
 auto_date: 2020-12-12
 ---

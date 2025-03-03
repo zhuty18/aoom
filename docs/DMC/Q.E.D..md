@@ -1,6 +1,6 @@
 ---
 tags: FIN
-length: 8291
+word_count: 8291
 auto_date: 2023-09-20
 ---
 

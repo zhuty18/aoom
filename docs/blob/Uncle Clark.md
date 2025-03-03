@@ -66,7 +66,7 @@ Dick：不。我当初只是想当个酷小孩来着。
 
 <br>
 
-length: 396
+word_count: 396
 auto_date: 2024-05-19
 ---
 

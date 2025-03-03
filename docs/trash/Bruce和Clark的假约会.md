@@ -1,5 +1,5 @@
 ---
-length: 527
+word_count: 527
 auto_date: 2020-10-29
 ---
 

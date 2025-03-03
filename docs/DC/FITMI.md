@@ -1,5 +1,5 @@
 ---
-length: 750
+word_count: 750
 auto_date: 2024-02-19
 ---
 

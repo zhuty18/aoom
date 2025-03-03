@@ -2,7 +2,7 @@
 tags:
   - FIN
 date: 2021-10-22
-length: 1278
+word_count: 1278
 auto_date: 2024-05-19
 ---
 
