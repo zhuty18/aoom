@@ -42,7 +42,7 @@ def format_file(filename):
     f.write(res)
     f.close()
     if filename.endswith(".md") and not ignore_in_format(filename):
-        add_predef(filename, "length", str(file_length(filename)), change=True)
+        add_predef(filename, "count", str(file_length(filename)), change=True)
         mark_fin(filename)
 
 
@@ -78,8 +78,6 @@ def format_all(path):
         subdir = os.path.join(path, item)
         if os.path.isdir(subdir) and not "/." in subdir:
             format_all(subdir)
-        elif "教程" in subdir:
-            pass
         # elif "blob" in subdir:
         #     format_blob(subdir)
         elif (

@@ -9,6 +9,7 @@ SORT BY FUNCTION task.status.symbol
 ```
 
 ## #2025蝙绿企划
+
 ```dataview
 LIST WITHOUT ID
 choice((date(now)-date(choice(date,date,auto_date))).day < 3,"- [f]","- [b]") + " " +
