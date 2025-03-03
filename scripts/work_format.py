@@ -42,7 +42,9 @@ def format_file(filename):
     f.write(res)
     f.close()
     if filename.endswith(".md") and not ignore_in_format(filename):
-        add_predef(filename, "count", str(file_length(filename)), change=True)
+        add_predef(
+            filename, "word_count", str(file_length(filename)), change=True
+        )
         mark_fin(filename)
 
 

@@ -6,6 +6,7 @@
 - [*] 📚 *In Progress*
 - [x] 📚 ***Done***
 - [-] 📚 ==Cancelled==
+
 ## Forward
 
 - [!] 📚 Important
@@ -14,7 +15,7 @@
 
 ## Information
 
-- [ ] ` ` Todo
+- [ ] `space` Todo
 - [`] `` ` ``
 - [~] `~`
 - [!] `!` Important
