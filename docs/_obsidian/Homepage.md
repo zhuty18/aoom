@@ -9,6 +9,7 @@
 你创建了`$=dv.pages().file.tags.distinct().length`个标签。
 
 >[!abstract]- 坑品概览
+>
 > ```dataview
 > TABLE WITHOUT ID
 > key as 类别,
@@ -29,7 +30,6 @@
 
 #2025蝙绿企划 累计写了`$=Math.round(dv.pages('#2025蝙绿企划').where((x) => x.word_count).word_count.sum()/100)/100`万字，完结率`$=Math.round((dv.pages('#2025蝙绿企划 and #FIN').where((x) => x.word_count).length/dv.pages('#2025蝙绿企划').where((x) => x.word_count).length)*1000)/10`%，还有`$=dv.pages('#2025蝙绿企划 and -#FIN').where((x) => x.word_count).length`个坑。`$="<progress value="+(dv.pages('#2025蝙绿企划 and #FIN').where((x) => x.word_count).length)+" max="+dv.pages('#2025蝙绿企划').where((x) => x.word_count).length+"></progress>"`
 
-<br>
 ### 文字
 
 ```dataview
@@ -49,6 +49,7 @@ LIMIT 5
 ### 总表
 
 >[!example]+ 2025蝙绿企划一览
+>
 > ```dataview
 > TABLE WITHOUT ID
 > file.link as 文件,
@@ -88,6 +89,7 @@ FILTER BY FUNCTION task.status.type == "NON_TASK"
 ### 已完成
 
 >[!info]- 已完成的任务
+>
 > ```tasks
 > DONE
 > FILTER BY FUNCTION task.status.type!="NON_TASK"
@@ -102,6 +104,7 @@ FILTER BY FUNCTION task.status.type == "NON_TASK"
 ## 坑
 
 >[!important]- 坑一览
+>
 > ```dataview
 > TABLE WITHOUT ID
 > file.link as 文件,
