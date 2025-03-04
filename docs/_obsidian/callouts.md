@@ -1,6 +1,7 @@
 - note
 - abstract, summary, tldr
-- info, todo
+- info
+- todo
 - tip, hint, important
 - success, check, done
 - question, help, faq
@@ -11,30 +12,28 @@
 - example
 - quote, cite
 
+>[!note]
+
 > [!abstract]
-
-> [!bug]
-
-> [!danger]
-
-> [!example]
-
-> [!failure]
 
 > [!info]
 
-> [!question]
-
-> [!quote]
-
-> [!success]
-
->[!Summary]
+>[!todo]
 
 > [!tip]
 
->[!tldr]
+> [!success]
 
->[!todo]
+> [!question]
 
 > [!warning]
+
+> [!failure]
+
+> [!danger]
+
+> [!bug]
+
+> [!example]
+
+> [!quote]

@@ -129,13 +129,6 @@ DIR_NAMES = {
 
 LOG_PATH = "docs/logs"
 
-IGNORE_FILES = [
-    INDEX_FULL_NAME,
-    INDEX_NAME,
-    "README.md",
-    "todo.md",
-    "TODO.md",
-    "Homepage.md",
-]
+IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
 
-IGNORE_PATH = [LOG_PATH, "docs/明星煌煌"]
+IGNORE_PATH = [LOG_PATH, "docs/明星煌煌", "_obsidian", "material"]
