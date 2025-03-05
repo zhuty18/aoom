@@ -19,7 +19,6 @@ from personal import (
     IGNORE_PATH,
     INDEX_FULL_NAME,
     INDEX_NAME,
-    LOG_PATH,
     PREVIEW_LENGTH,
     TIME_FORMAT,
     WEB_NAME,
