@@ -95,8 +95,6 @@ def file_fin(filename: str) -> bool:
     """完成情况检测"""
     if path_fin(path_of(filename)):
         return True
-    if not get_pre_key(get_predefine(filename), "tags"):
-        return False
     if "FIN" in get_pre_key(get_predefine(filename), "tags"):
         return True
     with open(filename, "r", encoding="utf8") as f:
@@ -423,6 +421,8 @@ def write_predefine(pre_d, filename):
 
 def get_pre_key(pre_d, keyword):
     """从预定义头中读取关键字参数"""
+    if keyword == "keys":
+        return pre_d.get(keyword, [])
     return pre_d.get(keyword)
 
 
