@@ -51,6 +51,7 @@ dv.paragraph(output)
 
 let tags=dv.pages().where((x) => x.word_count).file.tags.distinct()
 dv.paragraph("你创建了"+tags.length+"个标签。")
+dv.paragraph(tags.join(" "))
 ```
 
 ## 最近更新
