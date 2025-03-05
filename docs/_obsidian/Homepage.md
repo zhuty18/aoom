@@ -6,7 +6,7 @@
 
 你的完结作品中，平均完结字数为`$=Math.round(dv.pages('#FIN and -"trash"').where((x) => x.word_count).word_count.sum()/dv.pages('-"trash" and #FIN').where((x) => x.word_count).length)`。
 
-你创建了`$=dv.pages().file.tags.distinct().length`个标签。
+你创建了`$=dv.pages().where((x) => x.word_count).file.tags.distinct().length`个标签。`$=dv.pages().where((x) => x.word_count).file.tags.distinct()`
 
 >[!abstract]- 坑品概览
 >
@@ -111,7 +111,7 @@ FILTER BY FUNCTION task.status.type == "NON_TASK"
 > filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")) as 标签,
 > word_count as 字数,
 > "<meter value="+ word_count/max(8000,word_count*1.1) + " max=1 min=0 low=0.3 high=0.7 optimum=0.9></meter>" as 进度,
-> ceil((date(now)-choice(date,date,auto_date)).day) + "天前" as 更新于
+> floor((date(now)-choice(date,date,auto_date)).day) + "天前" as 更新于
 > FROM -#FIN and -"trash"
 > WHERE word_count
 > SORT choice(date,date,auto_date) DESC

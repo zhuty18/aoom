@@ -1,6 +1,8 @@
 ---
 tags:
   - FIN
+  - BatLantern
+  - 灯团
 date: 2021-10-22
 word_count: 1070
 auto_date: 2024-05-19

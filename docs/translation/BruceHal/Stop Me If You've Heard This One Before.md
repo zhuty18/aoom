@@ -1,5 +1,7 @@
 ---
-tags: FIN
+tags:
+  - FIN
+  - BatLantern
 word_count: 14476
 auto_date: 2021-12-26
 ---

@@ -1,6 +1,7 @@
 ---
 tags:
   - FIN
+  - 无CP
 date: 2021-10-08
 word_count: 219
 auto_date: 2024-05-19
