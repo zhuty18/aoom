@@ -4,8 +4,10 @@ ideal_percent: 0.85
 low_percent: 0.3
 high_percent: 0.75
 recent_day: 14
-notlong_day: 40
+notlong_day: 30
 awhile_day: 90
+watching_tags:
+  - 2025蝙绿企划
 ---
 
 # 兔子草
@@ -51,10 +53,12 @@ dv.paragraph(output)
 
 let tags=dv.pages().where((x) => x.word_count).file.tags.distinct()
 dv.paragraph("你创建了"+tags.length+"个标签。")
-dv.paragraph(tags.join(" "))
 ```
 
-## 最近更新
+>[!cite]- 所有标签
+>`$=dv.pages('-"trash"').where((x) => x.word_count).file.tags.distinct().join(" ")`
+
+### 最近更新
 
 ```dataview
 TABLE WITHOUT ID
@@ -67,7 +71,7 @@ SORT choice(date,date,auto_date) DESC
 LIMIT 15
 ```
 
-## 坑品概览
+### 坑品概览
 
 >[!abstract]- 坑品概览
 >
@@ -85,13 +89,22 @@ LIMIT 15
 > SORT length(rows) DESC
 > ```
 
-# 2025蝙绿企划
+## 2025蝙绿企划
 
-## 概述
+### 目标
 
-#2025蝙绿企划 累计写了`$=Math.round(dv.pages('#2025蝙绿企划').where((x) => x.word_count).word_count.sum()/100)/100`万字，完结率`$=Math.round((dv.pages('#2025蝙绿企划 and #FIN').where((x) => x.word_count).length/dv.pages('#2025蝙绿企划').where((x) => x.word_count).length)*1000)/10`%，还有`$=dv.pages('#2025蝙绿企划 and -#FIN').where((x) => x.word_count).length`个坑。`$="<progress value="+(dv.pages('#2025蝙绿企划 and #FIN').where((x) => x.word_count).length)+" max="+dv.pages('#2025蝙绿企划').where((x) => x.word_count).length+"></progress>"`
+```dataviewjs
+let unfin = dv.pages('#2025蝙绿企划 and -#FIN').where((x) => x.word_count)
+let fin = dv.pages('#2025蝙绿企划 and #FIN').where((x) => x.word_count)
+let all = dv.pages('#2025蝙绿企划').where((x) => x.word_count)
+let this_page = dv.current()
+let theory = unfin.map((x)=>Math.max(this_page.ideal_count,x.word_count/this_page.ideal_percent)).sum()
+let percent=all.word_count.sum()/(theory+fin.word_count.sum())
+let output = "#2025蝙绿企划 累计写了"+Math.round(all.word_count.sum()/100)/100+"万字，完结率"+Math.round(fin.length/all.length*1000)/10+"%。还有"+unfin.length+"个坑，估计还要写"+Math.round(theory/100)/100+"万字。<meter value="+percent+" min=0 max=1 low="+this_page.low_percent+" high="+this_page.high_percent+" optimum="+this_page.ideal_percent+"></progress>"
+dv.paragraph(output)
+```
 
-## 文字
+### 缩略
 
 ```dataview
 LIST WITHOUT ID
@@ -107,7 +120,7 @@ SORT contains(file.tags,"FIN")
 LIMIT 5
 ```
 
-## 总表
+### 总表
 
 >[!example]+ 2025蝙绿企划一览
 >
@@ -117,16 +130,16 @@ LIMIT 5
 > join(filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")),"<br>") as 标签,
 > word_count as 字数,
 > "<meter value="+ word_count/max(this.ideal_count,word_count/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>" as 进度,
-> ceil((date(now)-choice(date,date,auto_date)).day) + "天前" as 更新于
+> (date(today)-choice(date,date,auto_date)).day + "天前" as 更新于
 > FROM #2025蝙绿企划
 > WHERE word_count
 > SORT choice(date,date,auto_date) DESC
 > SORT contains(file.tags,"FIN")
 > ```
 
-# 任务
+## 任务
 
-## 当前任务
+### 当前任务
 
 ```tasks
 FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
@@ -134,20 +147,20 @@ FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
 SORT BY FUNCTION task.status.symbol
 ```
 
-## 待办
+### 待办
 
 ```tasks
 FILTER BY FUNCTION (task.status.symbol != "!" && task.status.symbol != "*" && task.status.type == "IN_PROGRESS" )|| task.status.type == "TODO"
 SORT BY FUNCTION task.status.symbol
 ```
 
-## 脑洞
+### 灵感
 
 ```tasks
 FILTER BY FUNCTION task.status.type == "NON_TASK"
 ```
 
-## 已完成
+### 已完成
 
 >[!info]- 已完成的任务
 >
@@ -158,13 +171,13 @@ FILTER BY FUNCTION task.status.type == "NON_TASK"
 > HIDE EDIT BUTTON
 > ```
 
-# 随笔
+## 随笔
 
 ![随笔](write_down.md)
 
-# 总览
+## 总览
 
-## 坑
+### 坑
 
 ```dataview
 CALENDAR choice(date,date,auto_date)
@@ -172,7 +185,7 @@ FROM -#FIN
 WHERE typeof(choice(date,date,auto_date)) = "date" and word_count
 ```
 
->[!important]- 坑一览
+>[!tldr]- 坑一览
 >
 > ```dataview
 > TABLE WITHOUT ID
@@ -180,13 +193,13 @@ WHERE typeof(choice(date,date,auto_date)) = "date" and word_count
 > join(filter(file.tags,(x) => !contains(x,"2025蝙绿企划")),"<br>") as 标签,
 > word_count as 字数,
 > "<meter value="+ word_count/max(this.ideal_count,word_count/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>" as 进度,
-> floor((date(now)-choice(date,date,auto_date)).day) + "天前" as 更新于
+> (date(today)-choice(date,date,auto_date)).day + "天前" as 更新于
 > FROM -#FIN and -"trash"
 > WHERE word_count
 > SORT choice(date,date,auto_date) DESC
 > ```
 
-## 已完结
+### 已完结
 
 ```dataview
 CALENDAR choice(date,date,auto_date)
@@ -194,14 +207,14 @@ FROM #FIN
 WHERE typeof(choice(date,date,auto_date)) = "date" and word_count
 ```
 
->[!important]- 完结一览
+>[!tldr]- 完结一览
 >
 > ```dataview
 > TABLE WITHOUT ID
 > file.link as 文件,
 > join(filter(file.tags,(x) => !contains(x,"FIN")),"<br>") as 标签,
 > word_count as 字数,
-> (date(today)-choice(date,date,auto_date)).day+ "天前" as 更新于
+> (date(today)-choice(date,date,auto_date)).day + "天前" as 更新于
 > FROM #FIN and -"trash"
 > WHERE word_count
 > SORT choice(date,date,auto_date) DESC

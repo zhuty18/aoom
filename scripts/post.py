@@ -28,6 +28,7 @@ from utils import (
     path_of,
     search_by_keyword,
     short_path,
+    write_predefine,
 )
 from work_record import WordCounter
 
@@ -41,9 +42,8 @@ def post(filename, name, default_time=None):
     pre_d = get_predefine(filename)
 
     # 获取post日期
-    try:
-        date = get_pre_key(pre_d, "date")[0]
-    except IndexError:
+    date = get_pre_key(pre_d, "date")
+    if not date:
         date = format_time(get_time(default_time), POST_DATE)
 
     # 生成post名
@@ -53,16 +53,12 @@ def post(filename, name, default_time=None):
     # 建立post文件
     with open(post_path, "w", encoding="utf8") as f:
         f.write(
-            f"""---
-{pre_d}
-excerpt_separator: <!--more-->
----
-
-{excerpt(filename)}
+            f"""{excerpt(filename)}
 
 <!--more-->
 """
         )
+    write_predefine(pre_d, post_path)
 
     # 添加跳转
     add_predef(post_path, "layout", "forward")
@@ -72,6 +68,8 @@ excerpt_separator: <!--more-->
     add_predef(post_path, "target", target)
     # 添加类别路径
     add_predef(post_path, "cat_url", short_path(path_of(filename)))
+    # 添加摘要
+    add_predef(post_path, "excerpt_separator:", "<!--more-->")
 
     # 记录post
     POST_LIST.append(post_name)
