@@ -365,9 +365,14 @@ def get_predefine(filename):
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
         if content.startswith("---"):
-            pre_d_str = re.findall(
-                re.compile(r"---\n(.*)\n---\n", re.S), content
-            )[0]
+            try:
+                pre_d_str = re.findall(
+                    re.compile(r"---\n(.*)\n---\n", re.S), content
+                )[0]
+            except IndexError:
+                pre_d_str = re.findall(
+                    re.compile(r"---\n(.*)\n---$", re.S), content
+                )[0]
             pre_d = {}
             current = ""
             for i in pre_d_str.split("\n"):
@@ -381,6 +386,8 @@ def get_predefine(filename):
                     elif key == "tags" and value != "":
                         value = [value]
                     elif key == "tags":
+                        value = []
+                    elif value == "":
                         value = []
                     pre_d[key] = value
                 elif "  - " in i:
