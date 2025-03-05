@@ -400,8 +400,7 @@ def write_predefine(pre_d, filename):
     tmp = sorted(pre_d.items())
     for k, v in tmp:
         if isinstance(v, list):
-            v.insert(0, "")
-            res += f"{k}:{"\n  - ".join(v)}\n"
+            res += f"{k}:\n  - {"\n  - ".join(v)}\n"
         else:
             res += f"{k}: {v}\n"
     res = res.strip()
@@ -421,7 +420,7 @@ def write_predefine(pre_d, filename):
 
 def get_pre_key(pre_d, keyword):
     """从预定义头中读取关键字参数"""
-    if keyword == "keys":
+    if keyword == "tags":
         return pre_d.get(keyword, [])
     return pre_d.get(keyword)
 
