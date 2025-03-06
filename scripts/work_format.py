@@ -14,10 +14,11 @@ from utils import (
     mark_fin,
     search_by_keyword,
     short_path,
+    sort_predef,
 )
 
 
-def format_file(filename):
+def format_file(filename, force=False):
     """格式化文件"""
     f = open(filename, "r", encoding="utf-8")
     content = f.readlines()
@@ -46,6 +47,8 @@ def format_file(filename):
             filename, "word_count", str(file_length(filename)), change=True
         )
         mark_fin(filename)
+        if force:
+            sort_predef(filename)
 
 
 def format_blob(filename):
@@ -97,4 +100,4 @@ if __name__ == "__main__":
         format_all(doc_dir())
     else:
         for i in search_by_keyword(sys.argv[1]):
-            format_file(i)
+            format_file(i, True)

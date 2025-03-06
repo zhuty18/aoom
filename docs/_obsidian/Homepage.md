@@ -6,22 +6,24 @@ high_percent: 0.75
 recent_day: 14
 notlong_day: 30
 awhile_day: 90
-watching_tags:
-  - 2025蝙绿企划
+max_list: 12
+now_day: 3
 ---
 
 # 兔子草
 
 ## 你好！
 
-今天是你使用Obsidian的第`\=ceil((date(now)-date("2025-01-15")).days)`天。
+今天是`\=dateformat(date(today),"DD，EEEE")`，你使用Obsidian的第`\=ceil((date(now)-date("2025-01-15")).days)`天。
+
+当前运势`dice:1d100`：写文`dice: 1d100`，摸鱼`dice: 1d100`，干点正事`dice:1d100`。
 
 ```dataviewjs
 let last = dv.pages("#FIN").where((x) => x.word_count).sort((x) => x.date ? x.date : x.auto_date, "desc")[0]
 let interval = (dv.date("today") - dv.date(last.date ? last.date : last.auto_date)) / 1000 / 60 / 60 / 24
 
 let this_page = dv.current()
-let output = "上一次完结是" + interval + "天前。完结内容" + last.file.link + "， " + last.file.tags.filter((x) => x != ("#FIN")).join(" ") + " "
+let output = "上一次完结是" + interval + "天前。完结内容《" + last.file.link + "》， " + last.file.tags.filter((x) => x != ("#FIN")).join(" ") + " "
 if (interval < this_page.recent_day) {
 output += "干得漂亮！"
 } else if (interval < this_page.notlong_day) {
@@ -37,7 +39,7 @@ let unfin = dv.pages('-#FIN and -"trash"').where((x) => x.word_count)
 let fin = dv.pages('#FIN and -"trash"').where((x) => x.word_count)
 let all = dv.pages('-"trash"').where((x) => x.word_count)
 let percent = fin.length/all.length
-output = "你在这里有"+unfin.length+"个坑，"+fin.length+"个 #FIN ，完结率"+Math.round(percent*1000)/10+"%，"
+output = "你在这里有"+unfin.length+"个坑，"+fin.length+"个 #FIN ，完结率"+Math.round(percent*1000)/10+"%<meter value="+percent+" min=0 max=1 low="+this_page.low_percent+" high="+this_page.high_percent+" optimum="+this_page.ideal_percent+"></meter>，"
 if (percent > this_page.high_percent) {
 output += "了不起！"
 } else if (percent > this_page.low_percent) {
@@ -58,17 +60,34 @@ dv.paragraph("你创建了"+tags.length+"个标签。")
 >[!cite]- 所有标签
 >`$=dv.pages('-"trash"').where((x) => x.word_count).file.tags.distinct().join(" ")`
 
+### 正在进行
+
+```dataviewjs
+let home=dv.current()
+let recent_pages=dv.pages('-"trash" and -#FIN').where((x)=>x.word_count).sort((x)=>x.word_count,"desc").sort((x)=>x.date?x.date:x.auto_date,"desc").slice(0,home.max_list)
+function out(x){
+let before_days=(dv.date("today")-dv.date(x.date?x.date:x.auto_date))/1000/60/60/24
+let res="- ["+(before_days<home.now_day?"f":"n")+"] "+x.file.link+" "
+res += x.file.tags.slice(0,2).join(" ")
+let real_time_count=Math.round(x.file.size/3-Math.min(x.file.size/6,Math.max(50,x.file.size/200)))
+let count=Math.max(x.word_count,real_time_count)
+res += " <meter value="+ count/Math.max(home.ideal_count,count/home.ideal_percent)+" max=1 min=0 low="+home.low_percent+" high="+home.high_percent+" optimum="+home.ideal_percent+"></meter>"
+return res
+}
+dv.list(recent_pages.map((x)=>out(x)))
+```
+
 ### 最近更新
 
 ```dataview
-TABLE WITHOUT ID
-file.link as 文件,
-word_count+"<br><meter value="+ word_count/max(this.ideal_count,word_count/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>" as 进度,
+TABLE
+round(max(word_count,round(file.size/3-min(file.size/6,max(50,file.size/200)))))+choice(contains(file.tags,"FIN"),"<br><meter value=1 max=1 optimum=1></meter>","<br><meter value="+ max(word_count,round(file.size/3-min(file.size/6,max(50,file.size/200))))/max(this.ideal_count,max(word_count,round(file.size/3-min(file.size/6,max(50,file.size/200))))/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>") as 进度,
 (date(today)-choice(date,date,auto_date)).day + "天前" as 更新
-FROM -#FIN and -"trash"
+FROM -"trash"
 WHERE word_count and (date(today)-choice(date,date,auto_date)).day < this.notlong_day and choice(date,date,auto_date)
+SORT word_count DESC
 SORT choice(date,date,auto_date) DESC
-LIMIT 15
+LIMIT this.max_list
 ```
 
 ### 坑品概览
@@ -100,24 +119,25 @@ let all = dv.pages('#2025蝙绿企划').where((x) => x.word_count)
 let this_page = dv.current()
 let theory = unfin.map((x)=>Math.max(this_page.ideal_count,x.word_count/this_page.ideal_percent)).sum()
 let percent=all.word_count.sum()/(theory+fin.word_count.sum())
-let output = "#2025蝙绿企划 累计写了"+Math.round(all.word_count.sum()/100)/100+"万字，完结率"+Math.round(fin.length/all.length*1000)/10+"%。还有"+unfin.length+"个坑，估计还要写"+Math.round(theory/100)/100+"万字。<meter value="+percent+" min=0 max=1 low="+this_page.low_percent+" high="+this_page.high_percent+" optimum="+this_page.ideal_percent+"></progress>"
+let output = "#2025蝙绿企划 累计写了"+Math.round(all.word_count.sum()/100)/100+"万字，完成度"+Math.round(percent*1000)/10+"%，完结率"+Math.round(fin.length/all.length*1000)/10+"%。还有"+unfin.length+"个坑，估计还要写"+Math.round(theory/100)/100+"万字。<meter value="+percent+" min=0 max=1 low="+this_page.low_percent+" high="+this_page.high_percent+" optimum="+this_page.ideal_percent+"></meter>"
 dv.paragraph(output)
 ```
 
 ### 缩略
 
-```dataview
-LIST WITHOUT ID
-"- ["+choice((date(now)-date(choice(date,date,auto_date))).day < 3,"f","b")+"] " +
-file.link + " " +
-filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")) +
-" <meter value="+ word_count/max(this.ideal_count,word_count/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter> " +
-word_count + "字"
-FROM #2025蝙绿企划
-WHERE word_count
-SORT choice(date,date,auto_date) DESC
-SORT contains(file.tags,"FIN")
-LIMIT 5
+```dataviewjs
+let home=dv.current()
+let recent_pages=dv.pages('-"trash" and #2025蝙绿企划 and -#FIN').where((x)=>x.word_count).sort((x)=>x.word_count,"desc").sort((x)=>x.date?x.date:x.auto_date,"desc").slice(0,home.max_list)
+function out(x){
+let before_days=(dv.date("today")-dv.date(x.date?x.date:x.auto_date))/1000/60/60/24
+let res="- ["+(before_days<home.now_day?"f":"n")+"] "+x.file.link+" "
+res += x.file.tags.slice(0,2).join(" ")
+let real_time_count=Math.round(x.file.size/3-Math.min(x.file.size/6,Math.max(50,x.file.size/200)))
+let count=Math.max(x.word_count,real_time_count)
+res += " <meter value="+ count/Math.max(home.ideal_count,count/home.ideal_percent)+" max=1 min=0 low="+home.low_percent+" high="+home.high_percent+" optimum="+home.ideal_percent+"></meter>"
+return res
+}
+dv.list(recent_pages.map((x)=>out(x)))
 ```
 
 ### 总表
@@ -129,7 +149,7 @@ LIMIT 5
 > file.link as 文件,
 > join(filter(file.tags,(x) => !contains(x,"2025蝙绿企划")&!contains(x,"BatLantern")&!contains(x,"FIN")),"<br>") as 标签,
 > word_count as 字数,
-> "<meter value="+ word_count/max(this.ideal_count,word_count/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>" as 进度,
+> choice(contains(file.tags,"FIN"),"<meter value=1 max=1 optimum=1></meter>","<meter value="+ max(word_count,round(file.size/3-min(file.size/6,max(50,file.size/200))))/max(this.ideal_count,max(word_count,round(file.size/3-min(file.size/6,max(50,file.size/200))))/this.ideal_percent) + " max=1 min=0 low="+this.low_percent+" high="+this.high_percent+" optimum="+this.ideal_percent+"></meter>") as 进度,
 > (date(today)-choice(date,date,auto_date)).day + "天前" as 更新于
 > FROM #2025蝙绿企划
 > WHERE word_count
@@ -138,6 +158,12 @@ LIMIT 5
 > ```
 
 ## 任务
+
+### 重要任务
+
+```tasks
+FILTER BY FUNCTION task.status.symbol == "!"
+```
 
 ### 当前任务
 

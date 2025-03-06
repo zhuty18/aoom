@@ -9,17 +9,24 @@ import time
 from name_def import names
 from personal import (
     COMMIT_TIME,
+    CP_TAGS,
     DIR_NAMES,
     FILE_ROOT,
     FIN_HEAD,
+    FIN_MARKS,
+    FIN_TAG,
     FIN_TAIL,
     FIN_TEM,
+    FINISH_TAGS,
     HISTORY_PATH,
     IGNORE_FILES,
     IGNORE_PATH,
     INDEX_FULL_NAME,
     INDEX_NAME,
+    ORGANIZATION_TAGS,
+    PERSON_TAGS,
     PREVIEW_LENGTH,
+    PRIORITIZED_TAGS,
     TIME_FORMAT,
     WEB_NAME,
 )
@@ -94,11 +101,11 @@ def file_fin(filename: str) -> bool:
     """完成情况检测"""
     if path_fin(path_of(filename)):
         return True
-    if "FIN" in get_pre_key(get_predefine(filename), "tags"):
+    if FIN_TAG in get_pre_key(get_predefine(filename), "tags"):
         return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
-        ends = {"END", "完结", "Q.E.D."}
+        ends = FIN_MARKS
         for i in ends:
             if f"{i}\n" in text:
                 return True
@@ -347,7 +354,7 @@ def excerpt(filename):
             pre += i
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>")[1].strip()
-            if len(pre) > PREVIEW_LENGTH * 0.6:
+            if len(pre) > PREVIEW_LENGTH * 0.7:
                 pre = pre.strip()
                 break
     if len(pre) > PREVIEW_LENGTH * 1.2:
@@ -393,9 +400,30 @@ def get_predefine(filename):
     return None
 
 
+def tag_priority(tag):
+    """标签显示优先级"""
+    # 优先级：特殊 -> CP -> AU -> 角色 -> 组织 -> 其他 -> 完成度
+    if tag in PRIORITIZED_TAGS:
+        return -1
+    if tag in CP_TAGS:
+        return 0
+    elif "au" in tag or "ABO" in tag:
+        return 1
+    elif tag in PERSON_TAGS:
+        return 2
+    elif tag in ORGANIZATION_TAGS:
+        return 3
+    elif tag in FINISH_TAGS:
+        return 5
+    else:
+        return 4
+
+
 def write_predefine(pre_d, filename):
     """预定义头信息写入文件"""
     res = ""
+    if "tags" in pre_d:
+        pre_d["tags"] = sorted(pre_d["tags"], key=tag_priority)
     tmp = sorted(pre_d.items())
     for k, v in tmp:
         if isinstance(v, list):
@@ -415,6 +443,13 @@ def write_predefine(pre_d, filename):
     except IndexError:
         with open(filename, "w", encoding="utf8") as f:
             f.write(f"---\n{res}\n---\n\n{content}")
+
+
+def sort_predef(filename):
+    """整理预定义头"""
+    pre_d = get_predefine(filename)
+    if pre_d:
+        write_predefine(pre_d, filename)
 
 
 def get_pre_key(pre_d, keyword):
@@ -469,7 +504,7 @@ def mark_category(filename):
 def mark_fin(filename):
     """标注已完成作品"""
     if file_fin(filename):
-        add_predef(filename, "tags", "FIN")
+        add_predef(filename, "tags", FIN_TAG)
 
 
 def mark_post(filename):

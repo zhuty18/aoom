@@ -7,11 +7,13 @@ import sys
 
 from personal import (
     FILE_ROOT,
+    FIN_TAG,
     INDEX_NAME,
     LOG_PATH,
     POST_DATE,
     POST_MAX,
     POST_PATH,
+    TBC_TAG,
 )
 from utils import (
     add_predef,
@@ -94,9 +96,9 @@ def post_work(filename, counter):
 
     pre_d = get_predefine(post_path)
     # 添加完结标
-    if "FIN" not in get_pre_key(pre_d, "tags"):
-        add_predef(post_path, "tags", "TBC")
-        make_index("tag", "TBC")
+    if FIN_TAG not in get_pre_key(pre_d, "tags"):
+        add_predef(post_path, "tags", TBC_TAG)
+        make_index("tag", TBC_TAG)
     # 添加日期
     add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)
 

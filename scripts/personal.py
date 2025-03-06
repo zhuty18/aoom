@@ -93,12 +93,19 @@ POST_PATH = "_posts/"
 POST_DATE = "%Y-%m-%d"
 POST_TITLE = POST_DATE + "-{title}.md"
 
-# post上限，0为关闭功能，-1为不设置上限
-POST_MAX = 10
-PREVIEW_LENGTH = 100
-
 FIN_TITLE = "## 已完结"
 TBC_TITLE = "## 未完结"
+FIN_MARKS = ["END", "完结", "Q.E.D."]
+FIN_TAG = "FIN"
+TBC_TAG = "TBC"
+# 日志
+LOG_PATH = "docs/logs"
+
+# 首页post显示上限，0为关闭功能，-1为不设置上限
+POST_MAX = 10
+
+# 文件摘要长度
+PREVIEW_LENGTH = 100
 
 # 文件夹名
 DIR_NAMES = {
@@ -127,8 +134,68 @@ DIR_NAMES = {
     "": "所有目录",
 }
 
-LOG_PATH = "docs/logs"
-
+# 格式化+字数统计时忽略的文件与路径
 IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
-
 IGNORE_PATH = [LOG_PATH, "docs/明星煌煌", "_obsidian", "material"]
+
+# TAG类别（排序用）
+PRIORITIZED_TAGS = ["2025蝙绿企划"]
+CP_TAGS = [
+    "无CP",
+    "混邪",
+    "其他CP",
+    "BatLantern",
+    "BruTalia",
+    "BatWonder",
+    "JayTim",
+    "JayKyle",
+    "JayRoy",
+    "JayRose",
+    "BirdFlash",
+    "DamiJon",
+    "DickJayTim",
+    "GuyKyle",
+    "HalSin",
+    "WonderSteve",
+    "叶攻",
+    "叶王",
+    "叶乐",
+    "叶邱",
+    "修伞",
+    "双一",
+    "张楚",
+    "王柔",
+    "王乐",
+    "剑诅",
+    "DVD",
+    "恺楚",
+]
+PERSON_TAGS = [
+    "孙翔",
+    "叶修",
+    "周泽楷",
+    "邱非",
+    "王杰希",
+    "黄少天",
+    "唐柔",
+    "张佳乐",
+    "韩文清",
+    "苏沐秋",
+    "喻文州",
+    "楚云秀",
+    "张新杰",
+    "孙哲平",
+]
+ORGANIZATION_TAGS = [
+    "蝙家",
+    "灯团",
+    "正联",
+    "霸图",
+    "百花",
+    "微草",
+    "国家队",
+    "嘉世",
+    "兴欣",
+    "蓝雨",
+]
+FINISH_TAGS = [FIN_TAG, TBC_TAG]
