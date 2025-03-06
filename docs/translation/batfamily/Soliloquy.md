@@ -1,10 +1,10 @@
 ---
+auto_date: 2020-12-12
+finished: true
 tags:
-  - FIN
   - 无CP
   - 蝙家
 word_count: 9061
-auto_date: 2020-12-12
 ---
 
 # **Soliloquy**

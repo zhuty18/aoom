@@ -1,9 +1,9 @@
 ---
+auto_date: 2023-09-20
+finished: true
 tags:
-  - FIN
   - DVD
 word_count: 8291
-auto_date: 2023-09-20
 ---
 
 # Q.E.D.

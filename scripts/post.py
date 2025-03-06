@@ -25,6 +25,7 @@ from utils import (
     get_time,
     make_index,
     make_index_dir,
+    mark_fin,
     mark_post,
     name_of,
     path_of,
@@ -97,7 +98,7 @@ def post_work(filename, counter):
     pre_d = get_predefine(post_path)
     # 添加完结标
     if FIN_TAG not in get_pre_key(pre_d, "tags"):
-        add_predef(post_path, "tags", TBC_TAG)
+        mark_fin(post_path, False)
         make_index("tag", TBC_TAG)
     # 添加日期
     add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)

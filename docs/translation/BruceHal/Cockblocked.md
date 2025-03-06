@@ -1,9 +1,9 @@
 ---
+auto_date: 2020-12-12
+finished: true
 tags:
-  - FIN
   - BatLantern
 word_count: 21838
-auto_date: 2020-12-12
 ---
 
 # **Cockblocked**

@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BirdFlash
-date: 2021-04-08
-word_count: 370
 auto_date: 2024-05-19
+date: 2021-04-08
+finished: true
+tags:
+  - BirdFlash
+word_count: 370
 ---
 
 # Jump off the roof

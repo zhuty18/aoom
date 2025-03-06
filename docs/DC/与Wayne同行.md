@@ -1,7 +1,10 @@
 ---
-tags: FIN 无CP 蝙家
-word_count: 4961
 auto_date: 2020-12-12
+finished: true
+tags:
+  - 无CP
+  - 蝙家
+word_count: 4961
 ---
 
 # 与Wayne同行

@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BatLantern
-date: 2021-07-08
-word_count: 3922
 auto_date: 2024-05-19
+date: 2021-07-08
+finished: true
+tags:
+  - BatLantern
+word_count: 3922
 ---
 
 # 星球大的游乐场&Enjoyable

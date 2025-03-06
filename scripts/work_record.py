@@ -261,7 +261,7 @@ class WordCounter:
         """为文件标注更新日期"""
         for name, value in self.history.items():
             filename = search_by_name(name)
-            add_predef(filename, "auto_date", value.get_date(), change=True)
+            add_predef(filename, "auto_date", value.get_date(), True)
 
 
 class IndexBuilder:

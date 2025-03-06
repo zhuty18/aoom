@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - JayTim
-date: 2021-10-07
-word_count: 312
 auto_date: 2024-05-19
+date: 2021-10-07
+finished: true
+tags:
+  - JayTim
+word_count: 312
 ---
 
 # Fantasy

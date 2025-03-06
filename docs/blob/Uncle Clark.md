@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - 无CP
-date: 2021-05-18
-word_count: 481
 auto_date: 2025-03-05
+date: 2021-05-18
+finished: true
+tags:
+  - 无CP
+word_count: 481
 ---
 
 # Uncle Clark

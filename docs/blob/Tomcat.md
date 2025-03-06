@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BatLantern
-date: 2021-03-16
-word_count: 114
 auto_date: 2024-05-19
+date: 2021-03-16
+finished: true
+tags:
+  - BatLantern
+word_count: 114
 ---
 
 # Tomcat

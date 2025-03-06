@@ -1,9 +1,9 @@
 ---
+auto_date: 2021-12-26
+finished: true
 tags:
-  - FIN
   - BatLantern
 word_count: 14476
-auto_date: 2021-12-26
 ---
 
 # Stop Me If You've Heard This One Before

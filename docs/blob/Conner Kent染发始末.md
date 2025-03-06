@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - 无CP
-date: 2021-08-14
-word_count: 607
 auto_date: 2024-05-19
+date: 2021-08-14
+finished: true
+tags:
+  - 无CP
+word_count: 607
 ---
 
 # Conner Kent染发始末

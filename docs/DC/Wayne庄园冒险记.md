@@ -1,10 +1,10 @@
 ---
+auto_date: 2021-10-07
+finished: true
 tags:
-  - FIN
   - BatLantern
   - JayKyle
 word_count: 7119
-auto_date: 2021-10-07
 ---
 
 # Wayne庄园冒险记

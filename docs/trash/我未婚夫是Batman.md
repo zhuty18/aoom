@@ -1,7 +1,9 @@
 ---
-word_count: 7289
-tags: FIN
 auto_date: 2020-12-12
+finished: true
+tags:
+  - 
+word_count: 7289
 ---
 
 # 我未婚夫是Batman

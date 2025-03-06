@@ -1,7 +1,9 @@
 ---
-tags: FIN BatLantern
-word_count: 52746
 auto_date: 2024-05-17
+finished: true
+tags:
+  - BatLantern
+word_count: 52746
 ---
 
 # 有所求/Strings Attached

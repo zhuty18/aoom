@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - JayRoy
-date: 2020-12-09
-word_count: 718
 auto_date: 2024-05-19
+date: 2020-12-09
+finished: true
+tags:
+  - JayRoy
+word_count: 718
 ---
 
 # Damn You

@@ -1,9 +1,9 @@
 ---
+auto_date: 2021-08-30
+finished: true
 tags:
-  - FIN
   - BatLantern
 word_count: 10190
-auto_date: 2021-08-30
 ---
 
 # 不止/Beyond

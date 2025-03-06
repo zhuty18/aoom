@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BatLantern
-date: 2020-11-05
-word_count: 1203
 auto_date: 2024-05-19
+date: 2020-11-05
+finished: true
+tags:
+  - BatLantern
+word_count: 1203
 ---
 
 # Bruce是个成熟的蝙蝠侠了

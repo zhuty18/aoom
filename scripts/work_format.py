@@ -47,8 +47,8 @@ def format_file(filename, force=False):
             filename, "word_count", str(file_length(filename)), change=True
         )
         mark_fin(filename)
-        if force:
-            sort_predef(filename)
+    if force:
+        sort_predef(filename)
 
 
 def format_blob(filename):

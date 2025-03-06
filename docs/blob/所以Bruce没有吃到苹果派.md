@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BatLantern
-date: 2021-10-22
-word_count: 1278
 auto_date: 2024-05-19
+date: 2021-10-22
+finished: true
+tags:
+  - BatLantern
+word_count: 1278
 ---
 
 # 所以Bruce没有吃到苹果派

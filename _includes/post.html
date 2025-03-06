@@ -30,5 +30,18 @@
         </a>
       {% endif %}
     {% endfor %}
+    {% if post.finished %}
+      <a href="{{ site.baseurl }}/tag/FIN">
+        <span class="tag FIN">
+          FIN
+        </span>
+      </a>
+    {% else %}
+      <a href="{{ site.baseurl }}/tag/TBC">
+        <span class="tag TBC">
+          TBC
+        </span>
+      </a>
+    {% endif %}
   </span>
 </div>

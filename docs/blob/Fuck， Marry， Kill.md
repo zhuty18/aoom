@@ -1,12 +1,12 @@
 ---
-tags:
-  - FIN
-  - 蝙家
-  - BatLantern
-  - 正联
-date: 2022-01-16
-word_count: 1154
 auto_date: 2024-05-19
+date: 2022-01-16
+finished: true
+tags:
+  - BatLantern
+  - 蝙家
+  - 正联
+word_count: 1154
 ---
 
 # Fuck， Marry， Kill

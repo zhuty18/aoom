@@ -11,7 +11,13 @@
           {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "tags" %}
-        {% if post.tags contains include.tag %}
+        {% if include.tag == "FIN" && post.finished %}
+          {% include post.html post=post %}
+        {% elseif include.tag == "TBC" %}
+          {% unless post.finished %}
+            {% include post.html post=post %}
+          {% endunless %}
+        {% elseif post.tags contains include.tag %}
           {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "category" %}

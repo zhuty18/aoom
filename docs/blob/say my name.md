@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - BatLantern
-date: 2021-02-17
-word_count: 873
 auto_date: 2024-05-19
+date: 2021-02-17
+finished: true
+tags:
+  - BatLantern
+word_count: 873
 ---
 
 # say my name

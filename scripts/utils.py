@@ -423,6 +423,10 @@ def write_predefine(pre_d, filename):
     """预定义头信息写入文件"""
     res = ""
     if "tags" in pre_d:
+        try:
+            pre_d["tags"].remove("FIN")
+        except ValueError:
+            pass
         pre_d["tags"] = sorted(pre_d["tags"], key=tag_priority)
     tmp = sorted(pre_d.items())
     for k, v in tmp:
@@ -459,7 +463,7 @@ def get_pre_key(pre_d, keyword):
     return pre_d.get(keyword)
 
 
-def add_predef(filename, key, value, no_multi=False, change=False):
+def add_predef(filename, key, value, change=False):
     """添加预定义"""
     pre_d = get_predefine(filename)
     if not pre_d:
@@ -483,15 +487,15 @@ def add_predef(filename, key, value, no_multi=False, change=False):
     elif value in tmp:
         # key已有值value
         return 0
-    elif no_multi and len(tmp) > 0:
-        # key已有值且不许补充
+    elif not change and len(tmp) > 0:
+        # key已有值且不许更改
         return 0
     elif change:
-        # key已有值且可替换，即auto_date
+        # key已有值且可替换，即auto_date, finished, post
         pre_d[key] = value
-    elif not no_multi:
-        # key已有值且可补充，即tags
-        pre_d[key].append(value)
+    elif not change:
+        # key已定义但无值
+        pre_d[key] = value
     write_predefine(pre_d, filename)
     return 1
 
@@ -501,10 +505,12 @@ def mark_category(filename):
     add_predef(filename, "category", dir_name(path_of(filename)))
 
 
-def mark_fin(filename):
+def mark_fin(filename, value=True):
     """标注已完成作品"""
     if file_fin(filename):
-        add_predef(filename, "tags", FIN_TAG)
+        add_predef(
+            filename, "finished", "true" if value else "false", change=True
+        )
 
 
 def mark_post(filename):

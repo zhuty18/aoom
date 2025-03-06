@@ -1,7 +1,9 @@
 ---
-tags: FIN BatLantern
-word_count: 5491
 auto_date: 2022-07-09
+finished: true
+tags:
+  - BatLantern
+word_count: 5491
 ---
 
 # Hal公寓的二十四小时

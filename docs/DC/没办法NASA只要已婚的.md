@@ -1,7 +1,9 @@
 ---
-tags: FIN BatLantern
-word_count: 11195
 auto_date: 2024-02-21
+finished: true
+tags:
+  - BatLantern
+word_count: 11195
 ---
 
 # 没办法NASA只要已婚的

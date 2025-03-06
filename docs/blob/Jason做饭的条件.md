@@ -1,10 +1,10 @@
 ---
-tags:
-  - FIN
-  - 无CP
-date: 2021-10-08
-word_count: 219
 auto_date: 2024-05-19
+date: 2021-10-08
+finished: true
+tags:
+  - 无CP
+word_count: 219
 ---
 
 # Jason做饭的条件
