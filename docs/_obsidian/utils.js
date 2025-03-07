@@ -16,7 +16,20 @@ class MyUtils {
     }
 
     count (page) {
-        return Math.max(page.word_count, Math.round(page.file.size / 3 - Math.min(page.file.size / 6, Math.max(50, page.file.size / 200))))
+        // return page.word_count
+        let k = 0.32672891800857884
+        let v = -69.75555350528298
+        if (page.file.size < 500) {
+            k = 0.28292381653162024
+            v = -17.97134616568257
+        } else if (page.file.size < 10000) {
+            k = 0.32165039119903244
+            v = -30.868579490654348
+        } else if (page.file.size < 40000) {
+            k = 0.3239850419968106
+            v = -37.300838880213256
+        }
+        return Math.round(k * page.file.size + v)
     }
 
     count_sum (pages) {
@@ -25,10 +38,10 @@ class MyUtils {
 
     count_text (value) {
         if (value < 20000) {
-            return Math.round(value) + "字"
+            return value + "字"
         }
         else {
-            return Math.round(Math.round(value) / 100) / 100 + "万字"
+            return Math.round(value / 100) / 100 + "万字"
         }
     }
 
@@ -82,7 +95,7 @@ class MyUtils {
             "tbc_count": this.count_sum(tbc),
             "fin_count": this.count_sum(fin),
             "all_count": this.count_sum(all),
-            "fin_count_avg": fin.map(page => this.count(page)).avg(),
+            "fin_count_avg": Math.round(fin.map(page => this.count(page)).avg()),
             "fin_count_theory": this.count_sum(fin) + tbc.map(x => Math.max(global.count_ideal, this.count(x) / global.percent_ideal)).sum()
         }
     }
@@ -93,9 +106,9 @@ class MyUtils {
         return [
             name,
             raw_data.tbc,
-            this.percent_meter(raw_data.fin_percent, global, "<br>"),
+            this.percent_meter(raw_data.fin_percent, global, 2),
             this.count_text(raw_data.tbc_count),
-            this.percent_meter(raw_data.fin_count / raw_data.all_count, global, "<br>"),
+            this.percent_meter(raw_data.fin_count / raw_data.all_count, global, 2),
             this.count_text(raw_data.fin != 0 ? raw_data.fin_count_avg : 0)
         ]
     }

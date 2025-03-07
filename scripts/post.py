@@ -98,7 +98,7 @@ def post_work(filename, counter):
     pre_d = get_predefine(post_path)
     # 添加完结标
     if not get_pre_key(pre_d, "finished"):
-        mark_fin(post_path)
+        mark_fin(post_path, True)
     # 添加日期
     add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)
 

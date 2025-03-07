@@ -38,7 +38,7 @@ dv.paragraph(output)
 
 let all_data = MyUtils.pages_raw_data(dv.pages(),home)
 let percent = all_data.fin_percent
-output = "你在这里有" + all_data.tbc + "个坑，" + all_data.fin + "个已完结，完结率" + MyUtils.percent_meter(percent,home) + "，"
+output = `你在这里有${all_data.tbc}个坑，${all_data.fin}个已完结，完结率${MyUtils.percent_meter(percent,home)}，`
 if (percent > home.percent_high) {
 output += "了不起！"
 } else if (percent > home.percent_low) {
@@ -48,8 +48,7 @@ output += "可以的！"
 }
 dv.paragraph(output)
 
-output = "你的完结作品中，平均完结字数为" + MyUtils.count_text(all_data.fin_count_avg) + "。"
-output += "<progress value=" + all_data.fin_count_avg + " min=0 max=" + home.count_ideal + "></progress>"
+output=`总字数${MyUtils.count_text(all_data.fin_count)}，完结字数比${MyUtils.percent_meter(all_data.fin_count/all_data.all_count,home)}，平均完结字数${MyUtils.count_text(all_data.fin_count_avg)}<progress value=${all_data.fin_count_avg} min=0 max=${home.count_ideal}></progress>。`
 dv.paragraph(output)
 ```
 

@@ -502,11 +502,11 @@ def mark_category(filename):
     add_predef(filename, "category", dir_name(path_of(filename)))
 
 
-def mark_fin(filename):
+def mark_fin(filename, force=False):
     """标注已完成作品"""
     if file_fin(filename):
         add_predef(filename, "finished", "true", change=True)
-    else:
+    elif force:
         add_predef(filename, "finished", "false")
 
 
