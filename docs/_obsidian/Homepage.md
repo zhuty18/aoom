@@ -57,7 +57,7 @@ dv.paragraph(output)
 ```dataviewjs
 let home = dv.current()
 const {MyUtils} = await cJS()
-let recent_pages = MyUtils.work_of(dv.pages().where(x=>!x.finished),home.max_list)
+let recent_pages = MyUtils.work_of(dv.pages().where(x=>!x.finished),home.max_list).where(x=>MyUtils.last_update(x)<home.day_ideal)
 dv.list(recent_pages.map(x => MyUtils.short_text(x,home)))
 ```
 

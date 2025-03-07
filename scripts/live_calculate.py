@@ -36,7 +36,7 @@ if __name__ == "__main__":
     data = count_all(os.path.join(os.getcwd(), "docs"))
     data.discard((0, 0))
     data = list(sorted(data, key=lambda x: x[0]))
-    # data = [x for x in data if x[1] < 40000]
+    data = [x for x in data if x[1] < 800]
     # print(data)
 
     x = npy.array([x for _, x in data])
