@@ -505,12 +505,10 @@ def mark_category(filename):
     add_predef(filename, "category", dir_name(path_of(filename)))
 
 
-def mark_fin(filename, value=True):
+def mark_fin(filename):
     """标注已完成作品"""
     if file_fin(filename):
-        add_predef(
-            filename, "finished", "true" if value else "false", change=True
-        )
+        add_predef(filename, "finished", "true", change=True)
 
 
 def mark_post(filename):
