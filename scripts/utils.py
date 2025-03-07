@@ -17,7 +17,6 @@ from personal import (
     FIN_TAG,
     FIN_TAIL,
     FIN_TEM,
-    FINISH_TAGS,
     HISTORY_PATH,
     IGNORE_FILES,
     IGNORE_PATH,
@@ -413,8 +412,6 @@ def tag_priority(tag):
         return 2
     elif tag in ORGANIZATION_TAGS:
         return 3
-    elif tag in FINISH_TAGS:
-        return 5
     else:
         return 4
 
@@ -509,6 +506,8 @@ def mark_fin(filename):
     """标注已完成作品"""
     if file_fin(filename):
         add_predef(filename, "finished", "true", change=True)
+    else:
+        add_predef(filename, "finished", "false")
 
 
 def mark_post(filename):

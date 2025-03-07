@@ -198,4 +198,3 @@ ORGANIZATION_TAGS = [
     "兴欣",
     "蓝雨",
 ]
-FINISH_TAGS = [FIN_TAG, TBC_TAG]

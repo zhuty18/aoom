@@ -72,7 +72,7 @@ def post(filename, name, default_time=None):
     # 添加类别路径
     add_predef(post_path, "cat_url", short_path(path_of(filename)))
     # 添加摘要
-    add_predef(post_path, "excerpt_separator:", "<!--more-->")
+    add_predef(post_path, "excerpt_separator", "<!--more-->")
 
     # 记录post
     POST_LIST.append(post_name)
@@ -97,9 +97,8 @@ def post_work(filename, counter):
 
     pre_d = get_predefine(post_path)
     # 添加完结标
-    if FIN_TAG not in get_pre_key(pre_d, "tags"):
-        mark_fin(post_path, False)
-        make_index("tag", TBC_TAG)
+    if not get_pre_key(pre_d, "finished"):
+        mark_fin(post_path)
     # 添加日期
     add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)
 
@@ -151,6 +150,8 @@ if __name__ == "__main__":
     if not os.path.exists(POST_PATH):
         os.mkdir(POST_PATH)
     make_index_dir("tag", "标签")
+    make_index("tag", TBC_TAG)
+    make_index("tag", FIN_TAG)
     make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
