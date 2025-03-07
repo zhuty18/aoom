@@ -341,6 +341,7 @@ def excerpt(filename):
     with open(filename, "r", encoding="utf8") as f:
         yaml = False
         pre = ""
+        exp = re.compile(r".*?(\[\^\d+\]).*?", re.S)
         for i in f.readlines():
             if i == "---\n":
                 yaml = not yaml
@@ -350,6 +351,10 @@ def excerpt(filename):
             if i.startswith("#"):
                 pre += "<br>\n"
                 continue
+            tmp = re.findall(exp, i)
+            if tmp:
+                for j in tmp:
+                    i = i.replace(j, "")
             pre += i
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>")[1].strip()
