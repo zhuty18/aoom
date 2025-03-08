@@ -4,12 +4,12 @@
 import os
 
 import numpy as npy
-from utils import get_pre_key, get_predefine
+from utils import get_pre_key, get_predef
 
 
 def file_count(filename):
     """获取文件字数、大小"""
-    pre_d = get_predefine(filename)
+    pre_d = get_predef(filename)
     if pre_d:
         acc = get_pre_key(pre_d, "word_count")
         if acc:

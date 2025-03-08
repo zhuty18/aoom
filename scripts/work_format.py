@@ -40,6 +40,7 @@ def format_file(filename, force=False):
     if not filename.endswith(".py"):
         res = res.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
         res = res.replace("\n\n\n", "\n\n<br>\n")
+        res = res.replace("------", "---")
     f.write(res.strip("\n") + "\n")
     f.close()
     if filename.endswith(".md") and not ignore_in_format(filename):

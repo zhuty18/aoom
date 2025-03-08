@@ -22,7 +22,7 @@ word_count: 11195
 
 哈尔正在思考这个工作，就听到奥利又来了一句：“啊，不对，你不行。NASA只要已婚的[^1]。”
 
-------
+---
 [^1]: NASA对宇航员的招聘要求参见：https://www.nasa.gov/humans-in-space/astronauts/become-an-astronaut/（总要求），https://www.nasa.gov/humans-in-space/chapea/participate/（CHAPEA项目（4个人上火星待一年）要求），二者有些差别，主要是后者对年龄有额外限制，要求30-55岁。
 
 硬性要求如下：
@@ -40,7 +40,7 @@ word_count: 11195
 
 软性要求：有领导、团队合作、交流的技巧。
 
-------
+---
 
 “AFA（美国空军学院）航空工程工学学士[^2]，TPS（美国空军试飞员学校）飞行测试工程理学硕士[^3]。空军服役累计九年[^4]，费里斯航空工作七年。F35-A（闪电II）飞行时间1400小时，其他各种保密战斗机型飞行时间2300小时[^5]。”面试官读着他的履历，“也就是说，你全职当了十年的飞行员，飞了3700个小时。即便工作时间是你两倍的试飞员，也未必有你这么长的飞行时间。”
 
@@ -78,12 +78,12 @@ word_count: 11195
 
 “好”哈尔回复。
 
-------
+---
 [^2]: 美国空军学院全称为United States Air Force Academy，常用缩写USAFA或AFA。其中很多专业都可以成为空军飞行员，但航空工程是最对口的，后附专业介绍。https://www.usafa.edu/academic/aeronautical-engineering/
 [^3]: 空军试飞员学校（https://www.edwards.af.mil/Units/USAFTPS/），全称为United States of America Air Force Test Pilot School，位于爱德华兹空军基地，需要注意的是，该网站由于搬迁域名致使大量链接失效。该学校培养的试飞员，发飞行测试工程学位（Master of Flight Test Engineering）由空军认证，通过AU（Air University）颁发，确实是理学硕士（Master of Science，见https://www.airuniversity.af.edu/News/Display/Article/1402562/air-force-selects-63-officers-civilians-for-test-pilot-school/）。所有我能查到的飞行测试硕士学位，比如国家试飞员学校，所发的有ABET认证的，都是理学学位。https://www.ntps.edu/courses-sp-865143360/masters-degree.html
 [^4]: 在一些场合，空军学院学习时间也属于在空军服役时间。哈尔的情况是本科四年，获得中尉军衔，任飞行员一年，硕士两年，获得上尉军衔，任试飞员一年，被开除。第二次加入后，又任试飞员一年，共九年。
 [^5]: 空军飞行员一年飞行180小时达标，普遍在180-220小时左右，看到说多的能飞一年360小时。这里考虑到哈尔还要兼职当绿灯侠，所以写得收敛了一些。
-------
+---
 
 晚上八点钟，哈尔进了蝙蝠洞。钻过瀑布时他一如既往地被冷得打了个激灵——这地方真不是人住的，哥谭的冬天早就零下了，蝙蝠侠整天在这又湿又冷的山洞里和蝙蝠一起玩，究竟是怎么保持体温的，他可能永远也不会知道了。反正哈尔每次都要靠死死搂着他来防止失温。
 
@@ -185,10 +185,10 @@ word_count: 11195
 
 “好。”一点点笑意夹杂在声音里传出来。
 
-------
+---
 [^6]: 红酒阶梯：是这一款看起来很厉害的醒酒器，倒上酒之后红酒会在玻璃器皿里形成台阶状。https://www.contemporist.com/wp-content/uploads/2016/11/modern-wine-decanter-241116-1208-05.jpg
 [^7]: 本文中的豪华酒店套房的设定基本照抄自纽约四季酒店的Ty Warner套房，在现实中就是以老板的名字命名的，比较新的数据是六万美元起一夜。https://www.fourseasons.com/newyork/accommodations/specialty_suites/ty_warner_penthouse/
-------
+---
 
 七上八下的噪音铃声让哈尔猛然睁开眼睛。
 
@@ -282,10 +282,10 @@ word_count: 11195
 
 因为蝙蝠侠始终在回避他们感情发展了的现实。
 
-------
+---
 [^8]: 红罗宾，指美国连锁快餐店。
 [^9]: 蝙蝠侠主体快餐店：Bat Burger（蝙蝠汉堡），哈尔不想关心它的名字。
-------
+---
 
 哈尔在四天后来到了大都会。虽然有希望趁机和一桥之外的蝙蝠侠再聊聊的成分在，但主要还是因为能够进行失重环境测试的地方太少，西海岸的NASA基地都被已雇佣的宇航员占满了，哈尔只能大老远跑来东边。
 

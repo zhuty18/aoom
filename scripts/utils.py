@@ -14,7 +14,6 @@ from personal import (
     FILE_ROOT,
     FIN_HEAD,
     FIN_MARKS,
-    FIN_TAG,
     FIN_TAIL,
     FIN_TEM,
     HISTORY_PATH,
@@ -85,13 +84,8 @@ def file_length(filename: str) -> int:
     """文件长度计算"""
     res = 0
     with open(filename, "r", encoding="utf8") as f:
-        note = False
-        for i in f.readlines():
-            if i.strip() == "---":
-                note = not note
-                continue
-            if note:
-                continue
+        content = f.read().replace(get_predef_str(filename), "").strip("-\n")
+        for i in content.split("\n"):
             res += line_length(i.strip())
     return res
 
@@ -100,7 +94,7 @@ def file_fin(filename: str) -> bool:
     """完成情况检测"""
     if path_fin(path_of(filename)):
         return True
-    if FIN_TAG in get_pre_key(get_predefine(filename), "tags"):
+    if get_pre_key(get_predef(filename), "finished") == "true":
         return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
@@ -368,40 +362,41 @@ def excerpt(filename):
     return pre
 
 
-def get_predefine(filename):
-    """读取预定义内容"""
+def get_predef_str(filename):
+    """读取预定义字符串"""
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
-        if content.startswith("---"):
-            try:
-                pre_d_str = re.findall(
-                    re.compile(r"---\n(.*)\n---\n", re.S), content
-                )[0]
-            except IndexError:
-                pre_d_str = re.findall(
-                    re.compile(r"---\n(.*)\n---$", re.S), content
-                )[0]
-            pre_d = {}
-            current = ""
-            for i in pre_d_str.split("\n"):
-                if ":" in i:
-                    i = i.split(":")
-                    key = i[0].strip()
-                    current = key
-                    value = i[1].strip()
-                    if key == "tags" and " " in value:
-                        value = value.split(" ")
-                    elif key == "tags" and value != "":
-                        value = [value]
-                    elif key == "tags":
-                        value = []
-                    elif value == "":
-                        value = []
-                    pre_d[key] = value
-                elif "  - " in i:
-                    pre_d[current].append(i.strip(" -"))
-            return pre_d
-    return None
+    if content.startswith("---"):
+        return content[0 : content.index("---", 3)].strip("-\n")
+    else:
+        return None
+
+
+def get_predef(filename):
+    """读取预定义内容"""
+    pre_d_str = get_predef_str(filename)
+    if not pre_d_str:
+        return None
+    pre_d = {}
+    current = ""
+    for i in pre_d_str.split("\n"):
+        if ":" in i:
+            i = i.split(":")
+            key = i[0].strip()
+            current = key
+            value = i[1].strip()
+            if key == "tags" and " " in value:
+                value = value.split(" ")
+            elif key == "tags" and value != "":
+                value = [value]
+            elif key == "tags":
+                value = []
+            elif value == "":
+                value = []
+            pre_d[key] = value
+        elif "  - " in i:
+            pre_d[current].append(i.strip(" -"))
+    return pre_d
 
 
 def tag_priority(tag):
@@ -421,7 +416,7 @@ def tag_priority(tag):
         return 4
 
 
-def write_predefine(pre_d, filename):
+def write_predef(pre_d, filename):
     """预定义头信息写入文件"""
     res = ""
     if "tags" in pre_d:
@@ -438,24 +433,22 @@ def write_predefine(pre_d, filename):
             res += f"{k}: {v}\n"
     res = res.strip()
 
+    pre_d_str = get_predef_str(filename)
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()
-    try:
-        pre_d_str = re.findall(re.compile(r"---\n(.*)\n---\n", re.S), content)[
-            0
-        ]
+    if pre_d_str:
         with open(filename, "w", encoding="utf8") as f:
             f.write(content.replace(pre_d_str, res))
-    except IndexError:
+    else:
         with open(filename, "w", encoding="utf8") as f:
             f.write(f"---\n{res}\n---\n\n{content}")
 
 
 def sort_predef(filename):
     """整理预定义头"""
-    pre_d = get_predefine(filename)
+    pre_d = get_predef(filename)
     if pre_d:
-        write_predefine(pre_d, filename)
+        write_predef(pre_d, filename)
 
 
 def get_pre_key(pre_d, keyword):
@@ -467,7 +460,7 @@ def get_pre_key(pre_d, keyword):
 
 def add_predef(filename, key, value, change=False):
     """添加预定义"""
-    pre_d = get_predefine(filename)
+    pre_d = get_predef(filename)
     if not pre_d:
         # 无预定义头
         with open(filename, "r", encoding="utf8") as f:
@@ -498,7 +491,7 @@ def add_predef(filename, key, value, change=False):
     elif not change:
         # key已定义但无值
         pre_d[key] = value
-    write_predefine(pre_d, filename)
+    write_predef(pre_d, filename)
     return 1
 
 
@@ -545,8 +538,8 @@ def make_index_dir(kind, name):
 
 def title_of(filename):
     """获得文件标题"""
-    if get_pre_key(get_predefine(filename), "title"):
-        return get_pre_key(get_predefine(filename), "title")
+    if get_pre_key(get_predef(filename), "title"):
+        return get_pre_key(get_predef(filename), "title")
     title = name_of(filename)
     with open(filename, "r", encoding="utf8") as f:
         content = f.read()

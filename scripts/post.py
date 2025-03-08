@@ -21,7 +21,7 @@ from utils import (
     excerpt,
     format_time,
     get_pre_key,
-    get_predefine,
+    get_predef,
     get_time,
     make_index,
     make_index_dir,
@@ -31,7 +31,7 @@ from utils import (
     path_of,
     search_by_keyword,
     short_path,
-    write_predefine,
+    write_predef,
 )
 from work_record import WordCounter
 
@@ -42,7 +42,7 @@ def post(filename, name, default_time=None):
     """发布单个文件"""
 
     # 获取文件预定义
-    pre_d = get_predefine(filename)
+    pre_d = get_predef(filename)
 
     # 获取post日期
     date = get_pre_key(pre_d, "date")
@@ -61,7 +61,7 @@ def post(filename, name, default_time=None):
 <!--more-->
 """
         )
-    write_predefine(pre_d, post_path)
+    write_predef(pre_d, post_path)
 
     # 添加跳转
     add_predef(post_path, "layout", "forward")
@@ -95,7 +95,7 @@ def post_work(filename, counter):
 
     post_path = post(filename, his.name, his.time)
 
-    pre_d = get_predefine(post_path)
+    pre_d = get_predef(post_path)
     # 添加完结标
     if not get_pre_key(pre_d, "finished"):
         mark_fin(post_path, True)
@@ -156,7 +156,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         post_all(FILE_ROOT, COUNTER, True)
-        defs = get_predefine(os.path.join(FILE_ROOT, INDEX_NAME))
+        defs = get_predef(os.path.join(FILE_ROOT, INDEX_NAME))
         change = get_pre_key(defs, "change")
         for i in change:
             mark_as_post(i, COUNTER)

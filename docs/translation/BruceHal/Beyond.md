@@ -262,13 +262,13 @@ Bruce站到一边，好让Hal钻进车里，开出小小的停车场，出于共
 
 “我就在这儿。”Bruce说，挂断了电话。
 
-------
+---
 
 [^1]: the thermal coating on Clark’s granite countertops。生活经验有限如我并不能理解它是个什么东西，但我妈确实一直要求我搁下热盘子之前放衬垫。
 [^2]: 热力学共有四条定律，第一第二第三第零，我也不大清楚英文里的“a fifth law of thermodynamics”对应的是热力学第五定律，还是第五条热力学定律，但意译来说肯定是后者。
 [^3]: who’s on first：一个美国相声。核心包袱是A问棒球经理B谁在第一个，而那个人的昵称叫who，所以他们一直在who’s on first。全文在这儿https://www.baseball-almanac.com/humor4.shtml。
 
-------
+---
 
 Chapter 2 还有点不止如此
 
