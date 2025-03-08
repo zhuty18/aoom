@@ -4,3 +4,4 @@ xpinyin
 # matplotlib
 # python_docx
 markdown
+# numpy
