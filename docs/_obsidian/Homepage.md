@@ -1,12 +1,12 @@
 ---
 count_ideal: 8000
-day_awhile: 90
+day_awhile: 60
 day_ideal: 3
 day_notlong: 30
 day_recent: 14
 max_list: 12
-percent_high: 0.75
-percent_ideal: 0.85
+percent_high: 0.7
+percent_ideal: 0.9
 percent_low: 0.3
 ---
 
@@ -16,15 +16,13 @@ percent_low: 0.3
 
 今天是`\=dateformat(date(today),"DD，EEEE")`，你使用Obsidian的第`\=ceil((date(now)-date("2025-01-15")).days)`天。
 
-当前运势`dice:1d100`：写文`dice: 1d100`，摸鱼`dice: 1d100`，干点正事`dice:1d100`。
-
 ```dataviewjs
 let home = dv.current()
 const {MyUtils} = await cJS()
 let last = dv.pages().where(x => x.finished).sort(x => x.date ? x.date : x.auto_date, "desc")[0]
 let interval = MyUtils.last_update(last)
 
-let output = "上一次完结是" + interval + "天前。完结内容《" + last.file.link + "》 " + last.file.tags.join(" ") + " ，"+MyUtils.count_text(MyUtils.count(last))+"。"
+let output = "上一次完结是" + MyUtils.last_update_str(last,home) + "。完结内容《" + last.file.link + "》 " + last.file.tags.join(" ") + " ，"+MyUtils.count_text(MyUtils.count(last))+"。"
 if (interval < home.day_recent) {
 output += "干得漂亮！"
 } else if (interval < home.day_notlong) {
@@ -57,7 +55,7 @@ dv.paragraph(output)
 ```dataviewjs
 let home = dv.current()
 const {MyUtils} = await cJS()
-let recent_pages = MyUtils.work_of(dv.pages().where(x=>!x.finished),home.max_list).where(x=>MyUtils.last_update(x)<home.day_ideal)
+let recent_pages = MyUtils.work_of(dv.pages().where(x=>!x.finished),home.max_list)
 dv.list(recent_pages.map(x => MyUtils.short_text(x,home)))
 ```
 
@@ -113,7 +111,15 @@ let home = dv.current()
 const {MyUtils} = await cJS()
 let all_data = MyUtils.pages_raw_data(dv.pages("#2025蝙绿企划"),home)
 let percent = all_data.tbc_count/all_data.fin_count_theory
-let output = "#2025蝙绿企划 累计写了" + MyUtils.count_text(all_data.all_count)+ "，完成度" + MyUtils.percent_meter(percent,home) + "，完结率" + MyUtils.percent_meter(all_data.fin_percent,home)+"。还有" + all_data.tbc + "个坑，估计还要写" + MyUtils.count_text(all_data.fin_count_theory-all_data.all_count)+"。"
+let output = "#2025蝙绿企划 累计写了" + MyUtils.count_text(all_data.all_count)+ "，完成度" + MyUtils.percent_meter(percent,home) + "，还有" + all_data.tbc + "个坑，完结率" + MyUtils.percent_meter(all_data.fin_percent,home)+"。"
+dv.paragraph(output)
+
+let next = dv.date(dv.date("today").year+"-02-19")
+if ((next-dv.date("today"))<0){
+next = dv.date((dv.date("today").year+1)+"-02-19")
+}
+let interval =(next-dv.date("today"))/1000/60/60/24
+output = "估计还要写" + MyUtils.count_text(all_data.fin_count_theory-all_data.all_count)+"，距离下一个2.19还有"+interval+"天，平均每天"+ MyUtils.count_text((all_data.fin_count_theory-all_data.all_count)/interval)+"。"
 dv.paragraph(output)
 ```
 
@@ -134,7 +140,7 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 > let home = dv.current()
 > const {MyUtils} = await cJS()
 > let recent_pages=MyUtils.work_of(dv.pages('#2025蝙绿企划'))
-> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.filter((y) => y != "#2025蝙绿企划" && y != "#BatLantern").join("<br>"),MyUtils.count_meter(x,home,2),MyUtils.last_update_str(x)]))
+> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.filter((y) => y != "#2025蝙绿企划" && y != "#BatLantern").join("<br>"),MyUtils.count_meter(x,home,2),MyUtils.last_update_str(x,home)]))
 > ```
 
 ## 任务
@@ -196,7 +202,7 @@ WHERE typeof(choice(date,date,auto_date)) = "date" and word_count and !finished
 > let home = dv.current()
 > const {MyUtils} = await cJS()
 > let recent_pages=MyUtils.work_of(dv.pages().where(x=>!x.finished))
-> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.join("<br>"),MyUtils.count_meter(x,home,2),MyUtils.last_update_str(x)]))
+> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.join("<br>"),MyUtils.count_meter(x,home,2),MyUtils.last_update_str(x,home)]))
 > ```
 
 ### 已完结
@@ -212,5 +218,5 @@ WHERE typeof(choice(date,date,auto_date)) = "date" and word_count and finished
 > let home = dv.current()
 > const {MyUtils} = await cJS()
 > let recent_pages=MyUtils.work_of(dv.pages().where(x=>x.finished))
-> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.join("<br>"),MyUtils.count(x),MyUtils.last_update_str(x)]))
+> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link,x.file.tags.join("<br>"),MyUtils.count(x),MyUtils.last_update_str(x,home)]))
 > ```

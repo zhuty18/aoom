@@ -1,5 +1,6 @@
 ---
 auto_date: 2020-12-12
+date: 2020-02-20
 finished: true
 tags:
   - BatLantern
