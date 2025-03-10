@@ -43,7 +43,7 @@ def format_file(filename, force=False):
         res = res.replace("------", "---")
     f.write(res.strip("\n") + "\n")
     f.close()
-    if filename.endswith(".md") and not ignore_in_format(filename):
+    if filename.endswith(".md"):
         add_predef(
             filename, "word_count", str(file_length(filename)), change=True
         )
@@ -90,7 +90,7 @@ def format_all(path):
             subdir.endswith(".md")
             or subdir.endswith(".txt")
             or subdir.endswith(".py")
-        ):
+        ) and not ignore_in_format(subdir):
             format_file(subdir)
         elif os.path.isdir(subdir) and "data" in subdir:
             format_all(subdir)
