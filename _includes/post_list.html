@@ -11,16 +11,10 @@
           {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "tags" %}
-        {% if include.tag == "FIN" && post.finished %}
-          <div>
-            {{ post.finished }}
-          </div>
+        {% if include.tag == "FIN" and post.finished %}
           {% include post.html post=post %}
         {% elsif include.tag == "TBC" %}
           {% unless post.finished %}
-            <div>
-              {{ post.finished }}
-            </div>
             {% include post.html post=post %}
           {% endunless %}
         {% elsif post.tags contains include.tag %}
