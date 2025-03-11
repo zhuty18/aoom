@@ -11,7 +11,7 @@
           {% include post.html post=post %}
         {% endif %}
       {% elsif include.type == "tags" %}
-        {% if include.tag == "FIN" && post.finished %}
+        {% if include.tag == "FIN" && post.finished=true %}
           {% include post.html post=post %}
         {% elsif include.tag == "TBC" %}
           {% unless post.finished %}
