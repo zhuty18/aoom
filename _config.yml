@@ -1,23 +1,26 @@
-domain: zhuty18.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
-url: https://zhuty18.github.io  # the base hostname and protocol for your site, e.g. http://example.com
-baseurl: /aoom      # place folder name if the site is served in a subfolder
+domain: zhuty18.github.io # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
+url: https://zhuty18.github.io # the base hostname and protocol for your site, e.g. http://example.com
+baseurl: /aoom # place folder name if the site is served in a subfolder
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
-- jekyll-remote-theme
+    - jekyll-remote-theme
 title: 狡兔百窟
 description: 兔子草的线上存档
 
 nav-foot:
-- name: ⬆️
-  link: "#content"
-- name: ⤴️
-  link: ..
-  con: /
-  other: .
-  id: up
-- name: 🏠
-  link: /docs
-  type: "home"
+    - name: ⬆️
+      link: "#content"
+    - name: ⤴️
+      link: ..
+      con: /
+      other: .
+      id: up
+    - name: 📚
+      link: /docs
+      type: "home"
+    - name: 🏠
+      link: /
+      type: "home"
 
 date_format: "%Y. %-m. %-d"
 post_max: 500
@@ -29,10 +32,10 @@ ad_url: https://weibo.com/6193467293/5019016735492109
 ddl: 2024-04-17
 
 nav-head:
-- name: 标签
-  link: /tag
-- name: 类别
-  link: /category
+    - name: 标签
+      link: /tag
+    - name: 类别
+      link: /category
 
 # password: true
 white: batlantern
@@ -42,8 +45,8 @@ future: true
 excerpt_word: 120
 
 defaults:
-  - scope:
-      path: "" # 设置作用于整个站点
-      type: "pages" # 或 "pages"，适用于所有文章或页面
-    values:
-      layout: "custom_default"
+    - scope:
+          path: "" # 设置作用于整个站点
+          type: "pages" # 或 "pages"，适用于所有文章或页面
+      values:
+          layout: "custom_default"
