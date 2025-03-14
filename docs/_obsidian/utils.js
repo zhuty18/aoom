@@ -115,7 +115,7 @@
             return "昨天"
         } else if (days == 2) {
             return "前天"
-        } else if (days < global.day_awhile) {
+        } else if (days <= global.day_awhile) {
             return days + "天前"
         } else {
             let date = new Date(page.date ? page.date : page.auto_date)
@@ -124,7 +124,7 @@
     }
 
     pin_of (page, global) {
-        return "- [" + ((this.last_update(page) < Number(global.day_ideal)) ? "f" : "n") + "] "
+        return "- [" + ((this.last_update(page) <= Number(global.day_ideal)) ? "f" : "n") + "] "
     }
 
     short_text (page, global, tag_number = 2) {
