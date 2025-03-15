@@ -47,6 +47,8 @@ def post(filename, name, default_time=None):
     # 获取post日期
     date = get_pre_key(pre_d, "date")
     if not date:
+        date = get_pre_key(pre_d, "auto_date")
+    if not date:
         date = format_time(get_time(default_time), POST_DATE)
 
     # 生成post名
@@ -100,7 +102,7 @@ def post_work(filename, counter):
     if not get_pre_key(pre_d, "finished"):
         mark_fin(post_path, True)
     # 添加日期
-    add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"), True)
+    add_predef(post_path, "date", get_pre_key(pre_d, "auto_date"))
 
 
 def post_log(filename):
