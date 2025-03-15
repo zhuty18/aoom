@@ -54,12 +54,12 @@
         if (size < 800) {
             k = 0.3073133134726448
             v = -23.40142162860285
-        } else if (size < 8000) {
-            k = 0.32039479151603156
-            v = -27.64092723824474
+        } else if (size < 12000) {
+            k = 0.32346781904434435
+            v = -36.93753277881238
         } else if (size < 50000) {
-            k = 0.32293535139488916
-            v = -17.819584543264416
+            k = 0.3225562515681947
+            v = -7.719192092662913
         } else if (size < 120000) {
             k = 0.32159962813778875
             v = 232.79318783223889
@@ -115,7 +115,7 @@
             return "昨天"
         } else if (days == 2) {
             return "前天"
-        } else if (days < global.day_awhile) {
+        } else if (days <= global.day_awhile) {
             return days + "天前"
         } else {
             let date = new Date(page.date ? page.date : page.auto_date)
@@ -124,7 +124,7 @@
     }
 
     pin_of (page, global) {
-        return "- [" + ((this.last_update(page) < Number(global.day_ideal)) ? "f" : "n") + "] "
+        return "- [" + ((this.last_update(page) <= Number(global.day_ideal)) ? "f" : "n") + "] "
     }
 
     short_text (page, global, tag_number = 2) {

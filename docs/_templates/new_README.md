@@ -2,20 +2,20 @@
 
 ## 未完结
 
-```dataview
-TABLE WITHOUT ID
-file.link + " " +filter(file.tags,(x) => !contains(x,"FIN")) as 文件名, word_count as 字数, dateformat(choice(date,date,auto_date),"yy.MM.dd") as 修改时间
-FROM "<% tp.file.folder() %>" and -#FIN
-WHERE word_count
-SORT choice(date,date,auto_date) DESC
+```dataviewjs
+let home = dv.page("/_obsidian/Homepage")
+const { MyUtils } = await cJS()
+let pages = MyUtils.work_of(dv.pages('"<% tp.file.folder() %>"')).where((x) => x.word_count && (!x.finished))
+
+dv.table(["文件", "标签", "字数", "更新"], pages.map(x => [x.file.link, x.file.tags.join("<br>"), MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
 ```
 
 ## 已完结
 
-```dataview
-TABLE WITHOUT ID
-file.link + " " +filter(file.tags,(x) => !contains(x,"FIN")) as 文件名, length as 字数, dateformat(choice(date,date,auto_date),"yy.MM.dd") as 修改时间
-FROM "<% tp.file.folder() %>" and #FIN
-WHERE word_count
-SORT choice(date,date,auto_date) DESC
+```dataviewjs
+let home = dv.page("/_obsidian/Homepage")
+const { MyUtils } = await cJS()
+let pages = MyUtils.work_of(dv.pages('"<% tp.file.folder() %>"')).where((x) => x.word_count && x.finished)
+
+dv.table(["文件", "标签", "字数", "更新"], pages.map(x => [x.file.link, x.file.tags.join("<br>"), MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
 ```
