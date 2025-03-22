@@ -88,9 +88,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # # 解决obsidian换行符
-    # from win4obsidian import touch_obsidian
+    from win4obsidian import touch_obsidian
 
-    # touch_obsidian()
+    touch_obsidian()
 
     # 格式化所有文档
     import work_format
