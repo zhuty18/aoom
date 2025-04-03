@@ -8,6 +8,7 @@ max_list: 12
 percent_high: 0.7
 percent_ideal: 0.9
 percent_low: 0.3
+count_unit: 1500
 ---
 
 # 兔子草

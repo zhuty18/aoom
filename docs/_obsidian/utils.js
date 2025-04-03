@@ -93,7 +93,9 @@
             percent = count_res / Math.max(count_res / global.percent_ideal, global.count_ideal)
         }
         if (line == 1) {
-            return this.meter_at(percent, global) + " " + this.count_text(count_res)
+            return "🐰".repeat(parseInt(count_res / global.count_unit))
+                + this.meter_at((count_res % global.count_unit) / global.count_unit, global)
+                + " " + this.count_text(count_res)
         } else {
             return this.count_text(count_res) + "<br>" + this.meter_at(percent, global)
         }
