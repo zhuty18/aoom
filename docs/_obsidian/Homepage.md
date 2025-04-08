@@ -1,5 +1,6 @@
 ---
 count_ideal: 8000
+count_unit: 1500
 day_awhile: 60
 day_ideal: 3
 day_notlong: 30
@@ -8,7 +9,6 @@ max_list: 12
 percent_high: 0.7
 percent_ideal: 0.9
 percent_low: 0.3
-count_unit: 1500
 ---
 
 # 兔子草
