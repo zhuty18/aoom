@@ -109,6 +109,7 @@ PREVIEW_LENGTH = 100
 
 # 文件夹名
 DIR_NAMES = {
+    "AI": "AI批评",
     "blob": "短篇",
     "DC": "DC",
     "DM": "数码宝贝",
@@ -136,7 +137,7 @@ DIR_NAMES = {
 
 # 格式化+字数统计时忽略的文件与路径
 IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
-AI_COMMENT_PATH = "docs/AI批评"
+AI_COMMENT_PATH = "docs/AI"
 IGNORE_PATH = [
     LOG_PATH,
     "docs/明星煌煌",
