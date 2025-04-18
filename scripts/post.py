@@ -23,6 +23,7 @@ from utils import (
     get_pre_key,
     get_predef,
     get_time,
+    is_ai,
     make_index,
     make_index_dir,
     mark_fin,
@@ -135,15 +136,18 @@ def mark_as_post(filename, counter):
 def post_all(path, counter, allow_tbc=False):
     """发布所有文件"""
     for item in os.listdir(path):
-        if dir_name(os.path.join(path, item)):
-            post_all(os.path.join(path, item), counter, allow_tbc)
+        subdir = os.path.join(path, item)
+        if dir_name(subdir):
+            post_all(subdir, counter, allow_tbc)
         elif LOG_PATH in short_path(path) and name_of(item) in counter.history:
-            post_log(os.path.join(path, item))
-        elif name_of(item) in counter.history and (
-            not os.path.isdir(os.path.join(path, item))
+            post_log(subdir)
+        elif (
+            name_of(item) in counter.history
+            and (not os.path.isdir(subdir))
+            and (not is_ai(subdir))
         ):
             if counter.history[name_of(item)].fin or allow_tbc:
-                post_work(os.path.join(path, item), counter)
+                post_work(subdir, counter)
 
 
 if __name__ == "__main__":

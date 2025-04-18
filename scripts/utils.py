@@ -562,9 +562,14 @@ def ignore_in_format(filename):
     return "_" in filename
 
 
+def is_ai(filename):
+    """是否是AI创作的"""
+    return AI_COMMENT_PATH in short_path(filename)
+
+
 def get_ai_comment(filename):
     """寻找对应的AI评论文件"""
-    if AI_COMMENT_PATH in short_path(filename):
+    if is_ai(filename):
         return None
     ai_file = os.path.join(AI_COMMENT_PATH, name_of(filename)) + ".md"
     if os.path.exists(ai_file):
@@ -574,6 +579,6 @@ def get_ai_comment(filename):
 
 def get_ai_source(filename):
     """寻找AI评论对应的源文件"""
-    if AI_COMMENT_PATH in short_path(filename):
+    if is_ai(filename):
         return short_path(search_by_keyword(name_of(filename))[0])
     return None
