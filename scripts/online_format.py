@@ -11,6 +11,7 @@ from utils import (
     dir_name,
     doc_dir,
     get_ai_comment,
+    get_ai_source,
     ignore_in_format,
     mark_category,
     name_of,
@@ -43,7 +44,17 @@ def format_md(filename):
     elif LOG_PATH in short_path(filename):
         mark_category(filename)
     if get_ai_comment(filename):
-        add_predef(filename, "ai-comment", get_ai_comment(filename))
+        add_predef(
+            filename,
+            "ai-comment",
+            get_ai_comment(filename).replace(".md", ".html"),
+        )
+    elif get_ai_source(filename):
+        add_predef(
+            filename,
+            "ai-back",
+            get_ai_source(filename).replace(".md", ".html"),
+        )
 
 
 def format_dir(path):
