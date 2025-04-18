@@ -5,7 +5,7 @@
 import os
 import sys
 
-from utils import doc_dir, ignore_in_format, short_path
+from utils import doc_dir, ignore_in_format, search_by_keyword, short_path
 
 
 class KeySearcher:
@@ -47,4 +47,5 @@ class KeySearcher:
 
 if __name__ == "__main__":
     key = sys.argv[1]
+    print(search_by_keyword(key))
     KeySearcher(doc_dir(), key)

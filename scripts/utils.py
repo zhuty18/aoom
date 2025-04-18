@@ -271,7 +271,11 @@ class SearchForFile:
                     ):
                         self.res.append(i)
                 else:
-                    if match_keys([self.key], i) and i.endswith(".md"):
+                    if (
+                        match_keys([self.key], i)
+                        and i.endswith(".md")
+                        and not ignore_in_format(i)
+                    ):
                         self.res.append(i)
 
     def result(self):
