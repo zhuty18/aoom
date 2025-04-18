@@ -12,6 +12,7 @@ nav-foot:
       link: "#content"
     - name: 🐳
       id: ai-comment
+      prefix: /
     - name: ⤴️
       link: ..
       con: /

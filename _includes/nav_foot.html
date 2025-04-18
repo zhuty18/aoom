@@ -12,14 +12,16 @@
             "<a href=" + tar + " class=\"nav-foot-link\">{{ item.name }}</a>")
         </script>
       </div>
+    {% elsif item.id == "ai-comment" %}
+      {% if page.ai-comment %}
+        <div>
+          <a href="{{ site.baseurl }}{{ item.prefix }}{{ page.ai-comment }}" class="nav-foot-link">{{ item.name }}</a>
+        </div>
+      {% endif %}
     {% else %}
       <div>
         {% if item.type == "home" %}
           <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
-        {% elsif item.id == "ai-comment" %}
-          {% if page.ai-comment %}
-            <a href="{{ page.ai-comment }}" class="nav-foot-link">{{ item.name }}</a>
-          {% endif %}
         {% else %}
           <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
         {% endif %}

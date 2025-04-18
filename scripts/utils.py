@@ -564,7 +564,9 @@ def ignore_in_format(filename):
 
 def get_ai_comment(filename):
     """寻找对应的AI评论文件"""
-    ai_file = os.path.join(AI_COMMENT_PATH, name_of(filename))
+    if AI_COMMENT_PATH in short_path(filename):
+        return None
+    ai_file = os.path.join(AI_COMMENT_PATH, name_of(filename)) + ".md"
     if os.path.exists(ai_file):
         return ai_file
     return None
