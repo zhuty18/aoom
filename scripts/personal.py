@@ -206,3 +206,6 @@ ORGANIZATION_TAGS = [
     "兴欣",
     "蓝雨",
 ]
+
+AI_COMMENT_TAG = ["AI评论"]
+AI_TAGS = [AI_COMMENT_TAG]

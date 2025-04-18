@@ -406,7 +406,7 @@ def get_predef(filename):
 
 def tag_priority(tag):
     """标签显示优先级"""
-    # 优先级：特殊 -> CP -> AU -> 角色 -> 组织 -> 其他 -> 完成度
+    # 优先级：特殊 -> CP -> AU -> 角色 -> 组织 -> 其他 -> AI -> 完成度
     if tag in PRIORITIZED_TAGS:
         return -1
     if tag in CP_TAGS:

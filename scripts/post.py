@@ -6,6 +6,7 @@ import os
 import sys
 
 from personal import (
+    AI_COMMENT_TAG,
     FILE_ROOT,
     FIN_TAG,
     INDEX_NAME,
@@ -158,6 +159,7 @@ if __name__ == "__main__":
     make_index_dir("tag", "标签")
     make_index("tag", TBC_TAG)
     make_index("tag", FIN_TAG)
+    make_index("tag", AI_COMMENT_TAG)
     make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":

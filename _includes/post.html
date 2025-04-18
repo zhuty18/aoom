@@ -30,6 +30,13 @@
         </a>
       {% endif %}
     {% endfor %}
+    {% if post.ai-comment %}
+      <a href="{{ site.baseurl }}/tag/AI评论">
+        <span class="tag AI评论">
+          AI评论
+        </span>
+      </a>
+    {% endif %}
     {% if post.finished %}
       <a href="{{ site.baseurl }}/tag/FIN">
         <span class="tag FIN">
