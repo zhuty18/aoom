@@ -136,7 +136,14 @@ DIR_NAMES = {
 
 # 格式化+字数统计时忽略的文件与路径
 IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
-IGNORE_PATH = [LOG_PATH, "docs/明星煌煌", "docs/_obsidian", "docs/material"]
+AI_COMMENT_PATH = "docs/AI批评"
+IGNORE_PATH = [
+    LOG_PATH,
+    "docs/明星煌煌",
+    "docs/_obsidian",
+    "docs/material",
+    AI_COMMENT_PATH,
+]
 
 # TAG类别（排序用）
 PRIORITIZED_TAGS = ["2025蝙绿企划"]

@@ -5,7 +5,7 @@
 import os
 import sys
 
-from utils import doc_dir, short_path
+from utils import doc_dir, ignore_in_format, short_path
 
 
 class KeySearcher:
@@ -23,7 +23,11 @@ class KeySearcher:
             subdir = os.path.join(path, i)
             if os.path.isdir(subdir):
                 self.search_dir(subdir)
-            elif subdir.endswith(".md") and "README" not in subdir:
+            elif (
+                subdir.endswith(".md")
+                and "README" not in subdir
+                and not ignore_in_format(subdir)
+            ):
                 self.search_file(subdir)
 
     def search_file(self, file):

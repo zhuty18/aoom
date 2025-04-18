@@ -1,6 +1,6 @@
 <div class="nav-foot">
   {% for item in site.nav-foot %}
-    {% if item.id %}
+    {% if item.type == "local" %}
       <div id="{{ item.id }}">
         <script>
           var con = document.getElementById('{{ item.id }}')
@@ -16,6 +16,10 @@
       <div>
         {% if item.type == "home" %}
           <a href="{{ site.baseurl }}{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
+        {% elsif item.id == "ai-comment" %}
+          {% if page.ai-comment %}
+            <a href="{{ page.ai-comment }}" class="nav-foot-link">{{ item.name }}</a>
+          {% endif %}
         {% else %}
           <a href="{{ item.link }}" class="nav-foot-link">{{ item.name }}</a>
         {% endif %}

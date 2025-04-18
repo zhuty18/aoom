@@ -10,11 +10,14 @@ description: 兔子草的线上存档
 nav-foot:
     - name: ⬆️
       link: "#content"
+    - name: 🐳
+      id: ai-comment
     - name: ⤴️
       link: ..
       con: /
       other: .
       id: up
+      type: "local"
     - name: 📚
       link: /docs
       type: "home"

@@ -10,6 +10,7 @@ from utils import (
     add_predef,
     dir_name,
     doc_dir,
+    get_ai_comment,
     ignore_in_format,
     mark_category,
     name_of,
@@ -41,6 +42,8 @@ def format_md(filename):
         mark_category(filename)
     elif LOG_PATH in short_path(filename):
         mark_category(filename)
+    if get_ai_comment(filename):
+        add_predef(filename, "ai-comment", get_ai_comment(filename))
 
 
 def format_dir(path):
