@@ -8,31 +8,31 @@ import time
 
 from name_def import names
 from personal import (
-    AI_COMMENT_PATH,
     COMMIT_TIME,
-    CP_TAGS,
     DIR_NAMES,
     FILE_ROOT,
+    FILES_IGNORE,
     FIN_HEAD,
-    FIN_MARKS,
     FIN_TAIL,
     FIN_TEM,
-    HISTORY_PATH,
-    IGNORE_FILES,
-    IGNORE_PATH,
-    INDEX_FULL_NAME,
+    FORMAT_TIME,
     INDEX_NAME,
-    ORGANIZATION_TAGS,
-    PERSON_TAGS,
-    PREVIEW_LENGTH,
-    PRIORITIZED_TAGS,
-    TIME_FORMAT,
+    INDEX_NAME_FULL,
+    LENGTH_PREVIEW,
+    MARKS_FIN,
+    PATH_AI_COMMENT,
+    PATH_HISTORY,
+    PATHS_IGNORE,
+    TAGS_CP,
+    TAGS_ORGANIZATION,
+    TAGS_PERSON,
+    TAGS_PRIORITIZED,
     WEB_NAME,
 )
 
 
 def format_time(
-    time_stamp: float = COMMIT_TIME, time_format=TIME_FORMAT
+    time_stamp: float = COMMIT_TIME, time_format=FORMAT_TIME
 ) -> str:
     """格式化某个时间戳，默认为当下"""
     if not time_stamp:
@@ -52,7 +52,7 @@ def format_log_time(time_str: str) -> str:
 def get_time(time_str: str = None) -> float:
     """获取某个时间对应的时间戳"""
     return (
-        time.mktime(time.strptime(time_str, TIME_FORMAT))
+        time.mktime(time.strptime(time_str, FORMAT_TIME))
         if time_str
         else COMMIT_TIME
     )
@@ -99,7 +99,7 @@ def file_fin(filename: str) -> bool:
         return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
-        ends = FIN_MARKS
+        ends = MARKS_FIN
         for i in ends:
             if f"{i}\n" in text:
                 return True
@@ -231,7 +231,7 @@ def dirs(path: str = doc_dir()):
 
 def html_head(title: str) -> str:
     """网页头数据"""
-    if title == name_of(INDEX_FULL_NAME) or title == name_of(INDEX_NAME):
+    if title == name_of(INDEX_NAME_FULL) or title == name_of(INDEX_NAME):
         title = WEB_NAME
     return f"""<!DOCTYPE html>
 <head>
@@ -296,7 +296,7 @@ def search_by_name(name):
 def auto_hide():
     """自动隐藏已完成的内容"""
     finished = []
-    with open(HISTORY_PATH, "r", encoding="utf8") as f:
+    with open(PATH_HISTORY, "r", encoding="utf8") as f:
         for l in f.readlines():
             l = l.strip().split("\t")
             if l[-1] == "True":
@@ -357,11 +357,11 @@ def excerpt(filename):
             pre += i
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>")[1].strip()
-            if len(pre) > PREVIEW_LENGTH * 0.7:
+            if len(pre) > LENGTH_PREVIEW * 0.7:
                 pre = pre.strip()
                 break
-    if len(pre) > PREVIEW_LENGTH * 1.2:
-        pre = pre[:PREVIEW_LENGTH] + "……"
+    if len(pre) > LENGTH_PREVIEW * 1.2:
+        pre = pre[:LENGTH_PREVIEW] + "……"
     if pre.count("*") % 2 == 1:
         pre += "*"
     return pre
@@ -407,15 +407,15 @@ def get_predef(filename):
 def tag_priority(tag):
     """标签显示优先级"""
     # 优先级：特殊 -> CP -> AU -> 角色 -> 组织 -> 其他 -> AI -> 完成度
-    if tag in PRIORITIZED_TAGS:
+    if tag in TAGS_PRIORITIZED:
         return -1
-    if tag in CP_TAGS:
+    if tag in TAGS_CP:
         return 0
     elif "au" in tag or "ABO" in tag:
         return 1
-    elif tag in PERSON_TAGS:
+    elif tag in TAGS_PERSON:
         return 2
-    elif tag in ORGANIZATION_TAGS:
+    elif tag in TAGS_ORGANIZATION:
         return 3
     else:
         return 4
@@ -557,10 +557,10 @@ def title_of(filename):
 
 def ignore_in_format(filename):
     """格式化中忽略此索引文件"""
-    for i in IGNORE_FILES:
+    for i in FILES_IGNORE:
         if i in filename:
             return True
-    for i in IGNORE_PATH:
+    for i in PATHS_IGNORE:
         if i in short_path(filename):
             return True
     return "_" in filename
@@ -568,14 +568,14 @@ def ignore_in_format(filename):
 
 def is_ai(filename):
     """是否是AI创作的"""
-    return AI_COMMENT_PATH in short_path(filename)
+    return PATH_AI_COMMENT in short_path(filename)
 
 
 def get_ai_comment(filename):
     """寻找对应的AI评论文件"""
     if is_ai(filename):
         return None
-    ai_file = os.path.join(AI_COMMENT_PATH, name_of(filename)) + ".md"
+    ai_file = os.path.join(PATH_AI_COMMENT, name_of(filename)) + ".md"
     if os.path.exists(ai_file):
         return ai_file
     return None

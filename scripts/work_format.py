@@ -5,7 +5,7 @@
 import os
 import sys
 
-from personal import LOG_PATH
+from personal import PATH_LOG
 from utils import (
     add_predef,
     doc_dir,
@@ -33,7 +33,7 @@ def format_file(filename, force=False):
         elif "---\n" in line:
             pre_def = not pre_def
             res += line.strip("\n") + "\n"
-        elif pre_def or LOG_PATH in short_path(filename):
+        elif pre_def or PATH_LOG in short_path(filename):
             res += line.strip("\n") + "\n"
         else:
             res += line.strip() + "\n"

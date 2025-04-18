@@ -15,7 +15,6 @@ if __name__ == "__main__":
 
     from personal import (
         ALT_ORDER,
-        CHANGE_SAVE,
         COUNT_WORD,
         DEFAULT_MESSAGE,
         DEFAULT_ORDER,
@@ -27,6 +26,7 @@ if __name__ == "__main__":
         GIT_NAME,
         GIT_PUSH,
         GIT_WEB,
+        PATH_CHANGE_SAVE,
         WORD_CLOUD_JOB,
         WORD_CLOUD_TYPE,
     )
@@ -105,7 +105,7 @@ if __name__ == "__main__":
         counter.run()
         work_record.update_index(counter, FILE_DIR, args.sort_order)
         counter.update_history()
-        counter.save_change(CHANGE_SAVE)
+        counter.save_change(PATH_CHANGE_SAVE)
         from utils import auto_hide
 
         auto_hide()

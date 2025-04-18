@@ -19,6 +19,7 @@ GENERATE_WEB = False
 # 是否强制生成网页
 GIT_WEB = False
 
+# 本次提交时间，留空作为运行时的公共变量
 COMMIT_TIME = None
 
 # 是否使用git提交
@@ -61,22 +62,22 @@ BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
 
 # 默认翻译
 # TRANSLATE_MODE，BACKWARD_MODE，或None
-DEFAULT_TRANSLATE = None
+TRANSLATE_DEFAULT = None
 # 默认的时间戳格式
-TIME_FORMAT = "%y.%m.%d %H:%M"
+FORMAT_TIME = "%y.%m.%d %H:%M"
 # 默认的日期格式
-DATE_FORMAT = "%Y-%m-%d"
+FORMAT_DATE = "%Y-%m-%d"
 
 # index
 INDEX_NAME = "index.md"
-INDEX_FULL_NAME = "full_index.md"
+INDEX_NAME_FULL = "full_index.md"
 
 # 文档库开头
-ARCHIVE_UPDATE = "{update_detail}"
-ARCHIVE_TITLE = f"""---
+ARCHIVE_UPDATE_STR = "{update_detail}"
+ARCHIVE_YAML = f"""---
 layout: docs
 title: {WEB_NAME}
-update: {ARCHIVE_UPDATE}
+update: {ARCHIVE_UPDATE_STR}
 ---
 
 """
@@ -86,26 +87,27 @@ FIN_HEAD = "// finished work head"
 FIN_TAIL = "// finished work tail"
 FIN_TEM = '"template":true,'
 
-HISTORY_PATH = "data/history.txt"
-CHANGE_SAVE = "data/change.txt"
+PATH_HISTORY = "data/history.txt"
+PATH_CHANGE_SAVE = "data/change.txt"
 
-POST_PATH = "_posts/"
-POST_DATE = "%Y-%m-%d"
-POST_TITLE = POST_DATE + "-{title}.md"
+PATH_POST = "_posts/"
+FORMAT_POST_DATE = "%Y-%m-%d"
+FORMAT_POST_FILE = FORMAT_POST_DATE + "-{title}.md"
 
-FIN_TITLE = "## 已完结"
-TBC_TITLE = "## 未完结"
-FIN_MARKS = ["END", "完结", "Q.E.D."]
-FIN_TAG = "FIN"
-TBC_TAG = "TBC"
+TITLE_FINS = "## 已完结"
+TITLE_TBCS = "## 未完结"
+MARKS_FIN = ["END", "完结", "Q.E.D."]
+TAG_FIN = "FIN"
+TAG_TBC = "TBC"
+TAG_AI_COMMENT = "AI评论"
 # 日志
-LOG_PATH = "docs/logs"
+PATH_LOG = "docs/logs"
 
 # 首页post显示上限，0为关闭功能，-1为不设置上限
-POST_MAX = 10
+MAX_POST = 10
 
 # 文件摘要长度
-PREVIEW_LENGTH = 100
+LENGTH_PREVIEW = 100
 
 # 文件夹名
 DIR_NAMES = {
@@ -136,19 +138,19 @@ DIR_NAMES = {
 }
 
 # 格式化+字数统计时忽略的文件与路径
-IGNORE_FILES = [INDEX_FULL_NAME, INDEX_NAME, "README.md"]
-AI_COMMENT_PATH = "docs/AI"
-IGNORE_PATH = [
-    LOG_PATH,
+FILES_IGNORE = [INDEX_NAME_FULL, INDEX_NAME, "README.md"]
+PATH_AI_COMMENT = "docs/AI"
+PATHS_IGNORE = [
+    PATH_LOG,
     "docs/明星煌煌",
     "docs/_obsidian",
     "docs/material",
-    AI_COMMENT_PATH,
+    PATH_AI_COMMENT,
 ]
 
 # TAG类别（排序用）
-PRIORITIZED_TAGS = ["2025蝙绿企划"]
-CP_TAGS = [
+TAGS_PRIORITIZED = ["2025蝙绿企划"]
+TAGS_CP = [
     "无CP",
     "混邪",
     "其他CP",
@@ -178,7 +180,7 @@ CP_TAGS = [
     "DVD",
     "恺楚",
 ]
-PERSON_TAGS = [
+TAGS_PERSON = [
     "孙翔",
     "叶修",
     "周泽楷",
@@ -194,7 +196,7 @@ PERSON_TAGS = [
     "张新杰",
     "孙哲平",
 ]
-ORGANIZATION_TAGS = [
+TAGS_ORGANIZATION = [
     "蝙家",
     "灯团",
     "正联",
@@ -206,6 +208,3 @@ ORGANIZATION_TAGS = [
     "兴欣",
     "蓝雨",
 ]
-
-AI_COMMENT_TAG = "AI评论"
-AI_TAGS = [AI_COMMENT_TAG]

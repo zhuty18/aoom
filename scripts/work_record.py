@@ -10,19 +10,19 @@ import sys
 import file_check
 import web_make
 from personal import (
-    ARCHIVE_TITLE,
-    ARCHIVE_UPDATE,
-    DATE_FORMAT,
+    ARCHIVE_UPDATE_STR,
+    ARCHIVE_YAML,
     DEFAULT_ORDER,
     FILE_ROOT,
-    FIN_TITLE,
+    FORMAT_DATE,
     GENERATE_WEB,
-    HISTORY_PATH,
-    INDEX_FULL_NAME,
     INDEX_NAME,
-    LOG_PATH,
-    POST_PATH,
-    TBC_TITLE,
+    INDEX_NAME_FULL,
+    PATH_HISTORY,
+    PATH_LOG,
+    PATH_POST,
+    TITLE_FINS,
+    TITLE_TBCS,
 )
 from utils import (
     add_predef,
@@ -91,7 +91,7 @@ class FileRecord:
             self.fin = other.fin
 
     def get_date(self):
-        return format_time(get_time(self.time), DATE_FORMAT)
+        return format_time(get_time(self.time), FORMAT_DATE)
 
     @staticmethod
     def from_record(record: str):
@@ -146,8 +146,8 @@ class WordCounter:
 
     def read_history(self):
         """从历史记录中读取已有条目"""
-        if os.path.exists(HISTORY_PATH):
-            with open(HISTORY_PATH, "r", encoding="utf-8") as f:
+        if os.path.exists(PATH_HISTORY):
+            with open(PATH_HISTORY, "r", encoding="utf-8") as f:
                 for i in f.readlines():
                     t = FileRecord.from_record(i)
                     self.history[t.name] = t
@@ -171,7 +171,7 @@ class WordCounter:
                 not ignore_in_format(i)
                 and i.endswith(".md")
                 and FILE_ROOT in i
-                and POST_PATH not in i
+                and PATH_POST not in i
             ):
                 if os.path.exists(i) and dir_name(path_of(i)):
                     self.changes.append(i)
@@ -224,7 +224,7 @@ class WordCounter:
                 self.history.pop(name)
                 self.total_change -= self.history[name].length
 
-        log_str = ARCHIVE_TITLE
+        log_str = ARCHIVE_YAML
         update_str = ""
         if info:
             update_str = "\n  - ".join(info)
@@ -232,7 +232,7 @@ class WordCounter:
         update_str += "\nchange:"
         if self.changes:
             update_str += f"\n  - {"\n  - ".join(self.changes)}"
-        log_str = log_str.replace(ARCHIVE_UPDATE, update_str)
+        log_str = log_str.replace(ARCHIVE_UPDATE_STR, update_str)
         with open(
             os.path.join(doc_dir(), INDEX_NAME), "w", encoding="utf-8"
         ) as f:
@@ -248,7 +248,7 @@ class WordCounter:
 
     def update_history(self):
         """更新历史数据"""
-        with open(HISTORY_PATH, "w", encoding="utf-8") as f:
+        with open(PATH_HISTORY, "w", encoding="utf-8") as f:
             for key in sorted(self.history):
                 f.write(f"{self.history[key]}\n")
 
@@ -322,14 +322,14 @@ class IndexBuilder:
             head = f"# {dir_name(path)}\n\n"
             with open(f"{path}/{INDEX_NAME}", "w", encoding="utf-8") as fi:
                 with open(
-                    f"{path}/{INDEX_FULL_NAME}", "w", encoding="utf-8"
+                    f"{path}/{INDEX_NAME_FULL}", "w", encoding="utf-8"
                 ) as fr:
                     fi.write(head)
                     fr.write(head)
                     if self.tbc:
-                        fr.write(self.gen_content(self.tbc, TBC_TITLE) + "\n")
-                    fi.write(self.gen_content(self.fin, FIN_TITLE))
-                    fr.write(self.gen_content(self.fin, FIN_TITLE))
+                        fr.write(self.gen_content(self.tbc, TITLE_TBCS) + "\n")
+                    fi.write(self.gen_content(self.fin, TITLE_FINS))
+                    fr.write(self.gen_content(self.fin, TITLE_FINS))
         else:
             with open(f"{path}/{INDEX_NAME}", "w", encoding="utf-8") as fi:
                 fi.write(dirs(path).strip() + "\n")
@@ -347,7 +347,7 @@ def update_index(counter, path, order, force=False):
                     break
             if change or force:
                 update_index(counter, subdir, order, force)
-    if path != doc_dir() and dir_name(path) and LOG_PATH not in path:
+    if path != doc_dir() and dir_name(path) and PATH_LOG not in path:
         IndexBuilder(path, counter, order)
 
 

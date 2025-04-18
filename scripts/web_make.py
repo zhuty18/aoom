@@ -6,7 +6,7 @@ import os
 import re
 
 import markdown
-from personal import CHANGE_SAVE, FIN_TITLE, INDEX_FULL_NAME, INDEX_NAME
+from personal import INDEX_NAME, INDEX_NAME_FULL, PATH_CHANGE_SAVE, TITLE_FINS
 from utils import dir_name, dirs, doc_dir, html_head, name_of, short_path
 
 
@@ -15,10 +15,10 @@ def read_index(path):
     l = []
     try:
         with open(
-            os.path.join(path, INDEX_FULL_NAME), "r", encoding="utf8"
+            os.path.join(path, INDEX_NAME_FULL), "r", encoding="utf8"
         ) as r:
             k = r.read()
-            pattern = f"{FIN_TITLE}(.*?)$"
+            pattern = f"{TITLE_FINS}(.*?)$"
             k1 = re.findall(re.compile(repr(pattern), re.S), k)
             if len(k1):
                 k2 = re.findall(re.compile(r"[(](.*?)[)]", re.S), k1[0])
@@ -39,9 +39,9 @@ def markdown_to_html(filepath, text, title):
     text = text.replace("\n\n\n", "\n\n<br>\n")
     html = markdown.markdown(text, extensions=["tables"], output_format="html")
     output_filepath = filepath.replace(".md", ".html")
-    output_filepath = output_filepath.replace(INDEX_FULL_NAME, INDEX_NAME)
+    output_filepath = output_filepath.replace(INDEX_NAME_FULL, INDEX_NAME)
     with open(output_filepath, "w", encoding="utf8") as f:
-        if INDEX_FULL_NAME in filepath:
+        if INDEX_NAME_FULL in filepath:
             html = html.replace(".md", ".html")
         f.write(html_head(title))
         f.write(html)
@@ -59,20 +59,20 @@ def index_html(path: str):
     """生成索引文件的html"""
     try:
         with open(
-            os.path.join(path, INDEX_FULL_NAME), "r", encoding="utf8"
+            os.path.join(path, INDEX_NAME_FULL), "r", encoding="utf8"
         ) as r:
             k = r.read()
             k1 = re.findall(re.compile(r"## Finished(.*?)$", re.S), k)
             if len(k1):
                 text = f"# {dir_name(path)}{k1[0]}"
                 markdown_to_html(
-                    os.path.join(path, INDEX_FULL_NAME), text, dir_name(path)
+                    os.path.join(path, INDEX_NAME_FULL), text, dir_name(path)
                 )
     except FileNotFoundError:
         text = dirs(path)
         if text:
             markdown_to_html(
-                os.path.join(path, INDEX_FULL_NAME), text, dir_name(path)
+                os.path.join(path, INDEX_NAME_FULL), text, dir_name(path)
             )
 
 
@@ -107,10 +107,10 @@ def dir_html(path, changes, force):
 def all_html(force: bool):
     """自动生成仓库的html"""
 
-    with open(CHANGE_SAVE, "r", encoding="utf8") as f:
+    with open(PATH_CHANGE_SAVE, "r", encoding="utf8") as f:
         changes = f.read().split("\n")
 
-    to_html(os.path.join(INDEX_FULL_NAME, doc_dir()))
+    to_html(os.path.join(INDEX_NAME_FULL, doc_dir()))
     path = os.listdir(doc_dir())
     for i in path:
         i = os.path.join(doc_dir(), i)

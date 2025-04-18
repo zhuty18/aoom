@@ -6,15 +6,15 @@ import os
 import sys
 
 from personal import (
-    AI_COMMENT_TAG,
     FILE_ROOT,
-    FIN_TAG,
+    FORMAT_POST_DATE,
     INDEX_NAME,
-    LOG_PATH,
-    POST_DATE,
-    POST_MAX,
-    POST_PATH,
-    TBC_TAG,
+    MAX_POST,
+    PATH_LOG,
+    PATH_POST,
+    TAG_AI_COMMENT,
+    TAG_FIN,
+    TAG_TBC,
 )
 from utils import (
     add_predef,
@@ -51,11 +51,11 @@ def post(filename, name, default_time=None):
     if not date:
         date = get_pre_key(pre_d, "auto_date")
     if not date:
-        date = format_time(get_time(default_time), POST_DATE)
+        date = format_time(get_time(default_time), FORMAT_POST_DATE)
 
     # 生成post名
     post_name = f"{date}-{name}.md"
-    post_path = os.path.join(POST_PATH, post_name)
+    post_path = os.path.join(PATH_POST, post_name)
 
     # 建立post文件
     with open(post_path, "w", encoding="utf8") as f:
@@ -112,7 +112,7 @@ def post_log(filename):
     add_predef(post(filename, "日志"), "post", "false", True)
 
 
-def clear_post(post_max=POST_MAX):
+def clear_post(post_max=MAX_POST):
     """控制post上限"""
     if post_max >= 0:
         POST_LIST.sort()
@@ -120,7 +120,7 @@ def clear_post(post_max=POST_MAX):
 
         posted = 0
         for item in POST_LIST:
-            posted += mark_post(os.path.join(POST_PATH, item))
+            posted += mark_post(os.path.join(PATH_POST, item))
             if posted == post_max:
                 break
 
@@ -130,7 +130,7 @@ def mark_as_post(filename, counter):
     his = counter.history[name_of(filename)]
     for item in POST_LIST:
         if his.name in item:
-            mark_post(os.path.join(POST_PATH, item))
+            mark_post(os.path.join(PATH_POST, item))
             break
 
 
@@ -140,7 +140,7 @@ def post_all(path, counter, allow_tbc=False):
         subdir = os.path.join(path, item)
         if dir_name(subdir):
             post_all(subdir, counter, allow_tbc)
-        elif LOG_PATH in short_path(path) and name_of(item) in counter.history:
+        elif PATH_LOG in short_path(path) and name_of(item) in counter.history:
             post_log(subdir)
         elif (
             name_of(item) in counter.history
@@ -154,12 +154,12 @@ def post_all(path, counter, allow_tbc=False):
 if __name__ == "__main__":
     COUNTER = WordCounter()
     COUNTER.read_history()
-    if not os.path.exists(POST_PATH):
-        os.mkdir(POST_PATH)
+    if not os.path.exists(PATH_POST):
+        os.mkdir(PATH_POST)
     make_index_dir("tag", "标签")
-    make_index("tag", TBC_TAG)
-    make_index("tag", FIN_TAG)
-    make_index("tag", AI_COMMENT_TAG)
+    make_index("tag", TAG_TBC)
+    make_index("tag", TAG_FIN)
+    make_index("tag", TAG_AI_COMMENT)
     make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
@@ -171,7 +171,7 @@ if __name__ == "__main__":
         clear_post()
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
-            if LOG_PATH not in short_path(i):
+            if PATH_LOG not in short_path(i):
                 post_work(i, COUNTER)
                 mark_as_post(i, COUNTER)
             else:

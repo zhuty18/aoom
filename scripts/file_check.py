@@ -81,9 +81,9 @@ class FileChecker:
 
 
 if __name__ == "__main__":
-    from personal import BACKWARD_MODE, DEFAULT_TRANSLATE, TRANSLATE_MODE
+    from personal import BACKWARD_MODE, TRANSLATE_DEFAULT, TRANSLATE_MODE
 
-    MODE = DEFAULT_TRANSLATE
+    MODE = TRANSLATE_DEFAULT
     if len(sys.argv) > 2:
         if "-n" in sys.argv[2:]:
             MODE = None

@@ -5,7 +5,7 @@
 import os
 import sys
 
-from personal import LOG_PATH
+from personal import PATH_LOG
 from utils import (
     add_predef,
     dir_name,
@@ -41,7 +41,7 @@ def format_md(filename):
     add_predef(filename, "title", title, True)
     if not ignore_in_format(filename):
         mark_category(filename)
-    elif LOG_PATH in short_path(filename):
+    elif PATH_LOG in short_path(filename):
         mark_category(filename)
     if get_ai_comment(filename):
         add_predef(
