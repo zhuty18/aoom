@@ -83,7 +83,7 @@ def post(filename, name, default_time=None):
 
     # 建立标签索引
     for x in get_pre_key(pre_d, "tags"):
-        make_index("tag", x)
+        make_index("tags", x)
     # 建立类别索引
     if dir_name(path_of(filename)):
         make_index("category", dir_name(path_of(filename)))
@@ -156,10 +156,10 @@ if __name__ == "__main__":
     COUNTER.read_history()
     if not os.path.exists(PATH_POST):
         os.mkdir(PATH_POST)
-    make_index_dir("tag", "标签")
-    make_index("tag", TAG_TBC)
-    make_index("tag", TAG_FIN)
-    make_index("tag", TAG_AI_COMMENT)
+    make_index_dir("tags", "标签")
+    make_index("tags", TAG_TBC)
+    make_index("tags", TAG_FIN)
+    make_index("tags", TAG_AI_COMMENT)
     make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
