@@ -23,7 +23,7 @@
   <span class="post-meta-tag">
     {% for tag in post.tags %}
       {% if site.tags contains tag %}
-        <a href="{{ site.baseurl }}/tag/{{ tag }}">
+        <a href="{{ site.baseurl }}/tags/{{ tag }}">
           <span class="tag {{ tag }}">
             {{ tag }}
           </span>
@@ -38,13 +38,13 @@
       </a>
     {% endif %}
     {% if post.finished %}
-      <a href="{{ site.baseurl }}/tag/FIN">
+      <a href="{{ site.baseurl }}/tags/FIN">
         <span class="tag FIN">
           FIN
         </span>
       </a>
     {% else %}
-      <a href="{{ site.baseurl }}/tag/TBC">
+      <a href="{{ site.baseurl }}/tags/TBC">
         <span class="tag TBC">
           TBC
         </span>

@@ -40,7 +40,7 @@ ddl: 2024-04-17
 
 nav-head:
     - name: 标签
-      link: /tag
+      link: /tags
     - name: 类别
       link: /category
 
