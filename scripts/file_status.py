@@ -34,7 +34,7 @@ from utils import (
 )
 
 
-class 文件属性:
+class 文件管理:
     """文件记录"""
 
     def __init__(self, 路径, 时间=None, 历史长度=0, 历史完结=False):
@@ -53,7 +53,7 @@ class 文件属性:
     def 从历史条目(历史):
         """从历史条目中获取信息"""
         条目 = 历史.strip().split("\t")
-        return 文件属性(
+        return 文件管理(
             获取文件_文件名(条目[0]),
             获取时间戳(条目[2]),
             int(条目[1]),
@@ -78,7 +78,7 @@ class 文件属性:
             时间 = 获取log时间(t)
         else:
             时间 = None
-        return 文件属性(路径, 时间)
+        return 文件管理(路径, 时间)
 
     def 存在(self):
         """文件是否存在"""
@@ -361,7 +361,7 @@ class 文件属性:
         ai评论 = self.ai评论()
         if ai评论:
             self.标注ai评论()
-            文件属性(ai评论).标注ai正文()
+            文件管理(ai评论).标注ai正文()
 
     def 标注类别(self):
         """在yaml增加类"""
@@ -419,7 +419,7 @@ class 文件属性:
 <!--more-->
 """
             )
-        发布文件 = 文件属性(发布路径)
+        发布文件 = 文件管理(发布路径)
         发布文件.复制yaml(self.__yaml内容())
         target = self._路径.replace(".md", "")
         if target.endswith("."):

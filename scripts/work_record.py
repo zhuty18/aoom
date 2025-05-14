@@ -8,7 +8,7 @@ import subprocess
 import sys
 import time
 
-from file_status import 文件属性
+from file_status import 文件管理
 from personal import (
     AI评论路径,
     INDEX文件,
@@ -37,8 +37,8 @@ class 字数统计器:
 
     def __init__(self):
         self.总字数变更 = 0
-        self.文件表: dict[str, 文件属性] = {}
-        self.变更文件: list[文件属性] = []
+        self.文件表: dict[str, 文件管理] = {}
+        self.变更文件: list[文件管理] = []
 
     def 运行(self):
         """工作函数"""
@@ -53,7 +53,7 @@ class 字数统计器:
         if os.path.exists(历史文件):
             with open(历史文件, "r", encoding="utf-8") as f:
                 for i in f.readlines():
-                    文件 = 文件属性.从历史条目(i)
+                    文件 = 文件管理.从历史条目(i)
                     self.文件表[文件.文件名()] = 文件
 
     def 读取变更文件(self):
@@ -71,9 +71,9 @@ class 字数统计器:
             if i:
                 i = i.split("  ")[-1]
                 i = i.strip('"')
-            if 文件属性(i, None).合法():
+            if 文件管理(i, None).合法():
                 if os.path.exists(i) and 路径名(文件夹路径(i)):
-                    self.变更文件.append(文件属性.从路径(i))
+                    self.变更文件.append(文件管理.从路径(i))
 
     def 清理删除文件(self):
         """清除历史记录中消失了的文件"""
@@ -155,8 +155,8 @@ class 索引构建器:
     """索引目录建立器"""
 
     def __init__(self, path, 统计器: 字数统计器, order):
-        self.未完成: list[文件属性] = []
-        self.已完成: list[文件属性] = []
+        self.未完成: list[文件管理] = []
+        self.已完成: list[文件管理] = []
         self.建立索引(path, 统计器)
         self.索引排序(self.未完成, order)
         self.索引排序(self.已完成, order)
@@ -172,10 +172,10 @@ class 索引构建器:
         """建立索引"""
         for i in os.listdir(path):
             文件路径 = os.path.join(path, i)
-            文件 = 文件属性(文件路径)
+            文件 = 文件管理(文件路径)
             if 文件.合法():
                 if 文件.文件名() not in 统计器.文件表.keys():
-                    文件 = 文件属性.从路径(文件路径)
+                    文件 = 文件管理.从路径(文件路径)
                     统计器.文件表[文件.文件名()] = 文件
                 else:
                     文件 = 统计器.文件表[文件.文件名()]
@@ -184,7 +184,7 @@ class 索引构建器:
                 else:
                     self.未完成.append(文件)
 
-    def 索引排序(self, l: list[文件属性], order):
+    def 索引排序(self, l: list[文件管理], order):
         """索引排序"""
         if "win" in sys.platform:
             pin = Pinyin()
@@ -226,6 +226,7 @@ class 索引构建器:
 
 def 更新索引(统计器: 字数统计器, 索引路径, 顺序, 强制=False):
     """更新索引"""
+    索引路径 = 相对路径(索引路径)
     for i in os.listdir(索引路径):
         子目录 = os.path.join(索引路径, i)
         if os.path.isdir(子目录) and not i.startswith("."):
@@ -237,7 +238,7 @@ def 更新索引(统计器: 字数统计器, 索引路径, 顺序, 强制=False)
             if 有内容变更 or 强制:
                 更新索引(统计器, 子目录, 顺序, 强制)
     if (
-        索引路径 != 文档根目录()
+        索引路径 != 相对路径(文档根目录())
         and 路径名(索引路径)
         and 日志路径 not in 索引路径
         and AI评论路径 not in 索引路径

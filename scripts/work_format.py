@@ -5,13 +5,13 @@
 import os
 import sys
 
-from file_status import 文件属性
+from file_status import 文件管理
 from utils import 文档根目录, 获取文件_关键字
 
 
 def 格式化文件(filename, force=False):
     """格式化文件"""
-    t = 文件属性(filename)
+    t = 文件管理(filename)
     if t.合法():
         t.格式化()
         if force:
@@ -34,7 +34,7 @@ def 全部格式化(path):
             子路径.endswith(".md")
             or 子路径.endswith(".txt")
             or 子路径.endswith(".py")
-        ) and not 文件属性(子路径).格式化中忽略():
+        ) and not 文件管理(子路径).格式化中忽略():
             格式化文件(子路径)
         elif os.path.isdir(子路径) and "data" in 子路径:
             全部格式化(子路径)

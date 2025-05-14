@@ -5,12 +5,12 @@ import itertools
 import os
 
 import numpy as npy
-from file_status import 文件属性
+from file_status import 文件管理
 
 
 def file_count(filename):
     """获取文件字数、大小"""
-    文件 = 文件属性(filename)
+    文件 = 文件管理(filename)
     acc = 文件.读取yaml内参数("word_count")
     return (int(acc), os.path.getsize(filename)) if acc else (0, 0)
 

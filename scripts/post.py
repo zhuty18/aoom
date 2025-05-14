@@ -5,7 +5,7 @@
 import os
 import sys
 
-from file_status import 文件属性
+from file_status import 文件管理
 from personal import (
     AI批评TAG,
     INDEX文件,
@@ -23,12 +23,12 @@ POST_LIST = []
 
 def 发布文件(filename):
     """发布单个文件"""
-    POST_LIST.append(文件属性.从路径(filename).发布())
+    POST_LIST.append(文件管理.从路径(filename).发布())
 
 
 def 发布日志(filename):
     """post一条日志"""
-    文件属性(filename).标注发布(True)
+    文件管理(filename).标注发布(True)
 
 
 def 额外发布指定量(发布上限=首页POST上限):
@@ -39,7 +39,7 @@ def 额外发布指定量(发布上限=首页POST上限):
 
         posted = 0
         for item in POST_LIST:
-            文件 = 文件属性(item)
+            文件 = 文件管理(item)
             posted += 文件.标注发布()
             if posted == 发布上限:
                 break
@@ -47,10 +47,10 @@ def 额外发布指定量(发布上限=首页POST上限):
 
 def 强制发布文件(filename):
     """标记本次改动的文件为post"""
-    文件 = 文件属性(filename)
+    文件 = 文件管理(filename)
     for item in POST_LIST:
         if 文件.标题() in item:
-            文件属性(item).标注发布()
+            文件管理(item).标注发布()
             break
 
 
@@ -63,7 +63,7 @@ def 发布全部文件(path, allow_tbc=False):
         elif 日志路径 in 相对路径(path):
             发布日志(文件路径)
         else:
-            文件 = 文件属性(文件路径)
+            文件 = 文件管理(文件路径)
             if 文件.应发布():
                 if 文件.已完结() or allow_tbc:
                     发布文件(文件路径)
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
         发布全部文件(文档根, True)
-        改动文件 = 文件属性(os.path.join(文档根, INDEX文件)).读取yaml内参数(
+        改动文件 = 文件管理(os.path.join(文档根, INDEX文件)).读取yaml内参数(
             "change"
         )
         for i in 改动文件:

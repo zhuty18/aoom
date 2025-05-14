@@ -8,13 +8,13 @@ import time
 
 from name_def import names
 from personal import (
+    AI评论路径,
     INDEX文件,
     TAGS_CP,
     TAGS_优先,
     TAGS_组织,
     TAGS_角色,
     历史文件,
-    完结标志,
     忽略文件,
     忽略路径,
     提交时间,
@@ -71,31 +71,6 @@ def 行长度(s: str) -> int:
     if t:
         res += 1
     return res
-
-
-def 文件长度(文件: str) -> int:
-    """文件长度计算"""
-    res = 0
-    with open(文件, "r", encoding="utf8") as f:
-        内容 = f.read().replace(get_predef_str(文件), "").strip("-\n")
-        for i in 内容.split("\n"):
-            res += 行长度(i.strip())
-    return res
-
-
-def file_fin(filename: str) -> bool:
-    """完成情况检测"""
-    if 完结路径(文件夹路径(filename)):
-        return True
-    if get_pre_key(get_predef(filename), "finished") == "true":
-        return True
-    with open(filename, "r", encoding="utf8") as f:
-        text = f.read()
-        ends = 完结标志
-        for i in ends:
-            if f"{i}\n" in text:
-                return True
-    return False
 
 
 def match_keys(keys: list, name: str) -> bool:
@@ -220,13 +195,13 @@ def 目录信息(path: str = 文档根目录()):
     return text if has else None
 
 
-class SearchForFile:
+class 搜索文件:
     """搜索含有关键词的文件"""
 
-    def __init__(self, key: str, name_match=False):
+    def __init__(self, key: str, 严格相同=False):
         self.key = key
         self.res = []
-        self.name_match = name_match
+        self._严格 = 严格相同
         self.check_dir(文档根目录())
         if not self.res:
             raise FileNotFoundError(
@@ -241,20 +216,12 @@ class SearchForFile:
             i = os.path.join(path, i)
             if os.path.isdir(i):
                 self.check_dir(i)
-            else:
-                if self.name_match:
-                    if (
-                        i.endswith(".md")
-                        and name_of(i) == self.key
-                        and not ignore_in_format(i)
-                    ):
+            elif i.endswith(".md") and not AI评论路径 in 相对路径(i):
+                if self._严格:
+                    if name_of(i) == self.key:
                         self.res.append(i)
                 else:
-                    if (
-                        match_keys([self.key], i)
-                        and i.endswith(".md")
-                        and not ignore_in_format(i)
-                    ):
+                    if match_keys([self.key], i):
                         self.res.append(i)
 
     def result(self):
@@ -264,12 +231,12 @@ class SearchForFile:
 
 def 获取文件_关键字(key):
     """搜索含有关键词的文件"""
-    return SearchForFile(key).result()
+    return 搜索文件(key).result()
 
 
 def 获取文件_文件名(name):
     """根据文件名搜索文件"""
-    return SearchForFile(name, True).result()[0]
+    return 搜索文件(name, True).result()[0]
 
 
 def 隐藏已完结():
@@ -314,43 +281,6 @@ def 完结路径(path):
     """路径是否默认为完结"""
     fin_path = {"batlantern": True, "blob": True, "logs": True}
     return fin_path.get(doc_path(path), False)
-
-
-def get_predef_str(filename):
-    """读取预定义字符串"""
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read()
-    if content.startswith("---"):
-        return content[0 : content.index("---", 3)].strip("-\n")
-    else:
-        return None
-
-
-def get_predef(filename):
-    """读取预定义内容"""
-    pre_d_str = get_predef_str(filename)
-    if not pre_d_str:
-        return None
-    pre_d = {}
-    current = ""
-    for i in pre_d_str.split("\n"):
-        if ":" in i:
-            i = i.split(":")
-            key = i[0].strip()
-            current = key
-            value = i[1].strip()
-            if key == "tags" and " " in value:
-                value = value.split(" ")
-            elif key == "tags" and value != "":
-                value = [value]
-            elif key == "tags":
-                value = []
-            elif value == "":
-                value = []
-            pre_d[key] = value
-        elif "  - " in i:
-            pre_d[current].append(i.strip(" -"))
-    return pre_d
 
 
 def tag优先级(tag):
