@@ -300,13 +300,6 @@ def tag优先级(tag):
         return 4
 
 
-def get_pre_key(pre_d, keyword):
-    """从预定义头中读取关键字参数"""
-    if keyword == "tags":
-        return pre_d.get(keyword, [])
-    return pre_d.get(keyword)
-
-
 def 制作索引(kind, name):
     """制作jekyll索引"""
     path = os.path.join(os.getcwd(), kind)

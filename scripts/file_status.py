@@ -97,7 +97,7 @@ class 文件管理:
         """是否应发布"""
         return (
             self._路径.endswith(".md")
-            and (not self.ai创作())
+            and (not self.__ai创作())
             and (not self.格式化中忽略())
         )
 
@@ -190,7 +190,7 @@ class 文件管理:
         """Markdown信息条目"""
         return f"|[{self.标题()}]({self.文件名().replace(" ", "%20")}.md)|{self.字数()}|{self.更新时间()}|"
 
-    def 摘要(self):
+    def __摘要(self):
         """文件预览"""
         with open(self._路径, "r", encoding="utf8") as f:
             yaml = False
@@ -231,20 +231,16 @@ class 文件管理:
                 return True
         return "_" in self._路径
 
-    def ai评论(self):
+    def __ai评论(self):
         """获取AI评论文件"""
-        if self.ai创作():
+        if self.__ai创作():
             return None
         ai评论 = os.path.join(AI评论路径, self.文件名()) + ".md"
         return ai评论 if os.path.exists(ai评论) else None
 
-    def ai创作(self):
+    def __ai创作(self):
         """是否为AI创作"""
         return AI评论路径 in self._路径
-
-    def ai正文(self):
-        """获取AI对应的源文件"""
-        return 获取文件_文件名(self.文件名())[0] if self.ai创作() else None
 
     def __yaml字符串(self):
         """读取yaml字符串"""
@@ -344,7 +340,7 @@ class 文件管理:
         res.replace("------", "---")
         with open(self._路径, "w", encoding="utf-8") as f:
             f.write(res.strip("\n") + "\n")
-        self.标注字数()
+        self.__添加yaml参数("word_count", str(self.字数()), 修改=True)
         self.标注完结()
 
     def 在线格式化(self):
@@ -354,18 +350,19 @@ class 文件管理:
                 content = f.read()
             with open(self._路径, "w", encoding="utf8") as f:
                 f.write(content.replace(f"# {self.标题()}\n", ""))
-            self.标注标题()
+            self.__添加yaml参数("title", self.标题(), 修改=True)
         if (not self.格式化中忽略()) or 日志路径 in self._路径:
-            self.标注类别()
+            self.__添加yaml参数("category", 路径名(文件夹路径(self._路径)))
 
-        ai评论 = self.ai评论()
+        ai评论 = self.__ai评论()
         if ai评论:
-            self.标注ai评论()
-            文件管理(ai评论).标注ai正文()
-
-    def 标注类别(self):
-        """在yaml增加类"""
-        self.__添加yaml参数("category", 路径名(文件夹路径(self._路径)))
+            self.__添加yaml参数(
+                "ai_comment", self.__ai评论().replace(".md", ".html")
+            )
+            文件管理(ai评论).__添加yaml参数(
+                "ai_source",
+                获取文件_文件名(self.文件名())[0].replace(".md", ".html"),
+            )
 
     def 标注完结(self, 强制=False):
         """标记完成"""
@@ -386,22 +383,6 @@ class 文件管理:
             "auto_date", 格式化时间(self._时间, 日期格式), 修改=True
         )
 
-    def 标注字数(self):
-        """添加字数"""
-        self.__添加yaml参数("word_count", str(self.字数()), 修改=True)
-
-    def 标注标题(self):
-        """添加标题"""
-        self.__添加yaml参数("title", self.标题(), 修改=True)
-
-    def 标注ai评论(self):
-        """标注ai评论"""
-        self.__添加yaml参数("ai_comment", self.ai评论().replace(".md", ".html"))
-
-    def 标注ai正文(self):
-        """标注ai源"""
-        self.__添加yaml参数("ai_source", self.ai正文().replace(".md", ".html"))
-
     def 发布(self):
         """发布文件"""
         日期 = self.读取yaml内参数("date")
@@ -414,7 +395,7 @@ class 文件管理:
 
         with open(发布路径, "w", encoding="utf8") as f:
             f.write(
-                f"""{self.摘要()}
+                f"""{self.__摘要()}
 
 <!--more-->
 """
