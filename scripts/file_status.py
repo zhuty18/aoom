@@ -95,7 +95,11 @@ class 文件属性:
 
     def 应发布(self):
         """是否应发布"""
-        return self._路径.endswith(".md") and (not self.ai创作())
+        return (
+            self._路径.endswith(".md")
+            and (not self.ai创作())
+            and (not os.path.isdir(self._路径))
+        )
 
     def 路径(self):
         """文件路径"""
