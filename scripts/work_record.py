@@ -56,7 +56,7 @@ class 字数统计器:
         self.读取变更文件()
         self.清理删除文件()
         self.更新统计结果()
-        self.标注更新日期()
+        # self.标注更新日期()
 
     def 读取历史(self):
         """从历史记录中读取已有条目"""
@@ -188,9 +188,12 @@ class 索引构建器:
         for i in os.listdir(path):
             文件路径 = os.path.join(path, i)
             if i.endswith(".md") and not ignore_in_format(文件路径):
-                t = 文件属性.从路径(文件路径)
+                t = 文件属性(文件路径, None)
                 if t.文件名() not in 统计器.文件表.keys():
+                    t = 文件属性.从路径(文件路径)
                     统计器.文件表[t.文件名()] = t
+                else:
+                    t = 统计器.文件表[t.文件名()]
                 if t.已完结():
                     self.已完成.append(t)
                 else:
@@ -221,16 +224,16 @@ class 索引构建器:
         """写入索引"""
         if len(self.未完成) + len(self.已完成) > 0:
             head = f"# {路径名(path)}\n\n"
+            full_index = head
+            index = head
+            if self.未完成:
+                full_index += self.列表内容(self.未完成, 标题_未完结) + "\n"
+            index += self.列表内容(self.已完成, 标题_已完结) + "\n"
+            full_index += self.列表内容(self.已完成, 标题_已完结) + "\n"
             with open(f"{path}/{INDEX文件}", "w", encoding="utf-8") as fi:
-                with open(
-                    f"{path}/{INDEX文件_完整}", "w", encoding="utf-8"
-                ) as fr:
-                    fi.write(head)
-                    fr.write(head)
-                    if self.未完成:
-                        fr.write(self.列表内容(self.未完成, 标题_未完结) + "\n")
-                    fi.write(self.列表内容(self.已完成, 标题_已完结))
-                    fr.write(self.列表内容(self.已完成, 标题_已完结))
+                fi.write(index.strip("\n") + "\n")
+            with open(f"{path}/{INDEX文件_完整}", "w", encoding="utf-8") as fr:
+                fr.write(full_index.strip("\n") + "\n")
         else:
             with open(f"{path}/{INDEX文件}", "w", encoding="utf-8") as fi:
                 fi.write(dirs(path).strip() + "\n")

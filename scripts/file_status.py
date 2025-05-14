@@ -73,7 +73,7 @@ class 文件属性:
             ].strip()
             时间 = 获取log时间(t)
         else:
-            时间 = 获取时间戳()
+            时间 = None
         return 文件属性(路径, 时间)
 
     def 存在(self):
@@ -110,6 +110,7 @@ class 文件属性:
     def 已完结(self):
         """是否完结"""
         if self._完结 is None:
+            # print(self._路径,完结路径(文件夹路径(self._路径)))
             if 完结路径(文件夹路径(self._路径)):
                 self._完结 = True
             elif self.读取yaml内参数("finished") == "true":
@@ -121,7 +122,8 @@ class 文件属性:
                     for i in ends:
                         if f"{i}\n" in text:
                             self._完结 = True
-            self._完结 = False
+            if self._完结 is None:
+                self._完结 = False
         return self._完结
 
     def 字数(self, 打印过程=False):
@@ -165,7 +167,7 @@ class 文件属性:
 
     def md信息条目(self):
         """Markdown信息条目"""
-        return f"|[{self.文件名()}]({self.链接()}.md)|{self.字数()}|{self.更新时间()}|"
+        return f"|[{self.文件名()}]({self.文件名().replace(" ", "%20")}.md)|{self.字数()}|{self.更新时间()}|"
 
     def 预览(self):
         """文件预览"""
