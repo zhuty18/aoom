@@ -1,36 +1,42 @@
 ﻿class MyUtils {
     work_of (pages, slice_at = null) {
-        let tmp = pages.where(x => x.word_count && (x.file.folder.indexOf("trash") < 0)).sort(x => x.word_count, "desc").sort(x => x.date ? x.date : x.auto_date, "desc")
+        let tmp = pages
+            .where((x) => x.word_count && x.file.folder.indexOf("trash") < 0)
+            .sort((x) => x.word_count, "desc")
+            .sort((x) => (x.date ? x.date : x.auto_date), "desc")
         if (slice_at) {
-            return tmp.slice(0, slice_at).sort(x => (x.finished ? x.finished : false))
+            return tmp.slice(0, slice_at).sort((x) => (x.finished ? x.finished : false))
         }
-        return tmp.sort(x => (x.finished ? x.finished : false))
+        return tmp.sort((x) => (x.finished ? x.finished : false))
     }
 
     meter_at (value, global) {
         const colors = [
             //hsl(60, 90%, 60%)
-            { "h": 60, "s": 90, "l": 60, "v": 0 },
+            { h: 60, s: 90, l: 60, v: 0 },
             //hsl(330, 85%, 55%)
-            { "h": 330, "s": 85, "l": 55, "v": global.percent_low },
+            { h: 330, s: 85, l: 55, v: global.percent_low },
             //hsl(220, 80%, 65%)
-            { "h": 220, "s": 80, "l": 65, "v": global.percent_high },
+            { h: 220, s: 80, l: 65, v: global.percent_high },
             //hsl(160, 74.90%, 50.00%)
-            { "h": 160, "s": 75, "l": 50, "v": global.percent_ideal },
+            { h: 160, s: 75, l: 50, v: global.percent_ideal },
             //hsl(120, 60%, 45%)
-            { "h": 120, "s": 60, "l": 45, "v": 1 },
+            { h: 120, s: 60, l: 45, v: 1 },
         ]
         let p = value
         let color = "hsl(0,100%,50%)"
-        for (let i = 0; i < (colors.length - 1); i++) {
+        for (let i = 0; i < colors.length - 1; i++) {
             if (colors[i].v <= p && p <= colors[i + 1].v) {
                 let start_color = colors[i]
                 let end_color = colors[i + 1]
                 let position = (p - start_color.v) / (end_color.v - start_color.v)
 
-                let h_inter = Math.abs(end_color.h - start_color.h) > 180 ? (end_color.h - start_color.h - 360) : (end_color.h - start_color.h)
+                let h_inter =
+                    Math.abs(end_color.h - start_color.h) > 180
+                        ? end_color.h - start_color.h - 360
+                        : end_color.h - start_color.h
                 let h = start_color.h + position * h_inter
-                h = h < 0 ? (h + 360) : (h > 360 ? (h - 360) : h)
+                h = h < 0 ? h + 360 : h > 360 ? h - 360 : h
                 let s = start_color.s + position * (end_color.s - start_color.s)
                 let l = start_color.l + position * (end_color.l - start_color.l)
                 color = `hsl(${h},${s}%,${l}%)`
@@ -49,22 +55,17 @@
     }
 
     count_by_size (size) {
-        let k = 0.33117228239986446
-        let v = -1077.8876816844543
-        if (size < 800) {
-            k = 0.3073133134726448
-            v = -23.40142162860285
-        } else if (size < 12000) {
-            k = 0.32346781904434435
-            v = -36.93753277881238
-        } else if (size < 50000) {
-            k = 0.3225562515681947
-            v = -7.719192092662913
-        } else if (size < 120000) {
-            k = 0.32159962813778875
-            v = 232.79318783223889
+        let size_fit = [
+            { s: 0.32426327101245456, i: -36.8548646904875, min: 0, max: 18000 },
+            { s: 0.325384354545762, i: -77.76508303388009, min: 18000, max: 80000 },
+            { s: 0.28972899603899527, i: 3823.615283001374, min: 80000, max: 140000 },
+            { s: 0.3293464811684735, i: -421.2721915636414, min: 140000, max: -1 },
+        ]
+        for (let i = 0; i < size_fit.length; i++) {
+            if (size >= size_fit[i].min && (size < size_fit[i].max || size_fit[i].max == -1)) {
+                return Math.max(Math.round(size_fit[i].s * size + size_fit[i].i), 0)
+            }
         }
-        return Math.max(Math.round(k * size + v), 0)
     }
 
     count (page) {
@@ -72,14 +73,13 @@
     }
 
     count_sum (pages) {
-        return pages.map(x => this.count(x)).sum()
+        return pages.map((x) => this.count(x)).sum()
     }
 
     count_text (value) {
         if (value < 20000) {
             return Math.round(value) + "字"
-        }
-        else {
+        } else {
             return Math.round(value / 100) / 100 + "万字"
         }
     }
@@ -93,9 +93,12 @@
             percent = count_res / Math.max(count_res / global.percent_ideal, global.count_ideal)
         }
         if (line == 1) {
-            return "🐰".repeat(parseInt(count_res / global.count_unit))
-                + this.meter_at((count_res % global.count_unit) / global.count_unit, global)
-                + " " + this.count_text(count_res)
+            return (
+                "🐰".repeat(parseInt(count_res / global.count_unit)) +
+                this.meter_at((count_res % global.count_unit) / global.count_unit, global) +
+                " " +
+                this.count_text(count_res)
+            )
         } else {
             return this.count_text(count_res) + "<br>" + this.meter_at(percent, global)
         }
@@ -126,27 +129,36 @@
     }
 
     pin_of (page, global) {
-        return "- [" + ((this.last_update(page) <= Number(global.day_ideal)) ? "f" : "n") + "] "
+        return "- [" + (this.last_update(page) <= Number(global.day_ideal) ? "f" : "n") + "] "
     }
 
     short_text (page, global, tag_number = 2) {
-        return this.pin_of(page, global) + page.file.link + " " + page.file.tags.slice(0, tag_number).join(" ") + " " + this.count_meter(page, global)
+        return (
+            this.pin_of(page, global) +
+            page.file.link +
+            " " +
+            page.file.tags.slice(0, tag_number).join(" ") +
+            " " +
+            this.count_meter(page, global)
+        )
     }
 
     pages_raw_data (pages, global) {
         let all = this.work_of(pages)
-        let tbc = all.where(page => !page.finished)
-        let fin = all.where(page => page.finished)
+        let tbc = all.where((page) => !page.finished)
+        let fin = all.where((page) => page.finished)
         return {
-            "tbc": tbc.length,
-            "fin": fin.length,
-            "all": all.length,
-            "fin_percent": fin.length / all.length,
-            "tbc_count": this.count_sum(tbc),
-            "fin_count": this.count_sum(fin),
-            "all_count": this.count_sum(all),
-            "fin_count_avg": fin.map(page => this.count(page)).avg(),
-            "fin_count_theory": this.count_sum(fin) + tbc.map(x => Math.max(global.count_ideal, this.count(x) / global.percent_ideal)).sum()
+            tbc: tbc.length,
+            fin: fin.length,
+            all: all.length,
+            fin_percent: fin.length / all.length,
+            tbc_count: this.count_sum(tbc),
+            fin_count: this.count_sum(fin),
+            all_count: this.count_sum(all),
+            fin_count_avg: fin.map((page) => this.count(page)).avg(),
+            fin_count_theory:
+                this.count_sum(fin) +
+                tbc.map((x) => Math.max(global.count_ideal, this.count(x) / global.percent_ideal)).sum(),
         }
     }
 
@@ -159,7 +171,7 @@
             this.percent_meter(raw_data.fin_percent, global, 2),
             this.count_text(raw_data.tbc_count),
             this.percent_meter(raw_data.fin_count / raw_data.all_count, global, 2),
-            this.count_text(raw_data.fin != 0 ? raw_data.fin_count_avg : 0)
+            this.count_text(raw_data.fin != 0 ? raw_data.fin_count_avg : 0),
         ]
     }
 }
