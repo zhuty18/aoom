@@ -11,9 +11,7 @@
 import sys
 
 from name_translate import name_tsl
-from personal import GENERATE_WEB
-from utils import line_length, search_by_keyword
-from web_make import to_html
+from utils import search_by_keyword, 行长度
 
 
 def count_file(filename, p=True):
@@ -21,7 +19,7 @@ def count_file(filename, p=True):
     if filename.endswith(".txt"):
         f = open(filename, "r", encoding="utf-8")
         if p:
-            print(filename + "\t" + str(line_length(f.read())))
+            print(filename + "\t" + str(行长度(f.read())))
         f.close()
     elif not filename.endswith(".md") and p:
         print("only support plain text and MarkDown files!")
@@ -44,7 +42,7 @@ def count_file(filename, p=True):
                     num = 0
                 last = i.count("#") - 1
                 chapter = i.strip("#").strip()
-            num += line_length(i.strip())
+            num += 行长度(i.strip())
         if p:
             print("\t" * last + chapter + "\t" + str(num))
         total += num
@@ -60,8 +58,6 @@ class FileChecker:
         if self.result is not None:
             self.tsl_result(mode)
             self.count_result()
-            if html and GENERATE_WEB:
-                self.html_result()
 
     def tsl_result(self, mode):
         """翻译找到的文件"""
@@ -74,21 +70,16 @@ class FileChecker:
         for i in self.result:
             count_file(i)
 
-    def html_result(self):
-        """生成文件的网页"""
-        for i in self.result:
-            to_html(i)
-
 
 if __name__ == "__main__":
-    from personal import BACKWARD_MODE, TRANSLATE_DEFAULT, TRANSLATE_MODE
+    from personal import 反向翻译, 翻译模式, 翻译行为
 
-    MODE = TRANSLATE_DEFAULT
+    MODE = 翻译行为
     if len(sys.argv) > 2:
         if "-n" in sys.argv[2:]:
             MODE = None
         elif "-t" in sys.argv[2:]:
-            MODE = TRANSLATE_MODE
+            MODE = 翻译模式
         elif "-b" in sys.argv[2:]:
-            MODE = BACKWARD_MODE
+            MODE = 反向翻译
     fc = FileChecker(sys.argv[1], MODE, not "-h" in sys.argv)

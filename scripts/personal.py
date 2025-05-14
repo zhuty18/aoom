@@ -1,116 +1,102 @@
 # coding=utf-8
-"""
-个人设定
-"""
 
-# 网站名称
-WEB_NAME = "兔子草 | Atomic"
+"""个人设定"""
 
-# git使用的提交署名
-GIT_NAME = "tuzicao"
-GIT_EMAIL = "13718054285@163.com"
+import time
 
-# 文档根
-FILE_ROOT = "docs"
+网站名 = "兔子草 | Atomic"
 
-# 生成网页
-GENERATE_WEB = False
+GIT署名 = "tuzicao"
+GIT邮箱 = "13718054285@163.com"
 
-# 是否强制生成网页
-GIT_WEB = False
+文档根 = "docs"
 
 # 本次提交时间，留空作为运行时的公共变量
-COMMIT_TIME = None
+提交时间 = None
 
-# 是否使用git提交
-GIT_COMMIT = True
+if 提交时间 is None:
+    提交时间 = time.time()
 
-# 是否添加所有变更
-GIT_ADD = True
+GIT提交 = True
+GIT添加 = True
+GIT推送 = True
+GIT默认信息 = "随便更新"
 
-# 是否推送到远程分支
-GIT_PUSH = True
-
-# 不使用-m参数时的提交默认信息
-DEFAULT_MESSAGE = "随便更新"
-
-# 是否进行字数统计
-COUNT_WORD = True
+进行统计 = True
 
 # 字数统计的顺序
 # time代表按文件上一次提交的时间排序
 # name代表按文件名（拼音顺序）进行排序
-DEFAULT_ORDER = "time"
-ALT_ORDER = "name" if DEFAULT_ORDER == "time" else "time"
+默认顺序 = "time"
+其他顺序 = "name" if 默认顺序 == "time" else "time"
 
 # 词云生成词云的文件范围
 # 空字符串表示生成所有字数变化文件的词云
 # none表示不生成词云
 # 其他字符串表示生成文件名含此字符串的词云
-WORD_CLOUD_TYPE = "none"
+词云范围 = "none"
 
 # 词云统计后要做的工作
 # s 生成与文档同名的.png文件，并保存在同一路径下
 # p 生成词云图片并显示
 # r 删除保存的词云图片
 # 可以同时使用多个工作，例如sp
-WORD_CLOUD_JOB = "p"
+词云工作 = "p"
 
 # 名词翻译方向
-TRANSLATE_MODE = "eng2chs"
-BACKWARD_MODE = TRANSLATE_MODE[4:7] + "2" + TRANSLATE_MODE[0:3]
+翻译模式 = "eng2chs"
+反向翻译 = 翻译模式[4:7] + "2" + 翻译模式[0:3]
 
 # 默认翻译
 # TRANSLATE_MODE，BACKWARD_MODE，或None
-TRANSLATE_DEFAULT = None
-# 默认的时间戳格式
-FORMAT_TIME = "%y.%m.%d %H:%M"
-# 默认的日期格式
-FORMAT_DATE = "%Y-%m-%d"
+翻译行为 = None
+
+# 时间格式
+时间格式 = "%y.%m.%d %H:%M"
+日期格式 = "%Y-%m-%d"
 
 # index
-INDEX_NAME = "index.md"
-INDEX_NAME_FULL = "full_index.md"
+INDEX文件 = "index.md"
+INDEX文件_完整 = "full_index.md"
 
 # 文档库开头
-ARCHIVE_UPDATE_STR = "{update_detail}"
-ARCHIVE_YAML = f"""---
+文档库更新字符串 = "{update_detail}"
+文档库YAML = f"""---
 layout: docs
-title: {WEB_NAME}
-update: {ARCHIVE_UPDATE_STR}
+title: {网站名}
+update: {文档库更新字符串}
 ---
 
 """
+标题_已完结 = "## 已完结"
+标题_未完结 = "## 未完结"
 
 # 默认字符串，勿动
-FIN_HEAD = "// finished work head"
-FIN_TAIL = "// finished work tail"
-FIN_TEM = '"template":true,'
+隐藏区开头 = "// finished work head"
+隐藏区结尾 = "// finished work tail"
+隐藏区初始值 = '"template":true,'
 
-PATH_HISTORY = "data/history.txt"
-PATH_CHANGE_SAVE = "data/change.txt"
+历史文件 = "data/history.txt"
+更改文件 = "data/change.txt"
 
-PATH_POST = "_posts/"
-FORMAT_POST_DATE = "%Y-%m-%d"
-FORMAT_POST_FILE = FORMAT_POST_DATE + "-{title}.md"
-
-TITLE_FINS = "## 已完结"
-TITLE_TBCS = "## 未完结"
-MARKS_FIN = ["END", "完结", "Q.E.D."]
-TAG_FIN = "FIN"
-TAG_TBC = "TBC"
-TAG_AI_COMMENT = "AI评论"
-# 日志
-PATH_LOG = "docs/logs"
-
+# POST相关
+POST路径 = "_posts/"
+POST日期格式 = "%Y-%m-%d"
+POST文件格式 = POST日期格式 + "-{title}.md"
 # 首页post显示上限，0为关闭功能，-1为不设置上限
-MAX_POST = 10
+首页POST上限 = 10
+摘要长度 = 100
 
-# 文件摘要长度
-LENGTH_PREVIEW = 100
+完结标志 = ["END", "完结", "Q.E.D."]
+完结TAG = "FIN"
+未完TAG = "TBC"
+AI批评TAG = "AI评论"
+
+# 日志
+日志路径 = "docs/logs"
 
 # 文件夹名
-DIR_NAMES = {
+文件夹名 = {
     "AI": "AI批评",
     "blob": "短篇",
     "DC": "DC",
@@ -138,18 +124,18 @@ DIR_NAMES = {
 }
 
 # 格式化+字数统计时忽略的文件与路径
-FILES_IGNORE = [INDEX_NAME_FULL, INDEX_NAME, "README.md"]
-PATH_AI_COMMENT = "docs/AI"
-PATHS_IGNORE = [
-    PATH_LOG,
+忽略文件 = [INDEX文件_完整, INDEX文件, "README.md"]
+AI评论路径 = "docs/AI"
+忽略路径 = [
+    日志路径,
     "docs/明星煌煌",
     "docs/_obsidian",
     "docs/material",
-    PATH_AI_COMMENT,
+    AI评论路径,
 ]
 
 # TAG类别（排序用）
-TAGS_PRIORITIZED = ["2025蝙绿企划"]
+TAGS_优先 = ["2025蝙绿企划"]
 TAGS_CP = [
     "无CP",
     "混邪",
@@ -180,7 +166,7 @@ TAGS_CP = [
     "DVD",
     "恺楚",
 ]
-TAGS_PERSON = [
+TAGS_角色 = [
     "孙翔",
     "叶修",
     "周泽楷",
@@ -196,7 +182,7 @@ TAGS_PERSON = [
     "张新杰",
     "孙哲平",
 ]
-TAGS_ORGANIZATION = [
+TAGS_组织 = [
     "蝙家",
     "灯团",
     "正联",

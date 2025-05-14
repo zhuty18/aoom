@@ -5,16 +5,16 @@
 import os
 import sys
 
-from personal import PATH_LOG
+from personal import 日志路径
 from utils import (
     add_predef,
     doc_dir,
-    file_length,
     ignore_in_format,
     mark_fin,
     search_by_keyword,
-    short_path,
     sort_predef,
+    文件长度,
+    相对路径,
 )
 
 
@@ -33,7 +33,7 @@ def format_file(filename, force=False):
         elif "---\n" in line:
             pre_def = not pre_def
             res += line.strip("\n") + "\n"
-        elif pre_def or PATH_LOG in short_path(filename):
+        elif pre_def or 日志路径 in 相对路径(filename):
             res += line.strip("\n") + "\n"
         else:
             res += line.strip() + "\n"
@@ -44,9 +44,7 @@ def format_file(filename, force=False):
     f.write(res.strip("\n") + "\n")
     f.close()
     if filename.endswith(".md"):
-        add_predef(
-            filename, "word_count", str(file_length(filename)), change=True
-        )
+        add_predef(filename, "word_count", str(文件长度(filename)), change=True)
         mark_fin(filename)
     if force:
         sort_predef(filename)

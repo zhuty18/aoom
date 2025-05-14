@@ -8,57 +8,58 @@ import time
 
 from name_def import names
 from personal import (
-    COMMIT_TIME,
-    DIR_NAMES,
-    FILE_ROOT,
-    FILES_IGNORE,
-    FIN_HEAD,
-    FIN_TAIL,
-    FIN_TEM,
-    FORMAT_TIME,
-    INDEX_NAME,
-    INDEX_NAME_FULL,
-    LENGTH_PREVIEW,
-    MARKS_FIN,
-    PATH_AI_COMMENT,
-    PATH_HISTORY,
-    PATHS_IGNORE,
+    AI评论路径,
+    INDEX文件,
+    INDEX文件_完整,
     TAGS_CP,
-    TAGS_ORGANIZATION,
-    TAGS_PERSON,
-    TAGS_PRIORITIZED,
-    WEB_NAME,
+    TAGS_优先,
+    TAGS_组织,
+    TAGS_角色,
+    历史文件,
+    完结标志,
+    忽略文件,
+    忽略路径,
+    提交时间,
+    摘要长度,
+    文件夹名,
+    文档根,
+    时间格式,
+    网站名,
+    隐藏区初始值,
+    隐藏区开头,
+    隐藏区结尾,
 )
 
 
-def format_time(
-    time_stamp: float = COMMIT_TIME, time_format=FORMAT_TIME
-) -> str:
+def 格式化时间(时间戳: float = 提交时间, 时间格式=时间格式) -> str:
     """格式化某个时间戳，默认为当下"""
-    if not time_stamp:
-        time_stamp = COMMIT_TIME
-    t = time.localtime(time_stamp)
-    res = time.strftime(time_format, t)
-    return res
+    if not 时间戳:
+        时间戳 = 提交时间
+    return time.strftime(时间格式, time.localtime(时间戳))
+
+
+def 获取log时间(log时间: str) -> str:
+    """获取log时间"""
+    时间结构体 = time.strptime(log时间, "%a %b %d %H:%M:%S %Y")
+    本地时间 = time.localtime(time.mktime(时间结构体))
+    return time.mktime(本地时间)
 
 
 def format_log_time(time_str: str) -> str:
     """格式化从git log中读取的时间"""
-    time_stc = time.strptime(time_str, "%a %b %d %H:%M:%S %Y")
-    local_time = time.localtime(time.mktime(time_stc))
-    return format_time(time.mktime(local_time))
+    return 格式化时间(获取log时间(time_str))
 
 
-def get_time(time_str: str = None) -> float:
+def 获取时间戳(时间字符串: str = None) -> float:
     """获取某个时间对应的时间戳"""
     return (
-        time.mktime(time.strptime(time_str, FORMAT_TIME))
-        if time_str
-        else COMMIT_TIME
+        time.mktime(time.strptime(时间字符串, 时间格式))
+        if 时间字符串
+        else 提交时间
     )
 
 
-def line_length(s: str) -> int:
+def 行长度(s: str) -> int:
     """行长度计算"""
     a = s.strip("#")
     a = a.strip()
@@ -81,25 +82,25 @@ def line_length(s: str) -> int:
     return res
 
 
-def file_length(filename: str) -> int:
+def 文件长度(文件: str) -> int:
     """文件长度计算"""
     res = 0
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read().replace(get_predef_str(filename), "").strip("-\n")
-        for i in content.split("\n"):
-            res += line_length(i.strip())
+    with open(文件, "r", encoding="utf8") as f:
+        内容 = f.read().replace(get_predef_str(文件), "").strip("-\n")
+        for i in 内容.split("\n"):
+            res += 行长度(i.strip())
     return res
 
 
 def file_fin(filename: str) -> bool:
     """完成情况检测"""
-    if path_fin(path_of(filename)):
+    if 完结路径(文件夹路径(filename)):
         return True
     if get_pre_key(get_predef(filename), "finished") == "true":
         return True
     with open(filename, "r", encoding="utf8") as f:
         text = f.read()
-        ends = MARKS_FIN
+        ends = 完结标志
         for i in ends:
             if f"{i}\n" in text:
                 return True
@@ -167,7 +168,7 @@ def wrong_translates():
 
 def doc_dir():
     """文档根目录"""
-    return os.path.join(os.getcwd(), FILE_ROOT)
+    return os.path.join(os.getcwd(), 文档根)
 
 
 def sub_path(path):
@@ -176,7 +177,7 @@ def sub_path(path):
     return tmp.split("/")[-1]
 
 
-def short_path(path: str, root=os.getcwd()) -> str:
+def 相对路径(path: str, root=os.getcwd()) -> str:
     """文件名缩短至根目录"""
     return (
         path.replace("/", "\\")
@@ -188,12 +189,12 @@ def short_path(path: str, root=os.getcwd()) -> str:
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
-    res = short_path(path, doc_dir())
-    res = short_path(res, FILE_ROOT)
+    res = 相对路径(path, doc_dir())
+    res = 相对路径(res, 文档根)
     return res
 
 
-def path_of(path):
+def 文件夹路径(path):
     """上级路径"""
     path = path.replace("\\", "/").split("/")
     path.pop()
@@ -205,15 +206,14 @@ def name_of(path):
     return path.replace("\\", "/").replace(".md", "").split("/")[-1]
 
 
-def dir_name(i: str):
+def 路径名(i: str):
     """路径名"""
-    i = doc_path(i).strip()
-    return DIR_NAMES.get(i, None)
+    return 文件夹名.get(doc_path(i).strip(), None)
 
 
 def dirs(path: str = doc_dir()):
     """全目录信息"""
-    text = f"# {dir_name(path)}\n\n"
+    text = f"# {路径名(path)}\n\n"
     text += "|所有文件夹|\n"
     text += "|:-|\n"
     has = False
@@ -221,18 +221,18 @@ def dirs(path: str = doc_dir()):
     dir_list.sort()
     for i in dir_list:
         full_path = os.path.join(path, i)
-        if os.path.isdir(full_path) and dir_name(full_path) is not None:
-            name = dir_name(full_path)
+        if os.path.isdir(full_path) and 路径名(full_path) is not None:
+            name = 路径名(full_path)
             if name:
-                text += f"|[{dir_name(full_path)}]({sub_path(full_path)})|\n"
+                text += f"|[{路径名(full_path)}]({sub_path(full_path)})|\n"
                 has = True
     return text if has else None
 
 
 def html_head(title: str) -> str:
     """网页头数据"""
-    if title == name_of(INDEX_NAME_FULL) or title == name_of(INDEX_NAME):
-        title = WEB_NAME
+    if title == name_of(INDEX文件_完整) or title == name_of(INDEX文件):
+        title = 网站名
     return f"""<!DOCTYPE html>
 <head>
     <title>{title}</title>
@@ -288,15 +288,15 @@ def search_by_keyword(key):
     return SearchForFile(key).result()
 
 
-def search_by_name(name):
+def 获取文件_文件名(name):
     """根据文件名搜索文件"""
     return SearchForFile(name, True).result()[0]
 
 
-def auto_hide():
+def 隐藏已完结():
     """自动隐藏已完成的内容"""
     finished = []
-    with open(PATH_HISTORY, "r", encoding="utf8") as f:
+    with open(历史文件, "r", encoding="utf8") as f:
         for l in f.readlines():
             l = l.strip().split("\t")
             if l[-1] == "True":
@@ -308,9 +308,9 @@ def auto_hide():
     except FileNotFoundError:
         ori = f"""{{
     "files.exclude": {{
-        {FIN_HEAD}
-        {FIN_TEM}
-        {FIN_TAIL}
+        {隐藏区开头}
+        {隐藏区初始值}
+        {隐藏区结尾}
     }}
 }}"""
         if not os.path.exists(".vscode"):
@@ -318,7 +318,9 @@ def auto_hide():
         with open(".vscode/settings.json", "w", encoding="utf8") as f:
             f.write(ori)
     s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
-    s1 = re.findall(re.compile(rf"{FIN_HEAD}\n(.*?){FIN_TAIL}", re.S), s0)[0]
+    s1 = re.findall(re.compile(rf"{隐藏区开头}\n(.*?){隐藏区结尾}", re.S), s0)[
+        0
+    ]
 
     s2 = '": true,\n        "'.join(finished)
     s2 = f'        "{s2}": true,\n        '
@@ -329,7 +331,7 @@ def auto_hide():
         f.write(ori)
 
 
-def path_fin(path):
+def 完结路径(path):
     """路径是否默认为完结"""
     fin_path = {"batlantern": True, "blob": True, "logs": True}
     return fin_path.get(doc_path(path), False)
@@ -357,11 +359,11 @@ def excerpt(filename):
             pre += i
             if "<br>\n\n" in pre:
                 pre = pre.split("<br>")[1].strip()
-            if len(pre) > LENGTH_PREVIEW * 0.7:
+            if len(pre) > 摘要长度 * 0.7:
                 pre = pre.strip()
                 break
-    if len(pre) > LENGTH_PREVIEW * 1.2:
-        pre = pre[:LENGTH_PREVIEW] + "……"
+    if len(pre) > 摘要长度 * 1.2:
+        pre = pre[:摘要长度] + "……"
     if pre.count("*") % 2 == 1:
         pre += "*"
     return pre
@@ -404,18 +406,18 @@ def get_predef(filename):
     return pre_d
 
 
-def tag_priority(tag):
+def tag优先级(tag):
     """标签显示优先级"""
     # 优先级：特殊 -> CP -> AU -> 角色 -> 组织 -> 其他 -> AI -> 完成度
-    if tag in TAGS_PRIORITIZED:
+    if tag in TAGS_优先:
         return -1
     if tag in TAGS_CP:
         return 0
     elif "au" in tag or "ABO" in tag:
         return 1
-    elif tag in TAGS_PERSON:
+    elif tag in TAGS_角色:
         return 2
-    elif tag in TAGS_ORGANIZATION:
+    elif tag in TAGS_组织:
         return 3
     else:
         return 4
@@ -429,7 +431,7 @@ def write_predef(pre_d, filename):
             pre_d["tags"].remove("FIN")
         except ValueError:
             pass
-        pre_d["tags"] = sorted(pre_d["tags"], key=tag_priority)
+        pre_d["tags"] = sorted(pre_d["tags"], key=tag优先级)
     tmp = sorted(pre_d.items())
     for k, v in tmp:
         if isinstance(v, list):
@@ -502,7 +504,7 @@ def add_predef(filename, key, value, change=False):
 
 def mark_category(filename):
     """在预定义中增加类"""
-    add_predef(filename, "category", dir_name(path_of(filename)))
+    add_predef(filename, "category", 路径名(文件夹路径(filename)))
 
 
 def mark_fin(filename, force=False):
@@ -534,7 +536,7 @@ def make_index_dir(kind, name):
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(path):
         os.mkdir(path)
-        with open(os.path.join(path, INDEX_NAME), "w", encoding="utf8") as f:
+        with open(os.path.join(path, INDEX文件), "w", encoding="utf8") as f:
             f.write("---\n")
             f.write(f"layout: {kind}_all\n")
             f.write(f"title: 全部{name}\n")
@@ -557,25 +559,25 @@ def title_of(filename):
 
 def ignore_in_format(filename):
     """格式化中忽略此索引文件"""
-    for i in FILES_IGNORE:
+    for i in 忽略文件:
         if i in filename:
             return True
-    for i in PATHS_IGNORE:
-        if i in short_path(filename):
+    for i in 忽略路径:
+        if i in 相对路径(filename):
             return True
     return "_" in filename
 
 
 def is_ai(filename):
     """是否是AI创作的"""
-    return PATH_AI_COMMENT in short_path(filename)
+    return AI评论路径 in 相对路径(filename)
 
 
 def get_ai_comment(filename):
     """寻找对应的AI评论文件"""
     if is_ai(filename):
         return None
-    ai_file = os.path.join(PATH_AI_COMMENT, name_of(filename)) + ".md"
+    ai_file = os.path.join(AI评论路径, name_of(filename)) + ".md"
     if os.path.exists(ai_file):
         return ai_file
     return None
@@ -584,5 +586,5 @@ def get_ai_comment(filename):
 def get_ai_source(filename):
     """寻找AI评论对应的源文件"""
     if is_ai(filename):
-        return short_path(search_by_keyword(name_of(filename))[0])
+        return 相对路径(search_by_keyword(name_of(filename))[0])
     return None

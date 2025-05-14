@@ -6,36 +6,36 @@ import os
 import sys
 
 from personal import (
-    FILE_ROOT,
-    FORMAT_POST_DATE,
-    INDEX_NAME,
-    MAX_POST,
-    PATH_LOG,
-    PATH_POST,
-    TAG_AI_COMMENT,
-    TAG_FIN,
-    TAG_TBC,
+    AI批评TAG,
+    INDEX文件,
+    POST日期格式,
+    POST路径,
+    完结TAG,
+    未完TAG,
+    首页POST上限,
+    文档根,
+    日志路径,
 )
 from utils import (
     add_predef,
-    dir_name,
     excerpt,
-    format_time,
     get_pre_key,
     get_predef,
-    get_time,
     is_ai,
     make_index,
     make_index_dir,
     mark_fin,
     mark_post,
     name_of,
-    path_of,
     search_by_keyword,
-    short_path,
     write_predef,
+    文件夹路径,
+    格式化时间,
+    相对路径,
+    获取时间戳,
+    路径名,
 )
-from work_record import WordCounter
+from work_record import 字数统计器
 
 POST_LIST = []
 
@@ -51,11 +51,11 @@ def post(filename, name, default_time=None):
     if not date:
         date = get_pre_key(pre_d, "auto_date")
     if not date:
-        date = format_time(get_time(default_time), FORMAT_POST_DATE)
+        date = 格式化时间(获取时间戳(default_time), POST日期格式)
 
     # 生成post名
     post_name = f"{date}-{name}.md"
-    post_path = os.path.join(PATH_POST, post_name)
+    post_path = os.path.join(POST路径, post_name)
 
     # 建立post文件
     with open(post_path, "w", encoding="utf8") as f:
@@ -69,12 +69,12 @@ def post(filename, name, default_time=None):
 
     # 添加跳转
     add_predef(post_path, "layout", "forward")
-    target = short_path(filename).replace(".md", "")
+    target = 相对路径(filename).replace(".md", "")
     if target.endswith("."):
         target = target[:-1] + "/html"
     add_predef(post_path, "target", target)
     # 添加类别路径
-    add_predef(post_path, "cat_url", short_path(path_of(filename)))
+    add_predef(post_path, "cat_url", 相对路径(文件夹路径(filename)))
     # 添加摘要
     add_predef(post_path, "excerpt_separator", "<!--more-->")
 
@@ -85,8 +85,8 @@ def post(filename, name, default_time=None):
     for x in get_pre_key(pre_d, "tags"):
         make_index("tags", x)
     # 建立类别索引
-    if dir_name(path_of(filename)):
-        make_index("category", dir_name(path_of(filename)))
+    if 路径名(文件夹路径(filename)):
+        make_index("category", 路径名(文件夹路径(filename)))
 
     return post_path
 
@@ -112,7 +112,7 @@ def post_log(filename):
     add_predef(post(filename, "日志"), "post", "false", True)
 
 
-def clear_post(post_max=MAX_POST):
+def clear_post(post_max=首页POST上限):
     """控制post上限"""
     if post_max >= 0:
         POST_LIST.sort()
@@ -120,7 +120,7 @@ def clear_post(post_max=MAX_POST):
 
         posted = 0
         for item in POST_LIST:
-            posted += mark_post(os.path.join(PATH_POST, item))
+            posted += mark_post(os.path.join(POST路径, item))
             if posted == post_max:
                 break
 
@@ -130,7 +130,7 @@ def mark_as_post(filename, counter):
     his = counter.history[name_of(filename)]
     for item in POST_LIST:
         if his.name in item:
-            mark_post(os.path.join(PATH_POST, item))
+            mark_post(os.path.join(POST路径, item))
             break
 
 
@@ -138,9 +138,9 @@ def post_all(path, counter, allow_tbc=False):
     """发布所有文件"""
     for item in os.listdir(path):
         subdir = os.path.join(path, item)
-        if dir_name(subdir):
+        if 路径名(subdir):
             post_all(subdir, counter, allow_tbc)
-        elif PATH_LOG in short_path(path) and name_of(item) in counter.history:
+        elif 日志路径 in 相对路径(path) and name_of(item) in counter.history:
             post_log(subdir)
         elif (
             name_of(item) in counter.history
@@ -152,29 +152,29 @@ def post_all(path, counter, allow_tbc=False):
 
 
 if __name__ == "__main__":
-    COUNTER = WordCounter()
-    COUNTER.read_history()
-    if not os.path.exists(PATH_POST):
-        os.mkdir(PATH_POST)
+    COUNTER = 字数统计器()
+    COUNTER.读取历史()
+    if not os.path.exists(POST路径):
+        os.mkdir(POST路径)
     make_index_dir("tags", "标签")
-    make_index("tags", TAG_TBC)
-    make_index("tags", TAG_FIN)
-    make_index("tags", TAG_AI_COMMENT)
+    make_index("tags", 未完TAG)
+    make_index("tags", 完结TAG)
+    make_index("tags", AI批评TAG)
     make_index_dir("category", "分类")
 
     if len(sys.argv) > 1 and sys.argv[1] == "ONLINE":
-        post_all(FILE_ROOT, COUNTER, True)
-        defs = get_predef(os.path.join(FILE_ROOT, INDEX_NAME))
+        post_all(文档根, COUNTER, True)
+        defs = get_predef(os.path.join(文档根, INDEX文件))
         change = get_pre_key(defs, "change")
         for i in change:
             mark_as_post(i, COUNTER)
         clear_post()
     elif len(sys.argv) > 1:
         for i in search_by_keyword(sys.argv[1]):
-            if PATH_LOG not in short_path(i):
+            if 日志路径 not in 相对路径(i):
                 post_work(i, COUNTER)
                 mark_as_post(i, COUNTER)
             else:
                 post_log(i)
     else:
-        post_all(FILE_ROOT, COUNTER, True)
+        post_all(文档根, COUNTER, True)

@@ -5,7 +5,7 @@
 import os
 import sys
 
-from utils import doc_dir, ignore_in_format, search_by_keyword, short_path
+from utils import doc_dir, ignore_in_format, search_by_keyword, 相对路径
 
 
 class KeySearcher:
@@ -34,7 +34,7 @@ class KeySearcher:
         """在文件内检索"""
         with open(file, "r", encoding="utf-8") as f:
             have = False
-            title = short_path(file)
+            title = 相对路径(file)
             for i in f.readlines():
                 if self.key in i:
                     if not have:

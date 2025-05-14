@@ -7,7 +7,7 @@ from sys import argv
 
 from name_def import nick_names
 from utils import (
-    doc_dir,
+    doc_path,
     full_names,
     name_pieces,
     search_by_keyword,
@@ -62,12 +62,12 @@ def tsl_one(key, mode):
 
 if __name__ == "__main__":
     FILE_NAME = argv[1]
-    from personal import TRANSLATE_MODE
+    from personal import 翻译模式
 
     if FILE_NAME == "all":
-        tsl_all(doc_dir(), TRANSLATE_MODE)
+        tsl_all(doc_dir(), 翻译模式)
     elif os.path.isdir(FILE_NAME):
-        tsl_all(os.path.join(doc_dir(), FILE_NAME), TRANSLATE_MODE)
+        tsl_all(os.path.join(doc_dir(), FILE_NAME), 翻译模式)
     else:
         name = search_by_keyword(FILE_NAME)
-        name_tsl(name[0], TRANSLATE_MODE)
+        name_tsl(name[0], 翻译模式)

@@ -5,18 +5,18 @@
 import os
 import sys
 
-from personal import PATH_LOG
+from personal import 日志路径
 from utils import (
     add_predef,
-    dir_name,
-    doc_dir,
+    doc_path,
     get_ai_comment,
     get_ai_source,
     ignore_in_format,
     mark_category,
     name_of,
     search_by_keyword,
-    short_path,
+    相对路径,
+    路径名,
 )
 
 
@@ -41,7 +41,7 @@ def format_md(filename):
     add_predef(filename, "title", title, True)
     if not ignore_in_format(filename):
         mark_category(filename)
-    elif PATH_LOG in short_path(filename):
+    elif 日志路径 in 相对路径(filename):
         mark_category(filename)
     if get_ai_comment(filename):
         add_predef(
@@ -60,7 +60,7 @@ def format_md(filename):
 def format_dir(path):
     """格式化文件夹"""
     for item in os.listdir(path):
-        if dir_name(os.path.join(path, item)):
+        if 路径名(os.path.join(path, item)):
             format_dir(os.path.join(path, item))
         elif item.endswith(".md"):
             format_md(os.path.join(path, item))
