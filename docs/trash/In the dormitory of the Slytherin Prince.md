@@ -1,6 +1,6 @@
 ---
-word_count: 22563
 auto_date: 2020-12-12
+word_count: 22563
 ---
 
 # In the dormitory of the Slytherin Prince

@@ -1,6 +1,6 @@
 ---
-word_count: 527
 auto_date: 2020-10-29
+word_count: 527
 ---
 
 # Bruce和Clark的假约会

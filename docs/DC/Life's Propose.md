@@ -1,6 +1,6 @@
 ---
-word_count: 605
 auto_date: 2023-08-17
+word_count: 605
 ---
 
 # Life's Propose

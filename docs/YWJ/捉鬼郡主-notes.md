@@ -1,6 +1,6 @@
 ---
-word_count: 4628
 auto_date: 2024-03-26
+word_count: 4628
 ---
 
 ##

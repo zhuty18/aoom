@@ -14,7 +14,7 @@ nav-foot:
       id: ai-comment
       prefix: /
     - name: 📝
-      id: ai-back
+      id: ai-source
       prefix: /
     - name: ⤴️
       link: ..

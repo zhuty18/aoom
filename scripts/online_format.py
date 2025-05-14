@@ -5,70 +5,22 @@
 import os
 import sys
 
-from personal import 日志路径
-from utils import (
-    add_predef,
-    doc_path,
-    get_ai_comment,
-    get_ai_source,
-    ignore_in_format,
-    mark_category,
-    name_of,
-    search_by_keyword,
-    相对路径,
-    路径名,
-)
+from file_status import 文件属性
+from utils import 文档根目录, 获取文件_关键字, 路径名
 
 
-def format_md(filename):
-    """格式化单文件"""
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read()
-    title = name_of(filename)
-    with open(filename, "w", encoding="utf8") as f:
-        if "title: " not in content:
-            cont = []
-            title_set = False
-            for line in content.split("\n\n"):
-                if line.startswith("# ") and not title_set:
-                    title = line.replace("# ", "").strip()
-                    title = title.strip("*")
-                    title_set = True
-                else:
-                    cont.append(line)
-            content = "\n\n".join(cont)
-        f.write(content)
-    add_predef(filename, "title", title, True)
-    if not ignore_in_format(filename):
-        mark_category(filename)
-    elif 日志路径 in 相对路径(filename):
-        mark_category(filename)
-    if get_ai_comment(filename):
-        add_predef(
-            filename,
-            "ai-comment",
-            get_ai_comment(filename).replace(".md", ".html"),
-        )
-    elif get_ai_source(filename):
-        add_predef(
-            filename,
-            "ai-back",
-            get_ai_source(filename).replace(".md", ".html"),
-        )
-
-
-def format_dir(path):
+def 在线格式化文件夹(path):
     """格式化文件夹"""
     for item in os.listdir(path):
         if 路径名(os.path.join(path, item)):
-            format_dir(os.path.join(path, item))
+            在线格式化文件夹(os.path.join(path, item))
         elif item.endswith(".md"):
-            format_md(os.path.join(path, item))
+            文件属性(os.path.join(path, item)).在线格式化()
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        format_dir(doc_dir())
+        在线格式化文件夹(文档根目录())
     else:
-        for i in search_by_keyword(sys.argv[1]):
-            format_md(i)
+        for i in 获取文件_关键字(sys.argv[1]):
+            文件属性(i).在线格式化()

@@ -5,98 +5,44 @@
 import os
 import sys
 
-from personal import 日志路径
-from utils import (
-    add_predef,
-    doc_dir,
-    ignore_in_format,
-    mark_fin,
-    search_by_keyword,
-    sort_predef,
-    文件长度,
-    相对路径,
-)
+from file_status import 文件属性
+from utils import 文档根目录, 获取文件_关键字
 
 
-def format_file(filename, force=False):
+def 格式化文件(filename, force=False):
     """格式化文件"""
-    f = open(filename, "r", encoding="utf-8")
-    content = f.readlines()
-    f.close()
-    f = open(filename, "w", encoding="utf-8")
-    # print(content)
-    pre_def = False
-    res = ""
-    for line in content:
-        if filename.endswith(".py"):
-            res += line.strip("\n") + "\n"
-        elif "---\n" in line:
-            pre_def = not pre_def
-            res += line.strip("\n") + "\n"
-        elif pre_def or 日志路径 in 相对路径(filename):
-            res += line.strip("\n") + "\n"
-        else:
-            res += line.strip() + "\n"
-    if not filename.endswith(".py"):
-        res = res.replace("\n\n\n\n\n\n\n", "\n\n<br>\n\n<br>\n\n<br>\n")
-        res = res.replace("\n\n\n", "\n\n<br>\n")
-        res = res.replace("------", "---")
-    f.write(res.strip("\n") + "\n")
-    f.close()
-    if filename.endswith(".md"):
-        add_predef(filename, "word_count", str(文件长度(filename)), change=True)
-        mark_fin(filename)
-    if force:
-        sort_predef(filename)
+    t = 文件属性(filename)
+    if t.合法():
+        t.格式化()
+        if force:
+            t.整理yaml()
+    else:
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(content.strip("\n") + "\n")
 
 
-def format_blob(filename):
-    """格式化短篇"""
-    if filename.endswith(".md"):
-        return
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.readlines()
-    path = filename.split("\\")
-    name = path.pop(-1)
-    new_name = name.split(" ")
-    date = new_name.pop(0)
-    new_name = " ".join(new_name)
-    new_name = new_name.replace(".txt", ".md")
-    title = new_name.replace(".md", "")
-    path.append(new_name)
-    new_name = "\\".join(path)
-    new = f"---\ndate: {date}\n---\n\n"
-    with open(new_name, "w", encoding="utf8") as f:
-        new += f"# {title}\n\n"
-        for _ in range(6):
-            content.pop(0)
-        for line in content:
-            new += line.strip() + "\n\n"
-        f.write(new.strip() + "\n")
-
-
-def format_all(path):
+def 全部格式化(path):
     """从根目录起格式化所有文件"""
     l = os.listdir(path)
     for item in l:
-        subdir = os.path.join(path, item)
-        if os.path.isdir(subdir) and not "/." in subdir:
-            format_all(subdir)
-        # elif "blob" in subdir:
-        #     format_blob(subdir)
+        子路径 = os.path.join(path, item)
+        if os.path.isdir(子路径) and not "/." in 子路径:
+            全部格式化(子路径)
         elif (
-            subdir.endswith(".md")
-            or subdir.endswith(".txt")
-            or subdir.endswith(".py")
-        ) and not ignore_in_format(subdir):
-            format_file(subdir)
-        elif os.path.isdir(subdir) and "data" in subdir:
-            format_all(subdir)
+            子路径.endswith(".md")
+            or 子路径.endswith(".txt")
+            or 子路径.endswith(".py")
+        ) and not 文件属性(子路径).格式化中忽略():
+            格式化文件(子路径)
+        elif os.path.isdir(子路径) and "data" in 子路径:
+            全部格式化(子路径)
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        format_all(doc_dir())
+        全部格式化(文档根目录())
     else:
-        for i in search_by_keyword(sys.argv[1]):
-            format_file(i, True)
+        for i in 获取文件_关键字(sys.argv[1]):
+            格式化文件(i, True)

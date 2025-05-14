@@ -30,7 +30,7 @@ if __name__ == "__main__":
     )
 
     COMMIT_TIME = time.time()
-    FILE_DIR = os.path.join(os.getcwd(), 文档根)
+    工作路径 = os.path.join(os.getcwd(), 文档根)
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -80,13 +80,14 @@ if __name__ == "__main__":
     # 格式化所有文档
     import work_format
 
-    work_format.format_all(FILE_DIR)
+    work_format.全部格式化(工作路径)
 
     # 字数统计
     if args.statistic:
         import work_record
 
-        work_record.进行字数统计(FILE_DIR, args.sort_order).暂存更改(更改文件)
+        统计器 = work_record.进行字数统计(工作路径, args.sort_order)
+        统计器.暂存更改(更改文件)
 
     # 提交文件
     if args.autocommit:
@@ -98,7 +99,7 @@ if __name__ == "__main__":
         # mes = format_time() + " "
         mes = args.message
         try:
-            mes += " 更新了" + str(统计器.total_change) + "字"
+            mes += " 更新了" + str(统计器.总字数变更) + "字"
         except NameError:
             pass
         mes = 'git commit -m "' + mes + '"'
@@ -112,5 +113,5 @@ if __name__ == "__main__":
         import word_cloud_make
 
         word_cloud_make.WordPic(
-            path=FILE_DIR, job=词云工作, file=[args.word_cloud]
+            path=工作路径, job=词云工作, file=[args.word_cloud]
         )

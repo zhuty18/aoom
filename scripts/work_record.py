@@ -17,22 +17,12 @@ from personal import (
     文档库YAML,
     历史文件,
     文档库更新字符串,
-    文档根,
     日志路径,
     标题_已完结,
     标题_未完结,
     默认顺序,
 )
-from utils import (
-    dirs,
-    doc_dir,
-    ignore_in_format,
-    title_of,
-    文件夹路径,
-    相对路径,
-    路径名,
-    隐藏已完结,
-)
+from utils import 文件夹路径, 文档根目录, 目录信息, 相对路径, 路径名, 隐藏已完结
 
 try:
     from xpinyin import Pinyin
@@ -46,7 +36,7 @@ class 字数统计器:
     """字数统计器"""
 
     def __init__(self):
-        self._总字数变更 = 0
+        self.总字数变更 = 0
         self.文件表: dict[str, 文件属性] = {}
         self.变更文件: list[文件属性] = []
 
@@ -81,12 +71,7 @@ class 字数统计器:
             if i:
                 i = i.split("  ")[-1]
                 i = i.strip('"')
-            if (
-                not ignore_in_format(i)
-                and i.endswith(".md")
-                and 文档根 in i
-                and POST路径 not in i
-            ):
+            if 文件属性(i, None).合法():
                 if os.path.exists(i) and 路径名(文件夹路径(i)):
                     self.变更文件.append(文件属性.从路径(i))
 
@@ -113,11 +98,11 @@ class 字数统计器:
                     continue
                 else:
                     print(f"{i.文件名()}\t{旧字数} -> {i.字数()}")
-                文档库更新.append(title_of(i))
+                文档库更新.append(i.标题())
                 总更新内容.append(
-                    f"|[{title_of(i)}]({i.链接()})|{旧字数}|{i.字数()}|{i.字数()-旧字数}|"
+                    f"|[{i.标题()}]({i.链接()})|{旧字数}|{i.字数()}|{i.字数()-旧字数}|"
                 )
-                self._总字数变更 += i.字数() - 旧字数
+                self.总字数变更 += i.字数() - 旧字数
                 if i.文件名() not in self.文件表:
                     self.文件表[i.文件名()] = i
             else:
@@ -135,7 +120,7 @@ class 字数统计器:
             )
         文档库字符串 = 文档库字符串.replace(文档库更新字符串, 更新字符串)
         with open(
-            os.path.join(doc_dir(), INDEX文件), "w", encoding="utf-8"
+            os.path.join(文档根目录(), INDEX文件), "w", encoding="utf-8"
         ) as f:
             if 总更新内容:
                 文档库字符串 += "## 最近一次更新的内容\n\n"
@@ -158,7 +143,7 @@ class 字数统计器:
     def 暂存更改(self, path):
         """存储改变文档至临时目录"""
         with open(path, "w", encoding="utf8") as f:
-            f.write("\n".join(self.变更文件))
+            f.write("\n".join([x.路径() for x in self.变更文件]))
 
     def 标注更新日期(self):
         """为文件标注更新日期"""
@@ -187,17 +172,17 @@ class 索引构建器:
         """建立索引"""
         for i in os.listdir(path):
             文件路径 = os.path.join(path, i)
-            if i.endswith(".md") and not ignore_in_format(文件路径):
-                t = 文件属性(文件路径, None)
-                if t.文件名() not in 统计器.文件表.keys():
-                    t = 文件属性.从路径(文件路径)
-                    统计器.文件表[t.文件名()] = t
+            文件 = 文件属性(文件路径)
+            if 文件.合法():
+                if 文件.文件名() not in 统计器.文件表.keys():
+                    文件 = 文件属性.从路径(文件路径)
+                    统计器.文件表[文件.文件名()] = 文件
                 else:
-                    t = 统计器.文件表[t.文件名()]
-                if t.已完结():
-                    self.已完成.append(t)
+                    文件 = 统计器.文件表[文件.文件名()]
+                if 文件.已完结():
+                    self.已完成.append(文件)
                 else:
-                    self.未完成.append(t)
+                    self.未完成.append(文件)
 
     def 索引排序(self, l: list[文件属性], order):
         """索引排序"""
@@ -236,7 +221,7 @@ class 索引构建器:
                 fr.write(full_index.strip("\n") + "\n")
         else:
             with open(f"{path}/{INDEX文件}", "w", encoding="utf-8") as fi:
-                fi.write(dirs(path).strip() + "\n")
+                fi.write(目录信息(path).strip() + "\n")
 
 
 def 更新索引(统计器: 字数统计器, 索引路径, 顺序, 强制=False):
@@ -252,15 +237,16 @@ def 更新索引(统计器: 字数统计器, 索引路径, 顺序, 强制=False)
             if 有内容变更 or 强制:
                 更新索引(统计器, 子目录, 顺序, 强制)
     if (
-        索引路径 != doc_dir()
+        索引路径 != 文档根目录()
         and 路径名(索引路径)
         and 日志路径 not in 索引路径
         and AI评论路径 not in 索引路径
+        and POST路径 not in 索引路径
     ):
         索引构建器(索引路径, 统计器, 顺序)
 
 
-def 进行字数统计(路径=doc_dir(), 顺序=默认顺序, 强制=False):
+def 进行字数统计(路径=文档根目录(), 顺序=默认顺序, 强制=False):
     """进行字数统计"""
     字数统计 = 字数统计器()
     字数统计.运行()

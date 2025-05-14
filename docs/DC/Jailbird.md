@@ -1,6 +1,6 @@
 ---
-word_count: 475
 auto_date: 2020-10-23
+word_count: 475
 ---
 
 # Jailbird

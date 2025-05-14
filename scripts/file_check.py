@@ -11,7 +11,7 @@
 import sys
 
 from name_translate import name_tsl
-from utils import search_by_keyword, 行长度
+from utils import 获取文件_关键字, 行长度
 
 
 def count_file(filename, p=True):
@@ -54,7 +54,7 @@ class FileChecker:
     """文件检阅器"""
 
     def __init__(self, key, mode, html=True):
-        self.result = search_by_keyword(key)
+        self.result = 获取文件_关键字(key)
         if self.result is not None:
             self.tsl_result(mode)
             self.count_result()

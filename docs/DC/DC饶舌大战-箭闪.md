@@ -1,6 +1,6 @@
 ---
-word_count: 1472
 auto_date: 2021-06-22
+word_count: 1472
 ---
 
 # DC饶舌大战-箭闪

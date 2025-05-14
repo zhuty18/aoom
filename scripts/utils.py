@@ -8,9 +8,7 @@ import time
 
 from name_def import names
 from personal import (
-    AI评论路径,
     INDEX文件,
-    INDEX文件_完整,
     TAGS_CP,
     TAGS_优先,
     TAGS_组织,
@@ -20,11 +18,9 @@ from personal import (
     忽略文件,
     忽略路径,
     提交时间,
-    摘要长度,
     文件夹名,
     文档根,
     时间格式,
-    网站名,
     隐藏区初始值,
     隐藏区开头,
     隐藏区结尾,
@@ -43,11 +39,6 @@ def 获取log时间(log时间: str) -> str:
     时间结构体 = time.strptime(log时间, "%a %b %d %H:%M:%S %Y")
     本地时间 = time.localtime(time.mktime(时间结构体))
     return time.mktime(本地时间)
-
-
-def format_log_time(time_str: str) -> str:
-    """格式化从git log中读取的时间"""
-    return 格式化时间(获取log时间(time_str))
 
 
 def 获取时间戳(时间字符串: str = None) -> float:
@@ -166,7 +157,7 @@ def wrong_translates():
     yield ("Mr. 韦恩", "Mr. Wayne")
 
 
-def doc_dir():
+def 文档根目录():
     """文档根目录"""
     return os.path.join(os.getcwd(), 文档根)
 
@@ -189,7 +180,7 @@ def 相对路径(path: str, root=os.getcwd()) -> str:
 
 def doc_path(path):
     """文件名缩短至doc文件夹"""
-    res = 相对路径(path, doc_dir())
+    res = 相对路径(path, 文档根目录())
     res = 相对路径(res, 文档根)
     return res
 
@@ -211,7 +202,7 @@ def 路径名(i: str):
     return 文件夹名.get(doc_path(i).strip(), None)
 
 
-def dirs(path: str = doc_dir()):
+def 目录信息(path: str = 文档根目录()):
     """全目录信息"""
     text = f"# {路径名(path)}\n\n"
     text += "|所有文件夹|\n"
@@ -229,18 +220,6 @@ def dirs(path: str = doc_dir()):
     return text if has else None
 
 
-def html_head(title: str) -> str:
-    """网页头数据"""
-    if title == name_of(INDEX文件_完整) or title == name_of(INDEX文件):
-        title = 网站名
-    return f"""<!DOCTYPE html>
-<head>
-    <title>{title}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-"""
-
-
 class SearchForFile:
     """搜索含有关键词的文件"""
 
@@ -248,7 +227,7 @@ class SearchForFile:
         self.key = key
         self.res = []
         self.name_match = name_match
-        self.check_dir(doc_dir())
+        self.check_dir(文档根目录())
         if not self.res:
             raise FileNotFoundError(
                 "没有找到"
@@ -283,7 +262,7 @@ class SearchForFile:
         return self.res
 
 
-def search_by_keyword(key):
+def 获取文件_关键字(key):
     """搜索含有关键词的文件"""
     return SearchForFile(key).result()
 
@@ -335,38 +314,6 @@ def 完结路径(path):
     """路径是否默认为完结"""
     fin_path = {"batlantern": True, "blob": True, "logs": True}
     return fin_path.get(doc_path(path), False)
-
-
-def excerpt(filename):
-    """获取文件预览"""
-    with open(filename, "r", encoding="utf8") as f:
-        yaml = False
-        pre = ""
-        exp = re.compile(r".*?(\[\^\d+\]).*?", re.S)
-        for i in f.readlines():
-            if i == "---\n":
-                yaml = not yaml
-                continue
-            if yaml:
-                continue
-            if i.startswith("#"):
-                pre += "<br>\n"
-                continue
-            tmp = re.findall(exp, i)
-            if tmp:
-                for j in tmp:
-                    i = i.replace(j, "")
-            pre += i
-            if "<br>\n\n" in pre:
-                pre = pre.split("<br>")[1].strip()
-            if len(pre) > 摘要长度 * 0.7:
-                pre = pre.strip()
-                break
-    if len(pre) > 摘要长度 * 1.2:
-        pre = pre[:摘要长度] + "……"
-    if pre.count("*") % 2 == 1:
-        pre += "*"
-    return pre
 
 
 def get_predef_str(filename):
@@ -423,41 +370,6 @@ def tag优先级(tag):
         return 4
 
 
-def write_predef(pre_d, filename):
-    """预定义头信息写入文件"""
-    res = ""
-    if "tags" in pre_d:
-        try:
-            pre_d["tags"].remove("FIN")
-        except ValueError:
-            pass
-        pre_d["tags"] = sorted(pre_d["tags"], key=tag优先级)
-    tmp = sorted(pre_d.items())
-    for k, v in tmp:
-        if isinstance(v, list):
-            res += f"{k}:\n  - {"\n  - ".join(v)}\n"
-        else:
-            res += f"{k}: {v}\n"
-    res = res.strip()
-
-    pre_d_str = get_predef_str(filename)
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read()
-    if pre_d_str:
-        with open(filename, "w", encoding="utf8") as f:
-            f.write(content.replace(pre_d_str, res))
-    else:
-        with open(filename, "w", encoding="utf8") as f:
-            f.write(f"---\n{res}\n---\n\n{content}")
-
-
-def sort_predef(filename):
-    """整理预定义头"""
-    pre_d = get_predef(filename)
-    if pre_d:
-        write_predef(pre_d, filename)
-
-
 def get_pre_key(pre_d, keyword):
     """从预定义头中读取关键字参数"""
     if keyword == "tags":
@@ -465,62 +377,7 @@ def get_pre_key(pre_d, keyword):
     return pre_d.get(keyword)
 
 
-def add_predef(filename, key, value, change=False):
-    """添加预定义"""
-    pre_d = get_predef(filename)
-    if not pre_d:
-        # 无预定义头
-        with open(filename, "r", encoding="utf8") as f:
-            content = f.read()
-        with open(filename, "w", encoding="utf8") as f:
-            f.write(
-                f"""---
-{key}: {value}
----
-
-"""
-            )
-            f.write(content)
-            return 1
-    tmp = get_pre_key(pre_d, key)
-    if not tmp:
-        # 预定义头内无key
-        pre_d[key] = value
-    elif value in tmp:
-        # key已有值value
-        return 0
-    elif not change and len(tmp) > 0:
-        # key已有值且不许更改
-        return 0
-    elif change:
-        # key已有值且可替换，即auto_date, finished, post
-        pre_d[key] = value
-    elif not change:
-        # key已定义但无值
-        pre_d[key] = value
-    write_predef(pre_d, filename)
-    return 1
-
-
-def mark_category(filename):
-    """在预定义中增加类"""
-    add_predef(filename, "category", 路径名(文件夹路径(filename)))
-
-
-def mark_fin(filename, force=False):
-    """标注已完成作品"""
-    if file_fin(filename):
-        add_predef(filename, "finished", "true", change=True)
-    elif force:
-        add_predef(filename, "finished", "false")
-
-
-def mark_post(filename):
-    """将预定义post标注为true"""
-    return add_predef(filename, "post", "true", True)
-
-
-def make_index(kind, name):
+def 制作索引(kind, name):
     """制作jekyll索引"""
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(os.path.join(path, name + ".md")):
@@ -531,7 +388,7 @@ def make_index(kind, name):
             f.write("---\n")
 
 
-def make_index_dir(kind, name):
+def 制作索引_路径(kind, name):
     """制作jekyll索引路径"""
     path = os.path.join(os.getcwd(), kind)
     if not os.path.exists(path):
@@ -543,20 +400,6 @@ def make_index_dir(kind, name):
             f.write("---\n")
 
 
-def title_of(filename):
-    """获得文件标题"""
-    if get_pre_key(get_predef(filename), "title"):
-        return get_pre_key(get_predef(filename), "title")
-    title = name_of(filename)
-    with open(filename, "r", encoding="utf8") as f:
-        content = f.read()
-        for i in content.split("\n\n"):
-            if i.startswith("# "):
-                title = i.replace("# ", "")
-                break
-    return title.strip()
-
-
 def ignore_in_format(filename):
     """格式化中忽略此索引文件"""
     for i in 忽略文件:
@@ -566,25 +409,3 @@ def ignore_in_format(filename):
         if i in 相对路径(filename):
             return True
     return "_" in filename
-
-
-def is_ai(filename):
-    """是否是AI创作的"""
-    return AI评论路径 in 相对路径(filename)
-
-
-def get_ai_comment(filename):
-    """寻找对应的AI评论文件"""
-    if is_ai(filename):
-        return None
-    ai_file = os.path.join(AI评论路径, name_of(filename)) + ".md"
-    if os.path.exists(ai_file):
-        return ai_file
-    return None
-
-
-def get_ai_source(filename):
-    """寻找AI评论对应的源文件"""
-    if is_ai(filename):
-        return 相对路径(search_by_keyword(name_of(filename))[0])
-    return None

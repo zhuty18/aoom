@@ -1,6 +1,6 @@
 ---
-word_count: 750
 auto_date: 2024-02-19
+word_count: 750
 ---
 
 # Fake It Till Make It

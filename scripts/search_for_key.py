@@ -5,7 +5,7 @@
 import os
 import sys
 
-from utils import doc_dir, ignore_in_format, search_by_keyword, 相对路径
+from utils import ignore_in_format, 文档根目录, 相对路径, 获取文件_关键字
 
 
 class KeySearcher:
@@ -47,5 +47,5 @@ class KeySearcher:
 
 if __name__ == "__main__":
     key = sys.argv[1]
-    print(search_by_keyword(key))
-    KeySearcher(doc_dir(), key)
+    print(获取文件_关键字(key))
+    KeySearcher(文档根目录(), key)

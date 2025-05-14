@@ -10,9 +10,9 @@ from utils import (
     doc_path,
     full_names,
     name_pieces,
-    search_by_keyword,
     short_names,
     wrong_translates,
+    获取文件_关键字,
 )
 
 
@@ -55,7 +55,7 @@ def tsl_all(path, mode):
 
 def tsl_one(key, mode):
     """翻译单个文件"""
-    for i in search_by_keyword(key):
+    for i in 获取文件_关键字(key):
         print(i[0])
         name_tsl(os.path.join(i[1], i[0]), mode)
 
@@ -69,5 +69,5 @@ if __name__ == "__main__":
     elif os.path.isdir(FILE_NAME):
         tsl_all(os.path.join(doc_dir(), FILE_NAME), 翻译模式)
     else:
-        name = search_by_keyword(FILE_NAME)
+        name = 获取文件_关键字(FILE_NAME)
         name_tsl(name[0], 翻译模式)

@@ -8,7 +8,7 @@ import argparse
 import os
 import re
 
-from utils import name_of, search_by_keyword
+from utils import name_of, 获取文件_关键字
 
 
 class LatexConverter:
@@ -18,7 +18,7 @@ class LatexConverter:
         if os.path.exists(key):
             self.convert(key, depth, path, output)
             return
-        self.result = search_by_keyword(key)
+        self.result = 获取文件_关键字(key)
         if self.result is not None:
             for i in self.result:
                 print(name_of(i))

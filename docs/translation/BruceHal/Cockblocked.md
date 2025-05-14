@@ -43,10 +43,6 @@ https://www.douban.com/group/topic/3509565/?cid=989702473
 
 <br>
 
-<br>
-
-<br>
-
 “曾经有一个小孩，Alex Pendleton，我都不敢相信我还记得他的名字，但他的确是叫Alex Pendleton，好吧。他在圣保罗中学[^2]比我们高两个年级。”
 
 Bruce回应他的叹息更像是一声呻吟，他面容抽搐，揉搓着自己的额头。“Oliver。”他说。
