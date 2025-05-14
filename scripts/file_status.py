@@ -98,7 +98,7 @@ class 文件属性:
         return (
             self._路径.endswith(".md")
             and (not self.ai创作())
-            and (not os.path.isdir(self._路径))
+            and (not self.格式化中忽略())
         )
 
     def 路径(self):
