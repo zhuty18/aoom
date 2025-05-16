@@ -1,6 +1,6 @@
 ---
 count_ideal: 8000
-count_unit: 1500
+count_unit: 2000
 day_awhile: 60
 day_ideal: 3
 day_notlong: 30

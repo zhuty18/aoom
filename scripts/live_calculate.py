@@ -60,7 +60,7 @@ def 拟合(data, 断点, p=False):
             ssr = ((s * x + i - y.mean()) ** 2).sum()
             r2.append(ssr / sst)
 
-    if len(指标) < 2:
+    if len(指标) < 2 and len(断点) > 2:
         if p:
             print(指标)
         return 0, {}
@@ -145,3 +145,4 @@ if __name__ == "__main__":
                 真r2 = 真实值
     print(r2_max, 真r2)
     print(最优解)
+    print(拟合(data, [0]))
