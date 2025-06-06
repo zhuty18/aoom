@@ -348,8 +348,12 @@ class 文件管理:
         if not self.读取yaml内参数("title"):
             with open(self._路径, "r", encoding="utf8") as f:
                 content = f.read()
+                if f"\n# {self.标题()}\n" in content:
+                    new_content = content.replace(f"\n# {self.标题()}\n", "")
+                else:
+                    new_content = content.replace(f"# {self.标题()}\n\n", "")
             with open(self._路径, "w", encoding="utf8") as f:
-                f.write(content.replace(f"# {self.标题()}\n", ""))
+                f.write(new_content)
             self.__添加yaml参数("title", self.标题(), 修改=True)
         if (not self.格式化中忽略()) or 日志路径 in self._路径:
             self.__添加yaml参数("category", 路径名(文件夹路径(self._路径)))
@@ -361,7 +365,9 @@ class 文件管理:
             )
             文件管理(ai评论).__添加yaml参数(
                 "ai_source",
-                相对路径(获取文件_文件名(self.文件名())).replace(".md", ".html"),
+                相对路径(获取文件_文件名(self.文件名())).replace(
+                    ".md", ".html"
+                ),
             )
 
     def 标注完结(self, 强制=False):
