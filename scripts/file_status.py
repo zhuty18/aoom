@@ -361,7 +361,7 @@ class 文件管理:
             )
             文件管理(ai评论).__添加yaml参数(
                 "ai_source",
-                获取文件_文件名(self.文件名())[0].replace(".md", ".html"),
+                相对路径(获取文件_文件名(self.文件名())).replace(".md", ".html"),
             )
 
     def 标注完结(self, 强制=False):
