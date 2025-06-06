@@ -397,7 +397,9 @@ class 文件管理:
         if not 日期:
             日期 = 格式化时间(self._时间, POST日期格式)
 
-        发布路径 = os.path.join(POST路径, f"{日期}-{self.标题()}.md")
+        发布路径 = os.path.join(
+            POST路径, f"{日期}-{self.标题().replace("/","-")}.md"
+        )
 
         with open(发布路径, "w", encoding="utf8") as f:
             f.write(
