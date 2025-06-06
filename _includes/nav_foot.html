@@ -13,15 +13,15 @@
         </script>
       </div>
     {% elsif item.id == "ai-comment" %}
-      {% if page.ai-comment %}
+      {% if page.ai_comment %}
         <div>
-          <a href="{{ site.baseurl }}{{ item.prefix }}{{ page.ai-comment }}" class="nav-foot-link">{{ item.name }}</a>
+          <a href="{{ site.baseurl }}{{ item.prefix }}{{ page.ai_comment }}" class="nav-foot-link">{{ item.name }}</a>
         </div>
       {% endif %}
     {% elsif item.id == "ai-source" %}
-      {% if page.ai-source %}
+      {% if page.ai_source %}
         <div>
-          <a href="{{ site.baseurl }}{{ item.prefix }}{{ page.ai-source }}" class="nav-foot-link">{{ item.name }}</a>
+          <a href="{{ site.baseurl }}{{ item.prefix }}{{ page.ai_source }}" class="nav-foot-link">{{ item.name }}</a>
         </div>
       {% endif %}
     {% else %}
