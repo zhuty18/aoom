@@ -17,7 +17,7 @@
           {% unless post.finished %}
             {% include post.html post=post %}
           {% endunless %}
-        {% elsif include.tag == "AI评论" and post.ai-comment %}
+        {% elsif include.tag == "AI评论" and post.ai_comment %}
           {% include post.html post=post %}
         {% elsif post.tags contains include.tag %}
           {% include post.html post=post %}
