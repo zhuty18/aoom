@@ -1,0 +1,10 @@
+---
+import BasicPage from "../layouts/BasicPage.astro"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+---
+
+<BasicPage title={SITE_TITLE}>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <h1>Welcome to {SITE_TITLE}</h1>
+  <slot />
+</BasicPage>

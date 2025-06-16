@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: emerald --default, forest --prefersdark;
+}
+
+.btn {
+  border-radius: 1em;
+}
+
+h1 {
+  @apply text-3xl font-bold text-primary;
+}
+
+table {
+  @apply table-zebra;
+}
