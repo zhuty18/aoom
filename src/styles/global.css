@@ -12,6 +12,15 @@ h1 {
   @apply text-3xl font-bold text-primary;
 }
 
+h2{
+  @apply text-2xl text-secondary;
+}
+
 table {
-  @apply table-zebra;
+  @apply table table-zebra bg-base-100 text-base-content;
+}
+
+main {
+  width: 80%;
+  margin: 0 10% 0 10%;
 }
