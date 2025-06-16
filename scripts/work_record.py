@@ -97,6 +97,7 @@ class 字数统计器:
                 if i.字数() == 旧字数:
                     continue
                 else:
+                    i.标注更新日期()
                     print(f"{i.文件名()}\t{旧字数} -> {i.字数()}")
                 文档库更新.append(i.标题())
                 总更新内容.append(
