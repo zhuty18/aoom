@@ -1,9 +1,35 @@
 ---
 import BasicPage from "../layouts/BasicPage.astro"
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import { getCollection } from "astro:content"
+import { Image } from "astro:assets"
+
+const posts = (await getCollection("blog"))
 ---
 
-<BasicPage title={SITE_TITLE}>
+<BasicPage title={SITE_TITLE} | {SITE_DESCRIPTION}>
+  <section>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}/`}>
+              {post.data.heroImage && (
+                <Image
+                  width={720}
+                  height={360}
+                  src={post.data.heroImage}
+                  alt=""
+                />
+              )}
+              <h4 class="title">{post.data.title}</h4>
+              <p class="date" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <ul class="timeline timeline-vertical">
     <li>
