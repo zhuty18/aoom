@@ -3,13 +3,14 @@ import { LIGHT_THEME, DARK_THEME, SITE_TITLE } from "../consts"
 ---
 
 <div class="navbar bg-base-300 shadow text-base-content">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-lg">{SITE_TITLE}</a>
+  <div class="flex-wrap">
+    <a class="link link-hover text-lg btn btn-ghost btn-secondary text-base-content" href="/">{SITE_TITLE}</a>
   </div>
+  <div class="flex-1"></div>
   <div class="flex-none">
     <label
       id="theme-switch"
-      class="swap btn btn-ghost btn-circle"
+      class="swap swap-rotate btn btn-ghost btn-circle"
       data-light={LIGHT_THEME}
       data-dark={DARK_THEME}
     >
