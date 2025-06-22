@@ -4,9 +4,12 @@
 
 @import "./mystyle.css";
 
+main {
+  @apply text-lg/relaxed text-base-content/85 pl-12 pr-12 max-w-4xl ml-auto mr-auto;
+}
 
 h1 {
-  @apply text-3xl font-bold text-primary;
+  @apply text-3xl font-bold text-neutral-content mt-4 mb-4;
 }
 
 h2 {
@@ -14,10 +17,65 @@ h2 {
 }
 
 table {
-  @apply table table-zebra bg-base-100 text-base-content;
+  @apply table table-zebra mt-4 mb-4 ml-0 mr-0 overflow-auto text-nowrap;
 }
 
-main {
-  width: 80%;
-  margin: 0 10% 0 10%;
+thead {
+  @apply bg-accent/20 text-accent-content/80;
+}
+
+p {
+  @apply mt-4.5 mb-4.5;
+}
+
+p:first-child {
+  @apply mt-1;
+}
+
+p:last-child {
+  @apply mb-1;
+}
+
+sup {
+  @apply link link-neutral link-hover;
+}
+
+#footnote-label {
+  @apply hidden;
+}
+
+.footnotes ol {
+  @apply list-decimal pl-6 text-base/relaxed;
+}
+
+.footnotes li {
+  @apply mb-4 mt-4;
+}
+
+.cate {
+  @apply badge badge-neutral link link-hover min-w-13;
+}
+
+.dc {
+  @apply badge-info;
+}
+
+.tag {
+  @apply ml-0.5 mr-0.5 badge badge-xs badge-neutral badge-outline badge-soft link link-hover text-nowrap;
+}
+
+.\32 025蝙绿企划 {
+  @apply text-gray-950 bg-green-200;
+}
+
+.BatLantern {
+  @apply text-green-400 bg-gray-900;
+}
+
+.FIN {
+  @apply text-success bg-neutral-content;
+}
+
+.TBC {
+  @apply text-warning bg-neutral-content;
 }

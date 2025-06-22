@@ -1,0 +1,36 @@
+---
+import BasicPage from "../layouts/BasicPage.astro"
+import { SITE_TITLE, SITE_DESCRIPTION, date } from "../consts"
+import { getCollection } from "astro:content"
+import Post from "../components/Post.astro"
+
+const posts = await getCollection("blog")
+const markPosts = posts.filter((post) => post.data.posted)
+const normalPosts = posts
+  .filter((post) => !post.data.posted && !post.id.includes("ai"))
+  .sort((a) => -date(a.data).valueOf())
+  .slice(0, 12)
+const displayPosts = [...markPosts, ...normalPosts].sort(
+  (a) => -date(a.data).valueOf()
+)
+---
+
+<BasicPage title={SITE_TITLE} | {SITE_DESCRIPTION}>
+  <slot name="title" slot="title">
+    {SITE_TITLE}
+  </slot>
+  <slot name="description" slot="description">
+    {SITE_DESCRIPTION}
+  </slot>
+  <div>
+    <ul>
+      {
+        displayPosts.map((post) => (
+          <li>
+            <Post post={post} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BasicPage>

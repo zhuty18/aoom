@@ -12,6 +12,11 @@
     "@tailwindcss/vite": "^4.1.10",
     "astro": "^5.9.3",
     "daisyui": "^5.0.43",
-    "tailwindcss": "^4.1.10"
+    "rehype-stringify": "^10.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "tailwindcss": "^4.1.10",
+    "unified": "^11.0.5"
   }
 }

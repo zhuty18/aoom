@@ -2,12 +2,16 @@
 import { LIGHT_THEME, DARK_THEME, SITE_TITLE } from "../consts"
 ---
 
-<div class="navbar bg-base-300 shadow text-base-content">
-  <div class="flex-wrap">
-    <a class="link link-hover text-lg btn btn-ghost btn-secondary text-base-content" href="/">{SITE_TITLE}</a>
-  </div>
+<div
+  class="navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50"
+>
+  <a href="/"
+    ><div class="btn btn-primary btn-ghost">
+      {SITE_TITLE}
+    </div></a
+  >
   <div class="flex-1"></div>
-  <div class="flex-none">
+  <div>
     <label
       id="theme-switch"
       class="swap swap-rotate btn btn-ghost btn-circle"
@@ -67,3 +71,4 @@ import { LIGHT_THEME, DARK_THEME, SITE_TITLE } from "../consts"
     </script>
   </div>
 </div>
+<div class="h-16"></div>

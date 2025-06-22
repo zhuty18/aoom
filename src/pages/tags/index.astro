@@ -1,0 +1,21 @@
+---
+import BasicPage from "../../layouts/BasicPage.astro"
+
+import { getCollection } from "astro:content"
+const posts = await getCollection("blog")
+
+import { EXTRA_TAGS } from "../../consts"
+const tags = EXTRA_TAGS.concat([
+  ...new Set(posts.map((post: any) => post.data.tags).flat()),
+])
+---
+
+<BasicPage title="所有标签">
+  {
+    tags.map((tag: any) => (
+      <a class={`m-2 btn btn-neutral btn-outline link link-hover ${tag}`} href={`/tags/${tag}`}>
+        {tag}
+      </a>
+    ))
+  }
+</BasicPage>

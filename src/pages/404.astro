@@ -1,0 +1,11 @@
+---
+import BasicPage from "../layouts/BasicPage.astro"
+---
+
+<BasicPage title="404">
+  <p>Oops! 此处内容不存在或已被删除。</p>
+  <a href="/"><div class="btn btn-error btn-soft">点击返回首页</div></a>
+  <script>
+    document.location.href = "/"
+  </script>
+</BasicPage>

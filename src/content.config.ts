@@ -4,14 +4,18 @@ const blog = defineCollection({
   // Load Markdown and MDX files in the `src/contents/blog/` directory.
   loader: glob({ base: "./src/contents/blog", pattern: "**/*.{md,mdx}" }),
   // Type-check frontmatter using a schema
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       title: z.string(),
-      description: z.string().optional(),
-      // Transform string to Date object
-      auto_date: z.coerce.date(),
-      updatedDate: z.coerce.date().optional(),
-      heroImage: image().optional(),
+      more_excerpt: z.boolean().default(false),
+      posted: z.boolean().default(false),
+      date: z.coerce.date().optional(),
+      auto_date: z.coerce.date().optional(),
+      word_count: z.number().optional(),
+      tags: z.array(z.string()).optional(),
+      finished: z.boolean().default(false),
+      ai_comment: z.boolean().default(false),
+      ai_source: z.string().optional(),
     }),
 })
 
