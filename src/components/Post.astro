@@ -1,0 +1,61 @@
+---
+import Cate from "./Cate.astro"
+import Tag from "./Tag.astro"
+import { processor, date, linkStory } from "../consts"
+const { post } = Astro.props
+---
+
+<post
+  class="card bg-base-200 shadow-md shadow-base-content/10 w-full mt-3 mb-3"
+>
+  <div class="card-body">
+    <div class="flex justify-between items-center">
+      <div class="card-title btn-link btn-ghost link link-primary link-hover">
+        <a href={linkStory(post.id)}>{post.data.title}</a>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="badge badge-xs badge-neutral badge-ghost mb-1">
+          <div class="text-xs text-neutral">
+            {
+              post.data.tags.includes("AI批评")
+                ? "-"
+                : `${date(post.data).getFullYear()}.${
+                    date(post.data).getMonth() + 1
+                  }.${date(post.data).getDate()}`
+            }
+          </div>
+        </div>
+        <Cate postId={post.id} />
+      </div>
+    </div>
+    <a
+      class="pl-3 pr-3 text-sm/relaxed text-base-content/75 link-hover"
+      href={linkStory(post.id)}
+    >
+      <Fragment
+        set:html={await processor.process(
+          post.body.includes("<!--more-->")
+            ? post.body.split("<!--more-->")[0] +
+                (post.data.more_excerpt ? "..." : "")
+            : post.body.slice(0, 100) + "..."
+        )}
+      />
+    </a>
+    <div>
+      <span class="text-xs text-neutral/80">
+        {post.data.word_count ? `${post.data.word_count}字` : "内容由AI创作"}
+      </span>
+      <span class="flex float-end mt-1">
+        {
+          post.data.tags &&
+            post.data.tags.map((tag: string) => <Tag tag={tag} />)
+        }
+        {
+          !post.data.tags.includes("AI批评") && (
+            <Tag tag={post.data.finished ? "FIN" : "TBC"} />
+          )
+        }
+      </span>
+    </div>
+  </div>
+</post>

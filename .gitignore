@@ -8,9 +8,6 @@ _site
 **/.obsidian
 .copilot-index
 _posts
-category
-tags
-
 
 # build output
 dist/
@@ -31,5 +28,12 @@ pnpm-debug.log*
 .env
 .env.production
 
+# macOS-specific files
+.DS_Store
+
 # jetbrains setting folder
 .idea/
+
+.vscode
+blog/*
+!contents/blog/*

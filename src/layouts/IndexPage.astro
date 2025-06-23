@@ -1,0 +1,11 @@
+---
+import BasicPage from "./BasicPage.astro"
+const { title } = Astro.props
+---
+
+<BasicPage title={title}>
+  <slot name="title" slot="title">
+    {title}
+  </slot>
+  <slot />
+</BasicPage>

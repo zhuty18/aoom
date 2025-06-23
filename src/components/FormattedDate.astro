@@ -1,0 +1,11 @@
+---
+interface Props {
+  date: Date
+}
+
+const { date } = Astro.props
+---
+
+<time class="text-xs text-neutral" datetime={date.toISOString()}>
+  {`${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()}`}
+</time>
