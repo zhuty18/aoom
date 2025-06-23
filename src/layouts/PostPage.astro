@@ -6,6 +6,7 @@ import Cate from "../components/Cate.astro"
 import Tag from "../components/Tag.astro"
 const { slug } = Astro.params
 const { tags, word_count, ai_comment, ai_source } = Astro.props
+import { linkStory } from "../consts"
 ---
 
 <BasicPage title={title}>
@@ -25,7 +26,7 @@ const { tags, word_count, ai_comment, ai_source } = Astro.props
       ai_comment && (
         <a
           class="btn btn-sm btn-soft btn-info"
-          href={`/blog/ai/${slug?.split("/").slice(-1)[0]}`}
+          href={linkStory(`ai/${slug?.split("/").slice(-1)[0]}`)}
         >
           <svg
             class="w-6 h-6 bg-neutral-content rounded-full p-1"
@@ -52,7 +53,7 @@ const { tags, word_count, ai_comment, ai_source } = Astro.props
       slug!!.includes("ai") && (
         <a
           class="btn btn-sm btn-soft btn-info"
-          href={`/blog/${ai_source.toLowerCase()}`}
+          href={linkStory(ai_source.toLowerCase())}
         >
           评价对象
         </a>

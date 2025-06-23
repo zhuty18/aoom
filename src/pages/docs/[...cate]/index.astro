@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content"
 
-import BasicPage from "../../../layouts/BasicPage.astro"
+import IndexPage from "../../../layouts/IndexPage.astro"
 import Post from "../../../components/Post.astro"
 import { cateName } from "../../../consts"
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection("blog")
+  const allPosts = await getCollection("docs")
   const categories = [
     ...new Set(
       allPosts.map((post) => {
@@ -28,6 +28,6 @@ const { posts } = Astro.props
 const cateKey = cate as keyof typeof cateName
 ---
 
-<BasicPage title={cateName[cateKey]}>
+<IndexPage title={cateName[cateKey]}>
   {posts.map((post) => <Post post={post} />)}
-</BasicPage>
+</IndexPage>

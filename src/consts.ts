@@ -24,6 +24,12 @@ const cateName = {
 const date = (data: any) =>
   data.date ? data.date : data.auto_date || new Date()
 
+const SITE_ROOT = "/astro_blog"
+
+const linkSite = (url: string) => SITE_ROOT + url
+
+const linkStory = (id: string) => SITE_ROOT + `/docs/${id}`
+
 export {
   SITE_TITLE,
   SITE_DESCRIPTION,
@@ -33,4 +39,6 @@ export {
   processor,
   cateName,
   date,
+  linkSite,
+  linkStory,
 }

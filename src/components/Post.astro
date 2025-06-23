@@ -1,8 +1,7 @@
 ---
-import FormattedDate from "./FormattedDate.astro"
 import Cate from "./Cate.astro"
 import Tag from "./Tag.astro"
-import { processor, date } from "../consts"
+import { processor, date, linkStory } from "../consts"
 const { post } = Astro.props
 ---
 
@@ -12,7 +11,7 @@ const { post } = Astro.props
   <div class="card-body">
     <div class="flex justify-between items-center">
       <div class="card-title btn-link btn-ghost link link-primary link-hover">
-        <a href=`/blog/${post.id}`>{post.data.title}</a>
+        <a href={linkStory(post.id)}>{post.data.title}</a>
       </div>
       <div class="flex flex-col items-center">
         <div class="badge badge-xs badge-neutral badge-ghost mb-1">
@@ -31,7 +30,7 @@ const { post } = Astro.props
     </div>
     <a
       class="pl-3 pr-3 text-sm/relaxed text-base-content/75 link-hover"
-      href={`/blog/${post.id}`}
+      href={linkStory(post.id)}
     >
       <Fragment
         set:html={await processor.process(

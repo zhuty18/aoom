@@ -1,5 +1,6 @@
 ---
+import { linkSite } from "../consts"
 const { tag } = Astro.props
 ---
 
-<a class={`tag ${tag}`} href={`/tags/${tag}`}>{tag}</a>
+<a class={`tag ${tag}`} href={linkSite(`/tags/${tag}`)}>{tag}</a>

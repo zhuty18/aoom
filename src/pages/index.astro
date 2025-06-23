@@ -4,7 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, date } from "../consts"
 import { getCollection } from "astro:content"
 import Post from "../components/Post.astro"
 
-const posts = await getCollection("blog")
+const posts = await getCollection("docs")
 const markPosts = posts.filter((post) => post.data.posted)
 const normalPosts = posts
   .filter((post) => !post.data.posted && !post.id.includes("ai"))

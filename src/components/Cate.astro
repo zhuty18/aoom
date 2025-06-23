@@ -1,8 +1,8 @@
 ---
-import { cateName } from "../consts"
+import { cateName, linkStory } from "../consts"
 const { postId } = Astro.props
 const postCate: keyof typeof cateName = postId.split("/")[0]
 ---
 
-<a class={`cate ${postCate}`} href={`/blog/${postCate}`}>{cateName[postCate]}</a
+<a class={`cate ${postCate}`} href={linkStory(postCate)}>{cateName[postCate]}</a
 >

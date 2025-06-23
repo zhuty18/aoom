@@ -1,11 +1,15 @@
 ---
 import BasicPage from "../layouts/BasicPage.astro"
+import { linkSite } from "../consts"
 ---
 
 <BasicPage title="404">
   <p>Oops! 此处内容不存在或已被删除。</p>
-  <a href="/"><div class="btn btn-error btn-soft">点击返回首页</div></a>
+  <a href={linkSite("/")}
+    ><div class="btn btn-error btn-soft">点击返回首页</div></a
+  >
   <script>
-    document.location.href = "/"
+    import { linkSite } from "../consts"
+    document.location.href = linkSite("/")
   </script>
 </BasicPage>

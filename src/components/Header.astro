@@ -1,12 +1,13 @@
 ---
-import { LIGHT_THEME, DARK_THEME, SITE_TITLE } from "../consts"
+import { LIGHT_THEME, DARK_THEME, SITE_TITLE, linkSite } from "../consts"
 ---
 
 <div
   class="navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50"
 >
-  <a href="/"
+  <a href={linkSite("/")}
     ><div class="btn btn-primary btn-ghost">
+      <img src={linkSite("/favicon.svg")} class="w-6 h-6" />
       {SITE_TITLE}
     </div></a
   >
