@@ -5,7 +5,7 @@
 @import "./mystyle.css";
 
 main {
-  @apply text-lg/relaxed text-base-content/85 pl-12 pr-12 max-w-4xl ml-auto mr-auto;
+  @apply text-base/relaxed text-base-content/85 max-w-3xl ml-auto mr-auto pl-8 pr-8;
 }
 
 h1 {
