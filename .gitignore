@@ -35,5 +35,4 @@ pnpm-debug.log*
 .idea/
 
 .vscode
-blog/*
-!contents/blog/*
+contents/docs
