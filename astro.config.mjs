@@ -4,6 +4,6 @@ import tailwindcss from "@tailwindcss/vite"
 
 // https://astro.build/config
 export default defineConfig({
-  base: "/astro_blog/",
+  base: "/aoom/",
   vite: { plugins: [tailwindcss()] },
 })
