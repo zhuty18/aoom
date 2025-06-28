@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Prepare
-        run: python scripts/blog.py
+        run: python scripts/post.py
       - name: Detect package manager
         id: detect-package-manager
         run: |

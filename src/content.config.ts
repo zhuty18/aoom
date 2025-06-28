@@ -7,12 +7,12 @@ const docs = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
-      more_excerpt: z.boolean().default(false),
-      posted: z.boolean().default(false),
+      excerpt: z.string().default(""),
+      post: z.boolean().default(false),
       date: z.coerce.date().optional(),
       auto_date: z.coerce.date().optional(),
       word_count: z.number().optional(),
-      tags: z.array(z.string()).optional(),
+      tags: z.array(z.string()).default([]),
       finished: z.boolean().default(false),
       ai_comment: z.boolean().default(false),
       ai_source: z.string().optional(),

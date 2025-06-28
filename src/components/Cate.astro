@@ -4,5 +4,5 @@ const { postId } = Astro.props
 const postCate: keyof typeof cateName = postId.split("/")[0]
 ---
 
-<a class={`cate ${postCate}`} href={linkStory(postCate)}>{cateName[postCate]}</a
+<a class={`cate ${postCate}`} href={linkStory(postCate)}>{cateName[postCate]?cateName[postCate]:postId.split("/")[0].toUpperCase()}</a
 >

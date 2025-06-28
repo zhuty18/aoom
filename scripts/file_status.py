@@ -4,11 +4,13 @@
 
 import os
 import re
+import shutil
 import subprocess
+import time
 
 from personal import (
+    AI批评TAG,
     AI评论路径,
-    POST日期格式,
     POST路径,
     完结标志,
     忽略文件,
@@ -16,12 +18,12 @@ from personal import (
     提交时间,
     摘要长度,
     文档根,
-    日志路径,
     日期格式,
 )
 from utils import (
+    doc_path,
     tag优先级,
-    制作索引,
+    制作文件夹,
     完结路径,
     文件夹路径,
     格式化时间,
@@ -30,7 +32,6 @@ from utils import (
     获取文件_文件名,
     获取时间戳,
     行长度,
-    路径名,
 )
 
 
@@ -95,10 +96,8 @@ class 文件管理:
 
     def 应发布(self):
         """是否应发布"""
-        return (
-            self._路径.endswith(".md")
-            and (not self.__ai创作())
-            and (not self.格式化中忽略())
+        return self._路径.endswith(".md") and (
+            not self.格式化中忽略() or self.__ai创作()
         )
 
     def 路径(self):
@@ -125,7 +124,7 @@ class 文件管理:
                     if i.startswith("# "):
                         标题 = i[2:].strip()
                         break
-            self._标题 = 标题
+            self._标题 = 标题.strip("*")
         return self._标题
 
     def 已完结(self):
@@ -235,12 +234,14 @@ class 文件管理:
         """获取AI评论文件"""
         if self.__ai创作():
             return None
-        ai评论 = os.path.join(AI评论路径, self.文件名()) + ".md"
+        ai评论 = os.path.join(POST路径, AI评论路径, self.文件名()) + ".md"
         return ai评论 if os.path.exists(ai评论) else None
 
     def __ai创作(self):
         """是否为AI创作"""
-        return AI评论路径 in self._路径
+        if self.读取yaml内参数("key"):
+            return AI批评TAG in self.读取yaml内参数("keys")
+        return False
 
     def __yaml字符串(self):
         """读取yaml字符串"""
@@ -355,19 +356,13 @@ class 文件管理:
             with open(self._路径, "w", encoding="utf8") as f:
                 f.write(new_content)
             self.__添加yaml参数("title", self.标题(), 修改=True)
-        if (not self.格式化中忽略()) or 日志路径 in self._路径:
-            self.__添加yaml参数("category", 路径名(文件夹路径(self._路径)))
 
         ai评论 = self.__ai评论()
         if ai评论:
-            self.__添加yaml参数(
-                "ai_comment", self.__ai评论().replace(".md", ".html")
-            )
+            self.__添加yaml参数("ai_comment", "true")
             文件管理(ai评论).__添加yaml参数(
                 "ai_source",
-                相对路径(获取文件_文件名(self.文件名())).replace(
-                    ".md", ".html"
-                ),
+                doc_path(self.路径()).replace(".md", ""),
             )
 
     def 标注完结(self, 强制=False):
@@ -395,32 +390,27 @@ class 文件管理:
         if not 日期:
             日期 = self.读取yaml内参数("auto_date")
         if not 日期:
-            日期 = 格式化时间(self._时间, POST日期格式)
+            日期 = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 
-        发布路径 = os.path.join(
-            POST路径, f"{日期}-{self.标题().replace("/","-")}.md"
+        发布路径 = os.path.join(POST路径, self.路径())
+        制作文件夹(发布路径)
+        shutil.copy(self.路径(), 发布路径)
+
+        发布文件 = 文件管理(发布路径)
+        发布文件.在线格式化()
+
+        发布文件.__添加yaml参数(
+            "excerpt",
+            self.__摘要()
+            .replace("\n", "\\n")
+            .replace("> ", "")
+            .replace(" ", "&nbsp;")
+            .replace('"', '\\"')
+            .replace("'", "\\'")
+            .replace("*", ""),
         )
 
-        with open(发布路径, "w", encoding="utf8") as f:
-            f.write(
-                f"""{self.__摘要()}
-
-<!--more-->
-"""
-            )
-        发布文件 = 文件管理(发布路径)
-        发布文件.复制yaml(self.__yaml内容())
-        target = self._路径.replace(".md", "")
-        if target.endswith("."):
-            target = target[:-1] + "/html"
-        发布文件.被发布(target, 文件夹路径(self._路径))
-
-        for tag in self.读取yaml内参数("tags"):
-            制作索引("tags", tag)
-        if 路径名(文件夹路径(self._路径)):
-            制作索引("category", 路径名(文件夹路径(self._路径)))
-
-        return 发布路径
+        return 日期, 发布路径
 
     def 被发布(self, target, cat_url):
         """添加跳转"""

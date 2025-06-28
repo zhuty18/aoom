@@ -332,3 +332,11 @@ def ignore_in_format(filename):
         if i in 相对路径(filename):
             return True
     return "_" in filename
+
+
+def 制作文件夹(路径):
+    """建立文件夹"""
+    l = 路径.split("/")
+    for i in range(len(l) - 1):
+        if not os.path.exists("/".join(l[: i + 1])):
+            os.mkdir("/".join(l[: i + 1]))

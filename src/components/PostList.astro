@@ -1,0 +1,13 @@
+---
+const { posts } = Astro.props
+import { date } from "../consts"
+import Post from "./Post.astro"
+---
+
+<ul>
+  {
+    posts
+      .sort((a, b) => date(b.data).valueOf() - date(a.data).valueOf())
+      .map((post: any) => <Post post={post} />)
+  }
+</ul>

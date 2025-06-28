@@ -34,10 +34,11 @@ const { post } = Astro.props
     >
       <Fragment
         set:html={await processor.process(
-          post.body.includes("<!--more-->")
-            ? post.body.split("<!--more-->")[0] +
-                (post.data.more_excerpt ? "..." : "")
-            : post.body.slice(0, 100) + "..."
+          post.data.excerpt
+            ? post.data.excerpt.replaceAll("\\n","\n")
+            : typeof post.body == "string"
+              ? post.body.slice(0, 120) + "……"
+              : ""
         )}
       />
     </a>

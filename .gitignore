@@ -6,8 +6,7 @@ _site
 *机翻*
 *OCR*
 **/.obsidian
-.copilot-index
-_posts
+src/contents/docs
 
 # build output
 dist/

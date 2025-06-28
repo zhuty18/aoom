@@ -1,10 +1,10 @@
 ---
 import IndexPage from "../../layouts/IndexPage.astro"
-import Post from "../../components/Post.astro"
+import PostList from "../../components/PostList.astro"
 
 import { getCollection } from "astro:content"
 
-import { EXTRA_TAGS } from "../../consts"
+import { date, EXTRA_TAGS } from "../../consts"
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("docs")
@@ -36,7 +36,5 @@ const { posts } = Astro.props
 ---
 
 <IndexPage title={tag}>
-  <ul>
-    {posts.map((post: any) => <Post post={post} />)}
-  </ul>
+  <PostList posts={posts} />
 </IndexPage>

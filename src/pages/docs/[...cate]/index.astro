@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content"
 
 import IndexPage from "../../../layouts/IndexPage.astro"
-import Post from "../../../components/Post.astro"
-import { cateName } from "../../../consts"
+import PostList from "../../../components/PostList.astro"
+import { cateName, date } from "../../../consts"
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("docs")
@@ -29,5 +29,5 @@ const cateKey = cate as keyof typeof cateName
 ---
 
 <IndexPage title={cateName[cateKey]}>
-  {posts.map((post) => <Post post={post} />)}
+  <PostList posts={posts} />
 </IndexPage>

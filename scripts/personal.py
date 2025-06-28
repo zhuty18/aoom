@@ -80,7 +80,7 @@ update: {文档库更新字符串}
 更改文件 = "data/change.txt"
 
 # POST相关
-POST路径 = "_posts/"
+POST路径 = "src/contents/"
 POST日期格式 = "%Y-%m-%d"
 POST文件格式 = POST日期格式 + "-{title}.md"
 # 首页post显示上限，0为关闭功能，-1为不设置上限
@@ -90,7 +90,7 @@ POST文件格式 = POST日期格式 + "-{title}.md"
 完结标志 = ["END", "完结", "Q.E.D."]
 完结TAG = "FIN"
 未完TAG = "TBC"
-AI批评TAG = "AI评论"
+AI批评TAG = "AI批评"
 
 # 日志
 日志路径 = "docs/logs"
