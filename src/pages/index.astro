@@ -1,13 +1,11 @@
 ---
 import BasicPage from "../layouts/BasicPage.astro"
-import { SITE_TITLE, SITE_DESCRIPTION, date } from "../consts"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
 import { getCollection } from "astro:content"
 import PostList from "../components/PostList.astro"
 
 const posts = await getCollection("docs")
-const displayPosts = posts
-  .filter((post) => post.data.post)
-  .sort((a, b) => date(b.data).valueOf() - date(a.data).valueOf())
+const displayPosts = posts.filter((post) => post.data.post)
 ---
 
 <BasicPage title={SITE_TITLE} | {SITE_DESCRIPTION}>

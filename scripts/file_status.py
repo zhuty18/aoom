@@ -239,8 +239,8 @@ class 文件管理:
 
     def __ai创作(self):
         """是否为AI创作"""
-        if self.读取yaml内参数("key"):
-            return AI批评TAG in self.读取yaml内参数("keys")
+        if self.读取yaml内参数("tags"):
+            return AI批评TAG in self.读取yaml内参数("tags")
         return False
 
     def __yaml字符串(self):
@@ -362,7 +362,7 @@ class 文件管理:
             self.__添加yaml参数("ai_comment", "true")
             文件管理(ai评论).__添加yaml参数(
                 "ai_source",
-                doc_path(self.路径()).replace(".md", ""),
+                doc_path(相对路径(self.路径(), POST路径)).replace(".md", ""),
             )
 
     def 标注完结(self, 强制=False):

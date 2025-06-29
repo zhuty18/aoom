@@ -10,4 +10,22 @@ import Post from "./Post.astro"
       .sort((a, b) => date(b.data).valueOf() - date(a.data).valueOf())
       .map((post: any) => <Post post={post} />)
   }
+  <script lang="ts">
+    function toggleFinishOnly() {
+      let finishOnly = document.getElementById("finish-only").checked
+      let postList = document.getElementsByTagName("post")
+      for (var i in postList) {
+        let post = postList[i]
+        if (post.dataset) {
+          post.style.display =
+            !finishOnly || post.dataset.finished == "true" ? "" : "none"
+        }
+      }
+    }
+    toggleFinishOnly()
+    document
+      .getElementById("finish-only")
+      .addEventListener("change", toggleFinishOnly)
+      .addEventListener()
+  </script>
 </ul>

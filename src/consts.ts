@@ -2,7 +2,7 @@ const SITE_TITLE = "狡兔百窟"
 const SITE_DESCRIPTION = "兔子草的线上存档"
 const LIGHT_THEME = "mylight"
 const DARK_THEME = "mydark"
-const EXTRA_TAGS: any[] = ["FIN", "TBC", "AI评论"]
+const EXTRA_TAGS = ["FIN", "TBC", "AI评论"]
 
 import { unified } from "unified"
 import remarkParse from "remark-parse"
@@ -18,7 +18,7 @@ const processor = unified()
   .use(rehypeRaw)
   .use(rehypeStringify)
 
-const cateName = {
+const cateNames = {
   ai: "评论",
   blob: "片段",
   dc: "DC",
@@ -39,24 +39,51 @@ const cateName = {
   yys: "阴阳师",
 }
 
+const cateName = (key: string) =>
+  key in cateNames ? cateNames[key] : key.toUpperCase()
+
 const date = (data: any) =>
-  data.date ? data.date : data.auto_date || new Date()
+  data.date ? data.date : data.auto_date || new Date("2018-01-01")
 
 const SITE_ROOT = "/aoom"
 
-const linkSite = (url: string) => SITE_ROOT + url
+const linkSite = (url: string) => SITE_ROOT + (url == "" ? "/" : url)
 
-const linkStory = (id: string) => SITE_ROOT + `/docs/${id}`
+const linkStory = (id: string) => linkSite(`/docs/${id}`)
+
+const linkName = (path: string) =>
+  path == ""
+    ? "首页"
+    : path == "/docs"
+      ? "所有文件"
+      : cateName(decodeURIComponent(path.split("/").slice(-1)[0]))
+
+const containsTag = (posts: Array<any>, tag: string) =>
+  posts.filter((post) =>
+    tag == "FIN"
+      ? post.data.finished || post.data.ai_source
+      : tag == "TBC"
+        ? !post.data.finished
+        : tag == "AI评论"
+          ? post.data.ai_comment
+          : post.data.tags.includes(tag)
+  )
+const matchCate = (posts: Array<any>, cate: string) =>
+  posts.filter((post) => post.id.split("/")[0] == cate)
 
 export {
   SITE_TITLE,
   SITE_DESCRIPTION,
+  SITE_ROOT,
   LIGHT_THEME,
   DARK_THEME,
   EXTRA_TAGS,
   processor,
   cateName,
   date,
+  linkName,
   linkSite,
   linkStory,
+  containsTag,
+  matchCate,
 }

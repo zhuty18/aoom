@@ -1,9 +1,15 @@
 ---
-import { LIGHT_THEME, DARK_THEME, SITE_TITLE, linkSite } from "../consts"
+import {
+  LIGHT_THEME,
+  DARK_THEME,
+  SITE_TITLE,
+  linkSite,
+  linkStory,
+} from "../consts"
 ---
 
 <div
-  class="navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50"
+  class="navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50 gap-2"
 >
   <a href={linkSite("/")}
     ><div class="btn btn-primary btn-ghost">
@@ -11,11 +17,27 @@ import { LIGHT_THEME, DARK_THEME, SITE_TITLE, linkSite } from "../consts"
       {SITE_TITLE}
     </div></a
   >
+  <a href={linkStory("")}>
+    <div class="btn btn-ghost btn-secondary btn-sm">所有分类</div></a
+  >
+  <a href={linkSite("/tags")}>
+    <div class="btn btn-ghost btn-secondary btn-sm">所有标签</div></a
+  >
   <div class="flex-1"></div>
+  <div class="flex gap-1">
+    <div class="text-xs mt-auto mb-auto">全</div>
+    <input
+      id="finish-only"
+      type="checkbox"
+      class="toggle toggle-sm toggle-success checked:bg-base-200/80"
+      checked="checked"
+    />
+    <div class="text-xs mt-auto mb-auto">完</div>
+  </div>
   <div>
     <label
       id="theme-switch"
-      class="swap swap-rotate btn btn-ghost btn-circle"
+      class="swap swap-rotate btn btn-ghost btn-circle btn-accent"
       data-light={LIGHT_THEME}
       data-dark={DARK_THEME}
     >

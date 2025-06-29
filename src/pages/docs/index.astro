@@ -1,0 +1,37 @@
+---
+import { cateName, containsTag, linkStory, matchCate } from "../../consts"
+import IndexPage from "../../layouts/IndexPage.astro"
+import { getCollection } from "astro:content"
+const posts = await getCollection("docs")
+
+const cates = [...new Set(posts.map((post) => post.id.split("/")[0]).flat())]
+const cateLength = (cate: string) => matchCate(posts, cate).length
+---
+
+<IndexPage title="所有类别">
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4"
+  >
+    {
+      cates
+        .sort((a, b) => cateLength(b) - cateLength(a))
+        .map((cate: any) => (
+          <div class="card bg-base-200/50 hover:bg-base-300/40 m-2 shadow-md hover:shadow-lg border border-base-200 transition-all duration-100 hover:-translate-y-0.5 hover:translate-x-0.5">
+            <a href={linkStory(cate)}>
+              <div class="card-body">
+                <div class="card-title">
+                  <div class={`cate ${cate}`}>{cateName(cate)}</div>
+                </div>
+                <div class="card-text">
+                  共 {cateLength(cate)}
+                  篇，
+                  {containsTag(matchCate(posts, cate), "FIN").length}
+                  篇已完结
+                </div>
+              </div>
+            </a>
+          </div>
+        ))
+    }
+  </div></IndexPage
+>

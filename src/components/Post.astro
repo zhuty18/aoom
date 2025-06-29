@@ -6,7 +6,8 @@ const { post } = Astro.props
 ---
 
 <post
-  class="card bg-base-200 shadow-md shadow-base-content/10 w-full mt-3 mb-3"
+  data-finished={post.data.finished || (post.data.ai_source ? true : false)}
+  class="post card bg-base-200 hover:bg-base-300/30 shadow-md hover:shadow-lg shadow-base-content/20 w-full mt-3 mb-3 transition-all duration-100"
 >
   <div class="card-body">
     <div class="flex justify-between items-center">
@@ -14,7 +15,7 @@ const { post } = Astro.props
         <a href={linkStory(post.id)}>{post.data.title}</a>
       </div>
       <div class="flex flex-col items-center">
-        <div class="badge badge-xs badge-neutral badge-ghost mb-1">
+        <div class="text-neutral mb-1">
           <div class="text-xs text-neutral">
             {
               post.data.tags.includes("AI批评")
@@ -35,7 +36,7 @@ const { post } = Astro.props
       <Fragment
         set:html={await processor.process(
           post.data.excerpt
-            ? post.data.excerpt.replaceAll("\\n","\n")
+            ? post.data.excerpt.replaceAll("\\n", "\n")
             : typeof post.body == "string"
               ? post.body.slice(0, 120) + "……"
               : ""
@@ -51,6 +52,7 @@ const { post } = Astro.props
           post.data.tags &&
             post.data.tags.map((tag: string) => <Tag tag={tag} />)
         }
+        {post.data.ai_comment && <Tag tag="AI评论" />}
         {
           !post.data.tags.includes("AI批评") && (
             <Tag tag={post.data.finished ? "FIN" : "TBC"} />

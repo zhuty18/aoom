@@ -53,11 +53,19 @@ sup {
 }
 
 .cate {
-  @apply badge badge-neutral link link-hover min-w-13;
+  @apply badge badge-neutral link link-hover min-w-13 border-0;
 }
 
 .dc {
-  @apply badge-info;
+  @apply bg-info text-info-content;
+}
+
+.qz {
+  @apply bg-error/15 text-error;
+}
+
+.dr {
+  @apply bg-amber-300 text-indigo-800;
 }
 
 .tag {
@@ -78,4 +86,40 @@ sup {
 
 .TBC {
   @apply text-warning bg-neutral-content;
+}
+
+.AI评论 {
+  @apply text-[#4d6bfe] bg-white;
+}
+
+.AI批评 {
+  @apply text-white bg-[#4d6bfe];
+}
+
+.无CP {
+  @apply text-base-content bg-base-200;
+}
+
+.蝙家 {
+  @apply text-yellow-400 bg-gray-950;
+}
+
+.JayTim {
+  @apply text-rose-400 bg-gray-50;
+}
+
+.灯团 {
+  @apply text-emerald-400 bg-green-50;
+}
+
+.叶攻 {
+  @apply text-rose-500 bg-red-50;
+}
+
+.恺楚 {
+  @apply bg-amber-200 text-sky-500;
+}
+
+.武侠au {
+  @apply text-rose-800 bg-stone-100;
 }
