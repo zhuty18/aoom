@@ -18,7 +18,7 @@ const processor = unified()
   .use(rehypeRaw)
   .use(rehypeStringify)
 
-const cateNames = {
+const cateNames: Record<string, string> = {
   ai: "评论",
   blob: "片段",
   dc: "DC",

@@ -7,7 +7,7 @@ import Post from "./Post.astro"
 <ul>
   {
     posts
-      .sort((a, b) => date(b.data).valueOf() - date(a.data).valueOf())
+      .sort((a: any, b: any) => date(b.data).valueOf() - date(a.data).valueOf())
       .map((post: any) => <Post post={post} />)
   }
   <script lang="ts">
