@@ -374,6 +374,8 @@ class 文件管理:
 
     def 标注发布(self, 日志=False):
         """标记发布"""
+        if self.__ai创作():
+            return 0
         return self.__添加yaml参数(
             "post", "false" if 日志 else "true", 修改=True
         )
