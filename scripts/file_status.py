@@ -173,6 +173,10 @@ class 文件管理:
             self._字数 = res
         return self._字数
 
+    def 更新(self):
+        """进行了更新"""
+        self._时间 = 提交时间
+
     def 更新时间(self):
         """文件更新时间"""
         return 格式化时间(self._时间)
