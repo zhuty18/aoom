@@ -9,7 +9,6 @@ import time
 from name_def import names
 from personal import (
     AI评论路径,
-    INDEX文件,
     TAGS_CP,
     TAGS_优先,
     TAGS_组织,
@@ -137,12 +136,6 @@ def 文档根目录():
     return os.path.join(os.getcwd(), 文档根)
 
 
-def sub_path(path):
-    """对下级文件链接"""
-    tmp = path.replace("\\", "/")
-    return tmp.split("/")[-1]
-
-
 def 相对路径(path: str, root=os.getcwd()) -> str:
     """文件名缩短至根目录"""
     return (
@@ -175,24 +168,6 @@ def name_of(path):
 def 路径名(i: str):
     """路径名"""
     return 文件夹名.get(doc_path(i).strip(), None)
-
-
-def 目录信息(path: str = 文档根目录()):
-    """全目录信息"""
-    text = f"# {路径名(path)}\n\n"
-    text += "|所有文件夹|\n"
-    text += "|:-|\n"
-    has = False
-    dir_list = os.listdir(path)
-    dir_list.sort()
-    for i in dir_list:
-        full_path = os.path.join(path, i)
-        if os.path.isdir(full_path) and 路径名(full_path) is not None:
-            name = 路径名(full_path)
-            if name:
-                text += f"|[{路径名(full_path)}]({sub_path(full_path)})|\n"
-                has = True
-    return text if has else None
 
 
 class 搜索文件:
@@ -298,29 +273,6 @@ def tag优先级(tag):
         return 3
     else:
         return 4
-
-
-def 制作索引(kind, name):
-    """制作jekyll索引"""
-    path = os.path.join(os.getcwd(), kind)
-    if not os.path.exists(os.path.join(path, name + ".md")):
-        with open(os.path.join(path, name + ".md"), "w", encoding="utf8") as f:
-            f.write("---\n")
-            f.write(f"layout: {kind}\n")
-            f.write(f"title: {name}\n")
-            f.write("---\n")
-
-
-def 制作索引_路径(kind, name):
-    """制作jekyll索引路径"""
-    path = os.path.join(os.getcwd(), kind)
-    if not os.path.exists(path):
-        os.mkdir(path)
-        with open(os.path.join(path, INDEX文件), "w", encoding="utf8") as f:
-            f.write("---\n")
-            f.write(f"layout: {kind}_all\n")
-            f.write(f"title: 全部{name}\n")
-            f.write("---\n")
 
 
 def ignore_in_format(filename):

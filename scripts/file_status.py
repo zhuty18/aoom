@@ -173,10 +173,6 @@ class 文件管理:
             self._字数 = res
         return self._字数
 
-    def 更新(self):
-        """进行了更新"""
-        self._时间 = 提交时间
-
     def 更新时间(self):
         """文件更新时间"""
         return 格式化时间(self._时间)
@@ -333,7 +329,7 @@ class 文件管理:
         self._yaml = yaml
         self.__更新yaml()
 
-    def 格式化(self):
+    def 格式化(self, 打印过程=False):
         """格式化文件"""
         with open(self._路径, "r", encoding="utf-8") as f:
             content = f.read()
@@ -345,7 +341,7 @@ class 文件管理:
         res.replace("------", "---")
         with open(self._路径, "w", encoding="utf-8") as f:
             f.write(res.strip("\n") + "\n")
-        self.__添加yaml参数("word_count", str(self.字数()), 修改=True)
+        self.__添加yaml参数("word_count", str(self.字数(打印过程)), 修改=True)
         self.标注完结()
 
     def 在线格式化(self):
@@ -386,6 +382,7 @@ class 文件管理:
 
     def 标注更新日期(self):
         """为文件标注更新日期"""
+        self._时间 = 提交时间
         self.__添加yaml参数(
             "auto_date", 格式化时间(self._时间, 日期格式), 修改=True
         )
@@ -417,12 +414,3 @@ class 文件管理:
         )
 
         return 日期, 发布路径
-
-    def 被发布(self, target, cat_url):
-        """添加跳转"""
-        self.__添加yaml参数("layout", "forward")
-        self.__添加yaml参数("target", target)
-        self.__添加yaml参数("cat_url", cat_url)
-        self.__添加yaml参数("excerpt_separator", "<!--more-->")
-        self.标注完结(True)
-        self.__添加yaml参数("date", self.读取yaml内参数("auto_date"))

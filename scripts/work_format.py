@@ -13,7 +13,7 @@ def 格式化文件(filename, force=False):
     """格式化文件"""
     t = 文件管理(filename)
     if t.合法():
-        t.格式化()
+        t.格式化(force)
         if force:
             t.整理yaml()
     else:

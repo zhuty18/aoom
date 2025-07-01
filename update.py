@@ -20,13 +20,8 @@ if __name__ == "__main__":
         GIT署名,
         GIT邮箱,
         GIT默认信息,
-        其他顺序,
         文档根,
-        更改文件,
-        词云工作,
-        词云范围,
         进行统计,
-        默认顺序,
     )
 
     COMMIT_TIME = time.time()
@@ -50,17 +45,8 @@ if __name__ == "__main__":
         nargs="?",
         const=not 进行统计,
     )
-    parser.add_argument("-word", "--word_cloud", type=str, default=词云范围)
     parser.add_argument(
-        "-o",
-        "--sort_order",
-        type=str,
-        default=默认顺序,
-        nargs="?",
-        const=其他顺序,
-    )
-    parser.add_argument(
-        "-push",
+        "-p",
         "--push",
         type=bool,
         default=GIT推送,
@@ -72,22 +58,17 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # 解决obsidian换行符
-    from win4obsidian import touch_obsidian
-
-    touch_obsidian()
-
     # 格式化所有文档
     import work_format
 
     work_format.全部格式化(工作路径)
 
     # 字数统计
+    统计器 = None
     if args.statistic:
         import work_record
 
-        统计器 = work_record.进行字数统计(工作路径, args.sort_order)
-        统计器.暂存更改(更改文件)
+        统计器 = work_record.进行字数统计()
 
     # 提交文件
     if args.autocommit:
@@ -98,20 +79,12 @@ if __name__ == "__main__":
 
         # mes = format_time() + " "
         mes = args.message
-        try:
+        if 统计器:
             mes += " 更新了" + str(统计器.总字数变更) + "字"
-        except NameError:
-            pass
+
         mes = 'git commit -m "' + mes + '"'
         os.system(mes)
 
         if args.push:
             os.popen("git pull").close()
             os.popen("git push").close()
-
-    if args.word_cloud != "none":
-        import word_cloud_make
-
-        word_cloud_make.WordPic(
-            path=工作路径, job=词云工作, file=[args.word_cloud]
-        )

@@ -24,25 +24,6 @@ GIT默认信息 = "随便更新"
 
 进行统计 = True
 
-# 字数统计的顺序
-# time代表按文件上一次提交的时间排序
-# name代表按文件名（拼音顺序）进行排序
-默认顺序 = "time"
-其他顺序 = "name" if 默认顺序 == "time" else "time"
-
-# 词云生成词云的文件范围
-# 空字符串表示生成所有字数变化文件的词云
-# none表示不生成词云
-# 其他字符串表示生成文件名含此字符串的词云
-词云范围 = "none"
-
-# 词云统计后要做的工作
-# s 生成与文档同名的.png文件，并保存在同一路径下
-# p 生成词云图片并显示
-# r 删除保存的词云图片
-# 可以同时使用多个工作，例如sp
-词云工作 = "p"
-
 # 名词翻译方向
 翻译模式 = "eng2chs"
 反向翻译 = 翻译模式[4:7] + "2" + 翻译模式[0:3]
@@ -55,29 +36,12 @@ GIT默认信息 = "随便更新"
 时间格式 = "%y.%m.%d %H:%M"
 日期格式 = "%Y-%m-%d"
 
-# index
-INDEX文件 = "index.md"
-INDEX文件_完整 = "full_index.md"
-
-# 文档库开头
-文档库更新字符串 = "{update_detail}"
-文档库YAML = f"""---
-layout: docs
-title: {网站名}
-update: {文档库更新字符串}
----
-
-"""
-标题_已完结 = "## 已完结"
-标题_未完结 = "## 未完结"
-
 # 默认字符串，勿动
 隐藏区开头 = "// finished work head"
 隐藏区结尾 = "// finished work tail"
 隐藏区初始值 = '"template":true,'
 
 历史文件 = "data/history.txt"
-更改文件 = "data/change.txt"
 
 # POST相关
 POST路径 = "src/contents"
@@ -124,7 +88,7 @@ AI批评TAG = "AI批评"
 }
 
 # 格式化+字数统计时忽略的文件与路径
-忽略文件 = [INDEX文件_完整, INDEX文件, "README.md"]
+忽略文件 = ["README.md"]
 AI评论路径 = "docs/AI"
 忽略路径 = [
     日志路径,

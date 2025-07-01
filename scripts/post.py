@@ -1,29 +1,14 @@
 # coding = utf-8
+
 """
 发布文件到POST_PATH文件夹
 """
+
 import os
-import sys
 
 from file_status import 文件管理
-from personal import (
-    AI批评TAG,
-    INDEX文件,
-    POST路径,
-    完结TAG,
-    未完TAG,
-    首页POST上限,
-    文档根,
-    日志路径,
-)
-from utils import (
-    制作文件夹,
-    制作索引,
-    制作索引_路径,
-    相对路径,
-    获取文件_关键字,
-    路径名,
-)
+from personal import POST路径, 首页POST上限, 文档根
+from utils import 制作文件夹, 路径名
 
 POST_LIST = []
 
@@ -66,8 +51,6 @@ def 发布全部文件(path, allow_tbc=False):
         文件路径 = os.path.join(path, item)
         if 路径名(文件路径):
             发布全部文件(文件路径, allow_tbc)
-        # elif 日志路径 in 相对路径(path):
-        #     发布日志(文件路径)
         else:
             文件 = 文件管理(文件路径)
             if 文件.应发布():
@@ -79,9 +62,4 @@ if __name__ == "__main__":
     制作文件夹(POST路径)
 
     发布全部文件(文档根, True)
-    # 改动文件 = 文件管理(os.path.join(文档根, INDEX文件)).读取yaml内参数(
-    #     "change"
-    # )
-    # for i in 改动文件:
-    #     强制发布文件(i)
     额外发布指定量()
