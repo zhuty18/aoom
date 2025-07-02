@@ -211,7 +211,7 @@ class 文件管理:
                 pre += i
                 if "<br>\n\n" in pre:
                     pre = pre.split("<br>")[1].strip()
-                if len(pre) > EXCERPT_LENGTH * 0.7:
+                if len(pre) > EXCERPT_LENGTH * 0.5:
                     pre = pre.strip()
                     break
         if len(pre) > EXCERPT_LENGTH * 1.2:
