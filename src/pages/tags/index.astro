@@ -14,18 +14,15 @@ const tagLength = (tag: string) => containsTag(posts, tag).length
 
 <IndexPage title="所有标签">
   <div
-    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2"
   >
     {
       tags
         .sort((a, b) => a.localeCompare(b))
         .sort((a, b) => tagLength(b) - tagLength(a))
         .map((tag: any) => (
-          <div>
-            <a
-              class={`badge badge-neutral badge-outline badge-soft link link-hover ${tag}`}
-              href={linkSite(`/tags/${tag}`)}
-            >
+          <div class="big-tag-div">
+            <a class={`tag big-tag ${tag}`} href={linkSite(`/tags/${tag}`)}>
               {tag}
             </a>
             <span class="text-sm">{tagLength(tag)} 篇</span>
@@ -33,4 +30,5 @@ const tagLength = (tag: string) => containsTag(posts, tag).length
         ))
     }
   </div>
+  <div class="h-8"></div>
 </IndexPage>

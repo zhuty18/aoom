@@ -3,6 +3,11 @@ import Cate from "./Cate.astro"
 import Tag from "./Tag.astro"
 import { processor, date, linkStory } from "../consts"
 const { post } = Astro.props
+const tags = post.data.tags
+if (post.data.ai_comment) {
+  tags.push("AI评论")
+}
+tags.push(post.data.finished ? "FIN" : "TBC")
 ---
 
 <post
@@ -51,12 +56,6 @@ const { post } = Astro.props
         {
           post.data.tags &&
             post.data.tags.map((tag: string) => <Tag tag={tag} />)
-        }
-        {post.data.ai_comment && <Tag tag="AI评论" />}
-        {
-          !post.data.tags.includes("AI批评") && (
-            <Tag tag={post.data.finished ? "FIN" : "TBC"} />
-          )
         }
       </span>
     </div>

@@ -56,6 +56,21 @@ sup {
   @apply mb-4 mt-4;
 }
 
+.nav {
+  @apply navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50 gap-2;
+}
+
+.nav-btn {
+  @apply btn btn-ghost btn-secondary btn-sm;
+}
+
+.home-btn {
+  @apply btn-primary btn-md;
+}
+.nav-text {
+  @apply text-xs mt-auto mb-auto;
+}
+
 .cate {
   @apply badge badge-neutral link link-hover min-w-13 border-0;
 }
@@ -76,54 +91,87 @@ sup {
   @apply ml-0.5 mr-0.5 badge badge-xs badge-neutral badge-outline badge-soft link link-hover text-nowrap;
 }
 
-.\32 025蝙绿企划 {
+.big-tag {
+  @apply badge-md;
+}
+
+.tag:nth-child(6n),
+.big-tag-div:nth-child(6n) .big-tag {
+  @apply badge-primary;
+}
+.tag:nth-child(6n + 1),
+.big-tag-div:nth-child(6n + 1) .big-tag {
+  @apply badge-accent;
+}
+
+.tag:nth-child(6n + 2),
+.big-tag-div:nth-child(6n + 2) .big-tag {
+  @apply badge-secondary;
+}
+
+.tag:nth-child(6n + 3),
+.big-tag-div:nth-child(6n + 3) .big-tag {
+  @apply badge-info;
+}
+
+.tag:nth-child(6n + 4),
+.big-tag-div:nth-child(6n + 4) .big-tag {
+  @apply badge-error;
+}
+
+.tag:nth-child(6n + 5),
+.big-tag-div:nth-child(6n + 5) .big-tag {
+  @apply badge-neutral;
+}
+
+.tag.FIN {
+  @apply badge-success text-success;
+}
+
+.tag.TBC {
+  @apply badge-warning text-warning;
+}
+
+.tag.\32 025蝙绿企划 {
   @apply text-gray-950 bg-green-200;
 }
 
-.BatLantern {
+.tag.BatLantern {
   @apply text-green-400 bg-gray-900;
 }
 
-.FIN {
-  @apply text-success bg-neutral-content;
-}
-
-.TBC {
-  @apply text-warning bg-neutral-content;
-}
-
-.AI评论 {
+.tag.AI评论 {
   @apply text-[#4d6bfe] bg-white;
 }
 
-.AI批评 {
+.tag.AI批评 {
   @apply text-white bg-[#4d6bfe];
 }
 
-.无CP {
+.tag.无CP {
   @apply text-base-content bg-base-200;
 }
 
-.蝙家 {
+.tag.蝙家 {
   @apply text-yellow-400 bg-gray-950;
 }
 
-.JayTim {
+.tag.JayTim {
   @apply text-rose-400 bg-gray-50;
 }
 
-.灯团 {
+.tag.灯团 {
   @apply text-emerald-400 bg-green-50;
 }
 
-.叶攻 {
+.tag.叶攻 {
   @apply text-rose-500 bg-red-50;
 }
 
-.恺楚 {
+.tag.恺楚 {
   @apply bg-amber-200 text-sky-500;
 }
 
-.武侠au {
+.tag.武侠au {
   @apply text-rose-800 bg-stone-100;
 }

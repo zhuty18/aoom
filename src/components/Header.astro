@@ -8,31 +8,29 @@ import {
 } from "../consts"
 ---
 
-<div
-  class="navbar bg-base-300/80 shadow text-base-content fixed backdrop-blur-sm z-50 gap-2"
->
-  <a href={linkSite("/")}
-    ><div class="btn btn-primary btn-ghost">
+<div class="nav">
+  <a href={linkSite("/")}>
+    <div class="nav-btn home-btn">
       <img src={linkSite("/favicon.svg")} class="w-6 h-6" />
       首页
-    </div></a
-  >
+    </div>
+  </a>
   <a href={linkStory("")}>
-    <div class="btn btn-ghost btn-secondary btn-sm">目录</div></a
-  >
+    <div class="nav-btn">目录</div>
+  </a>
   <a href={linkSite("/tags")}>
-    <div class="btn btn-ghost btn-secondary btn-sm">标签</div></a
-  >
+    <div class="nav-btn">标签</div>
+  </a>
   <div class="flex-1"></div>
   <div class="flex gap-1">
-    <div class="text-xs mt-auto mb-auto">全</div>
+    <div class="nav-text">全</div>
     <input
       id="finish-only"
       type="checkbox"
       class="toggle toggle-sm toggle-success checked:bg-base-200/80"
       checked="checked"
     />
-    <div class="text-xs mt-auto mb-auto">完</div>
+    <div class="nav-text">完</div>
   </div>
   <div>
     <label
