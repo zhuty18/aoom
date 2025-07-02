@@ -47,7 +47,7 @@ const { post } = Astro.props
       <span class="text-xs text-neutral/80">
         {post.data.word_count ? `${post.data.word_count}字` : "内容由AI创作"}
       </span>
-      <span class="flex float-end mt-1">
+      <span class="flex-1 float-end overflow-auto">
         {
           post.data.tags &&
             post.data.tags.map((tag: string) => <Tag tag={tag} />)

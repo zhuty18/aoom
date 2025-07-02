@@ -24,6 +24,10 @@ thead {
   @apply bg-accent/20 text-accent-content/80;
 }
 
+post p {
+  @apply wrap-break-word;
+}
+
 p {
   @apply mt-4.5 mb-4.5;
 }
