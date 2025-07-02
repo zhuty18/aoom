@@ -9,16 +9,16 @@ import subprocess
 import time
 
 from personal import (
-    AI批评TAG,
-    AI评论路径,
-    POST路径,
-    完结标志,
-    忽略文件,
-    忽略路径,
-    提交时间,
-    摘要长度,
-    文档根,
-    日期格式,
+    AI_PATH,
+    AI_TAG,
+    COMMIT_TIME,
+    DOC_ROOT,
+    EXCERPT_LENGTH,
+    FIN_MARKS,
+    IGNORE_FILES,
+    IGNORE_PATHS,
+    POST_PATH,
+    TIME_FORMAT,
 )
 from utils import (
     doc_path,
@@ -40,7 +40,7 @@ class 文件管理:
 
     def __init__(self, 路径, 时间=None, 历史长度=0, 历史完结=False):
         self._路径 = 相对路径(路径)
-        self._时间 = 时间 if 时间 else 提交时间
+        self._时间 = 时间 if 时间 else COMMIT_TIME
         self.历史字数 = 历史长度
         self.历史完结 = 历史完结
 
@@ -89,9 +89,9 @@ class 文件管理:
         """是否为合法文档"""
         return (
             self._路径.endswith(".md")
-            and 文档根 in self._路径
+            and DOC_ROOT in self._路径
             and (not self.格式化中忽略())
-            and (not POST路径 in self._路径)
+            and (not POST_PATH in self._路径)
         )
 
     def 应发布(self):
@@ -138,7 +138,7 @@ class 文件管理:
             else:
                 with open(self._路径, "r", encoding="utf8") as f:
                     text = f.read()
-                    ends = 完结标志
+                    ends = FIN_MARKS
                     for i in ends:
                         if f"{i}\n" in text:
                             self._完结 = True
@@ -183,7 +183,7 @@ class 文件管理:
 
     def 链接(self):
         """文件链接"""
-        return 相对路径(self._路径, 文档根).replace(" ", "%20")
+        return 相对路径(self._路径, DOC_ROOT).replace(" ", "%20")
 
     def md信息条目(self):
         """Markdown信息条目"""
@@ -211,21 +211,21 @@ class 文件管理:
                 pre += i
                 if "<br>\n\n" in pre:
                     pre = pre.split("<br>")[1].strip()
-                if len(pre) > 摘要长度 * 0.7:
+                if len(pre) > EXCERPT_LENGTH * 0.7:
                     pre = pre.strip()
                     break
-        if len(pre) > 摘要长度 * 1.2:
-            pre = pre[:摘要长度] + "……"
+        if len(pre) > EXCERPT_LENGTH * 1.2:
+            pre = pre[:EXCERPT_LENGTH] + "……"
         if pre.count("*") % 2 == 1:
             pre += "*"
         return pre
 
     def 格式化中忽略(self):
         """忽略格式化"""
-        for i in 忽略文件:
+        for i in IGNORE_FILES:
             if i in self._路径:
                 return True
-        for i in 忽略路径:
+        for i in IGNORE_PATHS:
             if i in self._路径:
                 return True
         return "_" in self._路径
@@ -234,13 +234,13 @@ class 文件管理:
         """获取AI评论文件"""
         if self.__ai创作():
             return None
-        ai评论 = os.path.join(POST路径, AI评论路径, self.文件名()) + ".md"
+        ai评论 = os.path.join(POST_PATH, AI_PATH, self.文件名()) + ".md"
         return ai评论 if os.path.exists(ai评论) else None
 
     def __ai创作(self):
         """是否为AI创作"""
         if self.读取yaml内参数("tags"):
-            return AI批评TAG in self.读取yaml内参数("tags")
+            return AI_TAG in self.读取yaml内参数("tags")
         return False
 
     def __yaml字符串(self):
@@ -362,7 +362,7 @@ class 文件管理:
             self.__添加yaml参数("ai_comment", "true")
             文件管理(ai评论).__添加yaml参数(
                 "ai_source",
-                doc_path(相对路径(self.路径(), POST路径)).replace(".md", ""),
+                doc_path(相对路径(self.路径(), POST_PATH)).replace(".md", ""),
             )
 
     def 标注完结(self, 强制=False):
@@ -382,9 +382,9 @@ class 文件管理:
 
     def 标注更新日期(self):
         """为文件标注更新日期"""
-        self._时间 = 提交时间
+        self._时间 = COMMIT_TIME
         self.__添加yaml参数(
-            "auto_date", 格式化时间(self._时间, 日期格式), 修改=True
+            "auto_date", 格式化时间(self._时间, TIME_FORMAT), 修改=True
         )
 
     def 发布(self):
@@ -395,7 +395,7 @@ class 文件管理:
         if not 日期:
             日期 = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 
-        发布路径 = os.path.join(POST路径, self.路径())
+        发布路径 = os.path.join(POST_PATH, self.路径())
         制作文件夹(发布路径)
         shutil.copy(self.路径(), 发布路径)
 

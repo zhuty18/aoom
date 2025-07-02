@@ -9,13 +9,13 @@ import time
 GIT署名 = "tuzicao"
 GIT邮箱 = "13718054285@163.com"
 
-文档根 = "docs"
+DOC_ROOT = "docs"
 
 # 本次提交时间，留空作为运行时的公共变量
-提交时间 = None
+COMMIT_TIME = None
 
-if 提交时间 is None:
-    提交时间 = time.time()
+if COMMIT_TIME is None:
+    COMMIT_TIME = time.time()
 
 GIT提交 = True
 GIT添加 = True
@@ -34,7 +34,7 @@ GIT默认信息 = "随便更新"
 
 # 时间格式
 时间格式 = "%y.%m.%d %H:%M"
-日期格式 = "%Y-%m-%d"
+TIME_FORMAT = "%Y-%m-%d"
 
 # 默认字符串，勿动
 隐藏区开头 = "// finished work head"
@@ -44,17 +44,17 @@ GIT默认信息 = "随便更新"
 历史文件 = "data/history.txt"
 
 # POST相关
-POST路径 = "src/contents"
+POST_PATH = "src/contents"
 POST日期格式 = "%Y-%m-%d"
 POST文件格式 = POST日期格式 + "-{title}.md"
 # 首页post显示上限，0为关闭功能，-1为不设置上限
 首页POST上限 = 10
-摘要长度 = 100
+EXCERPT_LENGTH = 100
 
-完结标志 = ["END", "完结", "Q.E.D."]
+FIN_MARKS = ["END", "完结", "Q.E.D."]
 完结TAG = "FIN"
 未完TAG = "TBC"
-AI批评TAG = "AI批评"
+AI_TAG = "AI批评"
 
 # 日志
 日志路径 = "docs/logs"
@@ -88,14 +88,14 @@ AI批评TAG = "AI批评"
 }
 
 # 格式化+字数统计时忽略的文件与路径
-忽略文件 = ["README.md"]
-AI评论路径 = "docs/AI"
-忽略路径 = [
+IGNORE_FILES = ["README.md"]
+AI_PATH = "docs/AI"
+IGNORE_PATHS = [
     日志路径,
     "docs/明星煌煌",
     "docs/_obsidian",
     "docs/material",
-    AI评论路径,
+    AI_PATH,
 ]
 
 # TAG类别（排序用）
@@ -157,4 +157,5 @@ TAGS_组织 = [
     "嘉世",
     "兴欣",
     "蓝雨",
+    "七期",
 ]

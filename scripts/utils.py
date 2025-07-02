@@ -8,17 +8,17 @@ import time
 
 from name_def import names
 from personal import (
-    AI评论路径,
+    AI_PATH,
+    COMMIT_TIME,
+    DOC_ROOT,
+    IGNORE_FILES,
+    IGNORE_PATHS,
     TAGS_CP,
     TAGS_优先,
     TAGS_组织,
     TAGS_角色,
     历史文件,
-    忽略文件,
-    忽略路径,
-    提交时间,
     文件夹名,
-    文档根,
     时间格式,
     隐藏区初始值,
     隐藏区开头,
@@ -26,10 +26,10 @@ from personal import (
 )
 
 
-def 格式化时间(时间戳: float = 提交时间, 时间格式=时间格式) -> str:
+def 格式化时间(时间戳: float = COMMIT_TIME, 时间格式=时间格式) -> str:
     """格式化某个时间戳，默认为当下"""
     if not 时间戳:
-        时间戳 = 提交时间
+        时间戳 = COMMIT_TIME
     return time.strftime(时间格式, time.localtime(时间戳))
 
 
@@ -45,7 +45,7 @@ def 获取时间戳(时间字符串: str = None) -> float:
     return (
         time.mktime(time.strptime(时间字符串, 时间格式))
         if 时间字符串
-        else 提交时间
+        else COMMIT_TIME
     )
 
 
@@ -133,7 +133,7 @@ def wrong_translates():
 
 def 文档根目录():
     """文档根目录"""
-    return os.path.join(os.getcwd(), 文档根)
+    return os.path.join(os.getcwd(), DOC_ROOT)
 
 
 def 相对路径(path: str, root=os.getcwd()) -> str:
@@ -149,7 +149,7 @@ def 相对路径(path: str, root=os.getcwd()) -> str:
 def doc_path(path):
     """文件名缩短至doc文件夹"""
     res = 相对路径(path, 文档根目录())
-    res = 相对路径(res, 文档根)
+    res = 相对路径(res, DOC_ROOT)
     return res
 
 
@@ -191,7 +191,7 @@ class 搜索文件:
             i = os.path.join(path, i)
             if os.path.isdir(i):
                 self.check_dir(i)
-            elif i.endswith(".md") and not AI评论路径 in 相对路径(i):
+            elif i.endswith(".md") and not AI_PATH in 相对路径(i):
                 if self._严格:
                     if name_of(i) == self.key:
                         self.res.append(i)
@@ -277,10 +277,10 @@ def tag优先级(tag):
 
 def ignore_in_format(filename):
     """格式化中忽略此索引文件"""
-    for i in 忽略文件:
+    for i in IGNORE_FILES:
         if i in filename:
             return True
-    for i in 忽略路径:
+    for i in IGNORE_PATHS:
         if i in 相对路径(filename):
             return True
     return "_" in filename

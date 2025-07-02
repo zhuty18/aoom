@@ -14,18 +14,18 @@ if __name__ == "__main__":
     os.system("git config --global core.quotepath false")
 
     from personal import (
+        DOC_ROOT,
         GIT推送,
         GIT提交,
         GIT添加,
         GIT署名,
         GIT邮箱,
         GIT默认信息,
-        文档根,
         进行统计,
     )
 
     COMMIT_TIME = time.time()
-    工作路径 = os.path.join(os.getcwd(), 文档根)
+    工作路径 = os.path.join(os.getcwd(), DOC_ROOT)
 
     parser = argparse.ArgumentParser()
     parser.add_argument(

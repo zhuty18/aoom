@@ -7,7 +7,7 @@
 import os
 
 from file_status import 文件管理
-from personal import POST路径, 首页POST上限, 文档根
+from personal import DOC_ROOT, POST_PATH, 首页POST上限
 from utils import 制作文件夹, 路径名
 
 POST_LIST = []
@@ -59,7 +59,7 @@ def 发布全部文件(path, allow_tbc=False):
 
 
 if __name__ == "__main__":
-    制作文件夹(POST路径)
+    制作文件夹(POST_PATH)
 
-    发布全部文件(文档根, True)
+    发布全部文件(DOC_ROOT, True)
     额外发布指定量()
