@@ -124,11 +124,11 @@ sup {
   @apply badge-neutral;
 }
 
-.tag.FIN {
-  @apply badge-success text-success;
+.tag.FIN:nth-child(n) {
+  @apply badge-success;
 }
 
-.tag.TBC {
+.tag.TBC:nth-child(n) {
   @apply badge-warning text-warning;
 }
 

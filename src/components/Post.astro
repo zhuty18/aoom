@@ -4,10 +4,12 @@ import Tag from "./Tag.astro"
 import { processor, date, linkStory } from "../consts"
 const { post } = Astro.props
 const tags = post.data.tags
-if (post.data.ai_comment) {
+if (post.data.ai_comment && !tags.includes("AI评论")) {
   tags.push("AI评论")
 }
-tags.push(post.data.finished ? "FIN" : "TBC")
+if (!tags.includes("FIN") && !tags.includes("TBC")) {
+  tags.push(post.data.finished ? "FIN" : "TBC")
+}
 ---
 
 <post
