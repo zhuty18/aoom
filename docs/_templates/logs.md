@@ -2,7 +2,7 @@
 date: {{date}}
 ---
 
-# {{date:YY.M.D}}日志
+# {{date:YYYY.M.D}}日志
 
 ```dataview
 LIST

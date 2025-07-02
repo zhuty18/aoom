@@ -59,22 +59,20 @@
   }
 
   count_by_size (size) {
-    let k = 0.33117228239986446
-    let v = -1077.8876816844543
-    if (size < 800) {
-      k = 0.3073133134726448
-      v = -23.40142162860285
-    } else if (size < 12000) {
-      k = 0.32346781904434435
-      v = -36.93753277881238
-    } else if (size < 50000) {
-      k = 0.3225562515681947
-      v = -7.719192092662913
-    } else if (size < 120000) {
-      k = 0.32159962813778875
-      v = 232.79318783223889
+    let size_fit = [
+      { s: 0.32424175437273367, i: -36.62907210800612, min: 0, max: 18000 },
+      { s: 0.32538376536796265, i: -77.70050272955389, min: 18000, max: 80000 },
+      { s: 0.28972899603899527, i: 3823.615283001374, min: 80000, max: 140000 },
+      { s: 0.3293464811684735, i: -421.2721915636414, min: 140000, max: -1 },
+    ]
+    for (let i = 0; i < size_fit.length; i++) {
+      if (
+        size >= size_fit[i].min &&
+        (size < size_fit[i].max || size_fit[i].max == -1)
+      ) {
+        return Math.max(Math.round(size_fit[i].s * size + size_fit[i].i), 0)
+      }
     }
-    return Math.max(Math.round(k * size + v), 0)
   }
 
   count (page) {
