@@ -76,7 +76,7 @@
   }
 
   count (page) {
-    return this.count_by_size(page.file.size)
+    return page.finished ? page.word_count : this.count_by_size(page.file.size)
   }
 
   count_sum (pages) {
