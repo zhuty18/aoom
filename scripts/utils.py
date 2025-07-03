@@ -228,11 +228,11 @@ def 隐藏已完结():
             ori = f.read()
     except FileNotFoundError:
         ori = f"""{{
-    "files.exclude": {{
-        {隐藏区开头}
-        {隐藏区初始值}
-        {隐藏区结尾}
-    }}
+  "files.exclude": {{
+    {隐藏区开头}
+    {隐藏区初始值}
+    {隐藏区结尾}
+  }}
 }}"""
         if not os.path.exists(".vscode"):
             os.mkdir(".vscode")
@@ -243,8 +243,8 @@ def 隐藏已完结():
         0
     ]
 
-    s2 = '": true,\n        "'.join(finished)
-    s2 = f'        "{s2}": true,\n        '
+    s2 = '": true,\n    "'.join(finished)
+    s2 = f'    "{s2}": true,\n    '
 
     if finished:
         ori = ori.replace(s1, s2)
