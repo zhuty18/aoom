@@ -1,6 +1,6 @@
 ---
 import BasicPage from "../layouts/BasicPage.astro"
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR } from "../consts"
 import { getCollection } from "astro:content"
 import PostList from "../components/PostList.astro"
 
@@ -8,7 +8,7 @@ const posts = await getCollection("docs")
 const displayPosts = posts.filter((post) => post.data.post)
 ---
 
-<BasicPage title={SITE_TITLE} | {SITE_DESCRIPTION}>
+<BasicPage title=`${SITE_TITLE} | ${SITE_AUTHOR}`>
   <slot name="title" slot="title">
     {SITE_TITLE}
   </slot>

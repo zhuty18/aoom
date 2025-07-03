@@ -1,5 +1,44 @@
 const SITE_TITLE = "狡兔百窟"
 const SITE_DESCRIPTION = "兔子草的线上存档"
+const SITE_AUTHOR = "兔子草"
+
+const BUILTIN_THEME = [
+  "light",
+  "night",
+  "cupcake",
+  "bumblebee",
+  "emerald",
+  "corporate",
+  "synthwave",
+  "retro",
+  "cyberpunk",
+  "valentine",
+  "halloween",
+  "garden",
+  "forest",
+  "aqua",
+  "lofi",
+  "pastel",
+  "fantasy",
+  "wireframe",
+  "black","luxury",
+  "dracula",
+  "cmyk",
+  "autumn",
+  "business",
+  "acid",
+  "lemonade",
+  "night",
+  "coffee",
+  "winter",
+  "dim",
+  "nord",
+  "sunset",
+  "caramellatte",
+  "abyss",
+  "silk",
+]
+
 const LIGHT_THEME = "mylight"
 const DARK_THEME = "mydark"
 const EXTRA_TAGS = ["FIN", "TBC", "AI评论"]
@@ -73,8 +112,10 @@ const matchCate = (posts: Array<any>, cate: string) =>
 
 export {
   SITE_TITLE,
+  SITE_AUTHOR,
   SITE_DESCRIPTION,
   SITE_ROOT,
+  BUILTIN_THEME,
   LIGHT_THEME,
   DARK_THEME,
   EXTRA_TAGS,
