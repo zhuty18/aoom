@@ -103,7 +103,7 @@ const containsTag = (posts: Array<any>, tag: string) =>
     tag == "FIN"
       ? post.data.finished || post.data.ai_source
       : tag == "TBC"
-        ? !post.data.finished
+        ? !post.data.finished && !post.data.ai_source
         : tag == "AI评论"
           ? post.data.ai_comment
           : post.data.tags.includes(tag)
