@@ -1,5 +1,5 @@
 ---
-import { cateName, containsTag, linkStory, matchCate } from "../../consts"
+import { cateName, linkStory, matchCate } from "../../consts"
 import IndexPage from "../../layouts/IndexPage.astro"
 import { getCollection } from "astro:content"
 const posts = await getCollection("docs")
@@ -25,7 +25,11 @@ const cateLength = (cate: string) => matchCate(posts, cate).length
                 <div class="card-text">
                   共 {cateLength(cate)}
                   篇，
-                  {containsTag(matchCate(posts, cate), "FIN").length}
+                  {
+                    matchCate(posts, cate).filter(
+                      (post) => post.data.finished || post.data.ai_source
+                    ).length
+                  }
                   篇已完结
                 </div>
               </div>

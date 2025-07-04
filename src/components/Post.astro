@@ -1,14 +1,11 @@
 ---
 import Cate from "./Cate.astro"
 import Tag from "./Tag.astro"
-import { processor, date, linkStory } from "../consts"
+import { processor, date, linkStory, linkSite } from "../consts"
 const { post } = Astro.props
 const tags = post.data.tags
 if (post.data.ai_comment && !tags.includes("AI评论")) {
   tags.push("AI评论")
-}
-if (!tags.includes("FIN") && !tags.includes("TBC") && !post.data.ai_source) {
-  tags.push(post.data.finished ? "FIN" : "TBC")
 }
 ---
 
@@ -49,7 +46,19 @@ if (!tags.includes("FIN") && !tags.includes("TBC") && !post.data.ai_source) {
       />
     </a>
     <div class="flex items-center justify-between">
-      <div class="flex items-center gap-0.5 text-nowrap mr-2">
+      <a
+        class={"flex items-center gap-0.5 text-nowrap mr-2 link link-hover " +
+          (post.data.finished
+            ? "link-success"
+            : post.data.word_count
+              ? "link-warning"
+              : "link-info")}
+        href={post.data.finished
+          ? linkSite("fin")
+          : post.data.word_count
+            ? linkSite("tbc")
+            : linkStory("ai")}
+      >
         <div
           aria-label={post.data.finished
             ? "success"
@@ -64,17 +73,10 @@ if (!tags.includes("FIN") && !tags.includes("TBC") && !post.data.ai_source) {
                 : "status-info")}
         >
         </div>
-        <span
-          class={"text-xs items-center " +
-            (post.data.finished
-              ? "text-success"
-              : post.data.word_count
-                ? "text-warning"
-                : "text-info")}
-        >
+        <span class="text-xs items-center">
           {post.data.word_count ? `${post.data.word_count}字` : "内容由AI创作"}
         </span>
-      </div>
+      </a>
       <span class="flex overflow-x-scroll h-auto">
         {
           post.data.tags &&
