@@ -7,7 +7,7 @@ const tags = post.data.tags
 if (post.data.ai_comment && !tags.includes("AI评论")) {
   tags.push("AI评论")
 }
-if (!tags.includes("FIN") && !tags.includes("TBC")&&!post.data.ai_source) {
+if (!tags.includes("FIN") && !tags.includes("TBC") && !post.data.ai_source) {
   tags.push(post.data.finished ? "FIN" : "TBC")
 }
 ---
@@ -56,11 +56,21 @@ if (!tags.includes("FIN") && !tags.includes("TBC")&&!post.data.ai_source) {
             : post.data.word_count
               ? "warning"
               : "info"}
-          class=`status status-${post.data.finished?"success":post.data.word_count?"warning":"info"}`
+          class={"status " +
+            (post.data.finished
+              ? "status-success"
+              : post.data.word_count
+                ? "status-warning"
+                : "status-info")}
         >
         </div>
         <span
-          class=`text-xs text-${post.data.finished?"success":post.data.word_count?"warning":"info"} items-center`
+          class={"text-xs items-center " +
+            (post.data.finished
+              ? "text-success"
+              : post.data.word_count
+                ? "text-warning"
+                : "text-info")}
         >
           {post.data.word_count ? `${post.data.word_count}字` : "内容由AI创作"}
         </span>

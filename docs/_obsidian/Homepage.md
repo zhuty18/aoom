@@ -149,7 +149,7 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 ### 重要任务
 
 ```tasks
-FILTER BY FUNCTION task.status.symbol == "!"
+FILTER BY FUNCTION task.status.symbol == "*"
 ```
 
 ### 当前任务
@@ -157,7 +157,7 @@ FILTER BY FUNCTION task.status.symbol == "!"
 ```tasks
 FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
 (due this week) OR (no due date)
-SORT BY FUNCTION task.status.symbol
+SORT BY FUNCTION REVERSE task.status.symbol
 ```
 
 ### 待办

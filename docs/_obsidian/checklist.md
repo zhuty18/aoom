@@ -3,13 +3,13 @@
 ## Basic
 
 - [ ] 📚 **Todo**
-- [*] 📚 *In Progress*
+- [!] 📚 *In Progress*
 - [x] 📚 ***Done***
 - [-] 📚 ==Cancelled==
 
 ## Forward
 
-- [!] 📚 Important
+- [*] 📚 Important
 - [I] 📚 Idea
 - [/] 📚 Pause
 
@@ -21,84 +21,84 @@
 - [!] `!` Important
 - [@] `@` At
 - [#] `#` Tag
-- [$] `&`
-- [%] `%` Refresh
-- [&] `&` Trash
+- [$] `&` Data
+- [%] `%` ~~Refresh~~
+- [&] `&` ~~Trash~~
 - [*] `*` Star
-- [(] `(` Bad
-- [)] `)` Good
-- [_] `_` Down
+- [(] `(` ~~Bad~~
+- [)] `)` ~~Good~~
+- [_] `_` ~~Down~~
 - [-] `-` Cancelled
-- [=] `=` Medium
-- [+] `+` Up
+- [=] `=` ~~Medium~~
+- [+] `+` Add
 - [[] `[`
 - []] `]`
-- [{] `{` Low
-- [}] `}` High
+- [{] `{` ~~Low~~
+- [}] `}` ~~High~~
 - [\] `\`
 - [|] `|`
 - [;] `;`
-- [:] `:` Pin
+- [:] `:` ~~Pin~~
 - [>] `>` Forward
 - [<] `<` Backward
 - [,] `,`
-- [.] `.` Lock
+- [.] `.` Target
 - [/] `/` Pause
 - [?] `?` Question
-- ['] `'` Quote
-- ["] `"`
-- [a] `a` Archive
-- [A] `A` Alarm
+- ['] `'` ~~Quote~~
+- ["] `"` Quote
+- [a] `a` ~~Archive~~
+- [A] `A` Blank
 - [b] `b` Bookmark
-- [B] `B` Birthday
-- [c] `c` Comment
-- [C] `C` Clip
-- [d] `d` Diamond
-- [D] `D` Document
-- [e] `e` Envelop
-- [E] `E` Eye
+- [B] `B` ~~Birthday~~
+- [c] `c` Cons
+- [C] `C` ~~Clip~~
+- [d] `d` Down
+- [D] `D` Delete
+- [e] `e` ~~Envelop~~
+- [E] `E` ~~Eye~~
 - [f] `f` Flame
-- [F] `F` Financial
-- [g] `g` Game
-- [G] `G` Gym
-- [h] `h` Home
-- [H] `H` Heart
+- [F] `F` Fast
+- [g] `g` ~~Game~~
+- [G] `G` ~~Gym~~
+- [h] `h` ~~Home~~
+- [H] `H` ~~Heart~~
 - [i] `i` Information
 - [I] `I` Idea
 - [j] `j`
 - [J] `J`
-- [k] `k`
+- [k] `k` Key
 - [K] `K`
-- [l] `l`
-- [L] `L`
-- [m] `m` Music
+- [l] `l` Location
+- [L] `L` Language
+- [m] `m` Measure
 - [M] `M` Medical
-- [n] `n`
+- [n] `n` Note
 - [N] `N`
 - [o] `o`
 - [O] `O`
-- [p] `p` People
-- [P] `P` Plane
+- [p] `p` Pros
+- [P] `P` Peaple
 - [q] `q`
 - [Q] `Q`
-- [r] `r`
+- [r] `r` Rule
 - [R] `R`
-- [s] `s` Sport
-- [S] `S` Search
-- [t] `t`
-- [T] `T`
-- [u] `u` URL
-- [U] `U`
-- [v] `v` Video
+- [s] `s` ~~Sport~~
+- [S] `S` $
+- [t] `t` Time
+- [T] `T` Telephone
+- [u] `u` Up
+- [U] `U` Url
+- [v] `v` ~~Video~~
 - [V] `V`
-- [w] `w` World
-- [W] `W` Work
+- [w] `w` Win
+- [W] `W` World
 - [x] `x` Done
 - [X] `X`
 - [y] `y`
 - [Y] `Y`
-- [z] `z` Moon
-- [Z] `Z` Sun
+- [z] `z` ~~Moon~~
+- [Z] `Z` ~~Sun~~
 - [0] `0`
 - [1] `1`
 - [2] `2`
