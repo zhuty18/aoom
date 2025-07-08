@@ -42,7 +42,7 @@ const BUILTIN_THEME = [
 
 const LIGHT_THEME = "mylight"
 const DARK_THEME = "mydark"
-const EXTRA_TAGS = ["FIN", "TBC", "AI评论"]
+const EXTRA_TAGS = ["AI评论"]
 
 import { unified } from "unified"
 import remarkParse from "remark-parse"
@@ -85,11 +85,11 @@ const cateName = (key: string) =>
 const date = (data: any) =>
   data.date ? data.date : data.auto_date || new Date("2018-01-01")
 
-const SITE_ROOT = "/aoom"
+const SITE_ROOT = "/aoom/"
 
-const linkSite = (url: string) => SITE_ROOT + (url == "" ? "/" : url)
+const linkSite = (url: string) => SITE_ROOT + (url == "/" ? "" : url)
 
-const linkStory = (id: string) => linkSite(`/docs/${id}`)
+const linkStory = (id: string) => linkSite(`docs/${id}`)
 
 const linkName = (path: string) =>
   path == ""
@@ -100,13 +100,7 @@ const linkName = (path: string) =>
 
 const containsTag = (posts: Array<any>, tag: string) =>
   posts.filter((post) =>
-    tag == "FIN"
-      ? post.data.finished || post.data.ai_source
-      : tag == "TBC"
-        ? !post.data.finished && !post.data.ai_source
-        : tag == "AI评论"
-          ? post.data.ai_comment
-          : post.data.tags.includes(tag)
+    tag == "AI评论" ? post.data.ai_comment : post.data.tags.includes(tag)
   )
 const matchCate = (posts: Array<any>, cate: string) =>
   posts.filter((post) => post.id.split("/")[0] == cate)

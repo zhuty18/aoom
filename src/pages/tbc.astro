@@ -1,0 +1,14 @@
+---
+import IndexPage from "../layouts/IndexPage.astro"
+import { getCollection } from "astro:content"
+import PostList from "../components/PostList.astro"
+
+const posts = await getCollection("docs")
+const displayPosts = posts.filter(
+  (post) => !post.data.finished && !post.data.ai_source
+)
+---
+
+<IndexPage title="未完结">
+  <PostList posts={displayPosts} />
+</IndexPage>

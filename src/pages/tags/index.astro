@@ -22,7 +22,7 @@ const tagLength = (tag: string) => containsTag(posts, tag).length
         .sort((a, b) => tagLength(b) - tagLength(a))
         .map((tag: any) => (
           <div class="big-tag-div">
-            <a class={`tag big-tag ${tag}`} href={linkSite(`/tags/${tag}`)}>
+            <a class={`tag big-tag ${tag}`} href={linkSite(`tags/${tag}`)}>
               {tag}
             </a>
             <span class="text-sm">{tagLength(tag)} 篇</span>
