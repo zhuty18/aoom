@@ -271,5 +271,6 @@
     "titleBar.inactiveBackground": "#b0c0f299",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#b0c0f2"
+  "peacock.color": "#b0c0f2",
+  "cSpell.words": ["Clex"]
 }

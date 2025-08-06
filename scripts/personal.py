@@ -107,6 +107,7 @@ TAGS_CP = [
     "BatLantern",
     "BruTalia",
     "BatWonder",
+    "Clex",
     "JayTim",
     "JayKyle",
     "JayRoy",
