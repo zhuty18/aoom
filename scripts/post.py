@@ -47,15 +47,21 @@ def 强制发布文件(filename):
 
 def 发布全部文件(path, allow_tbc=False):
     """发布所有文件"""
+    others = []
     for item in os.listdir(path):
         文件路径 = os.path.join(path, item)
         if 路径名(文件路径):
-            发布全部文件(文件路径, allow_tbc)
+            if "AI" not in 文件路径:
+                others.append(文件路径)
+            else:
+                发布全部文件(文件路径, allow_tbc)
         else:
             文件 = 文件管理(文件路径)
             if 文件.应发布():
                 if 文件.已完结() or allow_tbc:
                     发布文件(文件路径)
+    for item in others:
+        发布全部文件(item, allow_tbc)
 
 
 if __name__ == "__main__":
