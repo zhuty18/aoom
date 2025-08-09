@@ -6,35 +6,35 @@ import os
 import subprocess
 import time
 
-from file_status import 文件管理
-from personal import 历史文件
-from utils import 文件夹路径, 路径名, 隐藏已完结
+from file_status import FileCount
+from personal import PATH_HISTORY
+from utils import folder_path, hide_fin, name_of_dir
 
 
-class 字数统计器:
+class WordCounter:
     """字数统计器"""
 
     def __init__(self):
-        self.总字数变更 = 0
-        self.文件表: dict[str, 文件管理] = {}
-        self.变更文件: list[文件管理] = []
+        self.total_change = 0
+        self.file_map: dict[str, FileCount] = {}
+        self.change_files: list[FileCount] = []
 
-    def 运行(self):
+    def run(self):
         """工作函数"""
-        self.读取历史()
-        self.读取变更文件()
-        self.清理删除文件()
+        self.read_history()
+        self.get_changes()
+        self.clean_deleted()
         self.update_files()
 
-    def 读取历史(self):
+    def read_history(self):
         """从历史记录中读取已有条目"""
-        if os.path.exists(历史文件):
-            with open(历史文件, "r", encoding="utf-8") as f:
+        if os.path.exists(PATH_HISTORY):
+            with open(PATH_HISTORY, "r", encoding="utf-8") as f:
                 for i in f.readlines():
-                    文件 = 文件管理.从历史条目(i)
-                    self.文件表[文件.文件名()] = 文件
+                    f = FileCount.from_history(i)
+                    self.file_map[f.filename()] = f
 
-    def 读取变更文件(self):
+    def get_changes(self):
         """读取变更的文件目录"""
         os.environ["PYTHONIOENCODING"] = "utf8"
         os.system("git add .")
@@ -49,54 +49,54 @@ class 字数统计器:
             if i:
                 i = i.split("  ")[-1]
                 i = i.strip('"')
-            if 文件管理(i, None).合法():
-                if os.path.exists(i) and 路径名(文件夹路径(i)):
-                    self.变更文件.append(文件管理.从路径(i))
+            if FileCount(i, None).legal():
+                if os.path.exists(i) and name_of_dir(folder_path(i)):
+                    self.change_files.append(FileCount.from_path(i))
 
-    def 清理删除文件(self):
+    def clean_deleted(self):
         """清除历史记录中消失了的文件"""
         tmp = {}
-        for v in self.文件表.values():
-            if v.存在():
-                tmp[v.文件名()] = v
-        self.文件表 = tmp
+        for v in self.file_map.values():
+            if v.is_exist():
+                tmp[v.filename()] = v
+        self.file_map = tmp
 
     def update_files(self):
         """变更记录进原文件"""
-        for i in self.变更文件:
-            if i.存在():
-                旧字数 = (
-                    self.文件表[i.文件名()].历史字数
-                    if i.文件名() in self.文件表
+        for i in self.change_files:
+            if i.is_exist():
+                old_length = (
+                    self.file_map[i.filename()].his_length
+                    if i.filename() in self.file_map
                     else 0
                 )
-                if i.字数() == 旧字数:
+                if i.length() == old_length:
                     continue
                 else:
-                    i.标注更新日期()
-                    print(f"{i.文件名()}\t{旧字数} -> {i.字数()}")
-                self.总字数变更 += i.字数() - 旧字数
-                self.文件表[i.文件名()] = i
+                    i.mark_auto_date()
+                    print(f"{i.filename()}\t{old_length} -> {i.length()}")
+                self.total_change += i.length() - old_length
+                self.file_map[i.filename()] = i
             else:
-                self.文件表.pop(i.文件名())
+                self.file_map.pop(i.filename())
 
-    def 更新历史(self):
+    def update_history(self):
         """更新历史数据"""
-        with open(历史文件, "w", encoding="utf-8") as f:
-            for key in sorted(self.文件表.keys()):
-                f.write(f"{self.文件表[key].历史信息条目()}\n")
+        with open(PATH_HISTORY, "w", encoding="utf-8") as f:
+            for key in sorted(self.file_map.keys()):
+                f.write(f"{self.file_map[key].history_entry()}\n")
 
 
-def 进行字数统计():
+def run():
     """进行字数统计"""
-    字数统计 = 字数统计器()
-    字数统计.运行()
-    字数统计.更新历史()
-    隐藏已完结()
-    return 字数统计
+    counter = WordCounter()
+    counter.run()
+    counter.update_history()
+    hide_fin()
+    return counter
 
 
 if __name__ == "__main__":
     t = time.time()
-    进行字数统计()
+    run()
     print(time.time() - t)

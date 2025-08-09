@@ -15,72 +15,72 @@ if __name__ == "__main__":
 
     from personal import (
         DOC_ROOT,
-        GIT推送,
-        GIT提交,
-        GIT添加,
-        GIT署名,
-        GIT邮箱,
-        GIT默认信息,
-        进行统计,
+        GIT_ADD,
+        GIT_COMMIT,
+        GIT_DEFAULT_MESSAGE,
+        GIT_EMAIL,
+        GIT_NAME,
+        GIT_PUSH,
+        RUN_STAT,
     )
 
     COMMIT_TIME = time.time()
-    工作路径 = os.path.join(os.getcwd(), DOC_ROOT)
+    WORK_PATH = os.path.join(os.getcwd(), DOC_ROOT)
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-c",
         "--autocommit",
         type=bool,
-        default=GIT提交,
+        default=GIT_COMMIT,
         nargs="?",
-        const=not GIT提交,
+        const=not GIT_COMMIT,
     )
-    parser.add_argument("-m", "--message", default=GIT默认信息)
+    parser.add_argument("-m", "--message", default=GIT_DEFAULT_MESSAGE)
     parser.add_argument(
         "-s",
         "--statistic",
         type=bool,
-        default=进行统计,
+        default=RUN_STAT,
         nargs="?",
-        const=not 进行统计,
+        const=not RUN_STAT,
     )
     parser.add_argument(
         "-p",
         "--push",
         type=bool,
-        default=GIT推送,
+        default=GIT_PUSH,
         nargs="?",
-        const=not GIT推送,
+        const=not GIT_PUSH,
     )
     parser.add_argument(
-        "-a", "--add", type=bool, default=GIT添加, nargs="?", const=not GIT添加
+        "-a", "--add", type=bool, default=GIT_ADD, nargs="?", const=not GIT_ADD
     )
     args = parser.parse_args()
 
     # 格式化所有文档
     import work_format
 
-    work_format.全部格式化(工作路径)
+    work_format.format_all(WORK_PATH)
 
     # 字数统计
-    统计器 = None
+    counter = None
     if args.statistic:
         import work_record
 
-        统计器 = work_record.进行字数统计()
+        counter = work_record.run()
 
     # 提交文件
     if args.autocommit:
         if args.add:
             os.system("git add .")
-        os.system(f"git config user.name {GIT署名}")
-        os.system(f"git config user.email {GIT邮箱}")
+        os.system(f"git config user.name {GIT_NAME}")
+        os.system(f"git config user.email {GIT_EMAIL}")
 
         # mes = format_time() + " "
         mes = args.message
-        if 统计器:
-            mes += " 更新了" + str(统计器.总字数变更) + "字"
+        if counter:
+            mes += " 更新了" + str(counter.total_change) + "字"
 
         mes = 'git commit -m "' + mes + '"'
         os.system(mes)

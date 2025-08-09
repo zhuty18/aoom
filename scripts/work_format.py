@@ -5,17 +5,17 @@
 import os
 import sys
 
-from file_status import 文件管理
-from utils import 文档根目录, 获取文件_关键字
+from file_status import FileCount
+from utils import doc_root, filenames_of_key
 
 
-def 格式化文件(filename, force=False):
+def format_file(filename, force=False):
     """格式化文件"""
-    t = 文件管理(filename)
-    if t.合法():
-        t.格式化(force)
+    t = FileCount(filename)
+    if t.legal():
+        t.format(force)
         if force:
-            t.整理yaml()
+            t.sort_yaml()
     else:
         with open(filename, "r", encoding="utf-8") as f:
             content = f.read()
@@ -23,26 +23,26 @@ def 格式化文件(filename, force=False):
             f.write(content.strip("\n") + "\n")
 
 
-def 全部格式化(path):
+def format_all(path):
     """从根目录起格式化所有文件"""
     l = os.listdir(path)
     for item in l:
-        子路径 = os.path.join(path, item)
-        if os.path.isdir(子路径) and not "/." in 子路径:
-            全部格式化(子路径)
+        sub_dir = os.path.join(path, item)
+        if os.path.isdir(sub_dir) and not "/." in sub_dir:
+            format_all(sub_dir)
         elif (
-            子路径.endswith(".md")
-            or 子路径.endswith(".txt")
-            or 子路径.endswith(".py")
-        ) and not 文件管理(子路径).格式化中忽略():
-            格式化文件(子路径)
-        elif os.path.isdir(子路径) and "data" in 子路径:
-            全部格式化(子路径)
+            sub_dir.endswith(".md")
+            or sub_dir.endswith(".txt")
+            or sub_dir.endswith(".py")
+        ) and not FileCount(sub_dir).is_ignore():
+            format_file(sub_dir)
+        elif os.path.isdir(sub_dir) and "data" in sub_dir:
+            format_all(sub_dir)
 
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        全部格式化(文档根目录())
+        format_all(doc_root())
     else:
-        for i in 获取文件_关键字(sys.argv[1]):
-            格式化文件(i, True)
+        for i in filenames_of_key(sys.argv[1]):
+            format_file(i, True)

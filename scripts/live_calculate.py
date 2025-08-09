@@ -5,13 +5,13 @@ import itertools
 import os
 
 import numpy as npy
-from file_status import 文件管理
+from file_status import FileStatus
 
 
 def file_count(filename):
     """获取文件字数、大小"""
-    文件 = 文件管理(filename)
-    acc = 文件.读取yaml内参数("word_count")
+    文件 = FileStatus(filename)
+    acc = 文件.get_yaml("word_count")
     return (int(acc), os.path.getsize(filename)) if acc else (0, 0)
 
 
@@ -30,28 +30,28 @@ def count_all(path):
     return res
 
 
-def 拟合(data, 断点, p=False):
+def fit(data, points, p=False):
     """拟合数据"""
-    指标 = []
+    sign = []
     r2 = []
     fit_y = npy.array([])
-    l = len(断点)
+    l = len(points)
     for index in range(l):
         if index == l - 1:
-            d = [x for x in data if x[1] >= 断点[index]]
+            d = [x for x in data if x[1] >= points[index]]
         else:
-            d = [x for x in data if 断点[index] <= x[1] <= 断点[index + 1]]
+            d = [x for x in data if points[index] <= x[1] <= points[index + 1]]
         x = npy.array([a for _, a in d])
         y = npy.array([a for a, _ in d])
 
         if len(x) > 2:
             s, i = npy.polyfit(x, y, 1)
-            指标.append(
+            sign.append(
                 {
                     "s": float(s),
                     "i": float(i),
-                    "min": 断点[index],
-                    "max": 断点[index + 1] if index != l - 1 else -1,
+                    "min": points[index],
+                    "max": points[index + 1] if index != l - 1 else -1,
                 }
             )
             fit_y = npy.append(fit_y, s * x + i)
@@ -60,42 +60,42 @@ def 拟合(data, 断点, p=False):
             ssr = ((s * x + i - y.mean()) ** 2).sum()
             r2.append(ssr / sst)
 
-    if len(指标) < 2 and len(断点) > 2:
+    if len(sign) < 2 and len(points) > 2:
         if p:
-            print(指标)
-        return 0, {}
+            print(sign)
+        return 0, 0, {}
 
-    if len(指标) != len(断点):
-        mins = [x["min"] for x in 指标]
+    if len(sign) != len(points):
+        mins = [x["min"] for x in sign]
         mins.sort()
-        if mins[0] != 断点[0]:
-            指标.append(
+        if mins[0] != points[0]:
+            sign.append(
                 {
-                    "s": 指标[0]["s"],
-                    "i": 指标[0]["i"],
-                    "min": 断点[0],
-                    "max": 指标[0]["min"],
+                    "s": sign[0]["s"],
+                    "i": sign[0]["i"],
+                    "min": points[0],
+                    "max": sign[0]["min"],
                 }
             )
-            指标.sort(key=lambda x: x["min"])
-        l = len(指标)
+            sign.sort(key=lambda x: x["min"])
+        l = len(sign)
         for i in range(l - 1):
-            if 指标[i]["max"] != 指标[i + 1]["min"]:
-                指标.append(
+            if sign[i]["max"] != sign[i + 1]["min"]:
+                sign.append(
                     {
-                        "s": (指标[i]["s"] + 指标[i + 1]["s"]) / 2,
-                        "i": (指标[i]["i"] + 指标[i + 1]["i"]) / 2,
-                        "min": 指标[i]["max"],
-                        "max": 指标[i + 1]["min"],
+                        "s": (sign[i]["s"] + sign[i + 1]["s"]) / 2,
+                        "i": (sign[i]["i"] + sign[i + 1]["i"]) / 2,
+                        "min": sign[i]["max"],
+                        "max": sign[i + 1]["min"],
                     }
                 )
-        指标.sort(key=lambda x: x["min"])
-        if 指标[-1]["max"] != -1:
-            指标.append(
+        sign.sort(key=lambda x: x["min"])
+        if sign[-1]["max"] != -1:
+            sign.append(
                 {
-                    "s": 指标[-1]["s"],
-                    "i": 指标[-1]["i"],
-                    "min": 指标[-1]["max"],
+                    "s": sign[-1]["s"],
+                    "i": sign[-1]["i"],
+                    "min": sign[-1]["max"],
                     "max": -1,
                 }
             )
@@ -104,7 +104,7 @@ def 拟合(data, 断点, p=False):
     sst = ((y - y.mean()) ** 2).sum()
     ssr = ((fit_y - y.mean()) ** 2).sum()
 
-    return float(npy.array(r2).mean()), float(ssr / sst), 指标
+    return float(npy.array(r2).mean()), float(ssr / sst), sign
 
 
 if __name__ == "__main__":
@@ -121,28 +121,28 @@ if __name__ == "__main__":
     breaks.extend(list(range(20000, 50000, 5000)))
     breaks.extend(list(range(50000, 160000, 30000)))
 
-    断点数 = 3
-    最短间距 = 10000
+    breaks = 3
+    min_gap = 10000
 
     r2_max = 0
-    最优解 = None
-    真r2 = 0
+    best = None
+    r2_real = 0
 
-    for 断点 in itertools.combinations(breaks, 断点数):
-        断点 = list(断点)
+    for breaks in itertools.combinations(breaks, breaks):
+        breaks = list(breaks)
         p = False
-        for i in range(1, len(断点)):
-            if 断点[i] - 断点[i - 1] < 最短间距:
+        for i in range(1, len(breaks)):
+            if breaks[i] - breaks[i - 1] < min_gap:
                 p = True
                 break
         if not p:
-            断点.insert(0, 0)
-            断点.sort()
-            r2, 真实值, 指标 = 拟合(data, 断点)
-            if r2 > r2_max and 真实值 > 0.995:
+            breaks.insert(0, 0)
+            breaks.sort()
+            r2, real, sign = fit(data, breaks)
+            if r2 > r2_max and real > 0.995:
                 r2_max = r2
-                最优解 = 指标
-                真r2 = 真实值
-    print(r2_max, 真r2)
-    print(最优解)
-    print(拟合(data, [0]))
+                best = sign
+                r2_real = real
+    print(r2_max, r2_real)
+    print(best)
+    print(fit(data, [0]))

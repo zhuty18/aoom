@@ -8,7 +8,7 @@ import argparse
 import os
 import re
 
-from utils import name_of, 获取文件_关键字
+from utils import FileBasic, filenames_of_key
 
 
 class LatexConverter:
@@ -18,10 +18,10 @@ class LatexConverter:
         if os.path.exists(key):
             self.convert(key, depth, path, output)
             return
-        self.result = 获取文件_关键字(key)
+        self.result = filenames_of_key(key)
         if self.result is not None:
             for i in self.result:
-                print(name_of(i))
+                print(FileBasic(i).filename())
                 self.convert(i, depth, path, output)
 
     def convert(self, i, depth, path, output):
@@ -29,7 +29,7 @@ class LatexConverter:
         if output:
             filename = path + "/" + output + ".tex"
         else:
-            filename = path + "/" + name_of(i) + ".tex"
+            filename = path + "/" + FileBasic(i).filename() + ".tex"
         if not os.path.exists(path):
             os.mkdir(path)
         with open(i, "r", encoding="utf8") as f:

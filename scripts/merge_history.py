@@ -4,13 +4,13 @@
 
 import os
 
-from work_record import FileRecord, 字数统计器
+from work_record import FileRecord, WordCounter
 
 old_history = "data/old_history.txt"
 new_history = "data/history.txt"
 
 
-class LoadHistory(字数统计器):
+class LoadHistory(WordCounter):
     """历史记录自定义加载器"""
 
     def __init__(self, history_path):
@@ -19,31 +19,31 @@ class LoadHistory(字数统计器):
 
     def run_load(self, other):
         """运行"""
-        self.读取历史()
+        self.read_history()
         other.read_history()
         self.merge_history(other)
-        self.更新历史()
+        self.update_history()
 
-    def 读取历史(self):
+    def read_history(self):
         """从历史记录中读取已有条目"""
         if os.path.exists(self.path):
             with open(self.path, "r", encoding="utf-8") as f:
                 for i in f.readlines():
                     t = FileRecord.from_record(i)
-                    self.文件表[t.name] = t
+                    self.file_map[t.name] = t
 
     def merge_history(self, other):
         """融合数据"""
         for k, v in other.history.items():
-            if k in self.文件表:
-                self.文件表[k].merge(v)
+            if k in self.file_map:
+                self.file_map[k].merge(v)
             else:
-                self.文件表[k] = v
+                self.file_map[k] = v
 
-    def 更新历史(self):
+    def update_history(self):
         """更新历史数据"""
         with open(self.path, "w", encoding="utf-8") as f:
-            for _, value in self.文件表.items():
+            for _, value in self.file_map.items():
                 f.write(f"{value}\n")
 
 

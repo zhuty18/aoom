@@ -6,8 +6,8 @@ import time
 
 网站名 = "兔子草 | Atomic"
 
-GIT署名 = "tuzicao"
-GIT邮箱 = "13718054285@163.com"
+GIT_NAME = "tuzicao"
+GIT_EMAIL = "13718054285@163.com"
 
 DOC_ROOT = "docs"
 
@@ -17,50 +17,47 @@ COMMIT_TIME = None
 if COMMIT_TIME is None:
     COMMIT_TIME = time.time()
 
-GIT提交 = True
-GIT添加 = True
-GIT推送 = True
-GIT默认信息 = "随便更新"
+GIT_COMMIT = True
+GIT_ADD = True
+GIT_PUSH = True
+GIT_DEFAULT_MESSAGE = "随便更新"
 
-进行统计 = True
+RUN_STAT = True
 
 # 名词翻译方向
-翻译模式 = "eng2chs"
-反向翻译 = 翻译模式[4:7] + "2" + 翻译模式[0:3]
+TRANSLATE_MODE = "eng2chs"
 
 # 默认翻译
 # TRANSLATE_MODE，BACKWARD_MODE，或None
 翻译行为 = None
 
 # 时间格式
-时间格式 = "%y.%m.%d %H:%M"
+TIME_FORMAT = "%y.%m.%d %H:%M"
 TIME_FORMAT = "%Y-%m-%d"
 
 # 默认字符串，勿动
-隐藏区开头 = "// finished work head"
-隐藏区结尾 = "// finished work tail"
-隐藏区初始值 = '"template":true,'
+HIDE_HEAD = "// finished work head"
+HIDE_TAIL = "// finished work tail"
+HIDE_DEFAULT = '"template":true,'
 
-历史文件 = "data/history.txt"
+PATH_HISTORY = "data/history.txt"
 
 # POST相关
 POST_PATH = "src/contents"
-POST日期格式 = "%Y-%m-%d"
-POST文件格式 = POST日期格式 + "-{title}.md"
 # 首页post显示上限，0为关闭功能，-1为不设置上限
-首页POST上限 = 10
+MAXIMUM_POST = 10
 EXCERPT_LENGTH = 100
 
 FIN_MARKS = ["END", "完结", "Q.E.D."]
-完结TAG = "FIN"
-未完TAG = "TBC"
+FIN_PATHS = ["batlantern", "blob", "logs"]
+
 AI_TAG = "AI批评"
 
 # 日志
 日志路径 = "docs/logs"
 
 # 文件夹名
-文件夹名 = {
+NAME_OF_DIR = {
     "AI": "AI批评",
     "blob": "短篇",
     "DC": "DC",
@@ -99,7 +96,7 @@ IGNORE_PATHS = [
 ]
 
 # TAG类别（排序用）
-TAGS_优先 = ["2025蝙绿企划"]
+TAGS_PRIORITY = ["2025蝙绿企划"]
 TAGS_CP = [
     "无CP",
     "混邪",
@@ -131,7 +128,7 @@ TAGS_CP = [
     "DVD",
     "恺楚",
 ]
-TAGS_角色 = [
+TAGS_CHARACTER = [
     "孙翔",
     "叶修",
     "周泽楷",
@@ -147,7 +144,7 @@ TAGS_角色 = [
     "张新杰",
     "孙哲平",
 ]
-TAGS_组织 = [
+TAGS_ORGANIZATION = [
     "蝙家",
     "灯团",
     "正联",

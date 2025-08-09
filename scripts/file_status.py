@@ -15,56 +15,145 @@ from personal import (
     DOC_ROOT,
     EXCERPT_LENGTH,
     FIN_MARKS,
-    IGNORE_FILES,
-    IGNORE_PATHS,
+    FIN_PATHS,
     POST_PATH,
     TIME_FORMAT,
 )
 from utils import (
+    FileBasic,
     doc_path,
-    tag优先级,
-    制作文件夹,
-    完结路径,
-    文件夹路径,
-    格式化时间,
-    相对路径,
-    获取log时间,
-    获取文件_文件名,
-    获取时间戳,
-    行长度,
+    filename_is_key,
+    folder_path,
+    format_time,
+    get_log_time,
+    get_time,
+    line_length,
+    mk_dirs,
+    root_path,
+    tag_order,
 )
 
 
-class 文件管理:
-    """文件记录"""
+class FileStatus(FileBasic):
+    """文件状态"""
 
-    def __init__(self, 路径, 时间=None, 历史长度=0, 历史完结=False):
-        self._路径 = 相对路径(路径)
-        self._时间 = 时间 if 时间 else COMMIT_TIME
-        self.历史字数 = 历史长度
-        self.历史完结 = 历史完结
+    def __init__(self, path, update_time=None):
+        super().__init__(path)
+        self._time_ = update_time if update_time else COMMIT_TIME
+        self._yaml_ = None
 
-        self._文件名 = None
-        self._标题 = None
-        self._完结 = None
-        self._字数 = None
-        self._yaml = None
+    def yaml_str(self):
+        """读取yaml字符串"""
+        with open(self._path_, "r", encoding="utf8") as f:
+            content = f.read()
+        if content.startswith("---"):
+            return content[0 : content.index("---", 3)].strip("-\n")
+        return None
+
+    def yaml(self):
+        """读取yaml内容"""
+        if self._yaml_ is None:
+            yaml字符串 = self.yaml_str()
+            if not yaml字符串:
+                return {}
+            yaml内容 = {}
+            current = ""
+            for i in yaml字符串.split("\n"):
+                if ":" in i:
+                    i = i.split(":")
+                    key = i[0].strip()
+                    current = key
+                    value = i[1].strip()
+                    if key == "tags" and " " in value:
+                        value = value.split(" ")
+                    elif key == "tags" and value != "":
+                        value = [value]
+                    elif key == "tags":
+                        value = []
+                    elif value == "":
+                        value = []
+                    yaml内容[key] = value
+                elif "  - " in i:
+                    yaml内容[current].append(i.strip(" -"))
+            if "tags" in yaml内容 and "FIN" in yaml内容["tags"]:
+                yaml内容["tags"].remove("FIN")
+            self._yaml_ = yaml内容
+        return self._yaml_
+
+    def __update_yaml__(self):
+        """更新yaml区域"""
+        res = ""
+        if "tags" in self.yaml():
+            self.yaml()["tags"] = sorted(self.yaml()["tags"], key=tag_order)
+        for k, v in sorted(self.yaml().items()):
+            if isinstance(v, list):
+                res += f"{k}:\n  - {"\n  - ".join(v)}\n"
+            else:
+                res += f"{k}: {v}\n"
+        res = res.strip()
+
+        yaml字符串 = self.yaml_str()
+        with open(self._path_, "r", encoding="utf8") as f:
+            content = f.read()
+        if yaml字符串:
+            with open(self._path_, "w", encoding="utf8") as f:
+                f.write(content.replace(yaml字符串, res))
+        else:
+            with open(self._path_, "w", encoding="utf8") as f:
+                f.write(f"---\n{res}\n---\n\n{content}")
+
+    def sort_yaml(self):
+        """整理yaml区域"""
+        if self.yaml():
+            self.__update_yaml__()
+
+    def get_yaml(self, key):
+        """读取yaml内参数"""
+        if key == "tags":
+            return self.yaml().get(key, [])
+        return self.yaml().get(key)
+
+    def add_yaml(self, key, value, change=False):
+        """添加yaml参数"""
+        if key in self.yaml() and not change:
+            return 0
+        self.yaml()[key] = value
+        self.__update_yaml__()
+        return 1
+
+    # def copy_yaml(self, yaml):
+    #     """复制yaml"""
+    #     self._yaml = yaml
+    #     self.__update_yaml__()
+
+
+class FileCount(FileStatus):
+    """统计文件"""
+
+    def __init__(self, path, update_time=None, length=0, is_fin=False):
+        super().__init__(path, update_time)
+        self.his_length = length
+        self.his_fin = is_fin
+
+        self._title_ = None
+        self._fin_ = None
+        self._length_ = None
 
     @staticmethod
-    def 从历史条目(历史):
+    def from_history(history):
         """从历史条目中获取信息"""
-        条目 = 历史.strip().split("\t")
-        return 文件管理(
-            获取文件_文件名(条目[0]),
-            获取时间戳(条目[2]),
-            int(条目[1]),
-            条目[3] == "True",
+        item = history.strip().split("\t")
+        return FileCount(
+            filename_is_key(item[0]),
+            get_time(item[2]),
+            int(item[1]),
+            item[3] == "True",
         )
 
     @staticmethod
-    def 从路径(路径):
+    def from_path(path):
         """从路径中获取信息"""
-        pipe = subprocess.Popen(["git", "log", 路径], stdout=subprocess.PIPE)
+        pipe = subprocess.Popen(["git", "log", path], stdout=subprocess.PIPE)
         output, _ = pipe.communicate()
         output = output.decode("utf8")
         commit = None
@@ -76,82 +165,77 @@ class 文件管理:
             t = re.findall(re.compile(r"Date:\s*(.*?)\s*\+", re.S), commit)[
                 0
             ].strip()
-            时间 = 获取log时间(t)
+            timing = get_log_time(t)
         else:
-            时间 = None
-        return 文件管理(路径, 时间)
+            timing = None
+        return FileCount(path, timing)
 
-    def 存在(self):
-        """文件是否存在"""
-        return os.path.exists(self._路径)
-
-    def 合法(self):
-        """是否为合法文档"""
-        return (
-            self._路径.endswith(".md")
-            and DOC_ROOT in self._路径
-            and (not self.格式化中忽略())
-            and (not POST_PATH in self._路径)
-        )
-
-    def 应发布(self):
-        """是否应发布"""
-        return self._路径.endswith(".md") and (
-            not self.格式化中忽略() or self.__ai创作()
-        )
-
-    def 路径(self):
-        """文件路径"""
-        return self._路径
-
-    def 文件名(self):
-        """文件名"""
-        if self._文件名 is None:
-            self._文件名 = (
-                self._路径.replace("\\", "/").replace(".md", "").split("/")[-1]
-            )
-        return self._文件名
-
-    def 标题(self):
+    def title(self):
         """文件标题"""
-        if self._标题 is None:
-            if "title" in self.__yaml内容():
-                return self.__yaml内容()["title"]
-            标题 = self.文件名()
-            with open(self._路径, "r", encoding="utf8") as f:
+        if self._title_ is None:
+            if "title" in self.yaml():
+                return self.yaml()["title"]
+            res = self.filename()
+            with open(self._path_, "r", encoding="utf8") as f:
                 content = f.read()
                 for i in content.split("\n\n"):
                     if i.startswith("# "):
-                        标题 = i[2:].strip()
+                        res = i[2:].strip()
                         break
-            self._标题 = 标题.strip("*")
-        return self._标题
+            self._title_ = res.strip("*")
+        return self._title_
 
-    def 已完结(self):
+    def format(self, print_process=False):
+        """格式化文件"""
+        with open(self._path_, "r", encoding="utf-8") as f:
+            content = f.read()
+        res = []
+        for a in [x if x else "<br>" for x in content.split("\n\n")]:
+            if not (a == "<br>" and res[-1] == "<br>"):
+                res.append(a)
+        res = "\n\n".join(res)
+        res.replace("------", "---")
+        with open(self._path_, "w", encoding="utf-8") as f:
+            f.write(res.strip("\n") + "\n")
+        self.add_yaml(
+            "word_count", str(self.length(print_process)), change=True
+        )
+        self.__mark_fin__()
+
+    def legal(self):
+        """是否为合法文档"""
+        return (
+            self._path_.endswith(".md")
+            and DOC_ROOT in self._path_
+            and (not self.is_ignore())
+            and (not POST_PATH in self._path_)
+        )
+
+    def is_fin(self):
         """是否完结"""
-        if self._完结 is None:
+        if self._fin_ is None:
             # print(self._路径,完结路径(文件夹路径(self._路径)))
-            if 完结路径(文件夹路径(self._路径)):
-                self._完结 = True
-            elif self.读取yaml内参数("finished") == "true":
-                self._完结 = True
+            if doc_path(folder_path(self._path_)) in FIN_PATHS:
+                self._fin_ = True
+            elif self.get_yaml("finished") == "true":
+                self._fin_ = True
             else:
-                with open(self._路径, "r", encoding="utf8") as f:
+                with open(self._path_, "r", encoding="utf8") as f:
                     text = f.read()
                     ends = FIN_MARKS
                     for i in ends:
                         if f"{i}\n" in text:
-                            self._完结 = True
-            if self._完结 is None:
-                self._完结 = False
-        return self._完结
+                            self._fin_ = True
+            if self._fin_ is None:
+                self._fin_ = False
+        return self._fin_
 
-    def 字数(self, 打印过程=False):
+    def length(self, 打印过程=False):
         """文件长度"""
-        if self._字数 is None:
+        if self._length_ is None:
             res = 0
-            with open(self._路径, "r", encoding="utf8") as f:
-                content = f.read().replace(self.__yaml字符串(), "").strip("-\n")
+            with open(self._path_, "r", encoding="utf8") as f:
+                content = f.read().replace(self.yaml_str(), "").strip("-\n")
             heading = ""
             count = 0
             level = 0
@@ -164,34 +248,58 @@ class 文件管理:
                         count = 0
                     heading = i.strip("#").strip()
                     level = i.count("#") - 1
-                count += 行长度(i.strip())
+                count += line_length(i.strip())
             if 打印过程:
                 print("\t" * level + heading + "\t" + str(count))
             res += count
-            if heading != self.标题() and 打印过程:
-                print(self.标题() + "\t" + str(res))
-            self._字数 = res
-        return self._字数
+            if heading != self.title() and 打印过程:
+                print(self.title() + "\t" + str(res))
+            self._length_ = res
+        return self._length_
 
-    def 更新时间(self):
+    def __update_time__(self):
         """文件更新时间"""
-        return 格式化时间(self._时间)
+        return format_time(self._time_)
 
-    def 历史信息条目(self):
+    def __mark_fin__(self, force=False):
+        """标记完成"""
+        if self.is_fin():
+            self.add_yaml("finished", "true", change=True)
+        elif force:
+            self.add_yaml("finished", "false")
+
+    def mark_auto_date(self):
+        """为文件标注更新日期"""
+        self._time_ = COMMIT_TIME
+        self.add_yaml(
+            "auto_date", format_time(self._time_, TIME_FORMAT), change=True
+        )
+
+    def history_entry(self):
         """历史信息条目"""
-        return f"{self.文件名()}\t{self.字数()}\t{self.更新时间()}\t{self.已完结()}"
+        return f"{self.filename()}\t{self.length()}\t{self.__update_time__()}\t{self.is_fin()}"
 
-    def 链接(self):
-        """文件链接"""
-        return 相对路径(self._路径, DOC_ROOT).replace(" ", "%20")
+    # def link(self):
+    #     """文件链接"""
+    #     return root_path(self._path_, DOC_ROOT).replace(" ", "%20")
 
-    def md信息条目(self):
-        """Markdown信息条目"""
-        return f"|[{self.标题()}]({self.文件名().replace(" ", "%20")}.md)|{self.字数()}|{self.更新时间()}|"
+    # def md信息条目(self):
+    #     """Markdown信息条目"""
+    #     return f"|[{self.title()}]({self.filename().replace(" ", "%20")}.md)|{self.length()}|{self.__update_time__()}|"
 
-    def __摘要(self):
+
+class FilePost(FileCount):
+    """发布文件"""
+
+    def is_post(self):
+        """是否应发布"""
+        return self._path_.endswith(".md") and (
+            not self.is_ignore() or self.__ai_write__()
+        )
+
+    def __excerpt__(self):
         """文件预览"""
-        with open(self._路径, "r", encoding="utf8") as f:
+        with open(self._path_, "r", encoding="utf8") as f:
             yaml = False
             pre = ""
             exp = re.compile(r".*?(\[\^\d+\]).*?", re.S)
@@ -220,191 +328,64 @@ class 文件管理:
             pre += "*"
         return pre
 
-    def 格式化中忽略(self):
-        """忽略格式化"""
-        for i in IGNORE_FILES:
-            if i in self._路径:
-                return True
-        for i in IGNORE_PATHS:
-            if i in self._路径:
-                return True
-        return "_" in self._路径
-
-    def __ai评论(self):
+    def __ai_comment__(self):
         """获取AI评论文件"""
-        if self.__ai创作():
+        if self.__ai_write__():
             return None
-        ai评论 = os.path.join(POST_PATH, AI_PATH, self.文件名()) + ".md"
-        return ai评论 if os.path.exists(ai评论) else None
+        ai_comment = os.path.join(POST_PATH, AI_PATH, self.filename()) + ".md"
+        return ai_comment if os.path.exists(ai_comment) else None
 
-    def __ai创作(self):
+    def __ai_write__(self):
         """是否为AI创作"""
-        if self.读取yaml内参数("tags"):
-            return AI_TAG in self.读取yaml内参数("tags")
+        if self.get_yaml("tags"):
+            return AI_TAG in self.get_yaml("tags")
         return False
 
-    def __yaml字符串(self):
-        """读取yaml字符串"""
-        with open(self._路径, "r", encoding="utf8") as f:
-            content = f.read()
-        if content.startswith("---"):
-            return content[0 : content.index("---", 3)].strip("-\n")
-        return None
-
-    def __yaml内容(self):
-        """读取yaml内容"""
-        if self._yaml is None:
-            yaml字符串 = self.__yaml字符串()
-            if not yaml字符串:
-                return {}
-            yaml内容 = {}
-            current = ""
-            for i in yaml字符串.split("\n"):
-                if ":" in i:
-                    i = i.split(":")
-                    key = i[0].strip()
-                    current = key
-                    value = i[1].strip()
-                    if key == "tags" and " " in value:
-                        value = value.split(" ")
-                    elif key == "tags" and value != "":
-                        value = [value]
-                    elif key == "tags":
-                        value = []
-                    elif value == "":
-                        value = []
-                    yaml内容[key] = value
-                elif "  - " in i:
-                    yaml内容[current].append(i.strip(" -"))
-            if "tags" in yaml内容 and "FIN" in yaml内容["tags"]:
-                yaml内容["tags"].remove("FIN")
-            self._yaml = yaml内容
-        return self._yaml
-
-    def __更新yaml(self):
-        """更新yaml区域"""
-        res = ""
-        if "tags" in self.__yaml内容():
-            self.__yaml内容()["tags"] = sorted(
-                self.__yaml内容()["tags"], key=tag优先级
-            )
-        for k, v in sorted(self.__yaml内容().items()):
-            if isinstance(v, list):
-                res += f"{k}:\n  - {"\n  - ".join(v)}\n"
-            else:
-                res += f"{k}: {v}\n"
-        res = res.strip()
-
-        yaml字符串 = self.__yaml字符串()
-        with open(self._路径, "r", encoding="utf8") as f:
-            content = f.read()
-        if yaml字符串:
-            with open(self._路径, "w", encoding="utf8") as f:
-                f.write(content.replace(yaml字符串, res))
-        else:
-            with open(self._路径, "w", encoding="utf8") as f:
-                f.write(f"---\n{res}\n---\n\n{content}")
-
-    def 整理yaml(self):
-        """整理yaml区域"""
-        if self.__yaml内容():
-            self.__更新yaml()
-
-    def 读取yaml内参数(self, 关键字):
-        """读取yaml内参数"""
-        if 关键字 == "tags":
-            return self.__yaml内容().get(关键字, [])
-        return self.__yaml内容().get(关键字)
-
-    def __添加yaml参数(self, 关键字, 值, 修改=False):
-        """添加yaml参数"""
-        if 关键字 in self.__yaml内容() and not 修改:
-            return 0
-        self.__yaml内容()[关键字] = 值
-        self.__更新yaml()
-        return 1
-
-    def 复制yaml(self, yaml):
-        """复制yaml"""
-        self._yaml = yaml
-        self.__更新yaml()
-
-    def 格式化(self, 打印过程=False):
-        """格式化文件"""
-        with open(self._路径, "r", encoding="utf-8") as f:
-            content = f.read()
-        res = []
-        for a in [x if x else "<br>" for x in content.split("\n\n")]:
-            if not (a == "<br>" and res[-1] == "<br>"):
-                res.append(a)
-        res = "\n\n".join(res)
-        res.replace("------", "---")
-        with open(self._路径, "w", encoding="utf-8") as f:
-            f.write(res.strip("\n") + "\n")
-        self.__添加yaml参数("word_count", str(self.字数(打印过程)), 修改=True)
-        self.标注完结()
-
-    def 在线格式化(self):
+    def online_format(self):
         """在线格式化文件"""
-        if not self.读取yaml内参数("title"):
-            with open(self._路径, "r", encoding="utf8") as f:
+        if not self.get_yaml("title"):
+            with open(self._path_, "r", encoding="utf8") as f:
                 content = f.read()
-                if f"\n# {self.标题()}\n" in content:
-                    new_content = content.replace(f"\n# {self.标题()}\n", "")
+                if f"\n# {self.title()}\n" in content:
+                    new_content = content.replace(f"\n# {self.title()}\n", "")
                 else:
-                    new_content = content.replace(f"# {self.标题()}\n\n", "")
-            with open(self._路径, "w", encoding="utf8") as f:
+                    new_content = content.replace(f"# {self.title()}\n\n", "")
+            with open(self._path_, "w", encoding="utf8") as f:
                 f.write(new_content)
-            self.__添加yaml参数("title", self.标题(), 修改=True)
+            self.add_yaml("title", self.title(), change=True)
 
-        ai评论 = self.__ai评论()
-        if ai评论:
-            self.__添加yaml参数("ai_comment", "true")
-            文件管理(ai评论).__添加yaml参数(
+        ai_comment = self.__ai_comment__()
+        if ai_comment:
+            self.add_yaml("ai_comment", "true")
+            FileStatus(ai_comment).add_yaml(
                 "ai_source",
-                doc_path(相对路径(self.路径(), POST_PATH)).replace(".md", ""),
+                doc_path(root_path(self.path(), POST_PATH)).replace(".md", ""),
             )
 
-    def 标注完结(self, 强制=False):
-        """标记完成"""
-        if self.已完结():
-            self.__添加yaml参数("finished", "true", 修改=True)
-        elif 强制:
-            self.__添加yaml参数("finished", "false")
-
-    def 标注发布(self, 日志=False):
+    def mark_post(self, log=False):
         """标记发布"""
-        if self.__ai创作():
+        if self.__ai_write__():
             return 0
-        return self.__添加yaml参数(
-            "post", "false" if 日志 else "true", 修改=True
-        )
+        return self.add_yaml("post", "false" if log else "true", change=True)
 
-    def 标注更新日期(self):
-        """为文件标注更新日期"""
-        self._时间 = COMMIT_TIME
-        self.__添加yaml参数(
-            "auto_date", 格式化时间(self._时间, TIME_FORMAT), 修改=True
-        )
-
-    def 发布(self):
+    def post(self):
         """发布文件"""
-        日期 = self.读取yaml内参数("date")
-        if not 日期:
-            日期 = self.读取yaml内参数("auto_date")
-        if not 日期:
-            日期 = time.strftime("%Y-%m-%d", time.localtime(time.time()))
+        date = self.get_yaml("date")
+        if not date:
+            date = self.get_yaml("auto_date")
+        if not date:
+            date = time.strftime("%Y-%m-%d", time.localtime(time.time()))
 
-        发布路径 = os.path.join(POST_PATH, self.路径())
-        制作文件夹(发布路径)
-        shutil.copy(self.路径(), 发布路径)
+        post_path = os.path.join(POST_PATH, self.path())
+        mk_dirs(post_path)
+        shutil.copy(self.path(), post_path)
 
-        发布文件 = 文件管理(发布路径)
-        发布文件.在线格式化()
+        post_file = FilePost(post_path)
+        post_file.online_format()
 
-        发布文件.__添加yaml参数(
+        post_file.add_yaml(
             "excerpt",
-            self.__摘要()
+            self.__excerpt__()
             .replace("\n", "\\n")
             .replace("> ", "")
             .replace(" ", "&nbsp;")
@@ -413,4 +394,4 @@ class 文件管理:
             .replace("*", ""),
         )
 
-        return 日期, 发布路径
+        return date, post_path
