@@ -7,7 +7,7 @@
 import os
 
 from file_status import FilePost
-from personal import DOC_ROOT, MAXIMUM_POST, POST_PATH
+from personal import AI_PATH, DOC_ROOT, MAXIMUM_POST, POST_PATH
 from utils import mk_dirs, name_of_dir
 
 POST_LIST = []
@@ -34,12 +34,12 @@ def post_all_files(path, allow_tbc=False):
     """发布所有文件"""
     others = []
     for item in os.listdir(path):
-        file_path = os.path.join(path, item)
+        file_path = os.path.join(path, item).replace("\\", "/")
         if name_of_dir(file_path):
-            if "AI" not in file_path:
-                others.append(file_path)
-            else:
+            if AI_PATH in file_path:
                 post_all_files(file_path, allow_tbc)
+            else:
+                others.append(file_path)
         else:
             file_post = FilePost(file_path)
             if file_post.is_post():

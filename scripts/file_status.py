@@ -12,6 +12,7 @@ from personal import (
     AI_PATH,
     AI_TAG,
     COMMIT_TIME,
+    DATE_FORMAT,
     DOC_ROOT,
     EXCERPT_LENGTH,
     FIN_MARKS,
@@ -272,7 +273,7 @@ class FileCount(FileStatus):
         """为文件标注更新日期"""
         self._time_ = COMMIT_TIME
         self.add_yaml(
-            "auto_date", format_time(self._time_, TIME_FORMAT), change=True
+            "auto_date", format_time(self._time_, DATE_FORMAT), change=True
         )
 
     def history_entry(self):

@@ -33,7 +33,7 @@ TRANSLATE_MODE = "eng2chs"
 
 # 时间格式
 TIME_FORMAT = "%y.%m.%d %H:%M"
-TIME_FORMAT = "%Y-%m-%d"
+DATE_FORMAT = "%Y-%m-%d"
 
 # 默认字符串，勿动
 HIDE_HEAD = "// finished work head"
