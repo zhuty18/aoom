@@ -121,14 +121,14 @@ if __name__ == "__main__":
     breaks.extend(list(range(20000, 50000, 5000)))
     breaks.extend(list(range(50000, 160000, 30000)))
 
-    breaks = 3
+    break_num = 3
     min_gap = 10000
 
     r2_max = 0
     best = None
     r2_real = 0
 
-    for breaks in itertools.combinations(breaks, breaks):
+    for breaks in itertools.combinations(breaks, break_num):
         breaks = list(breaks)
         p = False
         for i in range(1, len(breaks)):
