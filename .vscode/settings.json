@@ -253,28 +253,26 @@
     // finished work tail
   },
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#dce3f9",
-    "activityBar.background": "#dce3f9",
-    "activityBar.foreground": "#15202b",
-    "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#e87792",
+    "activityBar.activeBackground": "#5b7557",
+    "activityBar.background": "#5b7557",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#9fa8df",
     "activityBarBadge.foreground": "#15202b",
-    "commandCenter.border": "#15202b99",
-    "sash.hoverBorder": "#dce3f9",
-    "statusBar.background": "#b0c0f2",
-    "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#849deb",
-    "statusBarItem.remoteBackground": "#b0c0f2",
-    "statusBarItem.remoteForeground": "#15202b",
-    "titleBar.activeBackground": "#b0c0f2",
-    "titleBar.activeForeground": "#15202b",
-    "titleBar.inactiveBackground": "#b0c0f299",
-    "titleBar.inactiveForeground": "#15202b99"
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#5b7557",
+    "statusBar.background": "#445841",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#5b7557",
+    "statusBarItem.remoteBackground": "#445841",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#445841",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#44584199",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#b0c0f2",
-  "cSpell.words": [
-    "Clex"
-  ],
+  "peacock.color": "#445841",
+  "cSpell.words": ["Clex"],
   "python-envs.defaultEnvManager": "ms-python.python:system",
   "python-envs.pythonProjects": []
 }
