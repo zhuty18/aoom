@@ -2,16 +2,16 @@
 
 ## Basic
 
-- [ ] 📚 **Todo**
-- [!] 📚 *In Progress*
-- [x] 📚 ***Done***
-- [-] 📚 ==Cancelled==
+- [ ] #tasks **Todo**
+- [!] #tasks *In Progress*
+- [x] #tasks ***Done***
+- [-] #tasks ==Cancelled==
 
 ## Forward
 
-- [*] 📚 Important
-- [I] 📚 Idea
-- [/] 📚 Pause
+- [*] #tasks Important
+- [I] #tasks Idea
+- [/] #tasks Pause
 
 ## Information
 

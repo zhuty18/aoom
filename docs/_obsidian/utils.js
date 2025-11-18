@@ -156,9 +156,7 @@
 
   pin_of (page, global) {
     return (
-      "- [" +
-      (this.last_update(page) <= Number(global.day_ideal) ? "f" : "n") +
-      "] "
+      (this.last_update(page) <= Number(global.day_ideal) ? "🖋" : "📜") + " "
     )
   }
 

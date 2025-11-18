@@ -146,47 +146,27 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 
 ## 任务
 
-### 重要任务
-
-```tasks
-FILTER BY FUNCTION task.status.symbol == "*"
-```
-
-### 当前任务
-
-```tasks
-FILTER BY FUNCTION task.status.symbol == "!" || task.status.symbol == "*"
-(due this week) OR (no due date)
-SORT BY FUNCTION REVERSE task.status.symbol
-```
-
 ### 待办
 
-```tasks
-FILTER BY FUNCTION (task.status.symbol != "!" && task.status.symbol != "*" && task.status.type == "IN_PROGRESS" )|| task.status.type == "TODO"
-SORT BY FUNCTION task.status.symbol
-```
-
-### 灵感
-
-```tasks
-FILTER BY FUNCTION task.status.type == "NON_TASK"
-```
+>[!question]- 待办事项
+>
+> ```dataview
+> TASK
+> FROM -"_obsidian"
+> WHERE contains(tags,"#tasks") AND !completed AND status!="-"
+> SORT status
+>```
 
 ### 已完成
 
 >[!info]- 已完成的任务
 >
-> ```tasks
-> DONE
-> FILTER BY FUNCTION task.status.type!="NON_TASK"
-> SORT BY done REVERSE
-> HIDE EDIT BUTTON
+> ```dataview
+> TASK
+> FROM -"_obsidian"
+> WHERE contains(tags,"#tasks") AND (completed OR status="-")
+> SORT completion desc
 > ```
-
-## 随笔
-
-![随笔](write_down.md)
 
 ## 总览
 
