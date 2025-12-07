@@ -32,7 +32,8 @@ class WordCounter:
             with open(PATH_HISTORY, "r", encoding="utf-8") as f:
                 for i in f.readlines():
                     f = FileCount.from_history(i)
-                    self.file_map[f.filename()] = f
+                    if f:
+                        self.file_map[f.filename()] = f
 
     def get_changes(self):
         """读取变更的文件目录"""
@@ -82,7 +83,7 @@ class WordCounter:
 
     def update_history(self):
         """更新历史数据"""
-        with open(PATH_HISTORY, "w", encoding="utf-8") as f:
+        with open(PATH_HISTORY, "w", encoding="utf-8", newline="\n") as f:
             for key in sorted(self.file_map.keys()):
                 f.write(f"{self.file_map[key].history_entry()}\n")
 

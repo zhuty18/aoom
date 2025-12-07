@@ -54,6 +54,8 @@ def line_length(s: str) -> int:
     a = a.strip()
     a = a.replace("</br>", "")
     a = a.replace("<br>", "")
+    # if a.startswith("[^"):
+    #     return 0
     res = 0
     t = False
     for i in a:
@@ -235,7 +237,8 @@ def filenames_of_key(key):
 
 def filename_is_key(name):
     """根据文件名搜索文件"""
-    return search_dir(doc_root(), name, strict=True)[0]
+    tmp = search_dir(doc_root(), name, strict=True)
+    return tmp[0] if tmp else None
 
 
 def file_has_key(name):
@@ -265,7 +268,9 @@ def hide_fin():
 }}"""
         if not os.path.exists(".vscode"):
             os.mkdir(".vscode")
-        with open(".vscode/settings.json", "w", encoding="utf8") as f:
+        with open(
+            ".vscode/settings.json", "w", encoding="utf8", newline="\n"
+        ) as f:
             f.write(ori)
     s0 = re.findall(re.compile(r"\"files.exclude\": {.*?}", re.S), ori)[0]
     s1 = re.findall(re.compile(rf"{HIDE_HEAD}\n(.*?){HIDE_TAIL}", re.S), s0)[0]
@@ -275,7 +280,7 @@ def hide_fin():
 
     if finished:
         ori = ori.replace(s1, s2)
-    with open(".vscode/settings.json", "w", encoding="utf8") as f:
+    with open(".vscode/settings.json", "w", encoding="utf8", newline="\n") as f:
         f.write(ori)
 
 

@@ -19,7 +19,7 @@ def format_file(filename, force=False):
     else:
         with open(filename, "r", encoding="utf-8") as f:
             content = f.read()
-        with open(filename, "w", encoding="utf-8") as f:
+        with open(filename, "w", encoding="utf-8", newline="\n") as f:
             f.write(content.strip("\n") + "\n")
 
 

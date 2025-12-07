@@ -97,10 +97,10 @@ class FileStatus(FileBasic):
         with open(self._path_, "r", encoding="utf8") as f:
             content = f.read()
         if yaml字符串:
-            with open(self._path_, "w", encoding="utf8") as f:
+            with open(self._path_, "w", encoding="utf8", newline="\n") as f:
                 f.write(content.replace(yaml字符串, res))
         else:
-            with open(self._path_, "w", encoding="utf8") as f:
+            with open(self._path_, "w", encoding="utf8", newline="\n") as f:
                 f.write(f"---\n{res}\n---\n\n{content}")
 
     def sort_yaml(self):
@@ -144,12 +144,15 @@ class FileCount(FileStatus):
     def from_history(history):
         """从历史条目中获取信息"""
         item = history.strip().split("\t")
-        return FileCount(
-            filename_is_key(item[0]),
-            get_time(item[2]),
-            int(item[1]),
-            item[3] == "True",
-        )
+        key = filename_is_key(item[0])
+        if key:
+            return FileCount(
+                filename_is_key(item[0]),
+                get_time(item[2]),
+                int(item[1]),
+                item[3] == "True",
+            )
+        return None
 
     @staticmethod
     def from_path(path):
@@ -196,7 +199,7 @@ class FileCount(FileStatus):
                 res.append(a)
         res = "\n\n".join(res)
         res.replace("------", "---")
-        with open(self._path_, "w", encoding="utf-8") as f:
+        with open(self._path_, "w", encoding="utf-8", newline="\n") as f:
             f.write(res.strip("\n") + "\n")
         self.add_yaml(
             "word_count", str(self.length(print_process)), change=True
@@ -236,7 +239,9 @@ class FileCount(FileStatus):
         if self._length_ is None:
             res = 0
             with open(self._path_, "r", encoding="utf8") as f:
-                content = f.read().replace(self.yaml_str(), "").strip("-\n")
+                content = f.read()
+                if self.yaml_str():
+                    content = content.replace(self.yaml_str(), "").strip("-\n")
             heading = ""
             count = 0
             level = 0
@@ -351,7 +356,7 @@ class FilePost(FileCount):
                     new_content = content.replace(f"\n# {self.title()}\n", "")
                 else:
                     new_content = content.replace(f"# {self.title()}\n\n", "")
-            with open(self._path_, "w", encoding="utf8") as f:
+            with open(self._path_, "w", encoding="utf8", newline="\n") as f:
                 f.write(new_content)
             self.add_yaml("title", self.title(), change=True)
 
