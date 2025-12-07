@@ -54,6 +54,8 @@ def line_length(s: str) -> int:
     a = a.strip()
     a = a.replace("</br>", "")
     a = a.replace("<br>", "")
+    # if a.startswith("[^"):
+    #     return 0
     res = 0
     t = False
     for i in a:
@@ -235,7 +237,8 @@ def filenames_of_key(key):
 
 def filename_is_key(name):
     """根据文件名搜索文件"""
-    return search_dir(doc_root(), name, strict=True)[0]
+    tmp = search_dir(doc_root(), name, strict=True)
+    return tmp[0] if tmp else None
 
 
 def file_has_key(name):
