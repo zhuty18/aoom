@@ -72,6 +72,7 @@ const cateNames: Record<string, string> = {
   others: "其他",
   qz: "全职",
   swy: "食物语",
+  tk: "三国",
   translation: "翻译",
   x: "X战警",
   xj: "仙剑",
