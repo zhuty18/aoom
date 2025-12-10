@@ -74,6 +74,7 @@ NAME_OF_DIR = {
     "QZ": "全职",
     "SC": "影评",
     "SWY": "食物语",
+    "TK": "三国",
     "translation": "翻译",
     "translation/batfamily": "翻译-蝙家",
     "translation/BruceHal": "翻译-蝙绿蝙",
