@@ -2,6 +2,7 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "files.eol": "\n",
   "files.exclude": {
     // finished work head
     "**/12.22，带真男朋友回家.md": true,
