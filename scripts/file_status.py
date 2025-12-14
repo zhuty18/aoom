@@ -206,12 +206,19 @@ class FileCount(FileStatus):
         )
         self.__mark_fin__()
 
+    def __ai_write__(self):
+        """是否为AI创作"""
+        if self.get_yaml("tags"):
+            return AI_TAG in self.get_yaml("tags")
+        return False
+
     def legal(self):
         """是否为合法文档"""
         return (
             self._path_.endswith(".md")
             and DOC_ROOT in self._path_
             and (not self.is_ignore())
+            and (not self.__ai_write__())
             and (not POST_PATH in self._path_)
         )
 
@@ -340,12 +347,6 @@ class FilePost(FileCount):
             return None
         ai_comment = os.path.join(POST_PATH, AI_PATH, self.filename()) + ".md"
         return ai_comment if os.path.exists(ai_comment) else None
-
-    def __ai_write__(self):
-        """是否为AI创作"""
-        if self.get_yaml("tags"):
-            return AI_TAG in self.get_yaml("tags")
-        return False
 
     def online_format(self):
         """在线格式化文件"""

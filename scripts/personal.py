@@ -93,7 +93,7 @@ IGNORE_PATHS = [
     "docs/明星煌煌",
     "docs/_obsidian",
     "docs/material",
-    AI_PATH,
+    # AI_PATH,
 ]
 
 # TAG类别（排序用）
