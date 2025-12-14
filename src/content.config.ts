@@ -16,6 +16,7 @@ const docs = defineCollection({
       finished: z.boolean().default(false),
       ai_comment: z.boolean().default(false),
       ai_source: z.string().optional(),
+      author: z.string().optional(),
     }),
 })
 

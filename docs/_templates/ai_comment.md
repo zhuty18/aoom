@@ -1,7 +1,6 @@
 ---
+author: DeepSeek-V3.2
 tags:
   - AI批评
 ---
-
-By DeepSeek-V3.2
 

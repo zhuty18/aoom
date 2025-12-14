@@ -74,7 +74,11 @@ if (post.data.ai_comment && !tags.includes("AI评论")) {
         >
         </div>
         <span class="text-xs items-center">
-          {post.data.word_count ? `${post.data.word_count}字` : "内容由AI创作"}
+          {
+            post.data.word_count
+              ? `${post.data.word_count}字`
+              : `内容由${post.data.author}创作`
+          }
         </span>
       </a>
       <span class="flex overflow-x-scroll h-auto">
