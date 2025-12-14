@@ -11,7 +11,7 @@ if (post.data.ai_comment && !tags.includes("AI评论")) {
 
 <post
   data-finished={post.data.finished || (post.data.ai_source ? true : false)}
-  class="post card bg-base-200 hover:bg-base-300/30 shadow-md hover:shadow-lg shadow-base-content/20 w-full mt-3 mb-3 transition-all duration-100"
+  class="post card bg-base-200/60 hover:bg-base-300/30 shadow hover:shadow-lg shadow-base-content/20 w-full mt-3 mb-3 transition-all duration-100"
 >
   <div class="card-body">
     <div class="flex justify-between items-center">
@@ -19,7 +19,7 @@ if (post.data.ai_comment && !tags.includes("AI评论")) {
         <a href={linkStory(post.id)}>{post.data.title}</a>
       </div>
       <div class="flex flex-col items-center">
-        <div class="text-xs text-secondary mb-1">
+        <div class="text-xs text-accent mb-1">
           {
             post.data.tags.includes("AI批评")
               ? "-"

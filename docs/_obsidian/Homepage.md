@@ -60,15 +60,6 @@ let recent_pages = MyUtils.work_of(dv.pages().where(x => !x.finished), home.max_
 dv.list(recent_pages.map(x => MyUtils.short_text(x, home)))
 ```
 
-### 最近更新
-
-```dataviewjs
-let home = dv.current()
-const { MyUtils } = await cJS()
-let recent_pages = MyUtils.work_of(dv.pages().where(x => MyUtils.last_update(x) < home.day_notlong), home.max_list)
-dv.table(["文件", "进度", "更新"], recent_pages.map(x => [x.file.link, MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
-```
-
 ### AI评论
 
 ```dataviewjs
@@ -77,7 +68,21 @@ const { MyUtils } = await cJS()
 let finished = dv.pages().where(x => x.finished).sort(x => x.date ? x.date : x.auto_date, "desc").limit(home.max_list)
 let ai = dv.pages('"AI"')
 
-dv.table(["文件","","评论链接"],finished.map((x) => [x.file.link, ai.some((y) => x.file.name==y.file.name)?"🔋":"🪫",`[${x.file.name}](AI/${x.file.name.replaceAll(" ","%20")})`]))
+function info (x,ai) {
+  let ai_one = ai.filter((y) => x.file.name==y.file.name)
+  return [x.file.name,x.file.tags.join(" "),`[${ai_one.length>0?"🔋 By ":"🪫"}${ai_one.author.join("")}](AI/${x.file.name.replaceAll(" ","%20")})`]
+}
+
+dv.list(finished.map((x) => info(x,ai).join(" ")))
+```
+
+### 最近更新
+
+```dataviewjs
+let home = dv.current()
+const { MyUtils } = await cJS()
+let recent_pages = MyUtils.work_of(dv.pages().where(x => MyUtils.last_update(x) < home.day_notlong), home.max_list)
+dv.table(["文件", "进度", "更新"], recent_pages.map(x => [x.file.link, MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
 ```
 
 ### 坑品概览

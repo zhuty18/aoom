@@ -82,7 +82,7 @@ sup {
 }
 
 .dc {
-  @apply badge-info;
+  @apply badge-info badge-soft;
 }
 
 .qz {
@@ -91,6 +91,10 @@ sup {
 
 .dr {
   @apply badge-warning;
+}
+
+.tk {
+  @apply badge-info;
 }
 
 .tag {

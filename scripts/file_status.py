@@ -18,7 +18,6 @@ from personal import (
     FIN_MARKS,
     FIN_PATHS,
     POST_PATH,
-    TIME_FORMAT,
 )
 from utils import (
     FileBasic,
