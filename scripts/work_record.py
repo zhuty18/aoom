@@ -50,8 +50,8 @@ class WordCounter:
             if i:
                 i = i.split("  ")[-1]
                 i = i.strip('"')
-            if FileCount(i, None).legal():
-                if os.path.exists(i) and name_of_dir(folder_path(i)):
+            if os.path.exists(i) and name_of_dir(folder_path(i)):
+                if FileCount(i, None).legal():
                     self.change_files.append(FileCount.from_path(i))
 
     def clean_deleted(self):

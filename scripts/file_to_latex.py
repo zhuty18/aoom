@@ -8,7 +8,8 @@ import argparse
 import os
 import re
 
-from utils import FileBasic, filenames_of_key
+from file_status import FileCount
+from utils import filenames_of_key
 
 
 class LatexConverter:
@@ -21,15 +22,18 @@ class LatexConverter:
         self.result = filenames_of_key(key)
         if self.result is not None:
             for i in self.result:
-                print(FileBasic(i).filename())
-                self.convert(i, depth, path, output)
+                if FileCount(i).legal():
+                    print(FileCount(i).filename())
+                    self.convert(i, depth, path, output)
+        if not os.path.isdir(path):
+            os.mkdir(path)
 
     def convert(self, i, depth, path, output):
         """转换单个markdown"""
         if output:
             filename = path + "/" + output + ".tex"
         else:
-            filename = path + "/" + FileBasic(i).filename() + ".tex"
+            filename = path + "/" + FileCount(i).filename() + ".tex"
         if not os.path.exists(path):
             os.mkdir(path)
         with open(i, "r", encoding="utf8") as f:
@@ -48,7 +52,7 @@ class LatexConverter:
                 .replace("·", "{\\splitdot}")
                 .replace("------", "{\\chsline}")
                 .replace("END\n", "\\storyend\n")
-                .replace("BLANKLINE", "\\blankline")
+                .replace("BLANKLINE", "\\blankpar")
                 .replace("``", "“")
                 .replace("`", "‘")
                 .replace("''", "”")

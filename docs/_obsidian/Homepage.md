@@ -94,7 +94,7 @@ let tbc_folders = MyUtils.work_of(dv.pages().where(x => !x.finished)).file.folde
 dv.paragraph("你创建了" + folders.length + "个文件夹，" + tbc_folders.length + "个有坑。")
 ```
 
->[!abstract]- 有坑文件夹一览
+> [!abstract]- 有坑文件夹一览
 >
 > ```dataviewjs
 > let home = dv.current()
@@ -110,7 +110,7 @@ let tbc_tags = MyUtils.work_of(dv.pages().where(x => !x.finished)).file.tags.dis
 dv.paragraph("你创建了" + tags.length + "个标签，" + tbc_tags.length + "个有坑。")
 ```
 
->[!cite]- 有坑标签一览
+> [!cite]- 有坑标签一览
 >
 > ```dataviewjs
 > let home = dv.current()
@@ -151,7 +151,7 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 
 ### 总表
 
->[!example]+ 2025蝙绿企划一览
+> [!example]+ 2025蝙绿企划一览
 >
 > ```dataviewjs
 > let home = dv.current()
@@ -164,7 +164,7 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 
 ### 待办
 
->[!question]- 待办事项
+> [!question]- 待办事项
 >
 > ```dataview
 > TASK
@@ -175,7 +175,7 @@ dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.fi
 
 ### 已完成
 
->[!info]- 已完成的任务
+> [!info]- 已完成的任务
 >
 > ```dataview
 > TASK
@@ -193,7 +193,7 @@ CALENDAR choice(date,date,auto_date)
 WHERE typeof(choice(date,date,auto_date)) = "date" and word_count and !finished
 ```
 
->[!tldr]- 坑一览
+> [!tldr]- 坑一览
 >
 > ```dataviewjs
 > let home = dv.current()
@@ -209,7 +209,7 @@ CALENDAR choice(date,date,auto_date)
 WHERE typeof(choice(date,date,auto_date)) = "date" and word_count and finished
 ```
 
->[!tldr]- 完结一览
+> [!tldr]- 完结一览
 >
 > ```dataviewjs
 > let home = dv.current()
