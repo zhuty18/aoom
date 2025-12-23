@@ -8,6 +8,7 @@ import time
 
 from name_def import names
 from personal import (
+    AI_PATH,
     COMMIT_TIME,
     DOC_ROOT,
     HIDE_DEFAULT,
@@ -17,6 +18,7 @@ from personal import (
     IGNORE_PATHS,
     NAME_OF_DIR,
     PATH_HISTORY,
+    POST_PATH,
     TAGS_CHARACTER,
     TAGS_CP,
     TAGS_ORGANIZATION,
@@ -106,6 +108,20 @@ class FileBasic:
             if i in self._path_:
                 return True
         return "_" in self._path_ or (not self._path_.endswith(".md"))
+
+    def __ai_write__(self):
+        """是否为AI创作"""
+        return AI_PATH in self._path_
+
+    def legal(self):
+        """是否为合法文档"""
+        return (
+            self._path_.endswith(".md")
+            and DOC_ROOT in self._path_
+            and (not self.is_ignore())
+            and (not self.__ai_write__())
+            and (not POST_PATH in self._path_)
+        )
 
 
 def cut_name(name: str, index: list[int], cutter: str) -> str:
@@ -218,15 +234,16 @@ def search_file(filepath, key, strict, content):
     return False
 
 
-def search_dir(path: str, key: str, strict=False, content=False):
+def search_dir(path: str, key: str, strict=False, content=False, legal=False):
     """在目录下搜索关键字"""
     res = []
     for i in os.listdir(path):
         i = os.path.join(path, i)
         if os.path.isdir(i):
-            res.extend(search_dir(i, key, strict, content))
+            res.extend(search_dir(i, key, strict, content, legal))
         elif search_file(i, key, strict, content):
-            res.append(i)
+            if not legal or FileBasic(i).legal():
+                res.append(i)
     return res
 
 
@@ -235,9 +252,9 @@ def filenames_of_key(key):
     return search_dir(doc_root(), key)
 
 
-def filename_is_key(name):
+def filename_is_key(name, legal=False):
     """根据文件名搜索文件"""
-    tmp = search_dir(doc_root(), name, strict=True)
+    tmp = search_dir(doc_root(), name, strict=True, legal=legal)
     return tmp[0] if tmp else None
 
 

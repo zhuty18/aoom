@@ -10,10 +10,8 @@ import time
 
 from personal import (
     AI_PATH,
-    AI_TAG,
     COMMIT_TIME,
     DATE_FORMAT,
-    DOC_ROOT,
     EXCERPT_LENGTH,
     FIN_MARKS,
     FIN_PATHS,
@@ -143,10 +141,10 @@ class FileCount(FileStatus):
     def from_history(history):
         """从历史条目中获取信息"""
         item = history.strip().split("\t")
-        key = filename_is_key(item[0])
+        key = filename_is_key(item[0], True)
         if key:
             return FileCount(
-                filename_is_key(item[0]),
+                key,
                 get_time(item[2]),
                 int(item[1]),
                 item[3] == "True",
@@ -204,22 +202,6 @@ class FileCount(FileStatus):
             "word_count", str(self.length(print_process)), change=True
         )
         self.__mark_fin__()
-
-    def __ai_write__(self):
-        """是否为AI创作"""
-        if self.get_yaml("tags"):
-            return AI_TAG in self.get_yaml("tags")
-        return False
-
-    def legal(self):
-        """是否为合法文档"""
-        return (
-            self._path_.endswith(".md")
-            and DOC_ROOT in self._path_
-            and (not self.is_ignore())
-            and (not self.__ai_write__())
-            and (not POST_PATH in self._path_)
-        )
 
     def is_fin(self):
         """是否完结"""
