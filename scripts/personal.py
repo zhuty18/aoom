@@ -20,7 +20,7 @@ if COMMIT_TIME is None:
 GIT_COMMIT = True
 GIT_ADD = True
 GIT_PUSH = True
-GIT_DEFAULT_MESSAGE = "随便更新"
+GIT_DEFAULT_MESSAGE = "随便整点"
 
 RUN_STAT = True
 
