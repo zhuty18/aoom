@@ -130,6 +130,8 @@ TAGS_CP = [
     "恺楚",
     "曹刘",
     "曹郭",
+    "丕植",
+    "Gelphie",
 ]
 TAGS_CHARACTER = [
     "孙翔",
