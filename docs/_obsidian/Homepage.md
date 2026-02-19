@@ -119,7 +119,7 @@ dv.paragraph("你创建了" + tags.length + "个标签，" + tbc_tags.length + "
 > dv.table(["标签", "坑数", "完结率", "坑字数", "完结字数比", "平均完结字数"], tags.sort(x => MyUtils.work_of(dv.pages(x)).length, "desc").map(x => MyUtils.pages_data(dv.pages(x), x, home)))
 > ```
 
-## 2025蝙绿企划
+## 蝙绿生日企划
 
 ### 目标
 
@@ -128,7 +128,7 @@ let home = dv.current()
 const { MyUtils } = await cJS()
 let all_data = MyUtils.pages_raw_data(dv.pages("#2025蝙绿企划"), home)
 let percent = all_data.tbc_count / all_data.fin_count_theory
-let output = "#2025蝙绿企划 累计写了" + MyUtils.count_text(all_data.all_count) + "，完成度" + MyUtils.percent_meter(percent, home) + "，还有" + all_data.tbc + "个坑，完结率" + MyUtils.percent_meter(all_data.fin_percent, home) + "。"
+let output = "#蝙绿生日企划 累计写了" + MyUtils.count_text(all_data.all_count) + "，完成度" + MyUtils.percent_meter(percent, home) + "，还有" + all_data.tbc + "个坑，完结率" + MyUtils.percent_meter(all_data.fin_percent, home) + "。"
 dv.paragraph(output)
 
 let next = dv.date(dv.date("today").year + "-02-19")
