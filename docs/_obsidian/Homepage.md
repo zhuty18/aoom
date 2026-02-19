@@ -126,7 +126,7 @@ dv.paragraph("你创建了" + tags.length + "个标签，" + tbc_tags.length + "
 ```dataviewjs
 let home = dv.current()
 const { MyUtils } = await cJS()
-let all_data = MyUtils.pages_raw_data(dv.pages("#2025蝙绿企划"), home)
+let all_data = MyUtils.pages_raw_data(dv.pages("#蝙绿生日企划"), home)
 let percent = all_data.tbc_count / all_data.fin_count_theory
 let output = "#蝙绿生日企划 累计写了" + MyUtils.count_text(all_data.all_count) + "，完成度" + MyUtils.percent_meter(percent, home) + "，还有" + all_data.tbc + "个坑，完结率" + MyUtils.percent_meter(all_data.fin_percent, home) + "。"
 dv.paragraph(output)
@@ -145,19 +145,19 @@ dv.paragraph(output)
 ```dataviewjs
 let home = dv.current()
 const { MyUtils } = await cJS()
-let recent_pages = MyUtils.work_of(dv.pages('#2025蝙绿企划').where(x => !x.finished), home.max_list)
-dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.file.tags.filter((y) => y != "#2025蝙绿企划" && y != "#BatLantern").slice(0, 2).join(" ") + " " + MyUtils.count_meter(x, home)))
+let recent_pages = MyUtils.work_of(dv.pages('#蝙绿生日企划').where(x => !x.finished), home.max_list)
+dv.list(recent_pages.map(x => MyUtils.pin_of(x, home) + x.file.link + " " + x.file.tags.filter((y) => y != "#蝙绿生日企划" && y != "#BatLantern").slice(0, 2).join(" ") + " " + MyUtils.count_meter(x, home)))
 ```
 
 ### 总表
 
-> [!example]+ 2025蝙绿企划一览
+> [!example]+ 蝙绿生日企划一览
 >
 > ```dataviewjs
 > let home = dv.current()
 > const { MyUtils } = await cJS()
-> let recent_pages = MyUtils.work_of(dv.pages('#2025蝙绿企划'))
-> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link, x.file.tags.filter((y) => y != "#2025蝙绿企划" && y != "#BatLantern").join("<br>"), MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
+> let recent_pages = MyUtils.work_of(dv.pages('#蝙绿生日企划'))
+> dv.table(["文件", "标签", "字数", "更新"], recent_pages.map(x => [x.file.link, x.file.tags.filter((y) => y != "#蝙绿生日企划" && y != "#BatLantern").join("<br>"), MyUtils.count_meter(x, home, 2), MyUtils.last_update_str(x, home)]))
 > ```
 
 ## 任务

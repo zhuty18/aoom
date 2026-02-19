@@ -97,7 +97,7 @@ IGNORE_PATHS = [
 ]
 
 # TAG类别（排序用）
-TAGS_PRIORITY = ["2025蝙绿企划"]
+TAGS_PRIORITY = ["蝙绿生日企划"]
 TAGS_CP = [
     "无CP",
     "混邪",
