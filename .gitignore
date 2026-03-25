@@ -37,3 +37,5 @@ pnpm-debug.log*
 .vscode
 contents/docs
 _copilot-talks
+
+api_key.txt
