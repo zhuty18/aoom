@@ -33,18 +33,20 @@ def comment(filename, print_res):
                 ),
             },
         ],
-        temperature=1.5,
+        temperature=1.3,
         stream=False,
     )
+    res = response.choices[0].message.content
+
     with open(AI_TEMPLATE, "r", encoding="utf-8") as f:
         template_content = f.read()
     ai_path = os.path.join(AI_PATH, FileBasic(filename).filename()) + ".md"
 
     with open(ai_path, "w", encoding="utf-8") as f:
-        f.write(template_content + response.choices[0].message.content)
+        f.write(template_content + res.strip() + "\n")
 
     if print_res:
-        print(response.choices[0].message.content)
+        print(res)
 
 
 if __name__ == "__main__":
