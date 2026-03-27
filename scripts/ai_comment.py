@@ -13,7 +13,7 @@ from utils import FileBasic, filenames_of_key
 AI_PROMPT = "评论"
 
 
-def comment(filename, print_res):
+def comment(filename, print_res, prompt=AI_PROMPT):
     """AI评论文章"""
     client = OpenAI(
         api_key=api_key(),
@@ -28,9 +28,9 @@ def comment(filename, print_res):
             {"role": "system", "content": AI_SYSTEM_PROMPT},
             {
                 "role": "user",
-                "content": AI_PROMPTS[AI_PROMPT].replace(
-                    "{file_content}", file_content
-                ),
+                "content": AI_PROMPTS[prompt]
+                + "\n\n---以下为文章---\n\n"
+                + file_content,
             },
         ],
         temperature=1.3,
@@ -50,9 +50,11 @@ def comment(filename, print_res):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         raise ValueError("丢失文件名参数")
     else:
         for i in filenames_of_key(sys.argv[1]):
             if not FileBasic(i).__ai_write__():
-                comment(i, True)
+                comment(
+                    i, True, AI_PROMPT if len(sys.argv) == 2 else sys.argv[2]
+                )
