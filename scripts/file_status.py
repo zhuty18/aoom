@@ -320,6 +320,8 @@ class FilePost(FileCount):
             pre = pre[:EXCERPT_LENGTH] + "……"
         if pre.count("*") % 2 == 1:
             pre += "*"
+        if pre.startswith("|"):
+            pre = ""
         return pre
 
     def __ai_comment__(self):
