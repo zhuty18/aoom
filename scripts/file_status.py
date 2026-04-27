@@ -321,7 +321,7 @@ class FilePost(FileCount):
         if pre.count("*") % 2 == 1:
             pre += "*"
         if pre.startswith("|"):
-            pre = ""
+            pre = "无摘要"
         return pre
 
     def __ai_comment__(self):
