@@ -1,5 +1,5 @@
 ---
-author: DeepSeek-V3.2
+author: DeepSeek-V4-Pro
 tags:
   - AI批评
 ---

@@ -23,7 +23,7 @@ def comment(filename, print_res, prompt=AI_PROMPT):
         file_content = f.read()
 
     response = client.chat.completions.create(
-        model="deepseek-chat",
+        model="deepseek-v4-pro",
         messages=[
             {"role": "system", "content": AI_SYSTEM_PROMPT},
             {
