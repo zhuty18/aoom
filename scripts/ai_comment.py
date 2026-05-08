@@ -55,6 +55,7 @@ if __name__ == "__main__":
     else:
         for i in filenames_of_key(sys.argv[1]):
             if not FileBasic(i).__ai_write__():
+                print(FileBasic(i).filename())
                 comment(
                     i, True, AI_PROMPT if len(sys.argv) == 2 else sys.argv[2]
                 )
