@@ -65,7 +65,7 @@ dv.list(recent_pages.map(x => MyUtils.short_text(x, home)))
 ```dataviewjs
 let home = dv.current()
 const { MyUtils } = await cJS()
-let finished = dv.pages().where(x => x.finished).sort(x => x.date ? x.date : x.auto_date, "desc").limit(home.max_list)
+let finished = dv.pages().where(x => x.finished).sort(x => x.file.name,"desc").sort(x => x.date ? x.date : x.auto_date, "desc").limit(home.max_list)
 let ai = dv.pages('"AI"')
 
 function info (x,ai) {
