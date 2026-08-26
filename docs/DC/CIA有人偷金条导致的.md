@@ -1,11 +1,11 @@
 ---
-auto_date: 2025-01-22
+auto_date: 2026-08-27
 tags:
   - 蝙绿生日企划
   - BatLantern
-word_count: 23
+word_count: 21
 ---
 
-# 没办法父母遗嘱要我结婚
+# CIA有人偷金条导致的
 
 《没办法NASA只要已婚的》续
