@@ -34,19 +34,29 @@ def comment(filename, print_res, prompt=AI_PROMPT):
             },
         ],
         temperature=1.3,
-        stream=False,
+        stream=True,
     )
-    res = response.choices[0].message.content
+
+    full_res = []
+    for chunk in response:
+        delta = chunk.choices[0].delta.content
+        if not delta:
+            continue
+        full_res.append(delta)
+        if print_res:
+            print(delta, end="", flush=True)
+
+    res = "".join(full_res).strip()
 
     with open(AI_TEMPLATE, "r", encoding="utf-8") as f:
         template_content = f.read()
     ai_path = os.path.join(AI_PATH, FileBasic(filename).filename()) + ".md"
 
     with open(ai_path, "w", encoding="utf-8") as f:
-        f.write(template_content + res.strip() + "\n")
+        f.write(template_content + res + "\n")
 
     if print_res:
-        print(res)
+        print()
 
 
 if __name__ == "__main__":
