@@ -123,6 +123,7 @@
     "**/妖妃九宫格.md": true,
     "**/孔雀不会飞.md": true,
     "**/孤家寡人.md": true,
+    "**/宋大姐嫁财神.md": true,
     "**/实现性幻想的一次尝试.md": true,
     "**/审美挑战.md": true,
     "**/家庭教育问题.md": true,
@@ -306,7 +307,9 @@
     "activityBarTop.inactiveForeground": "#15202b99",
     "commandCenter.foreground": "#15202b",
     "statusBar.debuggingBackground": "#b5e6fc",
-    "statusBar.debuggingForeground": "#15202b"
+    "statusBar.debuggingForeground": "#15202b",
+    "activityBar.activeBorder": "#15202b",
+    "activityBarTop.activeBorder": "#15202b"
   },
   "peacock.color": "#b5e6fc",
   "cSpell.words": ["Clex"],
