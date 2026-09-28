@@ -7,13 +7,20 @@ import sys
 
 from encrypt import api_key
 from openai import OpenAI
-from personal import AI_PATH, AI_PROMPTS, AI_SYSTEM_PROMPT, AI_TEMPLATE
+from personal import (
+    AI_MODEL,
+    AI_PATH,
+    AI_PROMPTS,
+    AI_SYSTEM_PROMPT,
+    AI_TEMPLATE,
+)
 from utils import FileBasic, filenames_of_key
 
+AI_NAME = "deepseek-v4-pro"
 AI_PROMPT = "评论"
 
 
-def comment(filename, print_res, prompt=AI_PROMPT):
+def comment(filename, print_res, prompt=AI_PROMPT, model=AI_NAME):
     """AI评论文章"""
     client = OpenAI(
         api_key=api_key(),
@@ -23,7 +30,7 @@ def comment(filename, print_res, prompt=AI_PROMPT):
         file_content = f.read()
 
     response = client.chat.completions.create(
-        model="deepseek-v4-pro",
+        model=model,
         messages=[
             {"role": "system", "content": AI_SYSTEM_PROMPT},
             {
@@ -53,7 +60,11 @@ def comment(filename, print_res, prompt=AI_PROMPT):
     ai_path = os.path.join(AI_PATH, FileBasic(filename).filename()) + ".md"
 
     with open(ai_path, "w", encoding="utf-8") as f:
-        f.write(template_content + res + "\n")
+        f.write(
+            template_content.replace("{AI_NAME}", AI_MODEL.get(model, model))
+            + res
+            + "\n"
+        )
 
     if print_res:
         print()
@@ -66,6 +77,7 @@ if __name__ == "__main__":
         for i in filenames_of_key(sys.argv[1]):
             if not FileBasic(i).__ai_write__():
                 print(FileBasic(i).filename())
+                m = sys.argv[3] if len(sys.argv) > 3 else AI_NAME
                 comment(
-                    i, True, AI_PROMPT if len(sys.argv) == 2 else sys.argv[2]
+                    i, True, AI_PROMPT if len(sys.argv) == 2 else sys.argv[2], m
                 )
