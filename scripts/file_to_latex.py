@@ -61,6 +61,7 @@ class LatexConverter:
                 .replace("\\ldots\\ldots{}", "\\ldots\\ldots")
                 .replace("\\ldots\\ldots", "……")
                 .replace("\\,", "")
+                .replace("footnote", "endnote")
                 .strip()
             )
         l = re.findall(re.compile(r"\\label\{.[^\n]+\}", re.S), content)
@@ -86,7 +87,7 @@ class LatexConverter:
         res = "\n\n".join(res)
 
         with open(filename, "w", encoding="utf8") as f:
-            f.write("\\documentclass[../main]{subfiles}" + "\n\n")
+            f.write("\\documentclass[./main]{subfiles}" + "\n\n")
             f.write("\\begin{document}\n\n\\pagestyle{mystyle}\n\n")
             f.write(res)
             f.write("\\end{document}\n")
@@ -95,8 +96,8 @@ class LatexConverter:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("input_key", type=str)
-    parser.add_argument("-d", "--depth", type=int, default=0)
-    parser.add_argument("-p", "--path", type=str, default="./latex_output")
+    parser.add_argument("-d", "--depth", type=int, default=-1)
+    parser.add_argument("-p", "--path", type=str, default="/Users/zhuty/fanfiction/reckless/")
     parser.add_argument("-o", "--output_name", type=str)
     args = parser.parse_args()
     LatexConverter(args.input_key, args.depth, args.path, args.output_name)

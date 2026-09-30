@@ -117,6 +117,7 @@
     "**/奖励.md": true,
     "**/好啊.md": true,
     "**/如何从蝙蝠侠的腰上盗窃.md": true,
+    "**/如何追求离异飞行员.md": true,
     "**/如果你是个氪星人你会做些什么？.md": true,
     "**/如果孙翔去了百花.md": true,
     "**/如果我还有得选.md": true,
@@ -309,7 +310,8 @@
     "statusBar.debuggingBackground": "#b5e6fc",
     "statusBar.debuggingForeground": "#15202b",
     "activityBar.activeBorder": "#15202b",
-    "activityBarTop.activeBorder": "#15202b"
+    "activityBarTop.activeBorder": "#15202b",
+    "statusBar.inactiveBackground": "#b5e6fc"
   },
   "peacock.color": "#b5e6fc",
   "cSpell.words": ["Clex"],
