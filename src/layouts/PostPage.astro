@@ -10,13 +10,13 @@ import { linkStory } from "../consts"
 ---
 
 <BasicPage title={title}>
-  <!-- <slot name="title" slot="title">
+  <slot name="title" slot="title">
     {title}
   </slot>
   <slot name="description" slot="description">
     {word_count ? `${word_count}字` : `内容由${author}创作`}
   </slot>
-  <slot name="header" slot="header">
+  <!-- <slot name="header" slot="header">
     <Cate postId={slug} />
     {tags && tags.map((tag: any) => <Tag tag={tag} />)}
   </slot> -->
