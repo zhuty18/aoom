@@ -96,8 +96,8 @@ class LatexConverter:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("input_key", type=str)
-    parser.add_argument("-d", "--depth", type=int, default=-1)
-    parser.add_argument("-p", "--path", type=str, default="/Users/zhuty/fanfiction/reckless/")
+    parser.add_argument("-d", "--depth", type=int, default=0)
+    parser.add_argument("-p", "--path", type=str, default="C:\\Users\\zhuty\\repo\\fanfiction\\reckless\\")
     parser.add_argument("-o", "--output_name", type=str)
     args = parser.parse_args()
     LatexConverter(args.input_key, args.depth, args.path, args.output_name)
