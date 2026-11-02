@@ -10,7 +10,7 @@ const { tags, word_count, ai_comment, ai_source, author, hide_jump } =
 import { linkStory } from "../consts"
 ---
 
-<BasicPage title={title}>
+<BasicPage title={title} hide_jump={hide_jump}>
   <slot name="title" slot="title">
     {title}
   </slot>
@@ -18,9 +18,7 @@ import { linkStory } from "../consts"
     {word_count ? `${word_count}字` : `内容由${author}创作`}
   </slot>
   {
-    hide_jump ? (
-      ""
-    ) : (
+    !hide_jump && (
       <slot name="header" slot="header">
         <Cate postId={slug} />
         {tags && tags.map((tag: any) => <Tag tag={tag} />)}

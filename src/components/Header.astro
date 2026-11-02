@@ -65,6 +65,7 @@ import {
     </label>
     <script lang="ts">
       function updateTheme() {
+        if (!document.getElementById("theme-control")) return
         let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
         document.getElementById("theme-control").value = darkMode
           ? document.getElementById("theme-switch").dataset.light
@@ -87,7 +88,7 @@ import {
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (e) => {
           updateTheme()
-          document.getElementById("theme-switch").click()
+          document.getElementById("theme-switch")?.click()
         })
     </script>
   </div>
