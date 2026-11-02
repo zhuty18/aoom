@@ -2,7 +2,7 @@
 import "../styles/global.css"
 import Header from "../components/Header.astro"
 import { linkSite, SITE_ROOT, linkName } from "../consts"
-const { title } = Astro.props
+const { title, hide_jump } = Astro.props
 const { url } = Astro
 let crumbs = []
 let paths = url.pathname.replace(SITE_ROOT, "").split("/")
@@ -27,7 +27,7 @@ if (crumbs.length == 1) {
     <title>{title}</title>
   </head>
   <body>
-    <!-- <Header /> -->
+    {hide_jump || <Header />}
     <div class="hero min-h-64 mb-12 bg-linear-to-br from-primary to-secondary">
       <!-- <div
         class="breadcrumbs text-sm ml-6 mr-auto mt-2 mb-auto text-neutral-content"

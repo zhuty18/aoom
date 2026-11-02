@@ -5,7 +5,8 @@ const { title } = Astro.props
 import Cate from "../components/Cate.astro"
 import Tag from "../components/Tag.astro"
 const { slug } = Astro.params
-const { tags, word_count, ai_comment, ai_source, author } = Astro.props
+const { tags, word_count, ai_comment, ai_source, author, hide_jump } =
+  Astro.props
 import { linkStory } from "../consts"
 ---
 
@@ -16,10 +17,14 @@ import { linkStory } from "../consts"
   <slot name="description" slot="description">
     {word_count ? `${word_count}字` : `内容由${author}创作`}
   </slot>
-  <!-- <slot name="header" slot="header">
-    <Cate postId={slug} />
-    {tags && tags.map((tag: any) => <Tag tag={tag} />)}
-  </slot> -->
+  {
+    hide_jump || (
+      <slot name="header" slot="header">
+        <Cate postId={slug} />
+        {tags && tags.map((tag: any) => <Tag tag={tag} />)}
+      </slot>
+    )
+  }
 
   <div class="toast toast-top toast-end mt-16">
     {
