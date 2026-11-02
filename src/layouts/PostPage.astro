@@ -18,7 +18,9 @@ import { linkStory } from "../consts"
     {word_count ? `${word_count}字` : `内容由${author}创作`}
   </slot>
   {
-    hide_jump || (
+    hide_jump ? (
+      ""
+    ) : (
       <slot name="header" slot="header">
         <Cate postId={slug} />
         {tags && tags.map((tag: any) => <Tag tag={tag} />)}
